@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow>
+	<property file="workflow.properties" />
+	
+	<bean class="oaw.uml2.Setup" standardUML2Setup="true" />
+	
+	<!-- Metamodel-Definition -->
+	<!--<bean id="EmfMM" class="oaw.type.emf.EmfMetaModel">
+		<metaModelPackage value="org.eclipse.emf.ecore.EcorePackage"/>
+	</bean>-->
+	
+	<!--<bean id="UmlMM" class="oaw.uml2.UML2MetaModel"/>-->
+	
+	<!--<bean id="${profile_name}MM" class="oaw.uml2.profile.ProfileMetaModel">
+		<profile value="${profile_dir}/${profile_name}.profile.uml" />
+	</bean>-->
+	
+	<component class="oaw.uml2.toolsupport.ea.EA_Xmi2Exporter" >
+		<EapFile value="${model.ea_file}" />
+		<ModelFile value="${model.uml_file}" />
+		<PackageName value="${model.pkg}" />
+	
+		<!-- JPA profile -->
+		<profile value="${profile.jpa.uml_file}" />
+		<PackageProfile name="${model.name}" value="${profile.jpa.name}" />
+	
+		<!-- BVA profile -->
+		<profile value="${profile.bva.uml_file}" />
+		<PackageProfile name="${model.name}" value="${profile.bva.name}" />
+		
+		<!-- BVA custom profile-->
+		<profile value="${profile.bva_custom.uml_file}" />
+		<PackageProfile name="${model.name}" value="${profile.bva_custom.name}" />
+		
+		
+		<Cleanup value="true"/>
+	</component>
+	
+	<!-- Exportiertes Model in EMF Slot laden -->
+	<component class="oaw.emf.XmiReader">
+		<modelFile value="${model.uml_file}" />
+		<outputSlot value="${model.output_slot}"/>
+	</component>
+	
+	<component id="dirCleaner"
+		class="oaw.workflow.common.DirectoryCleaner"
+		directory="${general.generated_dir}"/>
+</workflow>
+

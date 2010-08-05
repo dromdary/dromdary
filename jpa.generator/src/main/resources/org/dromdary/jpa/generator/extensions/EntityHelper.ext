@@ -1,0 +1,70 @@
+String checkAttributeName(uml::Class class) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.checkAttributeName(org.eclipse.uml2.uml.Class);
+	
+String getEnumValue(String enumString) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getEnumValue(java.lang.String);
+	
+boolean isAbstractClass(uml::Class class) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.isAbstractClass(org.eclipse.uml2.uml.Class);
+	
+String formatJpaStereotypeName(String name) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.formatJpaStereotypeName(java.lang.String);
+
+boolean isId(uml::Class class) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.isId(org.eclipse.uml2.uml.Class);
+
+boolean isId(uml::Property property) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.isId(org.eclipse.uml2.uml.Property);
+	
+boolean isPrimaryKeyClassReq(uml::Class class) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.isPrimaryKeyClassReq(org.eclipse.uml2.uml.Class);
+	
+boolean isPrimaryKeyClassReq(uml::Property property) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.isPrimaryKeyClassReq(org.eclipse.uml2.uml.Property);
+	
+List[uml::Property] getIdAttributes(uml::Class class) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getIdAttributes(org.eclipse.uml2.uml.Class);	
+	
+List[uml::Property] getIdAttributes(uml::Property property) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getIdAttributes(org.eclipse.uml2.uml.Property);	
+	
+boolean searchIdAttributeName(uml::Class class) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.searchIdAttributeName(org.eclipse.uml2.uml.Class);
+
+boolean isExtendedClass(uml::Class class) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.isExtendedClass(org.eclipse.uml2.uml.Class);
+	
+boolean getIdAttributeType(uml::Class class) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getIdAttributeType(org.eclipse.uml2.uml.Class);
+	
+String getPropertyMultiplicity(uml::Property property) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getPropertyMultiplicity(org.eclipse.uml2.uml.Property);
+
+String getOtherEndPropertyMultiplicity(uml::Property property) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getOtherEndPropertyMultiplicity(org.eclipse.uml2.uml.Property);
+
+boolean checkClassForColumnAnnotation(uml::Property property) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.checkClassForColumnAnnotation(org.eclipse.uml2.uml.Property);
+
+String getIdAttributeName(uml::Class class) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getIdAttributeName(org.eclipse.uml2.uml.Class);
+
+String getIdAttributeName(uml::Property property) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getIdAttributeName(org.eclipse.uml2.uml.Property);
+	
+List[uml::Class] getAllClasses(uml::Model model) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getAllClasses(org.eclipse.uml2.uml.Model);
+	
+//boolean isRelationSourceClass(uml::Class class) :
+//	JAVA org.dromdary.jpa.generator.helper.EntityHelper.isRelationSourceClass(org.eclipse.uml2.uml.Class);
+	
+//boolean isRelationDestinationClass(uml::Class class) :
+//	JAVA org.dromdary.jpa.generator.helper.EntityHelper.isRelationDestinationClass(org.eclipse.uml2.uml.Class);
+
+//String getRelationType(uml::Class class) :
+//	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getRelationType(org.eclipse.uml2.uml.Class);
+	
+//String getMultiplicity(uml::Class class) :
+//	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getMultiplicity(org.eclipse.uml2.uml.Class);
+	
+

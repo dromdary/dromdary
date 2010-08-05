@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="90587b69-2292-4164-a441-99beadd45cfa" name="SimpleJSR303" metaclassReference="_T7uaEHiREd-SKY0mIXMSeg _T78cgHiREd-SKY0mIXMSeg _UGCMoHiREd-SKY0mIXMSeg _UGSrUHiREd-SKY0mIXMSeg _UGm0YHiREd-SKY0mIXMSeg _UGxzgHiREd-SKY0mIXMSeg">
+  <eAnnotations xmi:id="_UJZpsHiREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_UJZpsXiREd-SKY0mIXMSeg" name="SimpleJSR303" nsURI="http:///schemas/SimpleJSR303/_UJUKIHiREd-SKY0mIXMSeg/0" nsPrefix="SimpleJSR303">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZpsniREd-SKY0mIXMSeg" name="BVA_AssertFalse" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZps3iREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{B662C1CF-FCAC-4fab-9C89-720241AD3C50}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZptHiREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.assertFalse}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZpt3iREd-SKY0mIXMSeg" name="BVA_Default" eSuperTypes="_UJZpvniREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZpuHiREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZpuXiREd-SKY0mIXMSeg" name="groups" ordered="false" unique="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZpu3iREd-SKY0mIXMSeg" name="packageName" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="javax.validation.constraints">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZpvniREd-SKY0mIXMSeg" name="BVA_SimpleJSR303">
+        <eAnnotations xmi:id="_UJZpv3iREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{89E79492-1C2E-4daf-80FD-028768C03D8F}"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UJZpwHiREd-SKY0mIXMSeg" name="base_Operation" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UJZpwniREd-SKY0mIXMSeg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZpxHiREd-SKY0mIXMSeg" name="BVA_AssertTrue" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZpxXiREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{3BEFC50A-FB00-40c3-B7EE-44BB0EE11870}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZpxniREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.assertTrue}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZpyXiREd-SKY0mIXMSeg" name="BVA_DecimalMax" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZpyniREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{3B604594-8A03-4a35-A35E-13FEBDD8428B}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZpy3iREd-SKY0mIXMSeg" name="value" ordered="false" unique="false" lowerBound="1" eType="_UJZp0HiREd-SKY0mIXMSeg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZpzXiREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.decimalmax}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_UJZp0HiREd-SKY0mIXMSeg" name="SimpleJSR303_PrimitiveTypes_long" instanceClassName="SimpleJSR303_PrimitiveTypes_long">
+        <eAnnotations xmi:id="_UJZp0XiREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="2cfd625c-c909-438d-97eb-4ada6957d318"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZp0niREd-SKY0mIXMSeg" name="BVA_DecimalMin" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZp03iREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{AE1D42F6-0E7C-4e5a-8C5A-880721EB69AD}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZp1HiREd-SKY0mIXMSeg" name="value" ordered="false" unique="false" lowerBound="1" eType="_UJZp0HiREd-SKY0mIXMSeg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZp1niREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.decimalmin}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZp2XiREd-SKY0mIXMSeg" name="BVA_Digits" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZp2niREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{643188FE-825A-4961-80C8-E5F4796FD999}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZp23iREd-SKY0mIXMSeg" name="fraction" ordered="false" unique="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZp3XiREd-SKY0mIXMSeg" name="integer" ordered="false" unique="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZp33iREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.digits}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZp4niREd-SKY0mIXMSeg" name="BVA_FlagEnumeration">
+        <eAnnotations xmi:id="_UJZp43iREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{7E84258D-4B79-49de-A5AA-A4AB2DADB3CE}"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZp5HiREd-SKY0mIXMSeg" name="BVA_Future" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZp5XiREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{7B14F975-28CA-4584-8E11-22F2780842F5}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZp5niREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.future}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZp6XiREd-SKY0mIXMSeg" name="BVA_GroupEnumeration">
+        <eAnnotations xmi:id="_UJZp6niREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{BB5A4612-70D2-4dcc-8463-58A195404670}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZp63iREd-SKY0mIXMSeg" name="testEnumAttr" ordered="false" unique="false" lowerBound="1" eType="_UJZp73iREd-SKY0mIXMSeg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UJZp7XiREd-SKY0mIXMSeg" name="base_Enumeration" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Enumeration"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_UJZp73iREd-SKY0mIXMSeg" name="Groups">
+        <eAnnotations xmi:id="_UJZp8HiREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{1AF00A4E-9711-4fd0-9851-6119AF27BBE0}"/>
+        <eLiterals xmi:id="_UJZp8XiREd-SKY0mIXMSeg" name="Gruppe2"/>
+        <eLiterals xmi:id="_UJZp8niREd-SKY0mIXMSeg" name="Gruppe3" value="1"/>
+        <eLiterals xmi:id="_UJZp83iREd-SKY0mIXMSeg" name="Gruppe1" value="2"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZp9HiREd-SKY0mIXMSeg" name="BVA_Max" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZp9XiREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{746DE45A-248C-441f-97B1-A1997BABD9B0}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZp9niREd-SKY0mIXMSeg" name="value" ordered="false" unique="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZp-HiREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.max}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZp-3iREd-SKY0mIXMSeg" name="BVA_Min" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZp_HiREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{EF7C10E4-98E4-4320-A9DD-D2E0934BDC15}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZp_XiREd-SKY0mIXMSeg" name="value" ordered="false" unique="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZp_3iREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.min}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZqAniREd-SKY0mIXMSeg" name="BVA_NotNull" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZqA3iREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{B3A9C407-26A9-47b6-A8D4-2A3099A2FF2C}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZqBHiREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.notNull}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZqB3iREd-SKY0mIXMSeg" name="BVA_Null" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZqCHiREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{1DF1C9E1-29EC-4564-80C4-77A2DCC9A42F}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZqCXiREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.null}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZqDHiREd-SKY0mIXMSeg" name="BVA_Past" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZqDXiREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{C1D639A1-6AA5-47bd-A627-5C69321B58C7}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZqDniREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.past}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZqEXiREd-SKY0mIXMSeg" name="BVA_Pattern" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZqEniREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{6DC84AA5-50AE-44aa-BD7F-000294C64E47}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZqE3iREd-SKY0mIXMSeg" name="flags" ordered="false" unique="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZqFXiREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.pattern}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZqF3iREd-SKY0mIXMSeg" name="regexp" ordered="false" unique="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZqGniREd-SKY0mIXMSeg" name="BVA_Size" eSuperTypes="_UJZpt3iREd-SKY0mIXMSeg">
+        <eAnnotations xmi:id="_UJZqG3iREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{7170417B-E48E-42a9-89A1-8A6814E21C7E}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZqHHiREd-SKY0mIXMSeg" name="max" ordered="false" unique="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZqHniREd-SKY0mIXMSeg" name="message" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="{constraint.size}">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UJZqIHiREd-SKY0mIXMSeg" name="min" ordered="false" unique="false" lowerBound="1" defaultValueLiteral="0">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZqI3iREd-SKY0mIXMSeg" name="BVA_Valid">
+        <eAnnotations xmi:id="_UJZqJHiREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{1F728DA4-9BA4-4156-81AA-1E1FA4D0CEA0}"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UJZqJXiREd-SKY0mIXMSeg" name="Class1">
+        <eAnnotations xmi:id="_UJZqJniREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{09B1B9AE-8CC1-4716-8EF0-ABFDD770B4E9}"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_UJZqJ3iREd-SKY0mIXMSeg" name="PatternFlags">
+        <eAnnotations xmi:id="_UJZqKHiREd-SKY0mIXMSeg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{B1B461FE-34A8-431f-92DB-A0FD9AA4AE23}"/>
+        <eLiterals xmi:id="_UJZqKXiREd-SKY0mIXMSeg" name="CANON_EQ"/>
+        <eLiterals xmi:id="_UJZqKniREd-SKY0mIXMSeg" name="UNICODE_CASE" value="1"/>
+        <eLiterals xmi:id="_UJZqK3iREd-SKY0mIXMSeg" name="DOTALL" value="2"/>
+        <eLiterals xmi:id="_UJZqLHiREd-SKY0mIXMSeg" name="MULTILINE" value="3"/>
+        <eLiterals xmi:id="_UJZqLXiREd-SKY0mIXMSeg" name="COMMENTS" value="4"/>
+        <eLiterals xmi:id="_UJZqLniREd-SKY0mIXMSeg" name="UNIX_LINES" value="5"/>
+        <eLiterals xmi:id="_UJZqL3iREd-SKY0mIXMSeg" name="CASE_INSENSITIVE" value="6"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_T7uaEHiREd-SKY0mIXMSeg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+  </elementImport>
+  <elementImport xmi:id="_T78cgHiREd-SKY0mIXMSeg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+  </elementImport>
+  <elementImport xmi:id="_UGCMoHiREd-SKY0mIXMSeg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <elementImport xmi:id="_UGSrUHiREd-SKY0mIXMSeg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Enumeration"/>
+  </elementImport>
+  <elementImport xmi:id="_UGm0YHiREd-SKY0mIXMSeg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+  </elementImport>
+  <elementImport xmi:id="_UGxzgHiREd-SKY0mIXMSeg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_T249YHiREd-SKY0mIXMSeg" name="PrimitiveTypes">
+    <elementImport xmi:id="_T42FMHiREd-SKY0mIXMSeg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_T42FMXiREd-SKY0mIXMSeg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <elementImport xmi:id="_T42FMniREd-SKY0mIXMSeg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </elementImport>
+    <elementImport xmi:id="_T42FM3iREd-SKY0mIXMSeg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="2cfd625c-c909-438d-97eb-4ada6957d318" name="long"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="2a57a7a2-afeb-41cc-89e1-8e58963228f3" name="void"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{B662C1CF-FCAC-4fab-9C89-720241AD3C50}" name="BVA_AssertFalse">
+    <generalization xmi:id="_UHlr0HiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UHm58HiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHoIEXiREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHoIEHiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UHpWMHiREd-SKY0mIXMSeg" value="{constraint.assertFalse}"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{3BEFC50A-FB00-40c3-B7EE-44BB0EE11870}" name="BVA_AssertTrue">
+    <generalization xmi:id="_UHp9QHiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UHqkUHiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHqkUniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHqkUXiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UHrLYHiREd-SKY0mIXMSeg" value="{constraint.assertTrue}"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{3B604594-8A03-4a35-A35E-13FEBDD8428B}" name="BVA_DecimalMax">
+    <generalization xmi:id="_UHrLYXiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UHrycXiREd-SKY0mIXMSeg" name="value" visibility="public" type="2cfd625c-c909-438d-97eb-4ada6957d318" isUnique="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHryc3iREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHrycniREd-SKY0mIXMSeg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UHsZgHiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHtAkXiREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHtAkHiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UHtnoHiREd-SKY0mIXMSeg" value="{constraint.decimalmax}"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{AE1D42F6-0E7C-4e5a-8C5A-880721EB69AD}" name="BVA_DecimalMin">
+    <generalization xmi:id="_UHtnoXiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UHu1wHiREd-SKY0mIXMSeg" name="value" visibility="public" type="2cfd625c-c909-438d-97eb-4ada6957d318" isUnique="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHu1wniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHu1wXiREd-SKY0mIXMSeg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UHxSAHiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHxSAniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHxSAXiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UHx5EHiREd-SKY0mIXMSeg" value="{constraint.decimalmin}"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{0F83440E-CC60-42d6-A461-A18ACB030881}" name="BVA_Default">
+    <generalization xmi:id="_UHygIHiREd-SKY0mIXMSeg" general="{89E79492-1C2E-4daf-80FD-028768C03D8F}"/>
+    <ownedAttribute xmi:id="_UHygIXiREd-SKY0mIXMSeg" name="groups" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHygI3iREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHygIniREd-SKY0mIXMSeg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UH08YHiREd-SKY0mIXMSeg" name="packageName" visibility="public" isUnique="false">
+      <ownedComment xmi:id="_UH3YoHiREd-SKY0mIXMSeg">
+        <body>Package of the used constraint.</body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UH08YniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UH08YXiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UH2KgHiREd-SKY0mIXMSeg" value="javax.validation.constraints"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{643188FE-825A-4961-80C8-E5F4796FD999}" name="BVA_Digits">
+    <generalization xmi:id="_UH3_sHiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UH4mwHiREd-SKY0mIXMSeg" name="fraction" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UH4mwniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UH4mwXiREd-SKY0mIXMSeg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UH7DAHiREd-SKY0mIXMSeg" name="integer" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UH7qEHiREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UH7DAXiREd-SKY0mIXMSeg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UH-tYHiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UH-tYniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UH-tYXiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UIAikHiREd-SKY0mIXMSeg" value="{constraint.digits}"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{7E84258D-4B79-49de-A5AA-A4AB2DADB3CE}" name="BVA_FlagEnumeration"/>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{7B14F975-28CA-4584-8E11-22F2780842F5}" name="BVA_Future">
+    <generalization xmi:id="_UIBwsHiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UICXwHiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UICXwniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UICXwXiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UIC-0HiREd-SKY0mIXMSeg" value="{constraint.future}"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{BB5A4612-70D2-4dcc-8463-58A195404670}" name="BVA_GroupEnumeration">
+    <ownedAttribute xmi:id="_UIC-0XiREd-SKY0mIXMSeg" name="testEnumAttr" visibility="public" type="{1AF00A4E-9711-4fd0-9851-6119AF27BBE0}" isUnique="false">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIC-03iREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIC-0niREd-SKY0mIXMSeg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UIviZHiREd-SKY0mIXMSeg" name="base_Enumeration" association="08511495-a093-488f-bb47-ee39b9caf180">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Enumeration"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{746DE45A-248C-441f-97B1-A1997BABD9B0}" name="BVA_Max">
+    <generalization xmi:id="_UIDl4HiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UIE0AHiREd-SKY0mIXMSeg" name="value" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIE0AniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIE0AXiREd-SKY0mIXMSeg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UIH3UHiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIH3UniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIH3UXiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UIJsgHiREd-SKY0mIXMSeg" value="{constraint.max}"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{EF7C10E4-98E4-4320-A9DD-D2E0934BDC15}" name="BVA_Min">
+    <generalization xmi:id="_UIK6oHiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UIK6oXiREd-SKY0mIXMSeg" name="value" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIK6o3iREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIK6oniREd-SKY0mIXMSeg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UIN98HiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIN98niREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIN98XiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UIPzIHiREd-SKY0mIXMSeg" value="{constraint.min}"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{B3A9C407-26A9-47b6-A8D4-2A3099A2FF2C}" name="BVA_NotNull">
+    <generalization xmi:id="_UIRBQHiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UIRoUHiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIRoUniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIRoUXiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UITdgHiREd-SKY0mIXMSeg" value="{constraint.notNull}"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{1DF1C9E1-29EC-4564-80C4-77A2DCC9A42F}" name="BVA_Null">
+    <generalization xmi:id="_UIUroHiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UIVSsHiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIV5wXiREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIV5wHiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UIXu8HiREd-SKY0mIXMSeg" value="{constraint.null}"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{C1D639A1-6AA5-47bd-A627-5C69321B58C7}" name="BVA_Past">
+    <generalization xmi:id="_UIYWAHiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UIY9EHiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIY9EniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIY9EXiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UIZkIHiREd-SKY0mIXMSeg" value="{constraint.past}"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{6DC84AA5-50AE-44aa-BD7F-000294C64E47}" name="BVA_Pattern">
+    <generalization xmi:id="_UIZkIXiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UIaLMHiREd-SKY0mIXMSeg" name="flags" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIaLMniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIaLMXiREd-SKY0mIXMSeg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UIdOgHiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIdOgniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIdOgXiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UId1kHiREd-SKY0mIXMSeg" value="{constraint.pattern}"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UIecoHiREd-SKY0mIXMSeg" name="regexp" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIfDsHiREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIecoXiREd-SKY0mIXMSeg" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{89E79492-1C2E-4daf-80FD-028768C03D8F}" name="BVA_SimpleJSR303">
+    <ownedAttribute xmi:id="_UIviYXiREd-SKY0mIXMSeg" name="base_Operation" association="04fd6427-53dc-4378-ba85-f6a271612727">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UIwJcniREd-SKY0mIXMSeg" name="base_Property" association="9204bb6c-0446-4043-8be6-f0a480d3dd7c">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{7170417B-E48E-42a9-89A1-8A6814E21C7E}" name="BVA_Size">
+    <generalization xmi:id="_UIhf8HiREd-SKY0mIXMSeg" general="{0F83440E-CC60-42d6-A461-A18ACB030881}"/>
+    <ownedAttribute xmi:id="_UIiHAHiREd-SKY0mIXMSeg" name="max" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIiHAniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIiHAXiREd-SKY0mIXMSeg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UIlKUHiREd-SKY0mIXMSeg" name="message" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIlxYHiREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIlKUXiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_UInmkHiREd-SKY0mIXMSeg" value="{constraint.size}"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_UIpbwHiREd-SKY0mIXMSeg" name="min" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UIpbwniREd-SKY0mIXMSeg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UIpbwXiREd-SKY0mIXMSeg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_UIqp4HiREd-SKY0mIXMSeg"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{1F728DA4-9BA4-4156-81AA-1E1FA4D0CEA0}" name="BVA_Valid"/>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="{09B1B9AE-8CC1-4716-8EF0-ABFDD770B4E9}" name="Class1"/>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="{1AF00A4E-9711-4fd0-9851-6119AF27BBE0}" name="Groups">
+    <ownedLiteral xmi:id="_UGgtwHiREd-SKY0mIXMSeg" name="Gruppe2"/>
+    <ownedLiteral xmi:id="_UGgtwXiREd-SKY0mIXMSeg" name="Gruppe3"/>
+    <ownedLiteral xmi:id="_UGgtwniREd-SKY0mIXMSeg" name="Gruppe1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="{B1B461FE-34A8-431f-92DB-A0FD9AA4AE23}" name="PatternFlags">
+    <ownedLiteral xmi:id="_UHLcIHiREd-SKY0mIXMSeg" name="CANON_EQ"/>
+    <ownedLiteral xmi:id="_UHMDMHiREd-SKY0mIXMSeg" name="UNICODE_CASE"/>
+    <ownedLiteral xmi:id="_UHMDMXiREd-SKY0mIXMSeg" name="DOTALL"/>
+    <ownedLiteral xmi:id="_UHMDMniREd-SKY0mIXMSeg" name="MULTILINE"/>
+    <ownedLiteral xmi:id="_UHMqQHiREd-SKY0mIXMSeg" name="COMMENTS"/>
+    <ownedLiteral xmi:id="_UHMqQXiREd-SKY0mIXMSeg" name="UNIX_LINES"/>
+    <ownedLiteral xmi:id="_UHMqQniREd-SKY0mIXMSeg" name="CASE_INSENSITIVE"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="04fd6427-53dc-4378-ba85-f6a271612727" name="Operation_BVA_SimpleJSR303" memberEnd="_UIviYHiREd-SKY0mIXMSeg _UIviYXiREd-SKY0mIXMSeg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UIviYHiREd-SKY0mIXMSeg" name="extension_BVA_SimpleJSR303" type="{89E79492-1C2E-4daf-80FD-028768C03D8F}" aggregation="composite" association="04fd6427-53dc-4378-ba85-f6a271612727"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="08511495-a093-488f-bb47-ee39b9caf180" name="Enumeration_BVA_GroupEnumeration" memberEnd="_UIviY3iREd-SKY0mIXMSeg _UIviZHiREd-SKY0mIXMSeg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UIviY3iREd-SKY0mIXMSeg" name="extension_BVA_GroupEnumeration" type="{BB5A4612-70D2-4dcc-8463-58A195404670}" aggregation="composite" association="08511495-a093-488f-bb47-ee39b9caf180"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="9204bb6c-0446-4043-8be6-f0a480d3dd7c" name="Property_BVA_SimpleJSR303" memberEnd="_UIwJcXiREd-SKY0mIXMSeg _UIwJcniREd-SKY0mIXMSeg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_UIwJcXiREd-SKY0mIXMSeg" name="extension_BVA_SimpleJSR303" type="{89E79492-1C2E-4daf-80FD-028768C03D8F}" aggregation="composite" association="9204bb6c-0446-4043-8be6-f0a480d3dd7c"/>
+  </packagedElement>
+</uml:Profile>

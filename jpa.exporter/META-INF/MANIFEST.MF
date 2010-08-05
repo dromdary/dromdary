@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: oAW_UML2Exporter_Test
+Bundle-SymbolicName: jpa.exporter
+Bundle-Version: 1.0.0
+Require-Bundle: org.eclipse.uml2;bundle-version="2.1.0",
+ org.eclipse.uml2.uml;bundle-version="2.2.2",
+ org.eclipse.uml2.uml.ecore.exporter;bundle-version="2.2.0",
+ org.eclipse.uml2.uml.ecore.importer;bundle-version="2.2.0",
+ org.eclipse.uml2.uml.resources;bundle-version="2.2.0",
+ org.openarchitectureware.dependencies;bundle-version="4.3.1",
+ org.openarchitectureware.uml2.adapter;bundle-version="4.3.1",
+ org.openarchitectureware.uml2.adapter.source;bundle-version="4.3.1"

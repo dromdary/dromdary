@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<UMLProfile profiletype="uml2">
+	<Documentation id="52C294B3-0" name="SimpleJSR303_Buchkatalog" version="1.0" notes="SimpleJSR303_Buchkatalog"/>
+	<Content>
+		<Stereotypes>
+			<Stereotype name="BVA_Isbn" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="message" type="String" description="" unit="" values="" default="Invalid ISBN"/>
+					<Tag name="packageName" type="String" description="" unit="" values="" default="org.dromdary.bva.buchkatalog"/>
+				</TaggedValues>
+			</Stereotype>
+		</Stereotypes>
+		<TaggedValueTypes/>
+	</Content>
+</UMLProfile>

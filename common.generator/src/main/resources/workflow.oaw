@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow>
+<property file="common.properties" />
+
+<bean class="org.openarchitectureware.uml2.Setup"
+	standardUML2Setup="true" />
+
+<!-- Meta Meta Modell im EMF Format -->
+<bean id="mm_Emf" class="oaw.type.emf.EmfMetaModel"> 
+      <metaModelPackage value="org.eclipse.emf.ecore.EcorePackage"/> 
+</bean> 
+
+<!-- Meta Meta Modell im UML Format -->	
+<bean id="mm_uml2"
+	class="org.openarchitectureware.uml2.UML2MetaModel" />
+
+<!-- Modell einlesen -->
+<component class="org.openarchitectureware.emf.XmiReader">
+	<modelFile value="${model.file}"/>
+	<outputSlot value="model"/>
+</component>
+
+<!-- Ordner leeren -->
+<component id="dirCleaner"
+    class="org.openarchitectureware.workflow.common.DirectoryCleaner" >
+    <directory value="${outlet.src.dir}"/>
+</component>
+
+
+<!-- JPA Modell-zu-Modell Transformation -->
+<component class="org.dromdary.jpa.generator.model2model.ModelTransformerJpa">
+  	<modelSlot value="model" />
+</component>
+
+<!-- BVA Modell-zu-Modell Transformation -->
+<component class="org.dromdary.bva.generator.model2model.ModelTransformerBva">
+  	<modelSlot value="model"/>
+</component>
+
+<!-- Generieren -->
+<component id="generator"
+    class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true" fileEncoding="ISO-8859-1">
+    <!-- Meta Meta Modelle -->
+    <metaModel idRef="mm_Emf" />
+	<metaModel idRef="mm_uml2" />
+	
+	<!-- Globale Variablen -->
+	<globalVarDef name="list_set_property"
+				value="${list.set.property}" />
+	<globalVarDef name="type_header_text"
+				value="${type.header.text}" />
+	<globalVarDef name="type_footer_text"
+				value="${type.footer.text}" />
+	<globalVarDef name="java_version"
+				value="${java.version}" />
+	<globalVarDef name="annotation_source_key"
+				value="${annotation.source.key}" />
+	<globalVarDef name="javabasic_generateSerialVersionUID"
+				value="${javabasic.generateSerialVersionUID}" />
+	<globalVarDef name="interface_operation_implementation_strategy"
+				value="${interface.operation.implementation.strategy}" />
+	<globalVarDef name="use_overridden_equals_hashcode_toString" 
+				value="${use.overridden.equals.hashcode.toString}" />
+
+	<!-- Einstiegspunkt fuer das Aspekt Orientierte Template -->
+	<advice value="org::dromdary::common::generator::templates::AopEntry" />
+
+	<!-- Einstiegspunkt fuer das Template -->			
+    <expand value="org::dromdary::common::generator::templates::Root::Root FOR model"/>
+    
+    <!-- Ausgabe der Artefakte, welche nicht modifiziert werden duerfen -->
+    <outlet path="${outlet.src.dir}">
+				<fileEncoding value="${file.encoding.output}"/>
+				<postprocessor class="org.openarchitectureware.xpand2.output.JavaBeautifier" />
+	</outlet>   
+	
+	<!-- Ausgabe der Artefakte, welche modifiziert werden duerfen -->
+    <outlet name="outletSrcOnceDir"
+				path="${outlet.src.once.dir}" overwrite="false">
+				<fileEncoding value="${file.encoding.output}"/>
+				<postprocessor class="org.openarchitectureware.xpand2.output.JavaBeautifier" />
+	</outlet>
+	
+	<!-- Ausgabe der JPA PersistenceXML -->
+    <outlet name="${outlet.persistenceXML}" overwrite="true">
+				<fileEncoding value="${file.encoding.output}"/>
+				<postprocessor class="org.fornax.utilities.formatter.xml.XmlFormatter" />
+	</outlet> 	
+</component>
+</workflow>

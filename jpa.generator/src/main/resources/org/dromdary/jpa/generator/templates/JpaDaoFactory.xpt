@@ -1,0 +1,62 @@
+«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
+«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
+«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
+«REM» which accompanies this distribution, and is available at              «ENDREM»
+«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
+«EXTENSION org::openarchitectureware::util::IO»
+
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+
+«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
+«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
+
+«REM»Generierung der JpaDAOFactory.java«ENDREM»
+«DEFINE JpaDaoFactory FOR uml::Model»
+	«EXPAND JpaDaoFactoryClass FOR this»
+«ENDDEFINE»
+
+«REM»File generieren.«ENDREM»
+«DEFINE JpaDaoFactoryClass FOR uml::Model»
+	«FILE getDaoPackageName() + "/JpaDAOFactory.java"»
+		package «getDaoPackageName()»;
+		«EXPAND JpaDaoFactoryImports FOR this»
+		«EXPAND JpaDaoFactoryJavaDoc FOR this»
+		public class JpaDAOFactory extends DAOFactory {
+			// empty
+		}
+	«ENDFILE»
+«ENDDEFINE»
+
+«REM»Benötigte Imports generieren.«ENDREM»
+«DEFINE JpaDaoFactoryImports FOR uml::Model»
+«REM»	 
+	import «getDaoPackageName()».DAOFactory;
+	import «getDaoPackageName()».DataBuildingDAO;
+	import «getDaoPackageName()».DataResearchDAO;
+	import«getDaoPackageName()».EmpireResearchBuildingDAO;
+	import «getDaoPackageName()».EmpireResearchDAO;
+«ENDREM»
+«ENDDEFINE»
+
+«REM»JavaDoc generieren.«ENDREM»
+«DEFINE JpaDaoFactoryJavaDoc FOR uml::Model»
+	/**
+	 * Returns Hibernate-specific instances of DAOs.
+	 * <p/>
+	 * If for a particular DAO there is no additional non-CRUD functionality, we use
+	 * a nested static class to implement the interface in a generic way. This allows clean
+	 * refactoring later on, should the interface implement business data access
+	 * methods at some later time. Then, we would externalize the implementation into
+	 * its own first-level class.
+	 *
+	 */
+«ENDDEFINE»
+
+«DEFINE JpaDaoFactoryAttributes FOR uml::Model»
+
+«ENDDEFINE»
+
+«DEFINE JpaDaoFactoryOperations FOR uml::Model»
+«ENDDEFINE»

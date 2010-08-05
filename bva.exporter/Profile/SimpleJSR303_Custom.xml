@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<UMLProfile profiletype="uml2">
+	<Documentation id="89AB62D9-E" name="SimpleJSR303_Custom" version="1.0" notes="SimpleJSR303_Custom"/>
+	<Content>
+		<Stereotypes>
+			<Stereotype name="BVA_Vin" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="packageName" type="String" description="" unit="" values="" default="com.bva.test"/>
+				</TaggedValues>
+			</Stereotype>
+		</Stereotypes>
+		<TaggedValueTypes/>
+	</Content>
+</UMLProfile>

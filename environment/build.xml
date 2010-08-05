@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="droMDAry" default="replaceHeaders">
+	
+	<target name="replaceHeaders" description="inserts the standard header to all source files">
+	    <loadfile property="javaheader" srcFile="standard_java_header.txt"/>
+	    <replaceregexp match="(/\*.*\*/.*)??^package " flags="sm"
+	        replace="${javaheader}${line.separator}package " encoding="ISO-8859-1">
+	        <fileset dir="../jpa.generator/src">
+	            <include name="**/*.java"/>
+	        </fileset>
+	        <fileset dir="../bva.generator/src">
+	            <include name="**/*.java"/>
+	        </fileset>
+	        <fileset dir="../common.generator/src">
+	            <include name="**/*.java"/>
+	        </fileset>
+	    </replaceregexp>
+
+		<loadfile property="xptheader" srcFile="standard_xpt_header.txt"/>
+	    <replaceregexp match=".*?«EXTENSION " flags="sm"
+	        replace="${xptheader}${line.separator}«EXTENSION " encoding="ISO-8859-1">
+	        <fileset dir="../jpa.generator/src">
+	            <include name="**/*.xpt"/>
+	        </fileset>
+	        <fileset dir="../bva.generator/src">
+	            <include name="**/*.xpt"/>
+	        </fileset>
+	        <fileset dir="../common.generator/src">
+	            <include name="**/*.xpt"/>
+	        </fileset>
+	    </replaceregexp>
+	</target>
+	
+</project>

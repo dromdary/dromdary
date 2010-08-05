@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow>
+	<property file="exporter.properties" />
+
+	<bean class="oaw.uml2.Setup" standardUML2Setup="true" />
+
+	<!-- Metamodel-Definition -->
+	<bean id="EmfMM" class="oaw.type.emf.EmfMetaModel">
+		<metaModelPackage value="org.eclipse.emf.ecore.EcorePackage"/>
+	</bean>
+
+	<bean id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
+
+	<bean id="${profile_name}MM" class="oaw.uml2.profile.ProfileMetaModel">
+		<profile value="${profile_dir}/${profile_name}.profile.uml" />
+	</bean>
+
+	<component class="oaw.uml2.toolsupport.ea.EA_Xmi2Exporter" >
+		<EapFile value="${project_root}${model.ea_file}" />
+		<ModelFile value="${model_file}" />
+		<PackageName value="${model_pkg}" />
+		
+		<!-- Default BVA Profile -->
+		<profile value="${profile_file}" />
+		<PackageProfile name="${model_name}" value="${profile_name}" />
+		
+		<!-- Custom BVA Profile-->
+		<profile value="${custom_profile_file}" />
+		<PackageProfile name="${model_name}" value="${custom_profile_name}" />
+	
+		<Cleanup value="true"/>
+	</component>
+
+	<component class="oaw.emf.XmiReader">
+		<modelFile value="${model_file}" />
+		<outputSlot value="${output_slot}" />
+	</component>
+
+	<component id="dirCleaner"
+		class="oaw.workflow.common.DirectoryCleaner"
+		directory="${gen_dir}" />
+</workflow>
+

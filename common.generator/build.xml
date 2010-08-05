@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="common.generator" default="generateSources">
+	<description>
+            description
+    </description>
+
+	<import file="${basedir}/../environment/build-paths.xml"/>
+	<import file="${basedir}/../environment/build-classpaths.xml"/>
+	<import file="${basedir}/../common.exporter/build.xml"/>
+	
+	<property name="destination.project" location="${basedir}"/>
+
+	<property name="database.destination.dir" location="${destination.project}/ddl"/>
+	
+	<property name="jpa.generator.dir" location="${basedir}/../jpa.generator"/>
+	<property name="jpa.generator.classes" location="${jpa.generator.dir}/bin"/>
+	
+	<property name="bva.generator.dir" location="${basedir}/../bva.generator"/>
+	<property name="bva.generator.classes" location="${bva.generator.dir}/bin"/>
+
+	<property name="common.exporter.dir" location="${basedir}/../common.exporter"/>
+	<property name="common.exporter.workflow.dir" location="${common.exporter.dir}/oaw"/>
+
+	<property name="common.generator.dir" location="${basedir}/../common.generator"/>
+	<property name="common.generator.classes" location="${common.generator.dir}/bin"/>
+	<property name="common.generator.workflow.dir" location="${basedir}/src/main/resources/"/>
+
+	
+	<path id="toolslib">
+		<path>
+			<fileset dir="${libs.dir}/non-release-to-SourceForge/hibernate">
+    			<include name="**/*.jar"/>
+			</fileset>
+		</path>
+
+		<path location="${libs.dir}/build-dependencies/derby/10.5.1.1/derby.jar" />
+		<path location="${libs.dir}/build-dependencies/beanvalidation/validation-api-1.0.CR2.jar" />
+	</path>
+
+	<path id="ejb3toolslib">
+		<path refid="toolslib" />
+		<!-- ref to previously defined toolslib -->
+
+		<path location="${libs.dir}/build-dependencies/jpa/persistence-api-1.0.jar" />
+	</path>
+	
+	<path id="oawlibs">
+		<path location="${common.generator.workflow.dir}"/>
+		<path location="${common.generator.classes}"/>
+		<path location="${common.exporter.workflow.dir}"/>
+		<path location="${jpa.generator.classes}"/>
+		<path location="${bva.generator.classes}"/>
+
+		<path refid="ejb3toolslib" />
+		
+		<!-- builddependencies libs -->
+		<path>
+			<fileset dir="${libs.dir}">
+    			<include name="**/*.jar"/>
+			</fileset>
+		</path>
+		
+	</path>
+
+	<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask" classpathref="ejb3toolslib" />
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: importDdl
+         - - - - - - - - - - - - - - - - - -->
+    <target name="importDDLinDb">
+    	<echo>Startup and if necessary create DB</echo>
+    	<java jar="${basedir}/lib/derby/10.5.1.1/derbyrun.jar" fork="true">
+    		<jvmarg value="-Dij.connection.miadbconn=jdbc:derby:miadb"/>
+    		<jvmarg value="-Dderby.system.home=${database.destination.dir}"/>
+		</java>
+    	
+    	<echo>Import DDL</echo>
+    	<java classname="org.apache.derby.tools.ij" classpath="${basedir}/lib/derby/10.5.1.1/derbytools.jar" inputstring="${database.destination.dir}/sql.ddl" failonerror="true" >
+    	</java>
+    </target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: exportDDL              
+         - - - - - - - - - - - - - - - - - -->
+    <target name="exportDDL" description="export the ddl from the model">
+		<sleep seconds="5" description="needed to let windows sync the hdd"/>
+
+		<hibernatetool destdir="${database.destination.dir}">
+			<jpaconfiguration persistenceunit="jpa.test" />
+			<classpath>
+				<!-- it is in this classpath you put your classes dir,
+    	   and/or jpa persistence compliant jar -->
+				<path location="${destination.project}/bin" />
+				<path location="${basedir}/build/classes" />
+				<path location="${bva.generator.dir}/bin" />
+			</classpath>
+
+			<hbm2ddl export="false" outputfilename="sql.ddl" />
+		</hibernatetool>
+    </target>
+
+	
+	<taskdef name="workflow" classname="org.openarchitectureware.workflow.ant.WorkflowAntTask" classpathref="oawlibs"/>
+
+	<!-- ================================= 
+          target: generateFull
+         ================================= -->
+	<target name="generateFull" description="generate the sources and the DDL with a previous model and profile export">
+		<antcall target="cleanup"/>
+	
+		<antcall target="exportModelAndProfilesFromEnterpriseArchitect" inheritall="false" inheritrefs="false"></antcall>
+
+		<antcall target="generateOnly"/>
+	</target>
+
+	<!-- ================================= 
+          target: generateSources
+         ================================= -->
+	<target name="generateSources" description="generate the sources and the DDL without a previous model and profile export">
+		<antcall target="cleanup"/>
+		
+		<antcall target="exportModelFromEnterpriseArchitect"/>
+		
+		<antcall target="generateOnly"/>
+	</target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: generateOnly                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="generateOnly">
+		<!-- generate the code -->
+		<workflow file="workflow.oaw" classpathref="oawlibs"/>
+		
+		<!--<antcall target="exportDDL"/>-->
+    </target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: cleanup                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="cleanup">
+		<echo>cleanup generated folder</echo>
+		<delete includeemptydirs="true">
+			<fileset dir="${basedir}/src/generated">
+	    		<include name="**"/>
+			</fileset>
+		</delete>
+    </target>
+	
+</project>

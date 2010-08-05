@@ -1,0 +1,7 @@
+- Licensetexte/Links automatisiert generieren aus verwendeten Komponenten?
+- PPt und Diplomarbeiten prüfen auf Urherberrecht (Bilder, Zitate usw)
+- Jars nochmals sortieren und in core / noncore sortieren
+- Logos in Docs und Folien aufnehmen
+- Lizenzen in alle Dateien aufnehmen
+- Welchen FUnktionsumfang bietet bzw. bietet nicht die Software in README.txt aufnehmen
+- In README.txt Disclaimer/Haftungsausschluß aufnehmen, dass die generierten Sourcen noch getestet werden müssen

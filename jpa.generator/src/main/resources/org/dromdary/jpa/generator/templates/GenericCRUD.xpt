@@ -1,0 +1,195 @@
+«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
+«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
+«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
+«REM» which accompanies this distribution, and is available at              «ENDREM»
+«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
+«EXTENSION org::openarchitectureware::util::IO»
+
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+
+«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
+«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
+
+«REM»Generierung der GenericDAO.java und GenericJpaDAO.java«ENDREM»
+«DEFINE GenericCRUD FOR uml::Model»
+	«EXPAND GenericCRUDInterface FOR this»
+	«EXPAND GenericCRUDAbstractClass FOR this»
+«ENDDEFINE»
+
+«REM»File für das Interface generieren.«ENDREM»
+«DEFINE GenericCRUDInterface FOR uml::Model»
+	«FILE getDaoPackageName() + "/GenericDAO.java"»
+		package «getDaoPackageName()»;
+		«EXPAND GenericCRUDInterfaceImports FOR this»
+		public interface GenericDAO<T, ID extends Serializable> {
+			«EXPAND GenericCRUDInterfaceMethods FOR this»
+		}
+	«ENDFILE»
+«ENDDEFINE»
+
+«REM»Benötigte Imports im Interface generieren.«ENDREM»
+«DEFINE GenericCRUDInterfaceImports FOR uml::Model»
+	import java.io.Serializable;
+	import java.util.List;
+«ENDDEFINE»
+
+«REM»Interface Methoden generieren.«ENDREM»
+«DEFINE GenericCRUDInterfaceMethods FOR uml::Model»
+	T findById(ID id, boolean lock);
+
+    List<T> findAll();
+
+    List<T> findByExample(T exampleInstance, String... excludeProperty);
+
+    T makePersistent(T entity);
+
+    void makeTransient(T entity);
+
+    /**
+     * Affects every managed instance in the current persistence context!
+     */
+    void flush();
+
+    /**
+     * Affects every managed instance in the current persistence context!
+     */
+    void clear();
+«ENDDEFINE»
+
+«REM»File für abstrakte Klasse erzeugen.«ENDREM»
+«DEFINE GenericCRUDAbstractClass FOR uml::Model»
+	«FILE getDaoPackageName() + "/GenericJpaDAO.java"»
+		package «getDaoPackageName()»;
+		«EXPAND GenericCRUDAbstractClassImports FOR this»
+		public abstract class GenericJpaDAO<T, ID extends Serializable>
+        implements GenericDAO<T, ID> {
+			«EXPAND GenericCRUDAbstractClassAttributes FOR this»
+			«EXPAND GenericCRUDAbstractClassOperations FOR this»
+		}
+	«ENDFILE»
+«ENDDEFINE»
+
+«REM»Import in abstrakter Klasse erzeugen.«ENDREM»
+«DEFINE GenericCRUDAbstractClassImports FOR uml::Model»
+	import java.io.Serializable;
+	import java.lang.reflect.ParameterizedType;
+	import java.util.List;
+	
+	import org.hibernate.Criteria;
+	import org.hibernate.LockMode;
+	import org.hibernate.Session;
+	import org.hibernate.criterion.Criterion;
+	import org.hibernate.criterion.Example;
+	
+	import «getDaoPackageName()».GenericDAO;
+«ENDDEFINE»
+
+«REM»JavaDoc in abstrakter Klasse erzeugen.«ENDREM»
+«DEFINE GenericCRUDAbstractClassJavaDoc FOR uml::Model»
+	/**
+	 * Implements the generic CRUD data access operations using Hibernate APIs.
+	 * <p>
+	 * To write a DAO, subclass and parameterize this class with your persistent class.
+	 * Of course, assuming that you have a traditional 1:1 appraoch for Entity:DAO design.
+	 * <p>
+	 * You have to inject a current Hibernate <tt>Session</tt> to use a DAO. Otherwise, this
+	 * generic implementation will use <tt>HibernateUtil.getSessionFactory()</tt> to obtain the
+	 * curren <tt>Session</tt>.
+	 *
+	 * @see HibernateDAOFactory
+	 *
+	 */
+«ENDDEFINE»
+
+«REM»Attribute in abstrakter Klasse erzeugen.«ENDREM»
+«DEFINE GenericCRUDAbstractClassAttributes FOR uml::Model»
+	    private Class<T> persistentClass;
+    	private Session session;
+«ENDDEFINE»
+
+«REM»Methode in abstrakter Klasse generieren.«ENDREM»
+«DEFINE GenericCRUDAbstractClassOperations FOR uml::Model»
+	public GenericJpaDAO() {
+        this.persistentClass = (Class<T>) ((ParameterizedType) getClass()
+                                .getGenericSuperclass()).getActualTypeArguments()[0];
+     }
+
+    public void setSession(Session s) {
+        this.session = s;
+    }
+
+    protected Session getSession() {
+        if (session == null) {
+            session = JpaUtil.getSessionFactory().openSession();
+        }
+        return session;
+    }
+
+    public Class<T> getPersistentClass() {
+        return persistentClass;
+    }
+
+    @SuppressWarnings("unchecked")
+    public T findById(ID id, boolean lock) {
+        T entity;
+        if (lock)
+            entity = (T) getSession().load(getPersistentClass(), id, LockMode.UPGRADE);
+        else
+            entity = (T) getSession().load(getPersistentClass(), id);
+
+        return entity;
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<T> findAll() {
+        return findByCriteria();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<T> findByExample(T exampleInstance, String... excludeProperty) {
+        Criteria crit = getSession().createCriteria(getPersistentClass());
+        Example example =  Example.create(exampleInstance);
+        for (String exclude : excludeProperty) {
+            example.excludeProperty(exclude);
+        }
+        crit.add(example);
+        return crit.list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public T makePersistent(T entity) {
+        getSession().saveOrUpdate(entity);
+        return entity;
+    }
+    
+    @SuppressWarnings("unchecked")
+    public T create(T entity) {
+        return makePersistent(entity);
+    }
+
+    public void makeTransient(T entity) {
+        getSession().delete(entity);
+    }
+
+    public void flush() {
+        getSession().flush();
+    }
+
+    public void clear() {
+        getSession().clear();
+    }
+
+    /**
+     * Use this inside subclasses as a convenience method.
+     */
+    @SuppressWarnings("unchecked")
+    protected List<T> findByCriteria(Criterion... criterion) {
+        Criteria crit = getSession().createCriteria(getPersistentClass());
+        for (Criterion c : criterion) {
+            crit.add(c);
+        }
+        return crit.list();
+   }
+«ENDDEFINE»

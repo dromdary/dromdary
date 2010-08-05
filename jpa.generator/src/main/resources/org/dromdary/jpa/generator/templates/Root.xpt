@@ -1,0 +1,22 @@
+«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
+«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
+«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
+«REM» which accompanies this distribution, and is available at              «ENDREM»
+«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+
+«REM»Einstiegspunkt, welcher vom Workflow aufgerufen wird und entsprechend weitere Templates aufrufen.«ENDREM» 
+«DEFINE Root FOR uml::Model»
+	«("Generating Java Files with JPA Annotations").info() -> ""»
+	«EXPAND Entity::JpaEntity FOREACH eAllContents.typeSelect(uml::Class)»
+	«EXPAND PersistenceXML::PersistenceXML FOR this»	
+	«EXPAND GenericCRUD::GenericCRUD FOR this»
+	«EXPAND JpaUtil::JpaUtil FOR this»
+	«EXPAND JpaDaoFactory::JpaDaoFactory FOR this»
+	«EXPAND DaoFactory::DaoFactory FOR this»
+«ENDDEFINE»
+

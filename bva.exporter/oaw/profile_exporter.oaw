@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow>
+	<property file="exporter.properties" />
+	<bean class="oaw.uml2.Setup" standardUML2Setup="true" />
+
+	<!-- Provided BVA Profile -->
+	<component class="oaw.uml2.toolsupport.ea.EA_Xmi2ProfileExporter" >
+		<EapFile value="${project_root}${profile.ea_file}" />
+		<ModelFile value="${project_root}Profile/${profile_name}.profile.uml" />
+		<PackageName value="${profile_pkg}" />
+		<Cleanup value="true"/>
+	</component>
+
+	<!-- Custom BVA Profile -->
+	<component class="oaw.uml2.toolsupport.ea.EA_Xmi2ProfileExporter" >
+		<EapFile value="${project_root}${custom_profile.ea_file}" />
+		<ModelFile value="${project_root}Profile/${custom_profile_name}.profile.uml" />
+		<PackageName value="${custom_profile_pkg}" />
+		<Cleanup value="true"/>
+	</component>	
+
+</workflow>

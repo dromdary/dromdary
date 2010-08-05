@@ -1,0 +1,15 @@
+#Wed Jun 30 15:36:39 CEST 2010
+eclipse.preferences.version=1
+encoding//src/main/resources/org/dromdary/jpa/generator/templates/Annotations.xpt=iso-8859-1
+encoding//src/main/resources/org/dromdary/jpa/generator/templates/AopEntry.xpt=iso-8859-1
+encoding//src/main/resources/org/dromdary/jpa/generator/templates/Association.xpt=iso-8859-1
+encoding//src/main/resources/org/dromdary/jpa/generator/templates/Attribute.xpt=iso-8859-1
+encoding//src/main/resources/org/dromdary/jpa/generator/templates/DaoFactory.xpt=iso-8859-1
+encoding//src/main/resources/org/dromdary/jpa/generator/templates/Entity.xpt=iso-8859-1
+encoding//src/main/resources/org/dromdary/jpa/generator/templates/GenericCRUD.xpt=iso-8859-1
+encoding//src/main/resources/org/dromdary/jpa/generator/templates/JpaDaoFactory.xpt=iso-8859-1
+encoding//src/main/resources/org/dromdary/jpa/generator/templates/JpaUtil.xpt=iso-8859-1
+encoding//src/main/resources/org/dromdary/jpa/generator/templates/PersistenceXML.xpt=iso-8859-1
+encoding//src/main/resources/org/dromdary/jpa/generator/templates/PkClass.xpt=iso-8859-1
+encoding//src/main/resources/org/dromdary/jpa/generator/templates/Root.xpt=iso-8859-1
+encoding/<project>=ISO-8859-1

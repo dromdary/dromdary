@@ -1,0 +1,11 @@
+String getPersistenceXMLPath() :
+	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.getPersistenceXmlPath();
+	
+String getPersistenceProperties() :
+	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.getPersistenceProperties();
+	
+String getTableSchema() :
+	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.getTableSchema();	
+	
+String getDaoPackageName() :
+	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.getDaoPackageName();	

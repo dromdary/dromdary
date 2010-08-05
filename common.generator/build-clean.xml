@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="common.generator.clean">
+
+	<import file="${basedir}/../environment/build-paths.xml"/>
+	<import file="${basedir}/../environment/build-classpaths.xml"/>
+	<import file="${basedir}/../common.exporter/build.xml"/>
+	
+	<property name="destination.project" location="${basedir}"/>
+
+	<property name="database.destination.dir" location="${destination.project}/ddl"/>
+	
+	<property name="jpa.generator.dir" location="${basedir}/../jpa.generator"/>
+	<property name="jpa.generator.classes" location="${jpa.generator.dir}/bin"/>
+	
+	<property name="bva.generator.dir" location="${basedir}/../bva.generator"/>
+	<property name="bva.generator.classes" location="${bva.generator.dir}/bin"/>
+
+	<property name="common.exporter.dir" location="${basedir}/../common.exporter"/>
+	<property name="common.exporter.workflow.dir" location="${common.exporter.dir}/oaw"/>
+
+	<property name="common.generator.dir" location="${basedir}/../common.generator"/>
+	<property name="common.generator.classes" location="${common.generator.dir}/bin"/>
+	<property name="common.generator.workflow.dir" location="${basedir}/src/main/resources/"/>
+
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: cleanup                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="cleanup">
+		<echo>cleanup project folders</echo>
+		<delete includeemptydirs="true">
+			<fileset dir="${basedir}/src/main/java">
+	    		<include name="javaforum/**"/>
+				<include name="META-INF/persistence.xml"/>
+			</fileset>
+			<fileset dir="${basedir}/src/generated">
+	    		<include name="**"/>
+			</fileset>
+		</delete>
+    </target>
+	
+</project>

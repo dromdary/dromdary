@@ -1,0 +1,535 @@
+«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
+«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
+«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
+«REM» which accompanies this distribution, and is available at              «ENDREM»
+«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
+«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
+
+«REM»Annotationen für Entities generieren.«ENDREM»
+«DEFINE EntityAnnotations FOR uml::Class»
+	«EXPAND Entity::Imports FOR this»
+	
+	«REM»Falls es sich um eine abgeleitete Klasse handelt.«ENDREM»
+	«IF isExtendedClass()»
+		
+		«REM»Standardfall Table per Class verwenden, wenn Annotation @Inheritance nicht angegeben wurde.«ENDREM»
+		«IF getAppliedStereotype("SimpleJSR220::JPA_InheritanceJPA") == null»
+			@Inheritance(strategy = InheritanceType.SINGLE_TABLE)			
+		«ENDIF»
+		
+		«REM»Standardfall für Annotation @DiscriminatorColumn verwenden, wenn diese nicht angegeben wurde.«ENDREM»
+		«IF getAppliedStereotype("SimpleJSR220::JPA_DiscriminatorColumnJPA") == null»
+			@DiscriminatorColumn(
+		    	name = "«name»_TYPE",
+		    	discriminatorType = DiscriminatorType.«IF !isId()»INTEGER«ELSE»«getIdAttributeType()»«ENDIF»
+			)
+		«ENDIF»
+	«ENDIF»
+	
+	«REM»Falls eine Primärschlüsselklasse benötigt wird, aber nicht modelliert wurde, den entsprechenden Stereotyp generieren.«ENDREM»
+	«IF getAppliedStereotype("SimpleJSR220::JPA_IdClassJPA") == null»
+		«IF isPrimaryKeyClassReq()»
+			@IdClass(«name»Pk.class)
+		«ENDIF»
+	«ENDIF»
+	
+	«IF getAppliedStereotype("SimpleJSR220::JPA_DiscriminatorColumnJPA") != null»
+		«REM»Enthält ENUM discriminatorType«ENDREM»
+		@DiscriminatorColumn
+		(«FOREACH getAppliedStereotype("SimpleJSR220::JPA_DiscriminatorColumnJPA").getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(getAppliedStereotype("SimpleJSR220::JPA_DiscriminatorColumnJPA"), e.name) == ""
+					||  getValue(getAppliedStereotype("SimpleJSR220::JPA_DiscriminatorColumnJPA"), e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "discriminatorType"»«taggedValue.name» = DiscriminatorType.«getEnumValue(getValue(getAppliedStereotype("SimpleJSR220::JPA_DiscriminatorColumnJPA"), taggedValue.name).toString())»«ELSEIF taggedValue.name == "length"»«taggedValue.name» = «getValue(getAppliedStereotype("SimpleJSR220::JPA_DiscriminatorColumnJPA"), taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(getAppliedStereotype("SimpleJSR220::JPA_DiscriminatorColumnJPA"), taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+	«ENDIF»
+	
+	«IF getAppliedStereotype("SimpleJSR220::JPA_InheritanceJPA") != null»
+		«REM»Enthält ENUM inheritanceType«ENDREM»
+		@Inheritance
+		(«FOREACH getAppliedStereotype("SimpleJSR220::JPA_InheritanceJPA").getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(getAppliedStereotype("SimpleJSR220::JPA_InheritanceJPA"), e.name) == ""
+					||  getValue(getAppliedStereotype("SimpleJSR220::JPA_InheritanceJPA"), e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "strategy"»«taggedValue.name» = InheritanceType.«getEnumValue(getValue(getAppliedStereotype("SimpleJSR220::JPA_InheritanceJPA"), taggedValue.name).toString())»«ELSE»«taggedValue.name» = "«getValue(getAppliedStereotype("SimpleJSR220::JPA_InheritanceJPA"), taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+	«ENDIF»
+	
+	«REM»Weitere JPA Annotationen und deren Tagged Values generieren.«ENDREM»
+	«FOREACH getAppliedStereotypes() AS stereotype»
+		«IF stereotype.name.contains("JPA")»
+			«IF stereotype.name == "JPA_IdClassJPA"»
+				@IdClass
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "value"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_DiscriminatorValueJPA"»
+				@DiscriminatorValue
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_PrimaryKeyJoinColumnJPA"»
+				@PrimaryKeyJoinColumn
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_PrimaryKeyJoinColumnsJPA"»
+				@PrimaryKeyJoinColumns
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_SequenceGeneratorJPA"»
+				@SequenceGenerator
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "allocationSize"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_UniqueConstraintJPA"»
+				@UniqueConstraint
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_TableJPA"»
+				@Table
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "uniqueConstraints"»«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_NamendQueryJPA"»
+				@NamedQuery
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "hints"»«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_NamendQueriesJPA"»
+				@NamedQueries
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_QueryHintJPA"»
+				@QueryHint
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDFOREACH»)
+			«ENDIF»
+		
+		«REM»Falls es sich um keine JPA-Annotation handelt, Annotationen und TaggedValues einfach durchreichen«ENDREM»
+		«ELSE»
+			«IF !stereotype.namespace.name.contains("SimpleJSR303")»
+				@«stereotype.name»
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDFOREACH»
+			«ENDIF»	
+		«ENDIF»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«REM»Annotationen für Attribute generieren.«ENDREM»
+«DEFINE AttributeAnnotations FOR uml::Property»
+	«REM»Stereotypen und deren Tagged Values generieren.«ENDREM»
+	«FOREACH getAppliedStereotypes() AS stereotype»
+		
+		«REM»JPA-Annotation generieren.«ENDREM»
+		«IF stereotype.name.contains("JPA")»
+			«IF stereotype.name == "JPA_OrderByJPA"»
+				@OrderBy
+				«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»("«getValue(stereotype, taggedValue.name)»")«ENDFOREACH»
+			«ELSEIF stereotype.name == "JPA_PrimaryKeyJoinColumnJPA"»
+				@PrimaryKeyJoinColumn
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDFOREACH»)	
+			«ELSEIF stereotype.name == "JPA_PrimaryKeyJoinColumnsJPA"»
+				@PrimaryKeyJoinColumns
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_UniqueConstraintJPA"»
+				@UniqueConstraint
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_SequenceGeneratorJPA"»
+				@SequenceGenerator
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "allocationSize" || taggedValue.name == "initialValue"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_JoinColumnJPA"»
+				@JoinColumn
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "insertable" || taggedValue.name == "nullable" || taggedValue.name == "unique" || taggedValue.name == "updatable"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_JoinColumnsJPA"»
+				@JoinColumns
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR "," »«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_OneToOneJPA"»
+				«REM»Enthält ENUM cascadeType«ENDREM»
+				@OneToOne
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "cascade"»«taggedValue.name» = CascadeType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "fetch"»«taggedValue.name» = FetchType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "targetEntity"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_OneToManyJPA"»
+				«REM»Enthält ENUM cascadeType«ENDREM»
+				@OneToMany
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "cascade"»«taggedValue.name» = CascadeType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "fetch"»«taggedValue.name» = FetchType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "targetEntity"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+				«IF !isId()»
+					@JoinColumn(name = "«this.name»_id", nullable = false)
+				«ELSEIF isPrimaryKeyClassReq()»
+			    	@JoinColumns({
+						«FOREACH getIdAttributes() AS e ITERATOR iter»									
+							@JoinColumn(name = "«this.name»_«e.name»", nullable = false),
+						«ENDFOREACH»
+							@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
+					})
+			    «ELSE»
+					@JoinColumn(name = "«this.name»_«getIdAttributeName()»", nullable = false)
+				«ENDIF»	
+			«ELSEIF stereotype.name == "JPA_ManyToOneJPA"»
+				«REM»Enthält ENUM cascadeType«ENDREM»
+				@ManyToOne
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "cascade"»«taggedValue.name» = CascadeType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "fetch"»«taggedValue.name» = FetchType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "targetEntity"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+				«IF !isId()»
+					@JoinColumn(name = "«this.name»_id", nullable = false)
+				«ELSEIF isPrimaryKeyClassReq()»
+			    	@JoinColumns({
+						«FOREACH getIdAttributes() AS e ITERATOR iter»									
+							@JoinColumn(name = "«this.name»_«e.name»", nullable = false),
+						«ENDFOREACH»
+							@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
+					})
+			    «ELSE»
+					@JoinColumn(name = "«this.name»_«getIdAttributeName()»", nullable = false)
+				«ENDIF»	
+			«ELSEIF stereotype.name == "JPA_ManyToManyJPA"»
+				«REM»Enthält ENUM cascadeType«ENDREM»
+				@ManyToMany
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "cascade"»«taggedValue.name» = CascadeType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "fetch"»«taggedValue.name» = FetchType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "targetEntity"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+				«IF !isId()»
+					@JoinColumn(name = "«this.name»_id", nullable = false)
+				«ELSEIF isPrimaryKeyClassReq()»
+			    	@JoinColumns({
+						«FOREACH getIdAttributes() AS e ITERATOR iter»									
+							@JoinColumn(name = "«this.name»_«e.name»", nullable = false),
+						«ENDFOREACH»
+							@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
+					})
+			    «ELSE»
+					@JoinColumn(name = "«this.name»_«getIdAttributeName()»", nullable = false)
+				«ENDIF»	
+			«ELSEIF stereotype.name == "JPA_IdJPA"»
+				@Id
+				
+				«REM»Falls mehrere @Id's angegeben wurden, handelt es sich um einen fachlich zusammengesetzten Schlüssel.
+				Es muss eine Primärschlüsselklasse generiert werden.«ENDREM»
+				«IF isPrimaryKeyClassReq()»
+					«EXPAND PkClass::PkClass FOR class»
+				«ENDIF»
+			«ELSEIF stereotype.name == "JPA_GeneratedValueJPA"»
+				@GeneratedValue
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "generator"»«taggedValue.name» = GenerationType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "strategy"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_TransientJPA"»
+				@Transient
+			«ELSEIF stereotype.name == "JPA_JoinTableJPA"»
+				@JoinTable
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "inverseJoinColumns" || taggedValue.name == "joinColumns" || taggedValue.name == "uniqueConstraints"»«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_QueryHintJPA"»
+				@QueryHint
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDFOREACH»)
+			«ELSE»	
+			«ENDIF»	
+		
+		«REM»Falls es sich um keine JPA- und BVA-Annotation handelt, Annotationen und TaggedValues einfach durchreichen«ENDREM»
+		«ELSE»
+			«IF !stereotype.namespace.name.contains("SimpleJSR303")»
+				@«stereotype.name»
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDFOREACH»
+			«ENDIF»	
+		«ENDIF»
+	«ENDFOREACH»
+
+	«REM»Beziehungsannotationen generieren, wenn diese im Modell nicht angegeben sind.«ENDREM»
+	«IF getPropertyMultiplicity() == "OneToMany" &&
+		getAppliedStereotype("SimpleJSR220::JPA_OneToManyJPA") == null»
+			@OneToMany(targetEntity=«this.type.package.name».Abstract«this.type.name».class)
+			«IF !isId()»
+				@JoinColumn(name = "«this.class.name»_id", nullable = false)
+			«ELSEIF isPrimaryKeyClassReq()»
+			    	@JoinColumns({
+						«FOREACH getIdAttributes() AS e ITERATOR iter»									
+							@JoinColumn(name = "«this.name»_«e.name»", nullable = false),
+						«ENDFOREACH»
+							@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
+					})
+			«ELSE»
+				@JoinColumn(name = "«this.class.name»_«getIdAttributeName()»", nullable = false)
+			«ENDIF»
+	«ENDIF»
+	«IF getPropertyMultiplicity() == "OneToOne" &&
+		getAppliedStereotype("SimpleJSR220::JPA_OneToOneJPA") == null»
+			@OneToOne(targetEntity=«this.type.package.name».Abstract«this.type.name».class)
+	«ENDIF»
+	«IF getPropertyMultiplicity() == "ManyToOne" &&
+		getAppliedStereotype("SimpleJSR220::JPA_ManyToOneJPA") == null»
+			@ManyToOne(targetEntity=«this.type.package.name».Abstract«this.type.name».class)
+			«IF !isId()»
+				@JoinColumn(name = "«this.class.name»_id", nullable = false)
+			«ELSEIF isPrimaryKeyClassReq()»
+			    	@JoinColumns({
+						«FOREACH getIdAttributes() AS e ITERATOR iter»									
+							@JoinColumn(name = "«this.name»_«e.name»", nullable = false),
+						«ENDFOREACH»
+							@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
+					})
+			«ELSE»
+				@JoinColumn(name = "«this.class.name»_«getIdAttributeName()»", nullable = false)
+			«ENDIF»
+	«ENDIF»
+	«IF getPropertyMultiplicity() == "ManyToMany" &&
+		getAppliedStereotype("SimpleJSR220::JPA_ManyToManyJPA") == null»
+			@ManyToMany(targetEntity=«this.type.package.name».Abstract«this.type.name».class)
+			«IF !isId()»
+				@JoinColumn(name = "«this.class.name»_id", nullable = false)
+			«ELSEIF isPrimaryKeyClassReq()»
+			    	@JoinColumns({
+						«FOREACH getIdAttributes() AS e ITERATOR iter»									
+							@JoinColumn(name = "«this.name»_«e.name»", nullable = false),
+						«ENDFOREACH»
+							@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
+					})
+			«ELSE»
+				@JoinColumn(name = "«this.class.name»_«getIdAttributeName()»", nullable = false)
+			«ENDIF»
+	«ENDIF»
+	
+	«REM»Prüfen, ob in der Klasse des Attributs die Annotation @Column angewendet wurde.
+	Falls ja, @Column nur dann generieren wenn es modelliert wurde, ansonsten @Transient generieren. 
+	Falls nein, @Column für jedes Attribut generieren.«ENDREM»
+	«IF checkClassForColumnAnnotation()»
+		«IF getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA") != null»
+			@Column
+			(«FOREACH getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA").getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA"), e.name) == ""
+					||  getValue(getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA"), e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "insertable" || taggedValue.name == "length" || taggedValue.name == "nullable" || taggedValue.name == "precision" || taggedValue.name == "scale" || taggedValue.name == "unique" || taggedValue.name == "updateable"»«taggedValue.name» = «getValue(getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA"), taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA"), taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+		«ELSE»
+			«REM»«IF getAppliedStereotype("SimpleJSR220::JPA_TransientJPA") == null»
+				@Transient
+			«ENDIF»«ENDREM»
+		«ENDIF»
+	«ELSE»
+	
+		«REM»Prüfen, ob es sich um ein Attribut für eine Beziehung handelt.
+		Falls ja, darf die Annotation @Column nicht generiert werden.
+		Falls nein, Annotation @Column nur dann generieren, wenn es im Modell nicht angewendet wurde.«ENDREM»
+		«IF getPropertyMultiplicity() == null»
+			«IF getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA") == null»
+				@Column
+			«ENDIF»
+		«ENDIF»	
+	«ENDIF»
+	
+	«REM»Modellierte Attribute generieren.«ENDREM»
+	«EXPAND Attribute::Attribute»
+«ENDDEFINE»
+
+«REM»Annotationen für Methoden generieren.«ENDREM»
+«DEFINE OperationAnnotations FOR uml::Operation»
+	
+	«REM»Stereotypen und deren Tagged Values generieren.«ENDREM»
+	«FOREACH getAppliedStereotypes() AS stereotype»
+	
+	«REM»JPA-Annotation generieren.«ENDREM»
+		«IF stereotype.name.contains("JPA")»
+			«IF stereotype.name == "OneToManyJPA"»
+			«ELSEIF stereotype.name == "JPA_OrderByJPA"»
+				@OrderBy
+				«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»("«getValue(stereotype, taggedValue.name)»")«ENDFOREACH»
+			«ELSEIF stereotype.name == "JPA_PrimaryKeyJoinColumnJPA"»
+				@PrimaryKeyJoinColumn
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_PrimaryKeyJoinColumnsJPA"»
+				@PrimaryKeyJoinColumns
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_SequenceGeneratorJPA"»
+				@SequenceGenerator
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "allocationSize"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_UniqueConstraintJPA"»
+				@UniqueConstraint
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_JoinColumnJPA"»
+				@JoinColumn
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "insertable" || taggedValue.name == "nullable" || taggedValue.name == "unique" || taggedValue.name == "updatable"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_JoinColumnsJPA"»
+				@JoinColumns
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_OneToOneJPA"»
+				«REM»Enthält ENUM cascadeType«ENDREM»
+				@OneToOne
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "cascade"»«taggedValue.name» = CascadeType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "fetch"»«taggedValue.name» = FetchType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "targetEntity"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_OneToManyJPA"»
+				«REM»Enthält ENUM cascadeType«ENDREM»
+				@OneToMany
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "cascade"»«taggedValue.name» = CascadeType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "fetch"»«taggedValue.name» = FetchType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "targetEntity"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_ManyToOneJPA"»
+				«REM»Enthält ENUM cascadeType«ENDREM»
+				@ManyToOne
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "cascade"»«taggedValue.name» = CascadeType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "fetch"»«taggedValue.name» = FetchType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "targetEntity"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_ManyToManyJPA"»
+				«REM»Enthält ENUM cascadeType«ENDREM»
+				@ManyToMany
+				(«FOREACH stereotype.getAllAttributes() AS taggedValue ITERATOR iter»«IF !taggedValue.name.contains("base")»«IF getValue(stereotype, taggedValue.name) != ""»«IF taggedValue.name == "cascade"»«taggedValue.name» = CascadeType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "fetch"»«taggedValue.name» = FetchType.«getEnumValue(getValue(stereotype, taggedValue.name).toString())»«ELSEIF taggedValue.name == "targetEntity"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«IF iter.counter1 < stereotype.getAllAttributes().size - 4»,«ENDIF»«ENDIF»«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_IdJPA"»
+				@Id
+			«ELSEIF stereotype.name == "JPA_GeneratedValueJPA"»
+				@GeneratedValue
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "strategy"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_ColumnJPA"»
+				@Column
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "insertable" || taggedValue.name == "length" || taggedValue.name == "nullable" || taggedValue.name == "precision" || taggedValue.name == "scale" || taggedValue.name == "unique" || taggedValue.name == "updateable"»«taggedValue.name» = «getValue(stereotype, taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_TransientJPA"»
+				@Transient
+			«ELSEIF stereotype.name == "JPA_JoinTableJPA"»
+				@JoinTable
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "inverseJoinColumns" || taggedValue.name == "joinColumns" || taggedValue.name == "uniqueConstraints"»«taggedValue.name» = {«getValue(stereotype, taggedValue.name)»}«ELSE»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+			«ELSEIF stereotype.name == "JPA_QueryHintJPA"»
+				@QueryHint
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDFOREACH»)
+			«ELSE»		
+			«ENDIF»	
+		
+		«REM»Falls es sich um keine JPA- und BVA-Annotation handelt, Annotationen und TaggedValues einfach durchreichen«ENDREM»
+		«ELSE»
+			«IF !stereotype.namespace.name.contains("SimpleJSR303")»
+				@«stereotype.name»
+				(«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«taggedValue.name» = "«getValue(stereotype, taggedValue.name)»"«ENDFOREACH»
+			«ENDIF»	
+		«ENDIF»
+	«ENDFOREACH»
+«ENDDEFINE»

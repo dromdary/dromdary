@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" default="default">
+	<description>
+            description
+    </description>
+
+
+	<property name="destination.project" location="${basedir}"/>
+	<property name="database.destination.dir" location="${destination.project}/ddl"/>
+
+	
+	<path id="toolslib">
+		<path location="lib/hibernate/core/3.3.1GA/hibernate3.jar" />
+		<path location="lib/hibernate/tools/3.2.4CR2/hibernate-tools.jar" />
+		<path location="lib/hibernate/tools/3.2.4CR2/freemarker.jar" />
+		<path location="lib/derby/10.5.1.1/derby.jar" />
+	</path>
+
+	<path id="ejb3toolslib">
+		<path refid="toolslib" />
+		<!-- ref to previously defined toolslib -->
+
+		<path location="lib/hibernate/entitymanager/3.4.0GA/hibernate-entitymanager.jar" />
+		<path location="lib/persistence-api-1.0.jar" />
+		<path location="lib/hibernate/dependencies/dom4j-1.6.1.jar" />
+		<path location="lib/hibernate/annotations/3.4.0GA/hibernate-commons-annotations.jar" />
+
+
+		<path location="lib/hibernate/annotations/3.4.0GA/hibernate-annotations.jar" />
+		<path location="lib/hibernate/entitymanager/3.4.0GA/hibernate-entitymanager.jar" />
+		<path location="lib/hibernate/tools/3.2.4CR2/ejb3-persistence.jar" />
+		<path location="lib/hibernate/dependencies/javaassist.jar" />
+
+		<path location="lib/hibernate/dependencies/slf4j-api-1.5.2.jar" />
+		<path location="lib/hibernate/dependencies/log4j.jar" />
+		<path location="lib/hibernate/dependencies/slf4j-log4j12.jar" />
+
+		<path location="lib/hibernate/dependencies/javassist-3.4.GA.jar" />
+		<path location="lib/hibernate/dependencies/jta-1.1.jar" />
+
+		<path location="lib/hibernate/dependencies/commons-collections-3.1.jar" />
+		<path location="lib/hibernate/dependencies/commons-logging-1.1.jar" />
+
+	</path>
+
+	<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask" classpathref="ejb3toolslib" />
+
+
+	<!-- ================================= 
+          target: default              
+         ================================= -->
+	<target name="default" depends="depends" description="description">
+		<echo message="classpath = ${destination.project}/bin"/>
+		
+		<sleep seconds="5" description="needed to let windows sync the hdd"/>
+		
+		<hibernatetool destdir="${database.destination.dir}">
+			<jpaconfiguration persistenceunit="jpa.test" />
+			<classpath>
+				<!-- it is in this classpath you put your classes dir,
+    	   and/or jpa persistence compliant jar -->
+				<path location="${destination.project}/bin" />
+				<path location="${basedir}/build/classes" />
+			</classpath>
+
+			<hbm2ddl export="false" outputfilename="sql.ddl" />
+		</hibernatetool>
+
+		
+		<antcall target="importDdl"></antcall>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="depends">
+	</target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: importDdl
+         - - - - - - - - - - - - - - - - - -->
+    <target name="importDdl">
+    	<echo>Startup and if necessary create DB</echo>
+    	<java jar="${basedir}/lib/derby/10.5.1.1/derbyrun.jar" fork="true">
+    		<jvmarg value="-Dij.connection.miadbconn=jdbc:derby:miadb"/>
+    		<jvmarg value="-Dderby.system.home=${database.destination.dir}"/>
+		</java>
+    	
+    	<echo>Import DDL</echo>
+    	<java classname="org.apache.derby.tools.ij" classpath="${basedir}/lib/derby/10.5.1.1/derbytools.jar" inputstring="${database.destination.dir}/sql.ddl" failonerror="true" >
+    	</java>
+    </target>
+
+
+</project>

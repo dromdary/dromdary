@@ -1,0 +1,119 @@
+«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
+«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
+«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
+«REM» which accompanies this distribution, and is available at              «ENDREM»
+«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+
+«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
+«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
+«EXTENSION org::openarchitectureware::util::stdlib::counter»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«REM»Generierung der Primärschlüsselklasse.«ENDREM»
+«DEFINE PkClass FOR uml::Class»
+	«IF counterInc() == 1»
+		«("Generating Primary Key Class " + name + "Pk.java").info() -> ""»
+		«FILE getFQNPackagePath() + "/" + name + "Pk.java"»
+			«getTypeHeader()»
+			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Class::package FOR this»
+			import javax.persistence.*;
+			import java.io.Serializable;
+			
+			/**
+			 *
+			 * Primary Key Class
+		     */	
+			public class «name»Pk implements Serializable {
+				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::SerialVersionUID::serialVersionUIDField»
+				«FOREACH getIdAttributes() AS e»
+					@Id
+					@Column
+					public «e.type.name» «e.name»;
+				«ENDFOREACH»
+				«REM» 
+				@EmbeddedId
+				@AttributeOverrides({
+					«FOREACH getIdAttributes() AS e SEPARATOR ","»
+						@AttributeOverride(name   = "«e.name.toLowerCase()»",
+		                       column = @Column(name="«e.name»") )
+		            «ENDFOREACH»
+		        })
+				private «name»Pk «name.toFirstLower()»Pk;«ENDREM»
+				
+				/* (non-Javadoc) 
+				 * @see java.lang.Object#equals(java.lang.Object)
+				 */
+				 @Override
+				public int hashCode() {
+					final int PRIME = 7;
+					int result = 1;
+					long temp;
+					«FOREACH getIdAttributes() AS e»
+						«IF ((uml::Property)e).type.name=="double"»
+							temp = Double.doubleToLongBits(«((uml::Property)e).name»);
+							result = PRIME * ( result + (int) (temp ^ (temp >>> 32)));
+						«ELSEIF ((uml::Property)e).type.name=="long"»
+							result = PRIME * ( result + (int) («((uml::Property)e).name» ^ («((uml::Property)e).name» >>> 32)));
+						«ELSEIF ((uml::Property)e).type.name=="float"»
+							result = PRIME * ( result + Float.floatToIntBits(«((uml::Property)e).name»));
+						«ELSEIF ((uml::Property)e).type.name=="boolean"»
+							if («((uml::Property)e).name») result *= PRIME;
+						«ELSEIF (uml::PrimitiveType.isInstance(((uml::Property)e).type)) && ((uml::Property)e).type.name!="String" && ((uml::Property)e).type.name!="Boolean"» 
+							result = PRIME * ( result + «((uml::Property)e).name»);
+						«ELSE»
+							result = PRIME * ( result + ((«((uml::Property)e).name» == null) ? 0 : «((uml::Property)e).name».hashCode()));
+						«ENDIF»
+					«ENDFOREACH»
+					return result;
+				}
+				
+				/* (non-Javadoc) 
+				 * @see java.lang.Object#equals(java.lang.Object)
+				 */
+				@Override
+				public boolean equals(Object obj) {
+					if (obj == null)
+						return false;
+					if (this == obj)
+						return true;
+					if (!(obj instanceof «name»Pk))
+						return false;
+					
+					final «name»Pk other = («name»Pk) obj;
+					
+					«FOREACH getIdAttributes() AS e»
+						«IF (uml::PrimitiveType.isInstance(((uml::Property)e).type))»
+							if («((uml::Property)e).name» != other.«((uml::Property)e).name»)
+								return false;
+						«ELSE»
+							if («((uml::Property)e).name» == null) {
+								if (other.«((uml::Property)e).name» != null)
+									return false;
+							} else if (!«((uml::Property)e).name».equals(other.«((uml::Property)e).name»))
+								return false;
+						«ENDIF»
+					«ENDFOREACH»		
+					return true;
+				}
+			
+				/* (non-Javadoc) 
+				 * @see java.lang.Object#equals(java.lang.Object)
+				 */
+				@Override
+				public String toString() {
+					return super.toString()
+							«FOREACH getIdAttributes() AS e»
+								«IF (uml::PrimitiveType.isInstance(((uml::Property)e).type))»
+								.concat("[«((uml::Property)e).name» " + this.«((uml::Property)e).name»+"]")
+								«ELSE»
+								.concat("[«((uml::Property)e).name» " + this.«((uml::Property)e).name».toString()+"]")
+								«ENDIF»
+							«ENDFOREACH»;
+				}
+			}
+		«ENDFILE»
+	«ENDIF»	
+«ENDDEFINE»
