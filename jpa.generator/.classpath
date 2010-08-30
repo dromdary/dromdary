@@ -17,24 +17,24 @@
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-generator-2.1.0.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-reference-2.1.0.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-utilities-formatter-xml-1.0.0.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/annotations/3.4.0GA/hibernate-annotations.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/annotations/3.4.0GA/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/core/3.3.1GA/hibernate3.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/dependencies/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/dependencies/c3p0-0.9.1.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/dependencies/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/dependencies/commons-logging-1.1.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/dependencies/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/dependencies/hibernate-cglib-repack-2.1_3.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/dependencies/javassist-3.4.GA.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/dependencies/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/dependencies/log4j.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/dependencies/slf4j-api-1.5.2.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/dependencies/slf4j-log4j12.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/entitymanager/3.4.0GA/hibernate-entitymanager.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/tools/3.2.4CR2/ejb3-persistence.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/tools/3.2.4CR2/freemarker.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/hibernate/tools/3.2.4CR2/hibernate-tools.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/annotations/3.4.0GA/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/annotations/3.4.0GA/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/core/3.3.1GA/hibernate3.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/dependencies/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/dependencies/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/dependencies/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/dependencies/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/dependencies/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/dependencies/hibernate-cglib-repack-2.1_3.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/dependencies/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/dependencies/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/dependencies/log4j.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/dependencies/slf4j-api-1.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/dependencies/slf4j-log4j12.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/entitymanager/3.4.0GA/hibernate-entitymanager.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/tools/3.2.4CR2/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/tools/3.2.4CR2/freemarker.jar"/>
+	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/hibernate/tools/3.2.4CR2/hibernate-tools.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/uml2/common-1.4.0.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/emf2xml/ecore2xml-2.4.0.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/jakarta-commons/commons-lang-2.3.jar"/>

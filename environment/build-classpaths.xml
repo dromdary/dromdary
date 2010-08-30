@@ -5,7 +5,7 @@
 	
 	<path id="toolslib">
 		<path>
-			<fileset dir="${libs.dir}/non-release-to-SourceForge/hibernate">
+			<fileset dir="${libs.dir}/build-dependencies/hibernate">
     			<include name="**/*.jar"/>
 			</fileset>
 		</path>
