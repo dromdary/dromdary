@@ -26,41 +26,7 @@
 	<property name="common.generator.workflow.dir" location="${basedir}/src/main/resources/"/>
 
 	
-	<path id="toolslib">
-		<path>
-			<fileset dir="${libs.dir}/non-release-to-SourceForge/hibernate">
-    			<include name="**/*.jar"/>
-			</fileset>
-		</path>
 
-		<path location="${libs.dir}/build-dependencies/derby/10.5.1.1/derby.jar" />
-		<path location="${libs.dir}/build-dependencies/beanvalidation/validation-api-1.0.CR2.jar" />
-	</path>
-
-	<path id="ejb3toolslib">
-		<path refid="toolslib" />
-		<!-- ref to previously defined toolslib -->
-
-		<path location="${libs.dir}/build-dependencies/jpa/persistence-api-1.0.jar" />
-	</path>
-	
-	<path id="oawlibs">
-		<path location="${common.generator.workflow.dir}"/>
-		<path location="${common.generator.classes}"/>
-		<path location="${common.exporter.workflow.dir}"/>
-		<path location="${jpa.generator.classes}"/>
-		<path location="${bva.generator.classes}"/>
-
-		<path refid="ejb3toolslib" />
-		
-		<!-- builddependencies libs -->
-		<path>
-			<fileset dir="${libs.dir}">
-    			<include name="**/*.jar"/>
-			</fileset>
-		</path>
-		
-	</path>
 
 	<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask" classpathref="ejb3toolslib" />
 
