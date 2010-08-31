@@ -37,6 +37,7 @@
          - - - - - - - - - - - - - - - - - -->
     <target name="exportProfilesFromEnterpriseArchitect" >
     	<description>export the EMF profiles from the Enterprise Architect files</description>
+    	
 		<workflow file="common.exporter.profileexport.workflow.oaw" classpathref="oawlibs" fork="true">
 			<!-- override the properties in the workflow.properties with full qualified paths -->
 			<param name="profile.jpa.uml_file" value="${emfprofile.jpa}"/>
@@ -51,6 +52,9 @@
          - - - - - - - - - - - - - - - - - -->
 	<target name="exportModelFromEnterpriseArchitect">
 		<description>export the EMF model from the Enterprise Architect files</description>
+		
+		<touch file="${emfmodel.model}"/>
+		
 		<workflow file="common.exporter.modelexport.workflow.oaw" classpathref="oawlibs" fork="true">
 			<!-- override the properties in the workflow.properties with full qualified paths -->
 			<param name="model.uml_file" value="${emfmodel.model}"/>
