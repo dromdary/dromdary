@@ -9,6 +9,6 @@
 	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/enterpriseArchitect/eaapi.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/componentes4oaw/ea_com_interface-1.6.1-RC1.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/componentes4oaw/ea_toolsupport-1.6.1-RC1.jar"/>
-	<classpathentry kind="lib" path="C:/10_ToBackup/Projects/droMDAry/trunk/environment/libs/build-dependencies/jug-lgpl-2.0.0.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/jug-lgpl-2.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
