@@ -22,7 +22,7 @@
 
 <!-- Ordner leeren -->
 <component id="dirCleaner"
-    class="org.eclipse.emf.mwe.core.common.DirectoryCleaner" >
+    class="org.eclipse.emf.mwe.utils.DirectoryCleaner" >
     <directory value="${outlet.src.dir}"/>
 </component>
 

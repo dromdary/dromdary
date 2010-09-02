@@ -26,19 +26,8 @@ import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
  * kommt und auch andere Stereotypen ausser den JPA-Stereotypen
  * verwendet werden können. -> evtl. ein Bug des EMF???
  */
-public class ModelTransformerJpa extends AbstractWorkflowComponent2 {
+public class ModelTransformerJpa extends SimpleJavaModificationComponent {
 
-	// SimpleJavaModificationComponent has not been migrated in oaw 5
-	// http://www.openarchitectureware.org/forum/viewtopic.php?forum=2&showtopic=14151
-	// TODO:: must tested!
-	@Override
-	protected void invokeInternal(WorkflowContext ctx, ProgressMonitor monitor,
-			Issues issues) {
-		
-		Object modelObject = ctx.get(getComponentName());
-		doModification(ctx, monitor, issues, modelObject);
-	}
-	
 	protected void doModification(WorkflowContext ctx, ProgressMonitor monitor,
 			Issues issues, Object model) {
 		ModelImpl dm = (ModelImpl) model;

@@ -8,9 +8,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/jpa.generator"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/bva.generator"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/derby/10.5.1.1/derby.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-generator-2.1.0.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-reference-2.1.0.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-utilities-formatter-xml-1.0.0.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/hibernate/annotations/3.4.0GA/hibernate-annotations.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/hibernate/annotations/3.4.0GA/hibernate-commons-annotations.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/hibernate/core/3.3.1GA/hibernate3.jar"/>
@@ -32,5 +29,8 @@
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/jakarta-commons/commons-lang-2.3.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/beanvalidation/validation-api-1.0.CR2.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/jpa/persistence-api-1.0.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-generator-2.1.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-reference-2.1.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-utilities-formatter-xml-2.0.2-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -6,9 +6,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/derby/10.5.1.1/derby.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-generator-2.1.0.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-reference-2.1.0.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-utilities-formatter-xml-1.0.0.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/hibernate/annotations/3.4.0GA/hibernate-annotations.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/hibernate/annotations/3.4.0GA/hibernate-commons-annotations.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/hibernate/core/3.3.1GA/hibernate3.jar"/>
@@ -29,5 +26,7 @@
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/hibernate/tools/3.2.4CR2/hibernate-tools.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/jakarta-commons/commons-lang-2.3.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/jpa/persistence-api-1.0.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-generator-2.1.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-reference-2.1.1-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

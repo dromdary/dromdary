@@ -19,19 +19,8 @@ import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.lib.AbstractWorkflowComponent2;
 import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
 
-public class ModelTransformerBva extends AbstractWorkflowComponent2 {
+public class ModelTransformerBva extends SimpleJavaModificationComponent {
 
-	// SimpleJavaModificationComponent has not been migrated in oaw 5
-	// http://www.openarchitectureware.org/forum/viewtopic.php?forum=2&showtopic=14151
-	// TODO:: must tested!
-	@Override
-	protected void invokeInternal(WorkflowContext ctx, ProgressMonitor monitor,
-			Issues issues) {
-		
-		Object modelObject = ctx.get(getComponentName());
-		doModification(ctx, monitor, issues, modelObject);
-	}
-	
 	protected void doModification(WorkflowContext ctx, ProgressMonitor monitor,
 			Issues issues, Object model) {
 		ModelImpl dm = (ModelImpl) model;
