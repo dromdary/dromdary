@@ -2,33 +2,33 @@
 <workflow>
 <property file="./generator.properties" />
 
-<bean class="org.openarchitectureware.uml2.Setup"
+<bean class="org.eclipse.xtend.typesystem.uml2.Setup"
 	standardUML2Setup="true" />
 
 <!-- Meta Meta Modell im EMF Format -->
-<bean id="mm_Emf" class="oaw.type.emf.EmfMetaModel"> 
+<bean id="mm_Emf" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel"> 
       <metaModelPackage value="org.eclipse.emf.ecore.EcorePackage"/> 
 </bean> 
 
 <!-- Meta Meta Modell im UML Format -->	
 <bean id="mm_uml2"
-	class="org.openarchitectureware.uml2.UML2MetaModel" />
+	class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel" />
 
 <!-- Profil -->	
 <!--<bean id="mm_profile"
-	class="org.openarchitectureware.uml2.profile.ProfileMetaModel">
+	class="org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel">
 	<profile value="${profile.persistence.file}" />
 </bean>-->
 
 <!-- Modell einlesen -->
-<component class="org.openarchitectureware.emf.XmiReader">
+<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
 	<modelFile value="${model.file}"/>
 	<outputSlot value="model"/>
 </component>
 
 <!-- Ordner leeren -->
 <component id="dirCleaner"
-    class="org.openarchitectureware.workflow.common.DirectoryCleaner" >
+    class="org.eclipse.emf.mwe.utils.DirectoryCleaner" >
     <directory value="${outlet.src.dir}"/>
 </component>
 
@@ -39,7 +39,7 @@
 
 <!-- Generieren -->
 <component id="generator"
-    class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true" fileEncoding="ISO-8859-1">
+    class="org.eclipse.xpand2.Generator" skipOnErrors="true" fileEncoding="ISO-8859-1">
     <!-- Meta Meta Modelle -->
     <metaModel idRef="mm_Emf" />
 	<metaModel idRef="mm_uml2" />
@@ -77,21 +77,21 @@
     <!-- Ausgabe der Artefakte, welche nicht modifiziert werden duerfen -->
     <outlet path="${outlet.src.dir}">
 				<fileEncoding value="${file.encoding.output}"/>
-				<postprocessor class="org.openarchitectureware.xpand2.output.JavaBeautifier" />
+				<postprocessor class="org.eclipse.xpand2.output.JavaBeautifier" />
 	</outlet>   
 	
 	<!-- Ausgabe der Artefakte, welche modifiziert werden duerfen -->
     <outlet name="outletSrcOnceDir"
 				path="${outlet.src.once.dir}" overwrite="false">
 				<fileEncoding value="${file.encoding.output}"/>
-				<postprocessor class="org.openarchitectureware.xpand2.output.JavaBeautifier" />
+				<postprocessor class="org.eclipse.xpand2.output.JavaBeautifier" />
 	</outlet>
 
 	<!-- Ausgabe der Artefakte, welche modifiziert werden duerfen -->
     <outlet name="outletSrcProtectedDir"
 				path="${outlet.src.protected.dir}" overwrite="false">
 				<fileEncoding value="${file.encoding.output}"/>
-				<postprocessor class="org.openarchitectureware.xpand2.output.JavaBeautifier" />
+				<postprocessor class="org.eclipse.xpand2.output.JavaBeautifier" />
 	</outlet>
 
 	

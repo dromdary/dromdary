@@ -9,8 +9,8 @@
 
 «EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
 «EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
-«EXTENSION org::openarchitectureware::util::stdlib::counter»
-«EXTENSION org::openarchitectureware::util::stdlib::io»
+«EXTENSION org::eclipse::xtend::util::stdlib::counter»
+«EXTENSION org::eclipse::xtend::util::stdlib::io»
 
 «REM»Generierung der Primärschlüsselklasse.«ENDREM»
 «DEFINE PkClass FOR uml::Class»

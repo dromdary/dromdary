@@ -15,10 +15,10 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.internal.impl.ClassImpl;
 import org.eclipse.uml2.uml.internal.impl.ModelImpl;
-import org.openarchitectureware.workflow.WorkflowContext;
-import org.openarchitectureware.workflow.issues.Issues;
-import org.openarchitectureware.workflow.lib.SimpleJavaModificationComponent;
-import org.openarchitectureware.workflow.monitor.ProgressMonitor;
+import org.eclipse.emf.mwe.core.WorkflowContext;
+import org.eclipse.emf.mwe.core.issues.Issues;
+import org.eclipse.emf.mwe.core.lib.AbstractWorkflowComponent2;
+import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
 
 /**
  * Die Modell-zu-Modell Transformation ist nötig, damit die
@@ -26,9 +26,19 @@ import org.openarchitectureware.workflow.monitor.ProgressMonitor;
  * kommt und auch andere Stereotypen ausser den JPA-Stereotypen
  * verwendet werden können. -> evtl. ein Bug des EMF???
  */
-public class ModelTransformerJpa extends SimpleJavaModificationComponent {
+public class ModelTransformerJpa extends AbstractWorkflowComponent2 {
 
+	// SimpleJavaModificationComponent has not been migrated in oaw 5
+	// http://www.openarchitectureware.org/forum/viewtopic.php?forum=2&showtopic=14151
+	// TODO:: must tested!
 	@Override
+	protected void invokeInternal(WorkflowContext ctx, ProgressMonitor monitor,
+			Issues issues) {
+		
+		Object modelObject = ctx.get(getComponentName());
+		doModification(ctx, monitor, issues, modelObject);
+	}
+	
 	protected void doModification(WorkflowContext ctx, ProgressMonitor monitor,
 			Issues issues, Object model) {
 		ModelImpl dm = (ModelImpl) model;

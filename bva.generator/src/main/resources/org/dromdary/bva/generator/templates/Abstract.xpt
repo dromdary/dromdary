@@ -3,7 +3,7 @@
 «REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
 «REM» which accompanies this distribution, and is available at              «ENDREM»
 «REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::openarchitectureware::util::IO»
+«EXTENSION org::eclipse::xtend::util::stdlib::io»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
@@ -12,20 +12,19 @@
 
 «DEFINE class FOR uml::Class»	
 	«FILE getFQNPackagePath()+"/"+abstractClassName(name)+".java"»
-	
-	
 		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::head»
 	    «EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityDefine»
 		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::attribute»
 		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Association::attribute»
 		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::staticAttribute»
-
 	    «EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::getterSetter»
+	    
 		«IF getInterfaceOperationImplementationStrategy() == "use_abstract_method"»
 			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operation(true)»
 		«ELSEIF getInterfaceOperationImplementationStrategy() == "none"»
 			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operation»
-		«ENDIF»				
+		«ENDIF»		
+				
 		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Association::accessors»
 		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Class::overwriteHashcodeEqualsToString»
 		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityEndDefine»

@@ -3,7 +3,7 @@
 «REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
 «REM» which accompanies this distribution, and is available at              «ENDREM»
 «REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::openarchitectureware::util::stdlib::io»
+«EXTENSION org::eclipse::xtend::util::stdlib::io»
 
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»

@@ -13,16 +13,25 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
-import org.eclipse.uml2.uml.internal.impl.ClassImpl;
-import org.eclipse.uml2.uml.internal.impl.ModelImpl;
-import org.openarchitectureware.workflow.WorkflowContext;
-import org.openarchitectureware.workflow.issues.Issues;
-import org.openarchitectureware.workflow.lib.SimpleJavaModificationComponent;
-import org.openarchitectureware.workflow.monitor.ProgressMonitor;
+import org.eclipse.uml2.uml.internal.impl.*;
+import org.eclipse.emf.mwe.core.WorkflowContext;
+import org.eclipse.emf.mwe.core.issues.Issues;
+import org.eclipse.emf.mwe.core.lib.AbstractWorkflowComponent2;
+import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
 
-public class ModelTransformerBva extends SimpleJavaModificationComponent {
+public class ModelTransformerBva extends AbstractWorkflowComponent2 {
 
+	// SimpleJavaModificationComponent has not been migrated in oaw 5
+	// http://www.openarchitectureware.org/forum/viewtopic.php?forum=2&showtopic=14151
+	// TODO:: must tested!
 	@Override
+	protected void invokeInternal(WorkflowContext ctx, ProgressMonitor monitor,
+			Issues issues) {
+		
+		Object modelObject = ctx.get(getComponentName());
+		doModification(ctx, monitor, issues, modelObject);
+	}
+	
 	protected void doModification(WorkflowContext ctx, ProgressMonitor monitor,
 			Issues issues, Object model) {
 		ModelImpl dm = (ModelImpl) model;

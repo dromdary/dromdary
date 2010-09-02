@@ -3,13 +3,13 @@
 «REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
 «REM» which accompanies this distribution, and is available at              «ENDREM»
 «REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::openarchitectureware::util::IO»
+«EXTENSION org::eclipse::xtend::util::stdlib::io»
+«EXTENSION org::dromdary::bva::generator::extensions::BvaHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Misc»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::DataType»
-«EXTENSION org::dromdary::bva::generator::extensions::BvaHelper»
 
 «REM».select(s|s.namespace.name.contains("SimpleJSR303")«ENDREM»
 «DEFINE propertyAnnotation FOR uml::Property-»
