@@ -8,88 +8,125 @@
 package org.dromdary.jpa.generator.model2model;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.impl.EModelElementImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.EcorePackageImpl;
+import org.eclipse.emf.ecore.util.BasicExtendedMetaData.EStructuralFeatureExtendedMetaDataImpl;
+import org.eclipse.emf.ecore.xml.type.impl.AnyTypeImpl;
+import org.eclipse.emf.mwe.core.WorkflowContext;
+import org.eclipse.emf.mwe.core.issues.Issues;
+import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.internal.impl.ClassImpl;
 import org.eclipse.uml2.uml.internal.impl.ModelImpl;
-import org.eclipse.emf.mwe.core.WorkflowContext;
-import org.eclipse.emf.mwe.core.issues.Issues;
-import org.eclipse.emf.mwe.core.lib.AbstractWorkflowComponent2;
-import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
+import org.eclipse.uml2.uml.internal.impl.UMLPackageImpl;
 
 /**
- * Die Modell-zu-Modell Transformation ist nötig, damit die
- * Generatoren (auch Javabasic) mit der Multiinheritance der Stereotypen klar
- * kommt und auch andere Stereotypen ausser den JPA-Stereotypen
- * verwendet werden können. -> evtl. ein Bug des EMF???
+ * Die Modell-zu-Modell Transformation ist nötig, damit die Generatoren (auch
+ * Javabasic) mit der Multiinheritance der Stereotypen klar kommt und auch
+ * andere Stereotypen ausser den JPA-Stereotypen verwendet werden können. ->
+ * evtl. ein Bug des EMF???
  */
 public class ModelTransformerJpa extends SimpleJavaModificationComponent {
 
 	protected void doModification(WorkflowContext ctx, ProgressMonitor monitor,
 			Issues issues, Object model) {
-		ModelImpl dm = (ModelImpl) model;
-		EList<NamedElement> elms = dm.getMembers();
-		for (NamedElement namedElement : elms) {
-			EList<Element> elements = namedElement.allOwnedElements();
-			for (Element element : elements) {
-				if (element instanceof ClassImpl) {
-					ClassImpl impl = (ClassImpl) element;
-
-					EList<Stereotype> stetyp = impl.getApplicableStereotypes();
-					for (Stereotype stereotype : stetyp) {
-						String nameOld = stereotype.getName();
-						
-						// Prüfen ob der Stereotyp den Namen Entity enhält 
-						// -> dieser darf nicht verändert werden
-						if ((!nameOld.contains("Entity"))
-								
-								// Prüfen ob der Postfix JPA bereits am 
-								// Namen hängt -> dann muss nach nicht 
-								// mehr angepasst werden
-								&& (!nameOld.substring(nameOld.length() - 3)
-										.equals("JPA"))
-										
-								// Prüfen ob der Name des Stereotyp mit
-								// dem Präfix JPA_ beginnt
-								// -> dann handelt es sich um einen
-								// JPA-Stereotyp
-								&& (nameOld.startsWith("JPA_"))) {
-							stereotype.setName(nameOld + "JPA");
-						}
-					}
-
-					EList<Operation> operations = impl.getAllOperations();
-					for (Operation operation : operations) {
-						EList<Stereotype> stetp = operation
-								.getApplicableStereotypes();
-						for (Stereotype stereotpy : stetp) {
-							String nameTemp = stereotpy.getName();
-							if ((!nameTemp.substring(nameTemp.length() - 3)
-									.equals("JPA"))
-									&& (nameTemp.startsWith("JPA_"))) {
-								stereotpy.setName(nameTemp + "JPA");
-							}
-						}
-					}
-
-					EList<Property> attr = impl.getAllAttributes();
-					for (Property property : attr) {
-						EList<Stereotype> st = property
-								.getApplicableStereotypes();
-						for (Stereotype stereotpy : st) {
-							String nameTemp = stereotpy.getName();
-							if ((!nameTemp.substring(nameTemp.length() - 3)
-									.equals("JPA"))
-									&& (nameTemp.startsWith("JPA_"))) {
-								stereotpy.setName(nameTemp + "JPA");
-							}
-						}
-					}
-				}
-			}
+		
+		AnyTypeImpl any = (AnyTypeImpl) model;
+		
+		EClass eclass = any.eClass();
+		EList<EAttribute> attributes = eclass.getEAllAttributes();
+		
+		for (EAttribute eAttribute : attributes) {
+			
+			
+			System.out.println("jpa " + eAttribute);
 		}
+
+		// EList<EObject> contents = any.eContents();
+		//		
+		// for (EObject eObject : contents) {
+		//			
+		// EList<EObject> modelContents = eObject.eContents();
+		// for(EObject eModelContents: modelContents){
+		//				
+		// eModelContents.toString();
+		// }
+		// eObject.toString();
+		// }
+
+		// ModelImpl dm = (ModelImpl) model;
+		//	
+		// EList<NamedElement> elms = dm.getMembers();
+		// for (NamedElement namedElement : elms) {
+		// EList<Element> elements = namedElement.allOwnedElements();
+		// for (Element element : elements) {
+		// if (element instanceof ClassImpl) {
+		// ClassImpl impl = (ClassImpl) element;
+		//
+		// EList<Stereotype> stetyp = impl.getApplicableStereotypes();
+		// for (Stereotype stereotype : stetyp) {
+		// String nameOld = stereotype.getName();
+		//
+		// // Prüfen ob der Stereotyp den Namen Entity enhält
+		// // -> dieser darf nicht verändert werden
+		// if ((!nameOld.contains("Entity"))
+		//
+		// // Prüfen ob der Postfix JPA bereits am
+		// // Namen hängt -> dann muss nach nicht
+		// // mehr angepasst werden
+		// && (!nameOld.substring(nameOld.length() - 3)
+		// .equals("JPA"))
+		//
+		// // Prüfen ob der Name des Stereotyp mit
+		// // dem Präfix JPA_ beginnt
+		// // -> dann handelt es sich um einen
+		// // JPA-Stereotyp
+		// && (nameOld.startsWith("JPA_"))) {
+		// stereotype.setName(nameOld + "JPA");
+		// }
+		// }
+		//
+		// EList<Operation> operations = impl.getAllOperations();
+		// for (Operation operation : operations) {
+		// EList<Stereotype> stetp = operation
+		// .getApplicableStereotypes();
+		// for (Stereotype stereotpy : stetp) {
+		// String nameTemp = stereotpy.getName();
+		// if ((!nameTemp.substring(nameTemp.length() - 3)
+		// .equals("JPA"))
+		// && (nameTemp.startsWith("JPA_"))) {
+		// stereotpy.setName(nameTemp + "JPA");
+		// }
+		// }
+		// }
+		//
+		// EList<Property> attr = impl.getAllAttributes();
+		// for (Property property : attr) {
+		// EList<Stereotype> st = property
+		// .getApplicableStereotypes();
+		// for (Stereotype stereotpy : st) {
+		// String nameTemp = stereotpy.getName();
+		// if ((!nameTemp.substring(nameTemp.length() - 3)
+		// .equals("JPA"))
+		// && (nameTemp.startsWith("JPA_"))) {
+		// stereotpy.setName(nameTemp + "JPA");
+		// }
+		// }
+		// }
+		// }
+		// }
+		// }
 	}
 }
