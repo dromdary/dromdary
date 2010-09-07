@@ -12,10 +12,10 @@
 
 <!-- Meta Meta Modell im UML Format -->	
 <bean id="mm_uml2"
-	class="org.openarchitectureware.uml2.UML2MetaModel" />
+	class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel" />
 
 <!-- UML-Modell einlesen -->
-<component class="org.openarchitectureware.emf.XmiReader">
+<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
 	<modelFile value="${model.file}"/>
 	<outputSlot value="model"/>
 </component>
@@ -23,15 +23,16 @@
 <!-- Ordner der generierten Artefakte leeren -->
 <!-- Ordner der Implementierungsklassen ist ausgeschlossen -->
 <component id="dirCleaner"
-    class="org.openarchitectureware.workflow.common.DirectoryCleaner" >
+    class="org.eclipse.emf.mwe.utils.DirectoryCleaner" >
     <directory value="${outlet.src.dir}"/>
 </component>
 
-<!-- JPA Modell-zu-Modell Transformation -->
+<!-- JPA Modell-zu-Modell Transformation
 <component class="org.dromdary.jpa.generator.model2model.ModelTransformerJpa">
   	<modelSlot value="model" />
 </component>
-
+ -->
+ 
 <!-- Generator fuer Javacode -->
 <component id="generator"
     class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true" fileEncoding="ISO-8859-1">
@@ -67,7 +68,7 @@
     <!-- Ausgabe der Artefakte, welche nicht modifiziert werden duerfen -->
     <outlet path="${outlet.src.dir}">
 				<fileEncoding value="${file.encoding.output}"/>
-				<postprocessor class="org.openarchitectureware.xpand2.output.JavaBeautifier" />
+				<postprocessor class="org.eclipse.xpand2.output.JavaBeautifier" />
 	</outlet>   
 	
 	<!-- Ausgabe der PersistenceXML -->
@@ -80,7 +81,7 @@
     <outlet name="outletSrcOnceDir"
 				path="${outlet.src.once.dir}" overwrite="false">
 				<fileEncoding value="${file.encoding.output}"/>
-				<postprocessor class="org.openarchitectureware.xpand2.output.JavaBeautifier" />
+				<postprocessor class="org.eclipse.xpand2.output.JavaBeautifier" />
 	</outlet>
 	
 </component>
