@@ -7,30 +7,10 @@
  */
 package org.dromdary.jpa.generator.model2model;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.impl.EModelElementImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.impl.EcorePackageImpl;
-import org.eclipse.emf.ecore.util.BasicExtendedMetaData.EStructuralFeatureExtendedMetaDataImpl;
-import org.eclipse.emf.ecore.xml.type.impl.AnyTypeImpl;
 import org.eclipse.emf.mwe.core.WorkflowContext;
 import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
-import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.Operation;
-import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.Stereotype;
-import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.internal.impl.ClassImpl;
 import org.eclipse.uml2.uml.internal.impl.ModelImpl;
-import org.eclipse.uml2.uml.internal.impl.UMLPackageImpl;
 
 /**
  * Die Modell-zu-Modell Transformation ist nötig, damit die Generatoren (auch
@@ -42,17 +22,18 @@ public class ModelTransformerJpa extends SimpleJavaModificationComponent {
 
 	protected void doModification(WorkflowContext ctx, ProgressMonitor monitor,
 			Issues issues, Object model) {
+
+		ModelImpl dm = (ModelImpl) model;
 		
-		AnyTypeImpl any = (AnyTypeImpl) model;
-		
-		EClass eclass = any.eClass();
-		EList<EAttribute> attributes = eclass.getEAllAttributes();
-		
-		for (EAttribute eAttribute : attributes) {
-			
-			
-			System.out.println("jpa " + eAttribute);
-		}
+		// AnyTypeImpl any = (AnyTypeImpl) model;
+		//
+		// EClass eclass = any.eClass();
+		// EList<EAttribute> attributes = eclass.getEAllAttributes();
+		//
+		// for (EAttribute eAttribute : attributes) {
+		//
+		// System.out.println("jpa " + eAttribute);
+		// }
 
 		// EList<EObject> contents = any.eContents();
 		//		

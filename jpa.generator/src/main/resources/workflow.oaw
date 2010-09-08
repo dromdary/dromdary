@@ -2,8 +2,8 @@
 <workflow>
 <property file="./workflow.properties" />
 
-<bean class="org.openarchitectureware.uml2.Setup"
-	standardUML2Setup="true" />
+<bean class="org.eclipse.emf.mwe.utils.StandaloneSetup" platformUri=".."/>
+<bean class="org.eclipse.xtend.typesystem.uml2.Setup" standardUML2Setup="true" />
 
 <!-- Meta Meta Modell im EMF Format -->
 <bean id="mm_Emf" class="oaw.type.emf.EmfMetaModel"> 
@@ -27,15 +27,14 @@
     <directory value="${outlet.src.dir}"/>
 </component>
 
-<!-- JPA Modell-zu-Modell Transformation
+<!-- JPA Modell-zu-Modell Transformation -->
 <component class="org.dromdary.jpa.generator.model2model.ModelTransformerJpa">
   	<modelSlot value="model" />
 </component>
- -->
- 
+
 <!-- Generator fuer Javacode -->
 <component id="generator"
-    class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true" fileEncoding="ISO-8859-1">
+    class="org.eclipse.xpand2.Generator" skipOnErrors="true" fileEncoding="ISO-8859-1">
     
     <!-- Meta Meta Modelle -->
     <metaModel idRef="mm_Emf" />

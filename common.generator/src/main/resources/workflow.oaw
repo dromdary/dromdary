@@ -2,8 +2,8 @@
 <workflow>
 <property file="common.properties" />
 
-<bean class="org.eclipse.xtend.typesystem.uml2.Setup"
-	standardUML2Setup="true" />
+<bean class="org.eclipse.emf.mwe.utils.StandaloneSetup" platformUri=".."/>
+<bean class="org.eclipse.xtend.typesystem.uml2.Setup" standardUML2Setup="true" />
 
 <!-- Meta Meta Modell im EMF Format -->
 <bean id="mm_Emf" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel"> 

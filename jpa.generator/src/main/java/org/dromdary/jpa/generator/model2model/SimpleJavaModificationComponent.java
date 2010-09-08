@@ -12,15 +12,20 @@ public abstract class SimpleJavaModificationComponent extends
 
 	@Override
 	protected void invokeInternal(WorkflowContext ctx, ProgressMonitor monitor,
-			Issues issues){
-		modelObject = ctx.get(getModelSlot());
+			Issues issues) {
+
+		String strName = getModelSlot();
+		modelObject = ctx.get(strName);
+
 		if (modelObject == null) {
-			issues.addWarning(this, "content of modelSlot " + getModelSlot() + " is null.");
+			issues.addWarning(this, "content of modelSlot " + getModelSlot()
+					+ " is null.");
 		}
+
 		doModification(ctx, monitor, issues, modelObject);
 	}
-	
-	protected abstract void doModification(WorkflowContext ctx, ProgressMonitor monitor, Issues issues, Object model);
 
+	protected abstract void doModification(WorkflowContext ctx,
+			ProgressMonitor monitor, Issues issues, Object model);
 
 }
