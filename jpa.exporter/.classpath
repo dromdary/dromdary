@@ -7,8 +7,10 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/enterpriseArchitect/eaapi.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/componentes4oaw/ea_com_interface-1.6.1-RC1.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/componentes4oaw/ea_toolsupport-1.6.1-RC1.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/jug-lgpl-2.0.0.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/componentes4oaw/2.0-RC3/ea_com_interface-2.0-RC3.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/componentes4oaw/2.0-RC3/ea_uml2exporter4mwe-2.0-RC3.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/componentes4oaw/2.0-RC3/ea_uml2exporter4oaw-2.0-RC3.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/componentes4oaw/2.0-RC3/ea_uml2writer-2.0-RC3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

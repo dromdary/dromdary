@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow>
+
 <property file="./workflow.properties" />
 
+<!-- Setup UML2 support -->
+<!-- initializes resourcemaps, urimaps, etc. -->
 <bean class="org.eclipse.emf.mwe.utils.StandaloneSetup" platformUri=".."/>
 <bean class="org.eclipse.xtend.typesystem.uml2.Setup" standardUML2Setup="true" />
-
+	
 <!-- Meta Meta Modell im EMF Format -->
-<bean id="mm_Emf" class="oaw.type.emf.EmfMetaModel"> 
-      <metaModelPackage value="org.eclipse.emf.ecore.EcorePackage"/> 
-</bean> 
-
+<bean id="mm_Emf" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel" metaModelPackage ="org.eclipse.emf.ecore.EcorePackage"/>
 <!-- Meta Meta Modell im UML Format -->	
-<bean id="mm_uml2"
-	class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel" />
-
+<bean id="mm_uml2" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
+	
 <!-- UML-Modell einlesen -->
 <component class="org.eclipse.xtend.typesystem.emf.XmiReader">
 	<modelFile value="${model.file}"/>
