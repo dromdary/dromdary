@@ -1,0 +1,40 @@
+<workflow>
+
+	<property file="workflow.properties" />
+	
+	<bean class="org.eclipse.emf.mwe.utils.StandaloneSetup" platformUri=".."/>
+	<bean class="org.eclipse.xtend.typesystem.uml2.Setup" standardUML2Setup="true" />
+
+	<!-- Metamodel-Definition -->
+	<bean id="EmfMM" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel" 
+		metaModelPackage ="org.eclipse.emf.ecore.EcorePackage"/>
+	<bean id="UmlMM" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
+	
+	<component class="net.cmp4oaw.uml2export.mwe.EA_Xmi2Exporter" >
+		<EapFile value="${project_root}${model.ea_file}" />
+		<ModelFile value="${model_file}" />
+		<PackageName value="${model_pkg}" />
+		<!-- JPA-Profil -->
+		<profile value="${profile_file}" />
+		<PackageProfile name="${model_name}" value="${profile_name}" />
+		<Cleanup value="true"/>
+	</component>
+
+	<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
+		<modelFile value="${model_file}" />
+		<outputSlot value="${output_slot}" />
+	</component>
+
+	<component id="dirCleaner"
+		class="org.eclipse.emf.mwe.utils.DirectoryCleaner"
+		directory="${gen_dir}" />
+		
+	<component class="org.eclipse.xpand2.Generator"
+			   skipOnErrors="true" fileEncoding ="ISO-8859-1">
+		<metaModel idRef="EmfMM"/>		
+		<metaModel idRef="UmlMM"/>
+		<expand value="xpand::Template::main FOR model"/>
+		<genPath value="src-gen"/>
+    </component>
+
+</workflow>
