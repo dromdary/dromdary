@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="wf"/>
 	<classpathentry kind="src" path="Profile"/>
 	<classpathentry kind="src" path="Model"/>
 	<classpathentry kind="src" path="oaw"/>
