@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow>
-	<property file="exporter.properties" />
+	<property file="bva.exporter.properties" />
 
 	<bean class="oaw.uml2.Setup" standardUML2Setup="true" />
 
