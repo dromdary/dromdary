@@ -1,7 +1,0 @@
-import Persistence;
-import uml;
-
-extension org::eclipse::xtend::util::stdlib::properties;
-extension org::eclipse::xtend::util::stdlib::io;
-
-cached List[Persistence::Entity] allEntities (Model m) : m.eAllContents.select(e|Entity.isInstance(e)).sortBy(i|((Entity)i).name);
