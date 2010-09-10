@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/componentes4oaw/2.0-RC3/ea_uml2exporter4mwe-2.0-RC3.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/componentes4oaw/2.0-RC3/ea_uml2exporter4oaw-2.0-RC3.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/componentes4oaw/2.0-RC3/ea_uml2writer-2.0-RC3.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/enterpriseArchitect/eaapi.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

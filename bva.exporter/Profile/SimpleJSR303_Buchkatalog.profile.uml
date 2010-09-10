@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="1ca1d548-7128-4c50-bd75-928547cc43d9" name="SimpleJSR303_Buchkatalog" metaclassReference="_JNpSILy-Ed-BUNJ0ydgirQ">
-  <eAnnotations xmi:id="_JOPIDby-Ed-BUNJ0ydgirQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-    <contents xmi:type="ecore:EPackage" xmi:id="_JOPIDry-Ed-BUNJ0ydgirQ" name="SimpleJSR303_Buchkatalog" nsURI="http:///schemas/SimpleJSR303_Buchkatalog/_JOPIDLy-Ed-BUNJ0ydgirQ/0" nsPrefix="SimpleJSR303_Buchkatalog">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_JOPID7y-Ed-BUNJ0ydgirQ" name="BVA_Isbn">
-        <eAnnotations xmi:id="_JOPIELy-Ed-BUNJ0ydgirQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{32BB7E50-4035-488d-937C-13B2CD658873}"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_JOPIEby-Ed-BUNJ0ydgirQ" name="message" ordered="false" lowerBound="1" defaultValueLiteral="Invalid ISBN">
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="7e372967-3dce-432c-9fc4-8d0c909b4fc8" name="SimpleJSR303_Buchkatalog" metaclassReference="_nWPWALzBEd-zQtZFL0-IoQ">
+  <eAnnotations xmi:id="_nW-847zBEd-zQtZFL0-IoQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_nW-85LzBEd-zQtZFL0-IoQ" name="SimpleJSR303_Buchkatalog" nsURI="http:///schemas/SimpleJSR303_Buchkatalog/_nW-84rzBEd-zQtZFL0-IoQ/0" nsPrefix="SimpleJSR303_Buchkatalog">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_nW-85bzBEd-zQtZFL0-IoQ" name="BVA_Isbn">
+        <eAnnotations xmi:id="_nW-85rzBEd-zQtZFL0-IoQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="{32BB7E50-4035-488d-937C-13B2CD658873}"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_nW-857zBEd-zQtZFL0-IoQ" name="message" ordered="false" lowerBound="1" defaultValueLiteral="Invalid ISBN">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_JOPIE7y-Ed-BUNJ0ydgirQ" name="packageName" ordered="false" lowerBound="1" defaultValueLiteral="com.tsystems.bva.buchkatalog">
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_nW-86bzBEd-zQtZFL0-IoQ" name="packageName" ordered="false" lowerBound="1" defaultValueLiteral="com.tsystems.bva.buchkatalog">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_JOPIFby-Ed-BUNJ0ydgirQ" name="base_Property" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_nW-867zBEd-zQtZFL0-IoQ" name="base_Property" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
         </eStructuralFeatures>
       </eClassifiers>
     </contents>
   </eAnnotations>
-  <elementImport xmi:id="_JNpSILy-Ed-BUNJ0ydgirQ">
+  <elementImport xmi:id="_nWPWALzBEd-zQtZFL0-IoQ">
     <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
   </elementImport>
-  <elementImport xmi:id="_JOPIALy-Ed-BUNJ0ydgirQ">
+  <elementImport xmi:id="_nW1y8LzBEd-zQtZFL0-IoQ">
     <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
   </elementImport>
-  <packagedElement xmi:type="uml:Package" xmi:id="_JNVwIby-Ed-BUNJ0ydgirQ" name="PrimitiveTypes"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_nV8bEbzBEd-zQtZFL0-IoQ" name="PrimitiveTypes"/>
   <packagedElement xmi:type="uml:Stereotype" xmi:id="{32BB7E50-4035-488d-937C-13B2CD658873}" name="BVA_Isbn">
     <ownedAttribute xmi:id="{4318921D-23C6-4e1f-B229-B87657F93BBE}" name="message" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JOPIA7y-Ed-BUNJ0ydgirQ" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JOPIAry-Ed-BUNJ0ydgirQ" value="1"/>
-      <defaultValue xmi:type="uml:LiteralString" xmi:id="_JOPIBLy-Ed-BUNJ0ydgirQ" value="Invalid ISBN"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nW1y87zBEd-zQtZFL0-IoQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nW1y8rzBEd-zQtZFL0-IoQ" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_nW1y9LzBEd-zQtZFL0-IoQ" value="Invalid ISBN"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="{CF83727D-2032-4f7d-AA7F-CE3EAD55B7AB}" name="packageName" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JOPIB7y-Ed-BUNJ0ydgirQ" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JOPIBry-Ed-BUNJ0ydgirQ" value="1"/>
-      <defaultValue xmi:type="uml:LiteralString" xmi:id="_JOPICLy-Ed-BUNJ0ydgirQ" value="com.tsystems.bva.buchkatalog"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nW1y97zBEd-zQtZFL0-IoQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nW1y9rzBEd-zQtZFL0-IoQ" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_nW1y-LzBEd-zQtZFL0-IoQ" value="com.tsystems.bva.buchkatalog"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_JOPIC7y-Ed-BUNJ0ydgirQ" name="base_Property" association="03565071-2bbd-4341-9edc-21c8085fbb22">
+    <ownedAttribute xmi:id="_nW-84bzBEd-zQtZFL0-IoQ" name="base_Property" association="885f16a0-f207-4962-9a33-607dac4506a3">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="03565071-2bbd-4341-9edc-21c8085fbb22" name="Property_BVA_Isbn" memberEnd="_JOPICry-Ed-BUNJ0ydgirQ _JOPIC7y-Ed-BUNJ0ydgirQ">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_JOPICry-Ed-BUNJ0ydgirQ" name="extension_BVA_Isbn" type="{32BB7E50-4035-488d-937C-13B2CD658873}" aggregation="composite" association="03565071-2bbd-4341-9edc-21c8085fbb22"/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="885f16a0-f207-4962-9a33-607dac4506a3" name="Property_BVA_Isbn" memberEnd="_nW-84LzBEd-zQtZFL0-IoQ _nW-84bzBEd-zQtZFL0-IoQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_nW-84LzBEd-zQtZFL0-IoQ" name="extension_BVA_Isbn" type="{32BB7E50-4035-488d-937C-13B2CD658873}" aggregation="composite" association="885f16a0-f207-4962-9a33-607dac4506a3"/>
   </packagedElement>
 </uml:Profile>
