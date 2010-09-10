@@ -1,6 +1,3 @@
-#Wed Jun 30 14:59:35 CEST 2010
+#Tue Sep 07 20:20:37 CEST 2010
 eclipse.preferences.version=1
-encoding//src/main/resources/org/dromdary/common/generator/templates/AopEntry.xpt=iso-8859-1
-encoding//src/main/resources/org/dromdary/common/generator/templates/Class.xpt=iso-8859-1
-encoding//src/main/resources/org/dromdary/common/generator/templates/Root.xpt=iso-8859-1
-encoding/<project>=ISO-8859-1
+encoding/<project>=UTF-8

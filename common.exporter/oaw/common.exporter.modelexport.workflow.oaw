@@ -11,12 +11,12 @@
 	
 	<!--<bean id="UmlMM" class="oaw.uml2.UML2MetaModel"/>-->
 	
-	<!--<bean id="${profile_name}MM" class="oaw.uml2.profile.ProfileMetaModel">
-		<profile value="${profile_dir}/${profile_name}.profile.uml" />
+	<!--<bean id="${profile.name}MM" class="oaw.uml2.profile.ProfileMetaModel">
+		<profile value="${profile.export.dir}/${profile.name}.profile.uml" />
 	</bean>-->
 	
 	<component class="oaw.uml2.toolsupport.ea.EA_Xmi2Exporter" >
-		<EapFile value="${model.ea_file}" />
+		<EapFile value="${model.enterpriseArchitect.file}" />
 		<ModelFile value="${model.uml_file}" />
 		<PackageName value="${model.pkg}" />
 	
