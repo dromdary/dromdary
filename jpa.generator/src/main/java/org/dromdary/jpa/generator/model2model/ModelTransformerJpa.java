@@ -31,67 +31,74 @@ public class ModelTransformerJpa extends SimpleJavaModificationComponent {
 	protected void doModification(WorkflowContext ctx, ProgressMonitor monitor,
 			Issues issues, Object model) {
 
-		ModelImpl dm = (ModelImpl) model;
+		try {
+			ModelImpl dm = (ModelImpl) model;
 
-		EList<NamedElement> elms = dm.getMembers();
-		for (NamedElement namedElement : elms) {
-			EList<Element> elements = namedElement.allOwnedElements();
-			for (Element element : elements) {
-				if (element instanceof ClassImpl) {
-					ClassImpl impl = (ClassImpl) element;
+			EList<NamedElement> elms = dm.getMembers();
+			for (NamedElement namedElement : elms) {
+				EList<Element> elements = namedElement.allOwnedElements();
+				for (Element element : elements) {
+					if (element instanceof ClassImpl) {
+						ClassImpl impl = (ClassImpl) element;
 
-					EList<Stereotype> stetyp = impl.getApplicableStereotypes();
-					for (Stereotype stereotype : stetyp) {
-						String nameOld = stereotype.getName();
-
-						// Pr�fen ob der Stereotyp den Namen Entity enh�lt
-						// -> dieser darf nicht ver�ndert werden
-						if ((!nameOld.contains("Entity"))
-
-						// Pr�fen ob der Postfix JPA bereits am
-								// Namen h�ngt -> dann muss nach nicht
-								// mehr angepasst werden
-								&& (!nameOld.substring(nameOld.length() - 3)
-										.equals("JPA"))
-
-								// Pr�fen ob der Name des Stereotyp mit
-								// dem Pr�fix JPA_ beginnt
-								// -> dann handelt es sich um einen
-								// JPA-Stereotyp
-								&& (nameOld.startsWith("JPA_"))) {
-							stereotype.setName(nameOld + "JPA");
-						}
-					}
-
-					EList<Operation> operations = impl.getAllOperations();
-					for (Operation operation : operations) {
-						EList<Stereotype> stetp = operation
+						EList<Stereotype> stetyp = impl
 								.getApplicableStereotypes();
-						for (Stereotype stereotpy : stetp) {
-							String nameTemp = stereotpy.getName();
-							if ((!nameTemp.substring(nameTemp.length() - 3)
-									.equals("JPA"))
-									&& (nameTemp.startsWith("JPA_"))) {
-								stereotpy.setName(nameTemp + "JPA");
+						for (Stereotype stereotype : stetyp) {
+							String nameOld = stereotype.getName();
+
+							// Prüfen ob der Stereotyp den Namen Entity enhält
+							// -> dieser darf nicht verändert werden
+							if ((!nameOld.contains("Entity"))
+
+							// Prüfen ob der Postfix JPA bereits am
+									// Namen hängt -> dann muss nach nicht
+									// mehr angepasst werden
+									&& (!nameOld
+											.substring(nameOld.length() - 3)
+											.equals("JPA"))
+
+									// Prüfen ob der Name des Stereotyp mit
+									// dem Präfix JPA_ beginnt
+									// -> dann handelt es sich um einen
+									// JPA-Stereotyp
+									&& (nameOld.startsWith("JPA_"))) {
+								stereotype.setName(nameOld + "JPA");
 							}
 						}
-					}
 
-					EList<Property> attr = impl.getAllAttributes();
-					for (Property property : attr) {
-						EList<Stereotype> st = property
-								.getApplicableStereotypes();
-						for (Stereotype stereotpy : st) {
-							String nameTemp = stereotpy.getName();
-							if ((!nameTemp.substring(nameTemp.length() - 3)
-									.equals("JPA"))
-									&& (nameTemp.startsWith("JPA_"))) {
-								stereotpy.setName(nameTemp + "JPA");
+						EList<Operation> operations = impl.getAllOperations();
+						for (Operation operation : operations) {
+							EList<Stereotype> stetp = operation
+									.getApplicableStereotypes();
+							for (Stereotype stereotpy : stetp) {
+								String nameTemp = stereotpy.getName();
+								if ((!nameTemp.substring(nameTemp.length() - 3)
+										.equals("JPA"))
+										&& (nameTemp.startsWith("JPA_"))) {
+									stereotpy.setName(nameTemp + "JPA");
+								}
+							}
+						}
+
+						EList<Property> attr = impl.getAllAttributes();
+						for (Property property : attr) {
+							EList<Stereotype> st = property
+									.getApplicableStereotypes();
+							for (Stereotype stereotpy : st) {
+								String nameTemp = stereotpy.getName();
+								if ((!nameTemp.substring(nameTemp.length() - 3)
+										.equals("JPA"))
+										&& (nameTemp.startsWith("JPA_"))) {
+									stereotpy.setName(nameTemp + "JPA");
+								}
 							}
 						}
 					}
 				}
 			}
+		} catch (java.lang.ClassCastException exception) {
+			System.out.println(exception.toString()
+					+ "\nPlease control the format of Inputmodel!\n");
 		}
 	}
 }

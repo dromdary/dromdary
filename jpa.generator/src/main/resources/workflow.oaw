@@ -9,10 +9,14 @@
 <bean class="org.eclipse.xtend.typesystem.uml2.Setup" standardUML2Setup="true" />
 	
 <!-- Meta Meta Modell im EMF Format -->
-<bean id="mm_Emf" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel" metaModelPackage ="org.eclipse.emf.ecore.EcorePackage"/>
+<bean id="mm_Emf" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel"> 
+      <metaModelPackage value="org.eclipse.emf.ecore.EcorePackage"/> 
+</bean> 
+
 <!-- Meta Meta Modell im UML Format -->	
-<bean id="mm_uml2" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
-	
+<bean id="mm_uml2"
+	class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel" />
+
 <!-- Modell einlesen -->
 <component class="org.eclipse.xtend.typesystem.emf.XmiReader">
 	<modelFile value="${model.file}"/>
@@ -36,6 +40,7 @@
     class="org.eclipse.xpand2.Generator" skipOnErrors="true" fileEncoding="ISO-8859-1">
     
     <!-- Meta Meta Modelle -->
+    <metaModel idRef="mm_Emf" />
 	<metaModel idRef="mm_uml2" />
 	
 	<!-- Globale Variablen -->
