@@ -13,7 +13,7 @@
 <!-- Meta Meta Modell im UML Format -->	
 <bean id="mm_uml2" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
 	
-<!-- UML-Modell einlesen -->
+<!-- Modell einlesen -->
 <component class="org.eclipse.xtend.typesystem.emf.XmiReader">
 	<modelFile value="${model.file}"/>
 	<outputSlot value="model"/>
@@ -36,7 +36,6 @@
     class="org.eclipse.xpand2.Generator" skipOnErrors="true" fileEncoding="ISO-8859-1">
     
     <!-- Meta Meta Modelle -->
-    <metaModel idRef="mm_Emf" />
 	<metaModel idRef="mm_uml2" />
 	
 	<!-- Globale Variablen -->
@@ -73,8 +72,8 @@
     <outlet name="${outlet.persistenceXML}" overwrite="true">
 				<fileEncoding value="${file.encoding.output}"/>
 				<postprocessor class="org.fornax.utilities.formatter.xml.XmlFormatter" />
-	</outlet> 
-	
+	</outlet>
+
 	<!-- Ausgabe der Artefakte, welche modifiziert werden duerfen -->
     <outlet name="outletSrcOnceDir"
 				path="${outlet.src.once.dir}" overwrite="false">

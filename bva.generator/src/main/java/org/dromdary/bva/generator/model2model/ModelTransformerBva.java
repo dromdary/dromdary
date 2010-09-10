@@ -27,37 +27,30 @@ public class ModelTransformerBva extends SimpleJavaModificationComponent {
 	protected void doModification(WorkflowContext ctx, ProgressMonitor monitor,
 			Issues issues, Object model) {
 		
-		AnyTypeImpl any = (AnyTypeImpl)model;
-		EClass eclass = any.eClass();
-		EList<EAttribute> attributes = eclass.getEAllAttributes();
-		for (EAttribute eAttribute : attributes) {
-			System.out.println("bva " + eAttribute);
-		}
+		ModelImpl dm = (ModelImpl) model;
+		EList<NamedElement> elms = dm.getMembers();
+		
+		for (NamedElement namedElement : elms) {
+			// System.out.println(namedElement);
+			EList<Element> elements = namedElement.allOwnedElements();
+			for (Element element : elements) {
+				if (element instanceof ClassImpl) {
+					ClassImpl impl = (ClassImpl) element;
 
-//		ModelImpl dm = (ModelImpl) model;
-//		EList<NamedElement> elms = dm.getMembers();
-//		
-//		for (NamedElement namedElement : elms) {
-//			// System.out.println(namedElement);
-//			EList<Element> elements = namedElement.allOwnedElements();
-//			for (Element element : elements) {
-//				if (element instanceof ClassImpl) {
-//					ClassImpl impl = (ClassImpl) element;
-//
-//					removePrefix(impl.getAppliedStereotypes());
-//				
-//					EList<Operation> operations = impl.getAllOperations();
-//					for (Operation operation : operations) {
-//						removePrefix(operation.getAppliedStereotypes());
-//					}
-//					
-//					EList<Property> attr = impl.getAllAttributes();
-//					for (Property property : attr) {
-//						removePrefix(property.getAppliedStereotypes());
-//					}
-//				}
-//			}
-//		}
+					removePrefix(impl.getAppliedStereotypes());
+				
+					EList<Operation> operations = impl.getAllOperations();
+					for (Operation operation : operations) {
+						removePrefix(operation.getAppliedStereotypes());
+					}
+					
+					EList<Property> attr = impl.getAllAttributes();
+					for (Property property : attr) {
+						removePrefix(property.getAppliedStereotypes());
+					}
+				}
+			}
+		}
 	}
 	
 	/*

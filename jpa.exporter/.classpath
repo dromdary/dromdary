@@ -4,7 +4,6 @@
 	<classpathentry kind="src" path="wf"/>
 	<classpathentry kind="src" path="Profile"/>
 	<classpathentry kind="src" path="Model"/>
-	<classpathentry kind="src" path="oaw"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="lib" path="/environment/libs/non-release-to-SourceForge/enterpriseArchitect/eaapi.jar"/>

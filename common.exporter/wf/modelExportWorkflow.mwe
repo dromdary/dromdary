@@ -1,49 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <workflow>
-	<property file="workflow.properties" />
+
+	<property file="wf/workflow.properties" />
 	
-	<bean class="oaw.uml2.Setup" standardUML2Setup="true" />
-	
+	<bean class="org.eclipse.emf.mwe.utils.StandaloneSetup" platformUri=".."/>
+	<bean class="org.eclipse.xtend.typesystem.uml2.Setup" standardUML2Setup="true" />
+
 	<!-- Metamodel-Definition -->
-	<!--<bean id="EmfMM" class="oaw.type.emf.EmfMetaModel">
-		<metaModelPackage value="org.eclipse.emf.ecore.EcorePackage"/>
-	</bean>-->
+	<bean id="EmfMM" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel" metaModelPackage ="org.eclipse.emf.ecore.EcorePackage"/>
+	<bean id="UmlMM" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
 	
-	<!--<bean id="UmlMM" class="oaw.uml2.UML2MetaModel"/>-->
-	
-	<!--<bean id="${profile.name}MM" class="oaw.uml2.profile.ProfileMetaModel">
-		<profile value="${profile.export.dir}/${profile.name}.profile.uml" />
-	</bean>-->
-	
-	<component class="oaw.uml2.toolsupport.ea.EA_Xmi2Exporter" >
+	<component class="net.cmp4oaw.uml2export.mwe.EA_Xmi2Exporter" >
 		<EapFile value="${model.enterpriseArchitect.file}" />
 		<ModelFile value="${model.uml_file}" />
 		<PackageName value="${model.pkg}" />
-	
 		<!-- JPA profile -->
 		<profile value="${profile.jpa.uml_file}" />
 		<PackageProfile name="${model.name}" value="${profile.jpa.name}" />
-	
 		<!-- BVA profile -->
 		<profile value="${profile.bva.uml_file}" />
 		<PackageProfile name="${model.name}" value="${profile.bva.name}" />
-		
 		<!-- BVA custom profile-->
 		<profile value="${profile.bva_custom.uml_file}" />
 		<PackageProfile name="${model.name}" value="${profile.bva_custom.name}" />
-		
-		
 		<Cleanup value="true"/>
 	</component>
-	
-	<!-- Exportiertes Model in EMF Slot laden -->
-	<component class="oaw.emf.XmiReader">
+
+	<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
 		<modelFile value="${model.uml_file}" />
 		<outputSlot value="${model.output_slot}"/>
 	</component>
-	
-	<component id="dirCleaner"
-		class="oaw.workflow.common.DirectoryCleaner"
-		directory="${general.generated_dir}"/>
-</workflow>
 
+	<component id="dirCleaner"
+		class="org.eclipse.emf.mwe.utils.DirectoryCleaner"
+		directory="${general.generated_dir}"/>
+
+</workflow>

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <workflow>
-	<property file="bva.exporter.properties" />
-	<bean class="oaw.uml2.Setup" standardUML2Setup="true" />
+	<property file="wf/workflow.properties" />
+	
+	<bean class="org.eclipse.emf.mwe.utils.StandaloneSetup" platformUri=".."/>
+	<bean class="org.eclipse.xtend.typesystem.uml2.Setup" standardUML2Setup="true" />
 
 	<!-- Provided BVA Profile -->
-	<component class="oaw.uml2.toolsupport.ea.EA_Xmi2ProfileExporter" >
+	<component class="net.cmp4oaw.uml2export.mwe.EA_Xmi2ProfileExporter" >
 		<EapFile value="${project_root}${profile.enterpriseArchitect.file}" />
 		<ModelFile value="${project_root}Profile/${profile.name}.profile.uml" />
 		<PackageName value="${profile.umlPackage}" />
@@ -12,7 +15,7 @@
 	</component>
 
 	<!-- Custom BVA Profile -->
-	<component class="oaw.uml2.toolsupport.ea.EA_Xmi2ProfileExporter" >
+	<component class="net.cmp4oaw.uml2export.mwe.EA_Xmi2ProfileExporter" >
 		<EapFile value="${project_root}${custom_profile.enterpriseArchitect.file}" />
 		<ModelFile value="${project_root}Profile/${custom_profile.name}.profile.uml" />
 		<PackageName value="${custom_profile.umlPackage}" />

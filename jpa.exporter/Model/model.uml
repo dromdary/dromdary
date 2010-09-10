@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="9542b1e5-c92c-44e0-a2f4-bbf6c1180706" name="Model">
-  <elementImport xmi:id="_ZzHDELwPEd-oYIWuRZp5fA">
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="5f591a9b-c1a8-4253-a65d-6811ddd16bf7" name="Model">
+  <elementImport xmi:id="_pBC5sLy7Ed-hcI-5kBrBOw">
     <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
   </elementImport>
-  <elementImport xmi:id="_ZzQNBbwPEd-oYIWuRZp5fA">
+  <elementImport xmi:id="_pBMqs7y7Ed-hcI-5kBrBOw">
     <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
   </elementImport>
-  <packagedElement xmi:type="uml:Package" xmi:id="_Zt5L4bwPEd-oYIWuRZp5fA" name="PrimitiveTypes"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_o3zeIby7Ed-hcI-5kBrBOw" name="PrimitiveTypes"/>
   <packagedElement xmi:type="uml:Package" xmi:id="{B3AC9AC8-E403-4ff2-8F31-28A8E5C3182F}" name="javaforum">
     <packagedElement xmi:type="uml:Class" xmi:id="{E87B68B1-DCA1-475c-AA40-93642FEA3ACE}" name="Autor">
       <ownedAttribute xmi:id="{FBDE72B6-B29C-47fa-A954-EF180197038F}" name="name" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZzQNAbwPEd-oYIWuRZp5fA" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZzQNALwPEd-oYIWuRZp5fA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pBC5s7y7Ed-hcI-5kBrBOw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pBC5sry7Ed-hcI-5kBrBOw" value="1"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="{C9D80AE5-F50E-4b90-8875-DB07037BA0BA}" name="Buch">
       <ownedAttribute xmi:id="{D09F072E-46FC-427a-8324-6138DFEFF530}" name="titel" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZzQNBLwPEd-oYIWuRZp5fA" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZzQNA7wPEd-oYIWuRZp5fA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pBMqsry7Ed-hcI-5kBrBOw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pBMqsby7Ed-hcI-5kBrBOw" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="{AC548753-DD62-4cd0-BDE6-4FBCB36A1157}" name="isbn" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZzQNCLwPEd-oYIWuRZp5fA" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZzQNB7wPEd-oYIWuRZp5fA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pBMqtry7Ed-hcI-5kBrBOw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pBMqtby7Ed-hcI-5kBrBOw" value="1"/>
       </ownedAttribute>
     </packagedElement>
-    <profileApplication xmi:id="_ZuCV0bwPEd-oYIWuRZp5fA">
-      <eAnnotations xmi:id="_ZuCV0rwPEd-oYIWuRZp5fA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <profileApplication xmi:id="_o4QKELy7Ed-hcI-5kBrBOw">
+      <eAnnotations xmi:id="_o6ygsLy7Ed-hcI-5kBrBOw" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="file:/C:/10_ToBackup/Projects/droMDAry/branches/migrationToEclispe36/jpa.exporter/Profile/SimpleJSR220.profile.uml#_8Q47UbwOEd-vUu2ST-PitA"/>
       </eAnnotations>
       <appliedProfile href="file:/C:/10_ToBackup/Projects/droMDAry/branches/migrationToEclispe36/jpa.exporter/Profile/SimpleJSR220.profile.uml#1aaa774b-4953-4395-a318-f4140f96fb6f"/>
