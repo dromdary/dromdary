@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <workflow>
-	<property file="wf/workflow.properties" />
+	<property file="workflow.properties" />
 	
 	<bean class="org.eclipse.emf.mwe.utils.StandaloneSetup" platformUri=".."/>
 	<bean class="org.eclipse.xtend.typesystem.uml2.Setup" standardUML2Setup="true" />
