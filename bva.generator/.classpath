@@ -13,5 +13,7 @@
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-generator-2.1.1-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-reference-2.1.1-SNAPSHOT.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/core"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/hibernate/dependencies/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-utilities-formatter-xml-2.0.2-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
