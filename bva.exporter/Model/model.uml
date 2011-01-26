@@ -1,115 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SimpleJSR303="http:///schemas/SimpleJSR303/_Hdb4wLy-Ed-BUNJ0ydgirQ/0" xmlns:SimpleJSR303_Buchkatalog="http:///schemas/SimpleJSR303_Buchkatalog/_JOPIDLy-Ed-BUNJ0ydgirQ/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/SimpleJSR303/_Hdb4wLy-Ed-BUNJ0ydgirQ/0 file:/C:/10_ToBackup/Projects/droMDAry/branches/migrationToEclispe36/bva.exporter/Profile/SimpleJSR303.profile.uml#_Hdlpwby-Ed-BUNJ0ydgirQ http:///schemas/SimpleJSR303_Buchkatalog/_JOPIDLy-Ed-BUNJ0ydgirQ/0 file:/C:/10_ToBackup/Projects/droMDAry/branches/migrationToEclispe36/bva.exporter/Profile/SimpleJSR303_Buchkatalog.profile.uml#_JOPIDry-Ed-BUNJ0ydgirQ">
-  <uml:Model xmi:id="df5d5773-cc1e-4747-8466-c9a206aa72bb" name="Model">
-    <elementImport xmi:id="_L97BYLy-Ed-baNZfCHHdGg">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SimpleJSR303="http:///schemas/SimpleJSR303/_2nyocCl1EeCSUaQUSBh4rw/0" xmlns:SimpleJSR303_Buchkatalog="http:///schemas/SimpleJSR303_Buchkatalog/_7q4u4Cl1EeCSUaQUSBh4rw/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/SimpleJSR303/_2nyocCl1EeCSUaQUSBh4rw/0 file:/C:/droMDAry/ws-bugfixing/bva.exporter/Profile/SimpleJSR303.profile.uml#_2oXQMSl1EeCSUaQUSBh4rw http:///schemas/SimpleJSR303_Buchkatalog/_7q4u4Cl1EeCSUaQUSBh4rw/0 file:/C:/droMDAry/ws-bugfixing/bva.exporter/Profile/SimpleJSR303_Buchkatalog.profile.uml#_7rRJYSl1EeCSUaQUSBh4rw">
+  <uml:Model xmi:id="a4d50dd6-fb31-4dfa-860f-49dfb1476929" name="Model">
+    <elementImport xmi:id="_89ZfoCl1EeCQLf69hmuIKQ">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </elementImport>
-    <elementImport xmi:id="_L97BZLy-Ed-baNZfCHHdGg">
+    <elementImport xmi:id="_89fmQil1EeCQLf69hmuIKQ">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </elementImport>
-    <packagedElement xmi:type="uml:Package" xmi:id="_L3g3Yby-Ed-baNZfCHHdGg" name="PrimitiveTypes"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_8ZrukCl1EeCQLf69hmuIKQ" name="PrimitiveTypes"/>
     <packagedElement xmi:type="uml:Package" xmi:id="{D88B88B4-F00F-45e6-8978-8A7CFE4D75F1}" name="BVATutorial">
       <packagedElement xmi:type="uml:Class" xmi:id="{23E10540-6E10-4995-9E13-0A4E6F96AB2A}" name="Autor">
         <ownedAttribute xmi:id="{742EC85B-7D50-4569-858D-68512F5D1E1F}" name="alter" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L97BY7y-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L97BYry-Ed-baNZfCHHdGg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_89fmQSl1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_89fmQCl1EeCQLf69hmuIKQ" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="{85B3FCA7-DEEE-463b-B6DA-DF97268FDA9A}" name="nachname" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L97BZ7y-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L97BZry-Ed-baNZfCHHdGg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_89fmRSl1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_89fmRCl1EeCQLf69hmuIKQ" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="{A2936D71-A3A7-47bd-9247-1CFA19B56122}" name="plz" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L97Bary-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L97Baby-Ed-baNZfCHHdGg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_89fmSCl1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_89fmRyl1EeCQLf69hmuIKQ" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="{0007045A-C590-43e1-A10A-193EFBB88C38}" name="strasse" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-EyYry-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-EyYby-Ed-baNZfCHHdGg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_89ls4il1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_89ls4Sl1EeCQLf69hmuIKQ" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="{1998897C-A43F-48a9-9167-56CC821A49DE}" name="vorname" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-EyZby-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-EyZLy-Ed-baNZfCHHdGg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_89ls5Sl1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_89ls5Cl1EeCQLf69hmuIKQ" value="1"/>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="{660FBE64-FA17-478c-B3A9-148EC05D2DED}" name="Buch">
         <ownedAttribute xmi:id="{9D7BA69C-76CE-4c54-B726-708D9AB625BA}" name="auflage" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-EyaLy-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-EyZ7y-Ed-baNZfCHHdGg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_89ls6Cl1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_89ls5yl1EeCQLf69hmuIKQ" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="{EBD2F297-BF25-4fe6-8CBA-1DE66FEDE2D6}" name="buchId" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-Eya7y-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-Eyary-Ed-baNZfCHHdGg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_89ls6yl1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_89ls6il1EeCQLf69hmuIKQ" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="{D4F6DD2D-B3D0-488a-B925-DBA76E274521}" name="isbn" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-Eybry-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-Eybby-Ed-baNZfCHHdGg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_89ls7il1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_89ls7Sl1EeCQLf69hmuIKQ" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="{D1072ECA-9D72-4e91-914F-DF4CDA4C2181}" name="titel" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-Eycby-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-EycLy-Ed-baNZfCHHdGg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_89rzgil1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_89rzgSl1EeCQLf69hmuIKQ" value="1"/>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="{8D1447F8-FA64-4b82-B7DD-49FD20C9FD9D}" name="Verlag">
         <ownedAttribute xmi:id="{7FA2A509-1E66-4666-8851-D9B039920DE4}" name="plz" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-EydLy-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-Eyc7y-Ed-baNZfCHHdGg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_89x6Iil1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_89x6ISl1EeCQLf69hmuIKQ" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="{88B20B56-C575-4502-A589-215543D40FDB}" name="strasse" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-N8Ury-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-N8Uby-Ed-baNZfCHHdGg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_89x6JSl1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_89x6JCl1EeCQLf69hmuIKQ" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="{7EC296A8-E30F-4766-8E8D-CD1FA92B0A8E}" name="verlagName" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-N8Vby-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-N8VLy-Ed-baNZfCHHdGg" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_89x6KCl1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_89x6Jyl1EeCQLf69hmuIKQ" value="1"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="{F8C6886A-0558-439f-AA91-5CE1ED2BE0E1}" name="" memberEnd="2ecaf942-6ddb-40a8-a502-7bc038db1217 aa0b1998-a95e-40c1-9d82-734ce91a7c38">
-        <ownedEnd xmi:id="2ecaf942-6ddb-40a8-a502-7bc038db1217" name="" visibility="public" type="{23E10540-6E10-4995-9E13-0A4E6F96AB2A}" association="{F8C6886A-0558-439f-AA91-5CE1ED2BE0E1}">
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-g3Qry-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-g3Qby-Ed-baNZfCHHdGg" value="1"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="{DD577EB5-4823-4052-8D59-0B0004933EDC}" name="" memberEnd="5fb9d36d-3b26-475b-973f-547ee7b1ad32 725dbbe9-4d73-461d-93ef-87839b37b952">
+        <ownedEnd xmi:id="5fb9d36d-3b26-475b-973f-547ee7b1ad32" name="" visibility="public" type="{23E10540-6E10-4995-9E13-0A4E6F96AB2A}" association="{DD577EB5-4823-4052-8D59-0B0004933EDC}">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8-o1wil1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8-o1wSl1EeCQLf69hmuIKQ" value="1"/>
         </ownedEnd>
-        <ownedEnd xmi:id="aa0b1998-a95e-40c1-9d82-734ce91a7c38" name="" visibility="public" type="{660FBE64-FA17-478c-B3A9-148EC05D2DED}" association="{F8C6886A-0558-439f-AA91-5CE1ED2BE0E1}">
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-g3Rby-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-g3RLy-Ed-baNZfCHHdGg" value="1"/>
-        </ownedEnd>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="{DD577EB5-4823-4052-8D59-0B0004933EDC}" name="" memberEnd="bc505b74-06f5-4b63-974e-d63e140a638f e2e9a79d-36a3-4b55-bd4c-882f54cc606c">
-        <ownedEnd xmi:id="bc505b74-06f5-4b63-974e-d63e140a638f" name="" visibility="public" type="{23E10540-6E10-4995-9E13-0A4E6F96AB2A}" association="{DD577EB5-4823-4052-8D59-0B0004933EDC}">
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-g3Sby-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-g3SLy-Ed-baNZfCHHdGg" value="1"/>
-        </ownedEnd>
-        <ownedEnd xmi:id="e2e9a79d-36a3-4b55-bd4c-882f54cc606c" name="" visibility="public" type="{8D1447F8-FA64-4b82-B7DD-49FD20C9FD9D}" association="{DD577EB5-4823-4052-8D59-0B0004933EDC}">
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L-g3TLy-Ed-baNZfCHHdGg" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L-g3S7y-Ed-baNZfCHHdGg" value="1"/>
+        <ownedEnd xmi:id="725dbbe9-4d73-461d-93ef-87839b37b952" name="" visibility="public" type="{8D1447F8-FA64-4b82-B7DD-49FD20C9FD9D}" association="{DD577EB5-4823-4052-8D59-0B0004933EDC}">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8-o1xSl1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8-o1xCl1EeCQLf69hmuIKQ" value="1"/>
         </ownedEnd>
       </packagedElement>
-      <profileApplication xmi:id="_L3qoYby-Ed-baNZfCHHdGg">
-        <eAnnotations xmi:id="_L3zyULy-Ed-baNZfCHHdGg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-          <references xmi:type="ecore:EPackage" href="file:/C:/10_ToBackup/Projects/droMDAry/branches/migrationToEclispe36/bva.exporter/Profile/SimpleJSR303.profile.uml#_Hdlpwby-Ed-BUNJ0ydgirQ"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="{F8C6886A-0558-439f-AA91-5CE1ED2BE0E1}" name="" memberEnd="c79627f9-9025-4a35-9bb8-01a2ccebb603 281e37d9-45cc-45a7-b03f-649094614f4b">
+        <ownedEnd xmi:id="c79627f9-9025-4a35-9bb8-01a2ccebb603" name="" visibility="public" type="{23E10540-6E10-4995-9E13-0A4E6F96AB2A}" association="{F8C6886A-0558-439f-AA91-5CE1ED2BE0E1}">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8-u8Yyl1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8-u8Yil1EeCQLf69hmuIKQ" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="281e37d9-45cc-45a7-b03f-649094614f4b" name="" visibility="public" type="{660FBE64-FA17-478c-B3A9-148EC05D2DED}" association="{F8C6886A-0558-439f-AA91-5CE1ED2BE0E1}">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8-u8Zil1EeCQLf69hmuIKQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8-u8ZSl1EeCQLf69hmuIKQ" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <profileApplication xmi:id="_8au3cCl1EeCQLf69hmuIKQ">
+        <eAnnotations xmi:id="_8bBLUCl1EeCQLf69hmuIKQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <references xmi:type="ecore:EPackage" href="file:/C:/droMDAry/ws-bugfixing/bva.exporter/Profile/SimpleJSR303.profile.uml#_2oXQMSl1EeCSUaQUSBh4rw"/>
         </eAnnotations>
-        <appliedProfile href="file:/C:/10_ToBackup/Projects/droMDAry/branches/migrationToEclispe36/bva.exporter/Profile/SimpleJSR303.profile.uml#fc3067ec-261f-40bc-91e4-1fecae1b9b2b"/>
+        <appliedProfile href="file:/C:/droMDAry/ws-bugfixing/bva.exporter/Profile/SimpleJSR303.profile.uml#e82d65b6-398d-44ae-8ed2-b201aa6aedc1"/>
       </profileApplication>
-      <profileApplication xmi:id="_L3zyUby-Ed-baNZfCHHdGg">
-        <eAnnotations xmi:id="_L3zyUry-Ed-baNZfCHHdGg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-          <references xmi:type="ecore:EPackage" href="file:/C:/10_ToBackup/Projects/droMDAry/branches/migrationToEclispe36/bva.exporter/Profile/SimpleJSR303_Buchkatalog.profile.uml#_JOPIDry-Ed-BUNJ0ydgirQ"/>
+      <profileApplication xmi:id="_8lVk8Cl1EeCQLf69hmuIKQ">
+        <eAnnotations xmi:id="_8lbrkCl1EeCQLf69hmuIKQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <references xmi:type="ecore:EPackage" href="file:/C:/droMDAry/ws-bugfixing/bva.exporter/Profile/SimpleJSR303_Buchkatalog.profile.uml#_7rRJYSl1EeCSUaQUSBh4rw"/>
         </eAnnotations>
-        <appliedProfile href="file:/C:/10_ToBackup/Projects/droMDAry/branches/migrationToEclispe36/bva.exporter/Profile/SimpleJSR303_Buchkatalog.profile.uml#1ca1d548-7128-4c50-bd75-928547cc43d9"/>
+        <appliedProfile href="file:/C:/droMDAry/ws-bugfixing/bva.exporter/Profile/SimpleJSR303_Buchkatalog.profile.uml#a7d45155-cf41-4022-b3f0-fdeac76fedae"/>
       </profileApplication>
     </packagedElement>
   </uml:Model>
-  <SimpleJSR303:BVA_Pattern xmi:id="_L-qoQLy-Ed-baNZfCHHdGg" base_Property="{A2936D71-A3A7-47bd-9247-1CFA19B56122}" groups="" flags="" message="Invalid PLZ" regexp="[0-9]{5,5}"/>
-  <SimpleJSR303_Buchkatalog:BVA_Isbn xmi:id="_L-qoQby-Ed-baNZfCHHdGg" base_Property="{D4F6DD2D-B3D0-488a-B925-DBA76E274521}"/>
-  <SimpleJSR303:BVA_Pattern xmi:id="_L-qoQry-Ed-baNZfCHHdGg" base_Property="{7FA2A509-1E66-4666-8851-D9B039920DE4}" groups="" flags="" message="Invalid PLZ" regexp="[0-9]{5,5}"/>
+  <SimpleJSR303:BVA_Pattern xmi:id="_8-1qECl1EeCQLf69hmuIKQ" base_Property="{A2936D71-A3A7-47bd-9247-1CFA19B56122}" groups="" flags="" message="Invalid PLZ" regexp="[0-9]{5,5}"/>
+  <SimpleJSR303_Buchkatalog:BVA_Isbn xmi:id="_8-7wsCl1EeCQLf69hmuIKQ" base_Property="{D1072ECA-9D72-4e91-914F-DF4CDA4C2181}"/>
+  <SimpleJSR303:BVA_Pattern xmi:id="_8-7wsSl1EeCQLf69hmuIKQ" base_Property="{7FA2A509-1E66-4666-8851-D9B039920DE4}" groups="" flags="" message="Invalid PLZ" regexp="[0-9]{5,5}"/>
 </xmi:XMI>
