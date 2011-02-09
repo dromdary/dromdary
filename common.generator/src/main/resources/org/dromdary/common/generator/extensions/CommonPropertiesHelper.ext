@@ -1,4 +1,4 @@
-﻿String getJpaFlag() :
+String getJpaFlag() :
 	JAVA CommonPropertiesHelper.getJpaFlag();
 	
 String getBvaFlag() :
