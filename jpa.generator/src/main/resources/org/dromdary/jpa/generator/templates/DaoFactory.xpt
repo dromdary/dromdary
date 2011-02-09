@@ -1,43 +1,43 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
-«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
-«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
-«REM» which accompanies this distribution, and is available at              «ENDREM»
-«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::eclipse::xtend::util::stdlib::io»
+ï»¿Â«REMÂ» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            Â«ENDREMÂ»
+Â«REMÂ» All rights reserved. This program and the accompanying materials      Â«ENDREMÂ»
+Â«REMÂ» are made available under the terms of the Eclipse Public License v1.0 Â«ENDREMÂ»
+Â«REMÂ» which accompanies this distribution, and is available at              Â«ENDREMÂ»
+Â«REMÂ» http://www.eclipse.org/legal/epl-v10.html                             Â«ENDREMÂ»
+Â«EXTENSION org::eclipse::xtend::util::stdlib::ioÂ»
 
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::NamesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::PropertiesÂ»
 
-«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
-«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelperÂ»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelperÂ»
 
-«REM»Generierung der DAOFactory.java«ENDREM»
-«DEFINE DaoFactory FOR uml::Model»
-	«EXPAND DaoFactoryClass FOR this»
-«ENDDEFINE»
+Â«REMÂ»Generierung der DAOFactory.javaÂ«ENDREMÂ»
+Â«DEFINE DaoFactory FOR uml::ModelÂ»
+	Â«EXPAND DaoFactoryClass FOR thisÂ»
+Â«ENDDEFINEÂ»
 
-«REM»File erzeugen.«ENDREM»
-«DEFINE DaoFactoryClass FOR uml::Model»
-	«FILE getDaoPackageName() + "/DAOFactory.java"»
-		package «getDaoPackageName()»;
-		«EXPAND DaoFactoryImports FOR this»
-		«EXPAND DaoFactoryJavaDoc FOR this»
+Â«REMÂ»File erzeugen.Â«ENDREMÂ»
+Â«DEFINE DaoFactoryClass FOR uml::ModelÂ»
+	Â«FILE getDaoPackageName() + "/DAOFactory.java"Â»
+		package Â«getDaoPackageName()Â»;
+		Â«EXPAND DaoFactoryImports FOR thisÂ»
+		Â«EXPAND DaoFactoryJavaDoc FOR thisÂ»
 		public abstract class DAOFactory {
-			«EXPAND DaoFactoryAttributes FOR this»
-			«EXPAND DaoFactoryOperations FOR this»
+			Â«EXPAND DaoFactoryAttributes FOR thisÂ»
+			Â«EXPAND DaoFactoryOperations FOR thisÂ»
 		}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«REM»Benötigte Imports generieren.«ENDREM»
-«DEFINE DaoFactoryImports FOR uml::Model»
+Â«REMÂ»BenÃ¶tigte Imports generieren.Â«ENDREMÂ»
+Â«DEFINE DaoFactoryImports FOR uml::ModelÂ»
 	import org.apache.commons.logging.Log;
 	import org.apache.commons.logging.LogFactory;
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«REM»JavaDoc generieren.«ENDREM»
-«DEFINE DaoFactoryJavaDoc FOR uml::Model»
+Â«REMÂ»JavaDoc generieren.Â«ENDREMÂ»
+Â«DEFINE DaoFactoryJavaDoc FOR uml::ModelÂ»
 	/**
 	 * Defines all DAOs and the concrete factories to get the conrecte DAOs.
 	 * <p>
@@ -49,15 +49,15 @@
 	 * for it as a constant, like <tt>HIBERNATE</tt>.
 	 *
 	 */
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«REM»Attribute generieren.«ENDREM»
-«DEFINE DaoFactoryAttributes FOR uml::Model»
+Â«REMÂ»Attribute generieren.Â«ENDREMÂ»
+Â«DEFINE DaoFactoryAttributes FOR uml::ModelÂ»
 	 private static Log log = LogFactory.getLog(DAOFactory.class);
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«REM»Methoden generieren.«ENDREM»
-«DEFINE DaoFactoryOperations FOR uml::Model»
+Â«REMÂ»Methoden generieren.Â«ENDREMÂ»
+Â«DEFINE DaoFactoryOperations FOR uml::ModelÂ»
 	 /**
      * Creates a standalone DAOFactory that returns unmanaged DAO
      * beans for use in any environment Hibernate has been configured
@@ -65,7 +65,7 @@
      * propagation (CurrentSessionContext), thread-bound or transaction-bound,
      * and transaction scoped.
      */
-    public static final Class HIBERNATE = «getDaoPackageName()».JpaDAOFactory.class;
+    public static final Class HIBERNATE = Â«getDaoPackageName()Â».JpaDAOFactory.class;
 
     /**
      * Factory method for instantiation of concrete factories.
@@ -78,4 +78,4 @@
             throw new RuntimeException("Couldn't create DAOFactory: " + factory);
         }
     }
-«ENDDEFINE»
+Â«ENDDEFINEÂ»

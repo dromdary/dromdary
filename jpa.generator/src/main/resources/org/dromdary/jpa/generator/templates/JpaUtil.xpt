@@ -1,37 +1,37 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
-«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
-«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
-«REM» which accompanies this distribution, and is available at              «ENDREM»
-«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::eclipse::xtend::util::stdlib::io»
+ï»¿Â«REMÂ» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            Â«ENDREMÂ»
+Â«REMÂ» All rights reserved. This program and the accompanying materials      Â«ENDREMÂ»
+Â«REMÂ» are made available under the terms of the Eclipse Public License v1.0 Â«ENDREMÂ»
+Â«REMÂ» which accompanies this distribution, and is available at              Â«ENDREMÂ»
+Â«REMÂ» http://www.eclipse.org/legal/epl-v10.html                             Â«ENDREMÂ»
+Â«EXTENSION org::eclipse::xtend::util::stdlib::ioÂ»
 
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::NamesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::PropertiesÂ»
 
-«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
-«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelperÂ»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelperÂ»
 
-«REM»Generierung der JpaUtil.java«ENDREM»
-«DEFINE JpaUtil FOR uml::Model»
-	«EXPAND JpaUtilClass FOR this»
-«ENDDEFINE»
+Â«REMÂ»Generierung der JpaUtil.javaÂ«ENDREMÂ»
+Â«DEFINE JpaUtil FOR uml::ModelÂ»
+	Â«EXPAND JpaUtilClass FOR thisÂ»
+Â«ENDDEFINEÂ»
 
-«REM»File generieren.«ENDREM»
-«DEFINE JpaUtilClass FOR uml::Model»
-	«FILE getDaoPackageName() + "/JpaUtil.java"»
-		package «getDaoPackageName()»;
-		«EXPAND JpaUtilImports FOR this»
-		«EXPAND JpaUtilJavaDoc FOR this»
+Â«REMÂ»File generieren.Â«ENDREMÂ»
+Â«DEFINE JpaUtilClass FOR uml::ModelÂ»
+	Â«FILE getDaoPackageName() + "/JpaUtil.java"Â»
+		package Â«getDaoPackageName()Â»;
+		Â«EXPAND JpaUtilImports FOR thisÂ»
+		Â«EXPAND JpaUtilJavaDoc FOR thisÂ»
 		public class JpaUtil {
-			«EXPAND JpaUtilAttributes FOR this»
-			«EXPAND JpaUtilOperations FOR this»
+			Â«EXPAND JpaUtilAttributes FOR thisÂ»
+			Â«EXPAND JpaUtilOperations FOR thisÂ»
 		}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«REM»Generierung der benötigten Imports.«ENDREM»
-«DEFINE JpaUtilImports FOR uml::Model»
+Â«REMÂ»Generierung der benÃ¶tigten Imports.Â«ENDREMÂ»
+Â«DEFINE JpaUtilImports FOR uml::ModelÂ»
 	import javax.naming.InitialContext;
 	import javax.naming.NamingException;
 	
@@ -40,10 +40,10 @@
 	import org.hibernate.SessionFactory;
 	import org.hibernate.cfg.Configuration;
 	import org.hibernate.cfg.Environment;
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«REM»JavaDoc generieren.«ENDREM»
-«DEFINE JpaUtilJavaDoc FOR uml::Model»
+Â«REMÂ»JavaDoc generieren.Â«ENDREMÂ»
+Â«DEFINE JpaUtilJavaDoc FOR uml::ModelÂ»
 	/**
 	 * Basic Hibernate helper class for Hibernate configuration and startup.
 	 * <p>
@@ -68,18 +68,18 @@
 	 * for example). You could then lookup a <tt>SessionFactory</tt> by its name.
 	 *
 	 */
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«REM»Attribute generieren.«ENDREM»
-«DEFINE JpaUtilAttributes FOR uml::Model»
+Â«REMÂ»Attribute generieren.Â«ENDREMÂ»
+Â«DEFINE JpaUtilAttributes FOR uml::ModelÂ»
     private static Log log = LogFactory.getLog(JpaUtil.class);
 
     private static Configuration configuration;
     private static SessionFactory sessionFactory;
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«REM»Methoden generieren.«ENDREM»
-«DEFINE JpaUtilOperations FOR uml::Model»
+Â«REMÂ»Methoden generieren.Â«ENDREMÂ»
+Â«DEFINE JpaUtilOperations FOR uml::ModelÂ»
 	static {
         // Create the initial SessionFactory from the default configuration files
         try {
@@ -183,4 +183,4 @@
         }
         configuration = cfg;
      }
-«ENDDEFINE»
+Â«ENDDEFINEÂ»

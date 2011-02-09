@@ -1,36 +1,36 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
-«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
-«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
-«REM» which accompanies this distribution, and is available at              «ENDREM»
-«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::eclipse::xtend::util::stdlib::io»
+ï»¿Â«REMÂ» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            Â«ENDREMÂ»
+Â«REMÂ» All rights reserved. This program and the accompanying materials      Â«ENDREMÂ»
+Â«REMÂ» are made available under the terms of the Eclipse Public License v1.0 Â«ENDREMÂ»
+Â«REMÂ» which accompanies this distribution, and is available at              Â«ENDREMÂ»
+Â«REMÂ» http://www.eclipse.org/legal/epl-v10.html                             Â«ENDREMÂ»
+Â«EXTENSION org::eclipse::xtend::util::stdlib::ioÂ»
 
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::NamesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::PropertiesÂ»
 
-«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
-«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelperÂ»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelperÂ»
 
-«REM»Generierung der persistence.xml«ENDREM»
-«DEFINE PersistenceXML FOR uml::Model»
-«("Generating persistence.xml").info() -> ""»
-«FILE getPersistenceXMLPath()»<?xml version="1.0" encoding="UTF-8"?>
+Â«REMÂ»Generierung der persistence.xmlÂ«ENDREMÂ»
+Â«DEFINE PersistenceXML FOR uml::ModelÂ»
+Â«("Generating persistence.xml").info() -> ""Â»
+Â«FILE getPersistenceXMLPath()Â»<?xml version="1.0" encoding="UTF-8"?>
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-<persistence-unit name="jpa.test">«EXPAND Classes FOR this»
+<persistence-unit name="jpa.test">Â«EXPAND Classes FOR thisÂ»
 <properties>
-«getPersistenceProperties()»
+Â«getPersistenceProperties()Â»
 </properties>
 </persistence-unit>
 </persistence>
-«ENDFILE»
-«ENDDEFINE»
+Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«REM»Klassen, die in der persistence.xml aufgeführt werden müssen, generieren.«ENDREM»
-«DEFINE Classes FOR uml::Model»
-«FOREACH getAllClasses() AS cl»
-	«IF cl.getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»<class>«IF cl.package.nestingPackage.name != "Model"»«cl.package.nestingPackage.name».«ENDIF»«cl.package.name».Abstract«cl.name»</class>
-«ENDIF»
-«ENDFOREACH»
-«ENDDEFINE»
+Â«REMÂ»Klassen, die in der persistence.xml aufgefÃ¼hrt werden mÃ¼ssen, generieren.Â«ENDREMÂ»
+Â«DEFINE Classes FOR uml::ModelÂ»
+Â«FOREACH getAllClasses() AS clÂ»
+	Â«IF cl.getAppliedStereotype("SimpleJSR220::JPA_Entity") != nullÂ»<class>Â«IF cl.package.nestingPackage.name != "Model"Â»Â«cl.package.nestingPackage.nameÂ».Â«ENDIFÂ»Â«cl.package.nameÂ».AbstractÂ«cl.nameÂ»</class>
+Â«ENDIFÂ»
+Â«ENDFOREACHÂ»
+Â«ENDDEFINEÂ»
 

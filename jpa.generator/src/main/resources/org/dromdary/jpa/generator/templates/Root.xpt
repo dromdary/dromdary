@@ -1,22 +1,22 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
-«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
-«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
-«REM» which accompanies this distribution, and is available at              «ENDREM»
-«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::eclipse::xtend::util::stdlib::io»
+ï»¿Â«REMÂ» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            Â«ENDREMÂ»
+Â«REMÂ» All rights reserved. This program and the accompanying materials      Â«ENDREMÂ»
+Â«REMÂ» are made available under the terms of the Eclipse Public License v1.0 Â«ENDREMÂ»
+Â«REMÂ» which accompanies this distribution, and is available at              Â«ENDREMÂ»
+Â«REMÂ» http://www.eclipse.org/legal/epl-v10.html                             Â«ENDREMÂ»
+Â«EXTENSION org::eclipse::xtend::util::stdlib::ioÂ»
 
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::NamesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::PropertiesÂ»
 
-«REM»Einstiegspunkt, welcher vom Workflow aufgerufen wird und entsprechend weitere Templates aufrufen.«ENDREM» 
-«DEFINE Root FOR uml::Model»
-	«("Generating Java Files with JPA Annotations").info() -> ""»
-	«EXPAND Entity::JpaEntity FOREACH eAllContents.typeSelect(uml::Class)»
-	«EXPAND PersistenceXML::PersistenceXML FOR this»	
-	«EXPAND GenericCRUD::GenericCRUD FOR this»
-	«EXPAND JpaUtil::JpaUtil FOR this»
-	«EXPAND JpaDaoFactory::JpaDaoFactory FOR this»
-	«EXPAND DaoFactory::DaoFactory FOR this»
-«ENDDEFINE»
+Â«REMÂ»Einstiegspunkt, welcher vom Workflow aufgerufen wird und entsprechend weitere Templates aufrufen.Â«ENDREMÂ» 
+Â«DEFINE Root FOR uml::ModelÂ»
+	Â«("Generating Java Files with JPA Annotations").info() -> ""Â»
+	Â«EXPAND Entity::JpaEntity FOREACH eAllContents.typeSelect(uml::Class)Â»
+	Â«EXPAND PersistenceXML::PersistenceXML FOR thisÂ»	
+	Â«EXPAND GenericCRUD::GenericCRUD FOR thisÂ»
+	Â«EXPAND JpaUtil::JpaUtil FOR thisÂ»
+	Â«EXPAND JpaDaoFactory::JpaDaoFactory FOR thisÂ»
+	Â«EXPAND DaoFactory::DaoFactory FOR thisÂ»
+Â«ENDDEFINEÂ»
 

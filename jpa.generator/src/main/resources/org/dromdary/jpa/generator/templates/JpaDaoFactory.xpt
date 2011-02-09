@@ -1,47 +1,47 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
-«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
-«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
-«REM» which accompanies this distribution, and is available at              «ENDREM»
-«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::eclipse::xtend::util::stdlib::io»
+ï»¿Â«REMÂ» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            Â«ENDREMÂ»
+Â«REMÂ» All rights reserved. This program and the accompanying materials      Â«ENDREMÂ»
+Â«REMÂ» are made available under the terms of the Eclipse Public License v1.0 Â«ENDREMÂ»
+Â«REMÂ» which accompanies this distribution, and is available at              Â«ENDREMÂ»
+Â«REMÂ» http://www.eclipse.org/legal/epl-v10.html                             Â«ENDREMÂ»
+Â«EXTENSION org::eclipse::xtend::util::stdlib::ioÂ»
 
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::NamesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::PropertiesÂ»
 
-«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
-«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelperÂ»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelperÂ»
 
-«REM»Generierung der JpaDAOFactory.java«ENDREM»
-«DEFINE JpaDaoFactory FOR uml::Model»
-	«EXPAND JpaDaoFactoryClass FOR this»
-«ENDDEFINE»
+Â«REMÂ»Generierung der JpaDAOFactory.javaÂ«ENDREMÂ»
+Â«DEFINE JpaDaoFactory FOR uml::ModelÂ»
+	Â«EXPAND JpaDaoFactoryClass FOR thisÂ»
+Â«ENDDEFINEÂ»
 
-«REM»File generieren.«ENDREM»
-«DEFINE JpaDaoFactoryClass FOR uml::Model»
-	«FILE getDaoPackageName() + "/JpaDAOFactory.java"»
-		package «getDaoPackageName()»;
-		«EXPAND JpaDaoFactoryImports FOR this»
-		«EXPAND JpaDaoFactoryJavaDoc FOR this»
+Â«REMÂ»File generieren.Â«ENDREMÂ»
+Â«DEFINE JpaDaoFactoryClass FOR uml::ModelÂ»
+	Â«FILE getDaoPackageName() + "/JpaDAOFactory.java"Â»
+		package Â«getDaoPackageName()Â»;
+		Â«EXPAND JpaDaoFactoryImports FOR thisÂ»
+		Â«EXPAND JpaDaoFactoryJavaDoc FOR thisÂ»
 		public class JpaDAOFactory extends DAOFactory {
 			// empty
 		}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«REM»Benötigte Imports generieren.«ENDREM»
-«DEFINE JpaDaoFactoryImports FOR uml::Model»
-«REM»	 
-	import «getDaoPackageName()».DAOFactory;
-	import «getDaoPackageName()».DataBuildingDAO;
-	import «getDaoPackageName()».DataResearchDAO;
-	import«getDaoPackageName()».EmpireResearchBuildingDAO;
-	import «getDaoPackageName()».EmpireResearchDAO;
-«ENDREM»
-«ENDDEFINE»
+Â«REMÂ»BenÃ¶tigte Imports generieren.Â«ENDREMÂ»
+Â«DEFINE JpaDaoFactoryImports FOR uml::ModelÂ»
+Â«REMÂ»	 
+	import Â«getDaoPackageName()Â».DAOFactory;
+	import Â«getDaoPackageName()Â».DataBuildingDAO;
+	import Â«getDaoPackageName()Â».DataResearchDAO;
+	importÂ«getDaoPackageName()Â».EmpireResearchBuildingDAO;
+	import Â«getDaoPackageName()Â».EmpireResearchDAO;
+Â«ENDREMÂ»
+Â«ENDDEFINEÂ»
 
-«REM»JavaDoc generieren.«ENDREM»
-«DEFINE JpaDaoFactoryJavaDoc FOR uml::Model»
+Â«REMÂ»JavaDoc generieren.Â«ENDREMÂ»
+Â«DEFINE JpaDaoFactoryJavaDoc FOR uml::ModelÂ»
 	/**
 	 * Returns Hibernate-specific instances of DAOs.
 	 * <p/>
@@ -52,11 +52,11 @@
 	 * its own first-level class.
 	 *
 	 */
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE JpaDaoFactoryAttributes FOR uml::Model»
+Â«DEFINE JpaDaoFactoryAttributes FOR uml::ModelÂ»
 
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE JpaDaoFactoryOperations FOR uml::Model»
-«ENDDEFINE»
+Â«DEFINE JpaDaoFactoryOperations FOR uml::ModelÂ»
+Â«ENDDEFINEÂ»

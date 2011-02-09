@@ -1,264 +1,264 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
-«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
-«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
-«REM» which accompanies this distribution, and is available at              «ENDREM»
-«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::eclipse::xtend::util::stdlib::io»
-«EXTENSION org::eclipse::xtend::util::stdlib::counter»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+ï»¿Â«REMÂ» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            Â«ENDREMÂ»
+Â«REMÂ» All rights reserved. This program and the accompanying materials      Â«ENDREMÂ»
+Â«REMÂ» are made available under the terms of the Eclipse Public License v1.0 Â«ENDREMÂ»
+Â«REMÂ» which accompanies this distribution, and is available at              Â«ENDREMÂ»
+Â«REMÂ» http://www.eclipse.org/legal/epl-v10.html                             Â«ENDREMÂ»
+Â«EXTENSION org::eclipse::xtend::util::stdlib::ioÂ»
+Â«EXTENSION org::eclipse::xtend::util::stdlib::counterÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::NamesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::PropertiesÂ»
 
-«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelperÂ»
 
-«REM»Für eine Association wird nicht die Javabasic-Cartridge benutzt, da der 
+Â«REMÂ»FÃ¼r eine Association wird nicht die Javabasic-Cartridge benutzt, da der 
 Enterprise Architect diese in XMI nicht so abbildet, wie es die Javabasic Cartridge
-erwartet. Somit wird nur für die Assocation ein weiteres Template benötigt, um eine
+erwartet. Somit wird nur fÃ¼r die Assocation ein weiteres Template benÃ¶tigt, um eine
 Assocationen korrekt in Java abzubilden.
-Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«ENDREM»
+Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.Â«ENDREMÂ»
 
-«REM»Generieren der getter/setter für eine Association im Interface«ENDREM»
-«DEFINE EntityInterfaceGetter FOR uml::Class»
-	«LET this.getAssociations() AS a»		
-		«FOREACH a AS ae»
-			«IF ae.ownedEnd.size > 1»		
-				«REM»OneToOne-Beziehung«ENDREM»
-				«IF ae.ownedEnd.get(0).getUpper()==1»
-					«IF ae.ownedEnd.get(1).getUpper()==1»
-						«IF ae.ownedEnd.get(0).type.name==name»
+Â«REMÂ»Generieren der getter/setter fÃ¼r eine Association im InterfaceÂ«ENDREMÂ»
+Â«DEFINE EntityInterfaceGetter FOR uml::ClassÂ»
+	Â«LET this.getAssociations() AS aÂ»		
+		Â«FOREACH a AS aeÂ»
+			Â«IF ae.ownedEnd.size > 1Â»		
+				Â«REMÂ»OneToOne-BeziehungÂ«ENDREMÂ»
+				Â«IF ae.ownedEnd.get(0).getUpper()==1Â»
+					Â«IF ae.ownedEnd.get(1).getUpper()==1Â»
+						Â«IF ae.ownedEnd.get(0).type.name==nameÂ»
 							/**
 							 * 
-							 * @return The «ae.ownedEnd.get(1).type.name.toFirstLower()» as <code>«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»</code>
+							 * @return The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» as <code>Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»</code>
 							 */
-							public «ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name» get«ae.ownedEnd.get(1).type.name»();
+							public Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ» getÂ«ae.ownedEnd.get(1).type.nameÂ»();
 							
 							/**
 							 * 
-							 * @param «ae.ownedEnd.get(1).type.name.toFirstLower()» The «ae.ownedEnd.get(1).type.name.toFirstLower()» to set
+							 * @param Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» to set
 							 */
-							public void set«ae.ownedEnd.get(1).type.name»(«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name» «ae.ownedEnd.get(1).type.name.toFirstLower()»);
-						«ENDIF»
-					«ENDIF»
-				«ENDIF»
-				«REM»OneToMany-Beziehung«ENDREM»
-				«IF ae.ownedEnd.get(0).getUpper()==1»
-					«IF ae.ownedEnd.get(1).getUpper()==-1»
-						«IF ae.ownedEnd.get(0).type.name==name»
+							public void setÂ«ae.ownedEnd.get(1).type.nameÂ»(Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ» Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â»);
+						Â«ENDIFÂ»
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»
+				Â«REMÂ»OneToMany-BeziehungÂ«ENDREMÂ»
+				Â«IF ae.ownedEnd.get(0).getUpper()==1Â»
+					Â«IF ae.ownedEnd.get(1).getUpper()==-1Â»
+						Â«IF ae.ownedEnd.get(0).type.name==nameÂ»
 							/**
 							 * 
-							 * @return The «ae.ownedEnd.get(1).type.name.toFirstLower()» as <code>java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»></code>
+							 * @return The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» as <code>java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»></code>
 							 */
-							public java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»> get«ae.ownedEnd.get(1).type.name»();
+							public java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»> getÂ«ae.ownedEnd.get(1).type.nameÂ»();
 							
 							/**
 							 * 
-							 * @param «ae.ownedEnd.get(1).type.name.toFirstLower()» The «ae.ownedEnd.get(1).type.name.toFirstLower()» to set
+							 * @param Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» to set
 							 */
-							public void set«ae.ownedEnd.get(1).type.name»(java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»>«ae.ownedEnd.get(1).type.name.toFirstLower()»);
-						«ENDIF»
-					«ENDIF»
-				«ENDIF»	
-				«REM»ManyToOne-Beziehung«ENDREM»
-				«IF ae.ownedEnd.get(0).getUpper()==-1»
-					«IF ae.ownedEnd.get(1).getUpper()==1»
-						«IF ae.ownedEnd.get(0).type.name==name»
+							public void setÂ«ae.ownedEnd.get(1).type.nameÂ»(java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»>Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â»);
+						Â«ENDIFÂ»
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»	
+				Â«REMÂ»ManyToOne-BeziehungÂ«ENDREMÂ»
+				Â«IF ae.ownedEnd.get(0).getUpper()==-1Â»
+					Â«IF ae.ownedEnd.get(1).getUpper()==1Â»
+						Â«IF ae.ownedEnd.get(0).type.name==nameÂ»
 							/**
 							 * 
-							 * @return The «ae.ownedEnd.get(1).type.name.toFirstLower()» as <code>«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»</code>
+							 * @return The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» as <code>Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»</code>
 							 */
-							public «ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name» get«ae.ownedEnd.get(1).type.name»();
+							public Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ» getÂ«ae.ownedEnd.get(1).type.nameÂ»();
 							
 							/**
 							 * 
-							 * @param «ae.ownedEnd.get(1).type.name.toFirstLower()» The «ae.ownedEnd.get(1).type.name.toFirstLower()» to set
+							 * @param Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» to set
 							 */
-							public void set«ae.ownedEnd.get(1).type.name»(«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name» «ae.ownedEnd.get(1).type.name.toFirstLower()»);
-						«ENDIF»
-					«ENDIF»
-				«ENDIF»	
-				«REM»ManyToMany-Beziehung«ENDREM»
-				«IF ae.ownedEnd.get(0).getUpper()==-1»
-					«IF ae.ownedEnd.get(1).getUpper()==-1»
-						«IF ae.ownedEnd.get(0).type.name==name»
+							public void setÂ«ae.ownedEnd.get(1).type.nameÂ»(Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ» Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â»);
+						Â«ENDIFÂ»
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»	
+				Â«REMÂ»ManyToMany-BeziehungÂ«ENDREMÂ»
+				Â«IF ae.ownedEnd.get(0).getUpper()==-1Â»
+					Â«IF ae.ownedEnd.get(1).getUpper()==-1Â»
+						Â«IF ae.ownedEnd.get(0).type.name==nameÂ»
 							/**
 							 * 
-							 * @return The «ae.ownedEnd.get(1).type.name.toFirstLower()» as <code>java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»></code>
+							 * @return The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» as <code>java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»></code>
 							 */
-							public java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»> get«ae.ownedEnd.get(1).type.name»();
+							public java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»> getÂ«ae.ownedEnd.get(1).type.nameÂ»();
 							
 							/**
 							 * 
-							 * @param «ae.ownedEnd.get(1).type.name.toFirstLower()» The «ae.ownedEnd.get(1).type.name.toFirstLower()» to set
+							 * @param Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» to set
 							 */
-							public void set«ae.ownedEnd.get(1).type.name»(java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»>«ae.ownedEnd.get(1).type.name.toFirstLower()»);
-						«ENDIF»
-					«ENDIF»
-				«ENDIF»
-			«ENDIF»
-		«ENDFOREACH»	
-	«ENDLET»
-«ENDDEFINE»
+							public void setÂ«ae.ownedEnd.get(1).type.nameÂ»(java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»>Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â»);
+						Â«ENDIFÂ»
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»
+			Â«ENDIFÂ»
+		Â«ENDFOREACHÂ»	
+	Â«ENDLETÂ»
+Â«ENDDEFINEÂ»
 
-«REM»Generieren der Attribute für eine Association in der abstrakten Klasse.«ENDREM»
-«DEFINE EntityAbstractAttribute FOR uml::Class»
-	«LET this.getAssociations() AS a»		
-		«FOREACH a AS ae»
-			«IF ae.ownedEnd.size > 1»		
-				«REM»OneToOne-Beziehung«ENDREM»
-				«IF ae.ownedEnd.get(0).getUpper()==1»
-					«IF ae.ownedEnd.get(1).getUpper()==1»
-						«IF ae.ownedEnd.get(0).type.name==name»
-							@OneToOne(targetEntity=«ae.ownedEnd.get(1).type.package.name».Abstract«ae.ownedEnd.get(1).type.name».class)
-							public «ae.ownedEnd.get(1).type.name» «ae.ownedEnd.get(1).type.name.toFirstLower()» = null;
-						«ENDIF»
-					«ENDIF»
-				«ENDIF»
-				«REM»OneToMany-Beziehung«ENDREM»
-				«IF ae.ownedEnd.get(0).getUpper()==1»
-					«IF ae.ownedEnd.get(1).getUpper()==-1»
-						«IF ae.ownedEnd.get(0).type.name==name»
-							@OneToMany(targetEntity=«ae.ownedEnd.get(1).type.package.name».Abstract«ae.ownedEnd.get(1).type.name».class)
-							«IF !isId()»
-								@JoinColumn(name = "«this.name»_id", nullable = false)
-							«ELSEIF isId()»
+Â«REMÂ»Generieren der Attribute fÃ¼r eine Association in der abstrakten Klasse.Â«ENDREMÂ»
+Â«DEFINE EntityAbstractAttribute FOR uml::ClassÂ»
+	Â«LET this.getAssociations() AS aÂ»		
+		Â«FOREACH a AS aeÂ»
+			Â«IF ae.ownedEnd.size > 1Â»		
+				Â«REMÂ»OneToOne-BeziehungÂ«ENDREMÂ»
+				Â«IF ae.ownedEnd.get(0).getUpper()==1Â»
+					Â«IF ae.ownedEnd.get(1).getUpper()==1Â»
+						Â«IF ae.ownedEnd.get(0).type.name==nameÂ»
+							@OneToOne(targetEntity=Â«ae.ownedEnd.get(1).type.package.nameÂ».AbstractÂ«ae.ownedEnd.get(1).type.nameÂ».class)
+							public Â«ae.ownedEnd.get(1).type.nameÂ» Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» = null;
+						Â«ENDIFÂ»
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»
+				Â«REMÂ»OneToMany-BeziehungÂ«ENDREMÂ»
+				Â«IF ae.ownedEnd.get(0).getUpper()==1Â»
+					Â«IF ae.ownedEnd.get(1).getUpper()==-1Â»
+						Â«IF ae.ownedEnd.get(0).type.name==nameÂ»
+							@OneToMany(targetEntity=Â«ae.ownedEnd.get(1).type.package.nameÂ».AbstractÂ«ae.ownedEnd.get(1).type.nameÂ».class)
+							Â«IF !isId()Â»
+								@JoinColumn(name = "Â«this.nameÂ»_id", nullable = false)
+							Â«ELSEIF isId()Â»
 						    	@JoinColumns({
-									«FOREACH getIdAttributes() AS e ITERATOR iter»									
-										@JoinColumn(name = "«this.name»_«e.name»", nullable = false),
-									«ENDFOREACH»
-										@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
+									Â«FOREACH getIdAttributes() AS e ITERATOR iterÂ»									
+										@JoinColumn(name = "Â«this.nameÂ»_Â«e.nameÂ»", nullable = false),
+									Â«ENDFOREACHÂ»
+										@JoinColumn(name = "Â«this.nameÂ»_Â«name.toFirstLower()Â»Pk", nullable = false),
 								})
-						    «ELSE»
-								@JoinColumn(name = "«this.name»_«getIdAttributeName()»", nullable = false)
-							«ENDIF»
-							public java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»> «ae.ownedEnd.get(1).type.name.toFirstLower()» = null;
-						«ENDIF»
-					«ENDIF»
-				«ENDIF»	
-				«REM»ManyToOne-Beziehung«ENDREM»
-				«IF ae.ownedEnd.get(0).getUpper()==-1»
-					«IF ae.ownedEnd.get(1).getUpper()==1»
-						«IF ae.ownedEnd.get(0).type.name==name»
-							@ManyToOne(targetEntity=«ae.ownedEnd.get(1).type.package.name».Abstract«ae.ownedEnd.get(1).type.name».class)
-							«IF !isId()»
-								@JoinColumn(name = "«this.name»_id", nullable = false)
-							«ELSEIF isId()»
+						    Â«ELSEÂ»
+								@JoinColumn(name = "Â«this.nameÂ»_Â«getIdAttributeName()Â»", nullable = false)
+							Â«ENDIFÂ»
+							public java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»> Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» = null;
+						Â«ENDIFÂ»
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»	
+				Â«REMÂ»ManyToOne-BeziehungÂ«ENDREMÂ»
+				Â«IF ae.ownedEnd.get(0).getUpper()==-1Â»
+					Â«IF ae.ownedEnd.get(1).getUpper()==1Â»
+						Â«IF ae.ownedEnd.get(0).type.name==nameÂ»
+							@ManyToOne(targetEntity=Â«ae.ownedEnd.get(1).type.package.nameÂ».AbstractÂ«ae.ownedEnd.get(1).type.nameÂ».class)
+							Â«IF !isId()Â»
+								@JoinColumn(name = "Â«this.nameÂ»_id", nullable = false)
+							Â«ELSEIF isId()Â»
 						    	@JoinColumns({
-									«FOREACH getIdAttributes() AS e ITERATOR iter»									
-										@JoinColumn(name = "«this.name»_«e.name»", nullable = false),
-									«ENDFOREACH»
-										@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
+									Â«FOREACH getIdAttributes() AS e ITERATOR iterÂ»									
+										@JoinColumn(name = "Â«this.nameÂ»_Â«e.nameÂ»", nullable = false),
+									Â«ENDFOREACHÂ»
+										@JoinColumn(name = "Â«this.nameÂ»_Â«name.toFirstLower()Â»Pk", nullable = false),
 								})
-						    «ELSE»
-								@JoinColumn(name = "«this.name»_«getIdAttributeName()»", nullable = false)
-							«ENDIF»
-							public «ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name» «ae.ownedEnd.get(1).type.name.toFirstLower()» = null;
-						«ENDIF»
-					«ENDIF»
-				«ENDIF»	
-				«REM»ManyToMany-Beziehung«ENDREM»
-				«IF ae.ownedEnd.get(0).getUpper()==-1»
-					«IF ae.ownedEnd.get(1).getUpper()==-1»
-						«IF ae.ownedEnd.get(0).type.name==name»
-							@ManyToMany(targetEntity=«ae.ownedEnd.get(1).type.package.name».Abstract«ae.ownedEnd.get(1).type.name».class)
-							«IF !isId()»
-								@JoinColumn(name = "«this.name»_id", nullable = false)
-							«ELSEIF isId()»
+						    Â«ELSEÂ»
+								@JoinColumn(name = "Â«this.nameÂ»_Â«getIdAttributeName()Â»", nullable = false)
+							Â«ENDIFÂ»
+							public Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ» Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» = null;
+						Â«ENDIFÂ»
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»	
+				Â«REMÂ»ManyToMany-BeziehungÂ«ENDREMÂ»
+				Â«IF ae.ownedEnd.get(0).getUpper()==-1Â»
+					Â«IF ae.ownedEnd.get(1).getUpper()==-1Â»
+						Â«IF ae.ownedEnd.get(0).type.name==nameÂ»
+							@ManyToMany(targetEntity=Â«ae.ownedEnd.get(1).type.package.nameÂ».AbstractÂ«ae.ownedEnd.get(1).type.nameÂ».class)
+							Â«IF !isId()Â»
+								@JoinColumn(name = "Â«this.nameÂ»_id", nullable = false)
+							Â«ELSEIF isId()Â»
 						    	@JoinColumns({
-									«FOREACH getIdAttributes() AS e ITERATOR iter»									
-										@JoinColumn(name = "«this.name»_«e.name»", nullable = false),
-									«ENDFOREACH»
-										@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
+									Â«FOREACH getIdAttributes() AS e ITERATOR iterÂ»									
+										@JoinColumn(name = "Â«this.nameÂ»_Â«e.nameÂ»", nullable = false),
+									Â«ENDFOREACHÂ»
+										@JoinColumn(name = "Â«this.nameÂ»_Â«name.toFirstLower()Â»Pk", nullable = false),
 								})
-						    «ELSE»
-								@JoinColumn(name = "«this.name»_«getIdAttributeName()»", nullable = false)
-							«ENDIF»
-							public java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»> «ae.ownedEnd.get(1).type.name.toFirstLower()» = null;
-						«ENDIF»
-					«ENDIF»
-				«ENDIF»
-			«ENDIF»
-		«ENDFOREACH»	
-	«ENDLET»
-«ENDDEFINE»
+						    Â«ELSEÂ»
+								@JoinColumn(name = "Â«this.nameÂ»_Â«getIdAttributeName()Â»", nullable = false)
+							Â«ENDIFÂ»
+							public java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»> Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» = null;
+						Â«ENDIFÂ»
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»
+			Â«ENDIFÂ»
+		Â«ENDFOREACHÂ»	
+	Â«ENDLETÂ»
+Â«ENDDEFINEÂ»
 
-«REM»Generieren der getter/setter für eine Association in der abstrakten Klasse.«ENDREM»
-«DEFINE EntityAbstractGetterSetter FOR uml::Class»
-	«LET this.getAssociations() AS a»		
-		«FOREACH a AS ae»
-			«IF ae.ownedEnd.size > 1»		
-				«REM»OneToOne-Beziehung«ENDREM»
-				«IF ae.ownedEnd.get(0).getUpper()==1»
-					«IF ae.ownedEnd.get(1).getUpper()==1»
-						«IF ae.ownedEnd.get(0).type.name==name» 
+Â«REMÂ»Generieren der getter/setter fÃ¼r eine Association in der abstrakten Klasse.Â«ENDREMÂ»
+Â«DEFINE EntityAbstractGetterSetter FOR uml::ClassÂ»
+	Â«LET this.getAssociations() AS aÂ»		
+		Â«FOREACH a AS aeÂ»
+			Â«IF ae.ownedEnd.size > 1Â»		
+				Â«REMÂ»OneToOne-BeziehungÂ«ENDREMÂ»
+				Â«IF ae.ownedEnd.get(0).getUpper()==1Â»
+					Â«IF ae.ownedEnd.get(1).getUpper()==1Â»
+						Â«IF ae.ownedEnd.get(0).type.name==nameÂ» 
 							/**
 							 * 
-							 * @return The «ae.ownedEnd.get(1).type.name.toFirstLower()» as <code>«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»</code>
+							 * @return The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» as <code>Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»</code>
 							 */
-							public «ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name» get«ae.ownedEnd.get(1).type.name»() { return «ae.ownedEnd.get(1).type.name.toFirstLower()»; }
+							public Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ» getÂ«ae.ownedEnd.get(1).type.nameÂ»() { return Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â»; }
 							
 							/**
 							 * 
-							 * @param «ae.ownedEnd.get(1).type.name.toFirstLower()» The «ae.ownedEnd.get(1).type.name.toFirstLower()» to set
+							 * @param Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» to set
 							 */
-							public void set«ae.ownedEnd.get(1).type.name»(«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name» «ae.ownedEnd.get(1).type.name.toFirstLower()») { this.«ae.ownedEnd.get(1).type.name.toFirstLower()» = «ae.ownedEnd.get(1).type.name.toFirstLower()»; }
-						«ENDIF»
-					«ENDIF»
-				«ENDIF»
-				«REM»OneToMany-Beziehung«ENDREM»
-				«IF ae.ownedEnd.get(0).getUpper()==1»
-					«IF ae.ownedEnd.get(1).getUpper()==-1»
-						«IF ae.ownedEnd.get(0).type.name==name» 
+							public void setÂ«ae.ownedEnd.get(1).type.nameÂ»(Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ» Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â») { this.Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» = Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â»; }
+						Â«ENDIFÂ»
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»
+				Â«REMÂ»OneToMany-BeziehungÂ«ENDREMÂ»
+				Â«IF ae.ownedEnd.get(0).getUpper()==1Â»
+					Â«IF ae.ownedEnd.get(1).getUpper()==-1Â»
+						Â«IF ae.ownedEnd.get(0).type.name==nameÂ» 
 							/**
 							 * 
-							 * @return The «ae.ownedEnd.get(1).type.name.toFirstLower()» as <code>java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»></code>
+							 * @return The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» as <code>java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»></code>
 							 */
-							public java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»> get«ae.ownedEnd.get(1).type.name»() { return «ae.ownedEnd.get(1).type.name.toFirstLower()»; }
+							public java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»> getÂ«ae.ownedEnd.get(1).type.nameÂ»() { return Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â»; }
 							
 							/**
 							 * 
-							 * @param «ae.ownedEnd.get(1).type.name.toFirstLower()» The «ae.ownedEnd.get(1).type.name.toFirstLower()» to set
+							 * @param Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» to set
 							 */
-							public void set«ae.ownedEnd.get(1).type.name»(java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»>«ae.ownedEnd.get(1).type.name.toFirstLower()») { this.«ae.ownedEnd.get(1).type.name.toFirstLower()» = «ae.ownedEnd.get(1).type.name.toFirstLower()»; }
-						«ENDIF»
-					«ENDIF»
-				«ENDIF»	
-				«REM»ManyToOne-Beziehung«ENDREM»
-				«IF ae.ownedEnd.get(0).getUpper()==-1»
-					«IF ae.ownedEnd.get(1).getUpper()==1»
-						«IF ae.ownedEnd.get(0).type.name==name»
+							public void setÂ«ae.ownedEnd.get(1).type.nameÂ»(java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»>Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â») { this.Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» = Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â»; }
+						Â«ENDIFÂ»
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»	
+				Â«REMÂ»ManyToOne-BeziehungÂ«ENDREMÂ»
+				Â«IF ae.ownedEnd.get(0).getUpper()==-1Â»
+					Â«IF ae.ownedEnd.get(1).getUpper()==1Â»
+						Â«IF ae.ownedEnd.get(0).type.name==nameÂ»
 							/**
 							 * 
-							 * @return The «ae.ownedEnd.get(1).type.name.toFirstLower()» as <code>«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»</code>
+							 * @return The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» as <code>Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»</code>
 							 */
-							public «ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name» get«ae.ownedEnd.get(1).type.name»() { return «ae.ownedEnd.get(1).type.name.toFirstLower()»; }
+							public Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ» getÂ«ae.ownedEnd.get(1).type.nameÂ»() { return Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â»; }
 							
 							/**
 							 * 
-							 * @param «ae.ownedEnd.get(1).type.name.toFirstLower()» The «ae.ownedEnd.get(1).type.name.toFirstLower()» to set
+							 * @param Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» to set
 							 */
-							public void set«ae.ownedEnd.get(1).type.name»(«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name» «ae.ownedEnd.get(1).type.name.toFirstLower()») { this.«ae.ownedEnd.get(1).type.name.toFirstLower()» = «ae.ownedEnd.get(1).type.name.toFirstLower()»; }
-						«ENDIF»
-					«ENDIF»
-				«ENDIF»	
-				«REM»ManyToMany-Beziehung«ENDREM»
-				«IF ae.ownedEnd.get(0).getUpper()==-1»
-					«IF ae.ownedEnd.get(1).getUpper()==-1»
-						«IF ae.ownedEnd.get(0).type.name==name»
+							public void setÂ«ae.ownedEnd.get(1).type.nameÂ»(Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ» Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â») { this.Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» = Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â»; }
+						Â«ENDIFÂ»
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»	
+				Â«REMÂ»ManyToMany-BeziehungÂ«ENDREMÂ»
+				Â«IF ae.ownedEnd.get(0).getUpper()==-1Â»
+					Â«IF ae.ownedEnd.get(1).getUpper()==-1Â»
+						Â«IF ae.ownedEnd.get(0).type.name==nameÂ»
 							/**
 							 * 
-							 * @return The «ae.ownedEnd.get(1).type.name.toFirstLower()» as <code>java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»></code>
+							 * @return The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» as <code>java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»></code>
 							 */ 
-							public java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»> get«ae.ownedEnd.get(1).type.name»() { return «ae.ownedEnd.get(1).type.name.toFirstLower()»; }
+							public java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»> getÂ«ae.ownedEnd.get(1).type.nameÂ»() { return Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â»; }
 							
 							/**
 							 * 
-							 * @param «ae.ownedEnd.get(1).type.name.toFirstLower()» The «ae.ownedEnd.get(1).type.name.toFirstLower()» to set
+							 * @param Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» The Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» to set
 							 */
-							public void set«ae.ownedEnd.get(1).type.name»(java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»>«ae.ownedEnd.get(1).type.name.toFirstLower()») { this.«ae.ownedEnd.get(1).type.name.toFirstLower()» = «ae.ownedEnd.get(1).type.name.toFirstLower()»; }
-						«ENDIF»
-					«ENDIF»
-				«ENDIF»
-			«ENDIF»
-		«ENDFOREACH»	
-	«ENDLET»	
-«ENDDEFINE»	
+							public void setÂ«ae.ownedEnd.get(1).type.nameÂ»(java.util.Set<Â«ae.ownedEnd.get(1).type.package.nameÂ».Â«ae.ownedEnd.get(1).type.nameÂ»>Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â») { this.Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â» = Â«ae.ownedEnd.get(1).type.name.toFirstLower()Â»; }
+						Â«ENDIFÂ»
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»
+			Â«ENDIFÂ»
+		Â«ENDFOREACHÂ»	
+	Â«ENDLETÂ»	
+Â«ENDDEFINEÂ»	

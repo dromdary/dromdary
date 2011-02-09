@@ -1,140 +1,140 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
-«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
-«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
-«REM» which accompanies this distribution, and is available at              «ENDREM»
-«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::eclipse::xtend::util::stdlib::io»
+ï»¿Â«REMÂ» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            Â«ENDREMÂ»
+Â«REMÂ» All rights reserved. This program and the accompanying materials      Â«ENDREMÂ»
+Â«REMÂ» are made available under the terms of the Eclipse Public License v1.0 Â«ENDREMÂ»
+Â«REMÂ» which accompanies this distribution, and is available at              Â«ENDREMÂ»
+Â«REMÂ» http://www.eclipse.org/legal/epl-v10.html                             Â«ENDREMÂ»
+Â«EXTENSION org::eclipse::xtend::util::stdlib::ioÂ»
 
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::NamesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::PropertiesÂ»
 
-«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
-«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelperÂ»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelperÂ»
 
-«REM»Generieren der Entities. Template wird für jede Entity aufgerufen.«ENDREM»
-«DEFINE JpaEntity FOR uml::Class»
+Â«REMÂ»Generieren der Entities. Template wird fÃ¼r jede Entity aufgerufen.Â«ENDREMÂ»
+Â«DEFINE JpaEntity FOR uml::ClassÂ»
 	
-	«REM»Prüfen, ob aktuelle Klasse mit dem Stereotyp Entity ausgezeichnet ist«ENDREM»
-	«IF getAppliedStereotype("SimpleJSR220::JPA_Entity")!=null»	
+	Â«REMÂ»PrÃ¼fen, ob aktuelle Klasse mit dem Stereotyp Entity ausgezeichnet istÂ«ENDREMÂ»
+	Â«IF getAppliedStereotype("SimpleJSR220::JPA_Entity")!=nullÂ»	
 		
-		«REM»Prüfen, ob Attributnamen gesetzt sind und ggf. setzen. 
-		Falls Attribut zu einer Beziehung gehört, werden diese nicht implizit gesetzt (durch UML2Exporter).«ENDREM»
-		«checkAttributeName()»
-		«EXPAND File FOR this»
-	«ENDIF»
-«ENDDEFINE»
+		Â«REMÂ»PrÃ¼fen, ob Attributnamen gesetzt sind und ggf. setzen. 
+		Falls Attribut zu einer Beziehung gehÃ¶rt, werden diese nicht implizit gesetzt (durch UML2Exporter).Â«ENDREMÂ»
+		Â«checkAttributeName()Â»
+		Â«EXPAND File FOR thisÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«REM»Java Dateien inkl. Inhalt erzeugen.«ENDREM»
-«DEFINE File FOR uml::Class»
+Â«REMÂ»Java Dateien inkl. Inhalt erzeugen.Â«ENDREMÂ»
+Â«DEFINE File FOR uml::ClassÂ»
 		
-		«REM»Generieren des Entity Interfaces.«ENDREM»
-		«FILE getFQNPackagePath()+"/"+interfaceName(name)+".java"»
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::head»
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::interfaceEntityDefine»			
-					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::staticAttribute»				
-					«EXPAND Association::EntityInterfaceGetter FOR this»
-					«IF !isId()»
-						«EXPAND IdInterfaceGetterSetter FOR this»
-					«ENDIF»
-					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::getterSetterInterface»
-					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationInterface FOREACH this.getOperations()»					
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::interfaceEntityEndDefine»	
-		«ENDFILE»
+		Â«REMÂ»Generieren des Entity Interfaces.Â«ENDREMÂ»
+		Â«FILE getFQNPackagePath()+"/"+interfaceName(name)+".java"Â»
+			Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::headÂ»
+			Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::interfaceEntityDefineÂ»			
+					Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::staticAttributeÂ»				
+					Â«EXPAND Association::EntityInterfaceGetter FOR thisÂ»
+					Â«IF !isId()Â»
+						Â«EXPAND IdInterfaceGetterSetter FOR thisÂ»
+					Â«ENDIFÂ»
+					Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::getterSetterInterfaceÂ»
+					Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationInterface FOREACH this.getOperations()Â»					
+			Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::interfaceEntityEndDefineÂ»	
+		Â«ENDFILEÂ»
 		
-		«REM»Generieren der abstrakten Entity.«ENDREM»
-		«FILE getFQNPackagePath()+"/"+abstractClassName(name)+".java"»
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::head»
-			«EXPAND Annotation FOR this»
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityDefine»				
-				«IF !isId()»
-					«EXPAND IdAbstractAttr FOR this»
-				«ENDIF»
-				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::attribute»
-				«REM»«IF isPrimaryKeyClassReq()»
+		Â«REMÂ»Generieren der abstrakten Entity.Â«ENDREMÂ»
+		Â«FILE getFQNPackagePath()+"/"+abstractClassName(name)+".java"Â»
+			Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::headÂ»
+			Â«EXPAND Annotation FOR thisÂ»
+			Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityDefineÂ»				
+				Â«IF !isId()Â»
+					Â«EXPAND IdAbstractAttr FOR thisÂ»
+				Â«ENDIFÂ»
+				Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::attributeÂ»
+				Â«REMÂ»Â«IF isPrimaryKeyClassReq()Â»
 					@EmbeddedId
-					private «name»Pk «name.toFirstLower()»Pk = null;
-				«ENDIF»«ENDREM»			
-				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::staticAttribute»
-				«EXPAND Association::EntityAbstractAttribute FOR this»
-				«IF !isId()»
-					«EXPAND IdAbstractGetterSetter FOR this»
-				«ENDIF»
-				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::getterSetter»	
-				«EXPAND Association::EntityAbstractGetterSetter FOR this»		
-				«IF getInterfaceOperationImplementationStrategy() == "use_abstract_method"»				
-					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operation(true)»				
-				«ELSEIF getInterfaceOperationImplementationStrategy() == "none"»				
-					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operation»					
-				«ENDIF»							
-				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Class::overwriteHashcodeEqualsToString»			
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityEndDefine»		
-		«ENDFILE»
+					private Â«nameÂ»Pk Â«name.toFirstLower()Â»Pk = null;
+				Â«ENDIFÂ»Â«ENDREMÂ»			
+				Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::staticAttributeÂ»
+				Â«EXPAND Association::EntityAbstractAttribute FOR thisÂ»
+				Â«IF !isId()Â»
+					Â«EXPAND IdAbstractGetterSetter FOR thisÂ»
+				Â«ENDIFÂ»
+				Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::getterSetterÂ»	
+				Â«EXPAND Association::EntityAbstractGetterSetter FOR thisÂ»		
+				Â«IF getInterfaceOperationImplementationStrategy() == "use_abstract_method"Â»				
+					Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operation(true)Â»				
+				Â«ELSEIF getInterfaceOperationImplementationStrategy() == "none"Â»				
+					Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationÂ»					
+				Â«ENDIFÂ»							
+				Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Class::overwriteHashcodeEqualsToStringÂ»			
+			Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityEndDefineÂ»		
+		Â«ENDFILEÂ»
 		
-		«REM»Generieren der Entity-Implementierungsklasse.«ENDREM»
-		«FILE getFQNPackagePath()+"/"+implementationClassName(name)+".java" outletSrcOnceDir»		
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::head»
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::basicClassEntityDefine»
-				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::SerialVersionUID::serialVersionUIDField»
-				«IF getInterfaceOperationImplementationStrategy() == "use_abstract_method"»					
-					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBaseImpl(true)»						
-				«ELSEIF getInterfaceOperationImplementationStrategy() == "none"»					
-					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBaseImpl»					
-				«ENDIF»		
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::basicClassEntityEndDefine»		
-		«ENDFILE»		
-«ENDDEFINE»
+		Â«REMÂ»Generieren der Entity-Implementierungsklasse.Â«ENDREMÂ»
+		Â«FILE getFQNPackagePath()+"/"+implementationClassName(name)+".java" outletSrcOnceDirÂ»		
+			Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::headÂ»
+			Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::basicClassEntityDefineÂ»
+				Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::SerialVersionUID::serialVersionUIDFieldÂ»
+				Â«IF getInterfaceOperationImplementationStrategy() == "use_abstract_method"Â»					
+					Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBaseImpl(true)Â»						
+				Â«ELSEIF getInterfaceOperationImplementationStrategy() == "none"Â»					
+					Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBaseImplÂ»					
+				Â«ENDIFÂ»		
+			Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::basicClassEntityEndDefineÂ»		
+		Â«ENDFILEÂ»		
+Â«ENDDEFINEÂ»
 
 
-«REM»Annotation @Id setzen, wenn diese nicht im Modell gesetzt wurde.«ENDREM»
-«DEFINE IdAbstractAttr FOR uml::Class»
-		«IF searchIdAttributeName()»
+Â«REMÂ»Annotation @Id setzen, wenn diese nicht im Modell gesetzt wurde.Â«ENDREMÂ»
+Â«DEFINE IdAbstractAttr FOR uml::ClassÂ»
+		Â«IF searchIdAttributeName()Â»
 			@Id
-		«ELSE»
-			«IF isExtendedClass()»
+		Â«ELSEÂ»
+			Â«IF isExtendedClass()Â»
 			
-			«ELSE»
+			Â«ELSEÂ»
 				@Id
 				private int id;
-			«ENDIF»
-		«ENDIF»
-«ENDDEFINE»
+			Â«ENDIFÂ»
+		Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«REM»Getter und Setter in abstrakter Klasse für die id generieren, wenn die Annotation @Id im Modell nicht gesetzt wurde.«ENDREM»
-«DEFINE IdAbstractGetterSetter FOR uml::Class»
-	«IF searchIdAttributeName()»
+Â«REMÂ»Getter und Setter in abstrakter Klasse fÃ¼r die id generieren, wenn die Annotation @Id im Modell nicht gesetzt wurde.Â«ENDREMÂ»
+Â«DEFINE IdAbstractGetterSetter FOR uml::ClassÂ»
+	Â«IF searchIdAttributeName()Â»
 	
-	«ELSE»
-		«IF isExtendedClass()»
+	Â«ELSEÂ»
+		Â«IF isExtendedClass()Â»
 		
-		«ELSE»
+		Â«ELSEÂ»
 			/**
 			 * 
-			 * @return The «REM»«IF isExtendedClass()»«name.toFirstLower()»Id«ELSE»id«ENDIF»«ENDREM»id as <code>java.lang.Integer</code>
+			 * @return The Â«REMÂ»Â«IF isExtendedClass()Â»Â«name.toFirstLower()Â»IdÂ«ELSEÂ»idÂ«ENDIFÂ»Â«ENDREMÂ»id as <code>java.lang.Integer</code>
 			 */
-			public java.lang.Integer get«REM»«IF isExtendedClass()»«name»«ENDIF»«ENDREM»Id() {
-				return «REM»«IF isExtendedClass()»«name.toFirstLower()»Id«ELSE»id«ENDIF»«ENDREM»id;
+			public java.lang.Integer getÂ«REMÂ»Â«IF isExtendedClass()Â»Â«nameÂ»Â«ENDIFÂ»Â«ENDREMÂ»Id() {
+				return Â«REMÂ»Â«IF isExtendedClass()Â»Â«name.toFirstLower()Â»IdÂ«ELSEÂ»idÂ«ENDIFÂ»Â«ENDREMÂ»id;
 			}
 		
 			/**
 			 * 
-			 * @param «REM»«IF isExtendedClass()»«name.toFirstLower()»Id«ELSE»id«ENDIF»«ENDREM»id The «REM»«IF isExtendedClass()»«name»Id«ELSE»id«ENDIF»«ENDREM»id to set
+			 * @param Â«REMÂ»Â«IF isExtendedClass()Â»Â«name.toFirstLower()Â»IdÂ«ELSEÂ»idÂ«ENDIFÂ»Â«ENDREMÂ»id The Â«REMÂ»Â«IF isExtendedClass()Â»Â«nameÂ»IdÂ«ELSEÂ»idÂ«ENDIFÂ»Â«ENDREMÂ»id to set
 			 */
-			public void set«REM»«IF isExtendedClass()»«name»«ENDIF»«ENDREM»Id(java.lang.Integer id) {
-				this.«REM»«IF isExtendedClass()»«name.toFirstLower()»Id«ELSE»id«ENDIF»«ENDREM»id = «REM»«IF isExtendedClass()»«name.toFirstLower()»Id«ELSE»id«ENDIF»«ENDREM»id;
+			public void setÂ«REMÂ»Â«IF isExtendedClass()Â»Â«nameÂ»Â«ENDIFÂ»Â«ENDREMÂ»Id(java.lang.Integer id) {
+				this.Â«REMÂ»Â«IF isExtendedClass()Â»Â«name.toFirstLower()Â»IdÂ«ELSEÂ»idÂ«ENDIFÂ»Â«ENDREMÂ»id = Â«REMÂ»Â«IF isExtendedClass()Â»Â«name.toFirstLower()Â»IdÂ«ELSEÂ»idÂ«ENDIFÂ»Â«ENDREMÂ»id;
 			}
-		«ENDIF»
-	«ENDIF»
-«ENDDEFINE»
+		Â«ENDIFÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«REM»Getter und Setter im Interface für die id generieren, wenn die Annotation @Id im Modell nicht gesetzt wurde«ENDREM»
-«DEFINE IdInterfaceGetterSetter FOR uml::Class»
-	«IF searchIdAttributeName()»
+Â«REMÂ»Getter und Setter im Interface fÃ¼r die id generieren, wenn die Annotation @Id im Modell nicht gesetzt wurdeÂ«ENDREMÂ»
+Â«DEFINE IdInterfaceGetterSetter FOR uml::ClassÂ»
+	Â«IF searchIdAttributeName()Â»
 	
-	«ELSE»
-		«IF isExtendedClass()»
+	Â«ELSEÂ»
+		Â«IF isExtendedClass()Â»
 		
-		«ELSE»
+		Â«ELSEÂ»
 			/**
 			 * 
 			 * @return The id as <code>java.lang.Integer</code>
@@ -148,22 +148,22 @@
 			 */
 		
 			public void setId(java.lang.Integer id);
-		«ENDIF»
-	«ENDIF»
-«ENDDEFINE»
+		Â«ENDIFÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«REM»Annotation @Entity und die für die JPA benötigte Annotation @Table generieren.
+Â«REMÂ»Annotation @Entity und die fÃ¼r die JPA benÃ¶tigte Annotation @Table generieren.
 Diese duerfen nur in der abstrakten Klasse generiert werden, deswegen werden sie nicht im 
-AOP-Template generiert.«ENDREM»
-«DEFINE Annotation FOR uml::Class»
-	«IF getAppliedStereotype("SimpleJSR220::JPA_Entity") != null && 
-			getAppliedStereotype("SimpleJSR220::JPA_TableJPA") == null»
+AOP-Template generiert.Â«ENDREMÂ»
+Â«DEFINE Annotation FOR uml::ClassÂ»
+	Â«IF getAppliedStereotype("SimpleJSR220::JPA_Entity") != null && 
+			getAppliedStereotype("SimpleJSR220::JPA_TableJPA") == nullÂ»
 				@Entity
-				@Table(name="«name»", schema="«getTableSchema()»")
-	«ENDIF»	
-«ENDDEFINE»
+				@Table(name="Â«nameÂ»", schema="Â«getTableSchema()Â»")
+	Â«ENDIFÂ»	
+Â«ENDDEFINEÂ»
 
-«REM»Benötigte Imports für eine Entity generieren.«ENDREM»
-«DEFINE Imports FOR uml::Class»
+Â«REMÂ»BenÃ¶tigte Imports fÃ¼r eine Entity generieren.Â«ENDREMÂ»
+Â«DEFINE Imports FOR uml::ClassÂ»
 	import javax.persistence.*;
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
