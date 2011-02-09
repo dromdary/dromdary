@@ -1,28 +1,28 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
-«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
-«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
-«REM» which accompanies this distribution, and is available at              «ENDREM»
-«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::eclipse::xtend::util::stdlib::io»
+ï»¿Â«REMÂ» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            Â«ENDREMÂ»
+Â«REMÂ» All rights reserved. This program and the accompanying materials      Â«ENDREMÂ»
+Â«REMÂ» are made available under the terms of the Eclipse Public License v1.0 Â«ENDREMÂ»
+Â«REMÂ» which accompanies this distribution, and is available at              Â«ENDREMÂ»
+Â«REMÂ» http://www.eclipse.org/legal/epl-v10.html                             Â«ENDREMÂ»
+Â«EXTENSION org::eclipse::xtend::util::stdlib::ioÂ»
 
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::NamesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::PropertiesÂ»
 
-«EXTENSION org::dromdary::common::generator::extensions::CommonPropertiesHelper»
+Â«EXTENSION org::dromdary::common::generator::extensions::CommonPropertiesHelperÂ»
 
-«DEFINE Root FOR uml::Model»
-	«EXPAND Class::Class FOREACH eAllContents.typeSelect(uml::Class)»
-	«IF getJpaFlag() == "true"»
-		«debug("INFO - Generating JPA-Annotations and Files")»
-		«EXPAND org::dromdary::jpa::generator::templates::PersistenceXML::PersistenceXML FOR this»	
-		«EXPAND org::dromdary::jpa::generator::templates::GenericCRUD::GenericCRUD FOR this»
-		«EXPAND org::dromdary::jpa::generator::templates::JpaUtil::JpaUtil FOR this»
-		«EXPAND org::dromdary::jpa::generator::templates::JpaDaoFactory::JpaDaoFactory FOR this»
-		«EXPAND org::dromdary::jpa::generator::templates::DaoFactory::DaoFactory FOR this»
-	«ELSEIF getJpaFlag() == "false" && getBvaFlag() == "true"»
-		«debug("INFO - Generating BVA-Annotations and Files")»
-		«EXPAND org::dromdary::bva::generator::templates::Root::Root FOR this»	
-	«ENDIF»	
-«ENDDEFINE»
+Â«DEFINE Root FOR uml::ModelÂ»
+	Â«EXPAND Class::Class FOREACH eAllContents.typeSelect(uml::Class)Â»
+	Â«IF getJpaFlag() == "true"Â»
+		Â«debug("INFO - Generating JPA-Annotations and Files")Â»
+		Â«EXPAND org::dromdary::jpa::generator::templates::PersistenceXML::PersistenceXML FOR thisÂ»	
+		Â«EXPAND org::dromdary::jpa::generator::templates::GenericCRUD::GenericCRUD FOR thisÂ»
+		Â«EXPAND org::dromdary::jpa::generator::templates::JpaUtil::JpaUtil FOR thisÂ»
+		Â«EXPAND org::dromdary::jpa::generator::templates::JpaDaoFactory::JpaDaoFactory FOR thisÂ»
+		Â«EXPAND org::dromdary::jpa::generator::templates::DaoFactory::DaoFactory FOR thisÂ»
+	Â«ELSEIF getJpaFlag() == "false" && getBvaFlag() == "true"Â»
+		Â«debug("INFO - Generating BVA-Annotations and Files")Â»
+		Â«EXPAND org::dromdary::bva::generator::templates::Root::Root FOR thisÂ»	
+	Â«ENDIFÂ»	
+Â«ENDDEFINEÂ»
 
