@@ -39,7 +39,7 @@
 
 <!-- Generieren -->
 <component id="generator"
-    class="org.eclipse.xpand2.Generator" skipOnErrors="true" fileEncoding="ISO-8859-1">
+    class="org.eclipse.xpand2.Generator" skipOnErrors="true" fileEncoding="UTF-8">
     <!-- Meta Meta Modelle -->
     <metaModel idRef="mm_Emf" />
 	<metaModel idRef="mm_uml2" />
