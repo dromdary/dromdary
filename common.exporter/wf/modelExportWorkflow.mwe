@@ -10,7 +10,7 @@
 	<bean id="UmlMM" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
 	
 	<component class="net.cmp4oaw.uml2export.mwe.EA_Xmi2Exporter" >
-		<EapFile value="${model.enterpriseArchitect.file}" />
+		<EapFile value="${model.ea_file}" />
 		<ModelFile value="${model.uml_file}" />
 		<PackageName value="${model.pkg}" />
 		<!-- JPA profile -->
