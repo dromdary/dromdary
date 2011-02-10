@@ -16,3 +16,4 @@ Import-Package: com.ibm.icu.text,
  org.eclipse.core.runtime,
  org.eclipse.jdt.core,
  org.eclipse.jface.text
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
