@@ -1,0 +1,41 @@
+<workflow>
+
+	<property file="wf/workflow.properties" />
+	
+	<bean class="org.eclipse.emf.mwe.utils.StandaloneSetup" platformUri=".."/>
+	<bean class="org.eclipse.xtend.typesystem.uml2.Setup" standardUML2Setup="true" />
+
+	<!-- Metamodel-Definition -->
+	<bean id="EmfMM" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel" metaModelPackage ="org.eclipse.emf.ecore.EcorePackage"/>
+	<bean id="UmlMM" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
+	
+	<bean id="${profile.name}MM" class="org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel">
+		<profile value="${profile.export.dir}/${profile.name}.profile.uml" />
+	</bean>
+	
+	<component class="net.cmp4oaw.uml2export.mwe.EA_Xmi2Exporter" >
+		<EapFile value="${project_root}${model.enterpriseArchitect.file}" />
+		<ModelFile value="${model.emfUml2.file}" />
+		<PackageName value="${model.umlPackage}" />
+		
+		<!-- Default BVA Profile -->
+		<profile value="${profile.emfUml2.file}" />
+		<PackageProfile name="${model.name}" value="${profile.name}" />
+		
+		<!-- Custom BVA Profile-->
+		<profile value="${custom_profile.emfUml2.file}" />
+		<PackageProfile name="${model.name}" value="${custom_profile.name}" />
+	
+		<Cleanup value="true"/>
+	</component>
+
+	<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
+		<modelFile value="${model.emfUml2.file}" />
+		<outputSlot value="${output_slot}" />
+	</component>
+
+	<component id="dirCleaner"
+		class="org.eclipse.emf.mwe.utils.DirectoryCleaner"
+		directory="${generator.output.src.dir}" />
+
+</workflow>

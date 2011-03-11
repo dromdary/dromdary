@@ -1,42 +1,42 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
-«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
-«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
-«REM» which accompanies this distribution, and is available at              «ENDREM»
-«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::openarchitectureware::util::IO»
+Â«REMÂ» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            Â«ENDREMÂ»
+Â«REMÂ» All rights reserved. This program and the accompanying materials      Â«ENDREMÂ»
+Â«REMÂ» are made available under the terms of the Eclipse Public License v1.0 Â«ENDREMÂ»
+Â«REMÂ» which accompanies this distribution, and is available at              Â«ENDREMÂ»
+Â«REMÂ» http://www.eclipse.org/legal/epl-v10.html                             Â«ENDREMÂ»
+Â«EXTENSION org::eclipse::xtend::util::stdlib::ioÂ»
 
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::NamesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::PropertiesÂ»
 
-«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
-«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelperÂ»
+Â«EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelperÂ»
 
-«REM»Generierung der GenericDAO.java und GenericJpaDAO.java«ENDREM»
-«DEFINE GenericCRUD FOR uml::Model»
-	«EXPAND GenericCRUDInterface FOR this»
-	«EXPAND GenericCRUDAbstractClass FOR this»
-«ENDDEFINE»
+Â«REMÂ»Generierung der GenericDAO.java und GenericJpaDAO.javaÂ«ENDREMÂ»
+Â«DEFINE GenericCRUD FOR uml::ModelÂ»
+	Â«EXPAND GenericCRUDInterface FOR thisÂ»
+	Â«EXPAND GenericCRUDAbstractClass FOR thisÂ»
+Â«ENDDEFINEÂ»
 
-«REM»File für das Interface generieren.«ENDREM»
-«DEFINE GenericCRUDInterface FOR uml::Model»
-	«FILE getDaoPackageName() + "/GenericDAO.java"»
-		package «getDaoPackageName()»;
-		«EXPAND GenericCRUDInterfaceImports FOR this»
+Â«REMÂ»File fÃ¼r das Interface generieren.Â«ENDREMÂ»
+Â«DEFINE GenericCRUDInterface FOR uml::ModelÂ»
+	Â«FILE getDaoPackageName() + "/GenericDAO.java"Â»
+		package Â«getDaoPackageName()Â»;
+		Â«EXPAND GenericCRUDInterfaceImports FOR thisÂ»
 		public interface GenericDAO<T, ID extends Serializable> {
-			«EXPAND GenericCRUDInterfaceMethods FOR this»
+			Â«EXPAND GenericCRUDInterfaceMethods FOR thisÂ»
 		}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«REM»Benötigte Imports im Interface generieren.«ENDREM»
-«DEFINE GenericCRUDInterfaceImports FOR uml::Model»
+Â«REMÂ»BenÃ¶tigte Imports im Interface generieren.Â«ENDREMÂ»
+Â«DEFINE GenericCRUDInterfaceImports FOR uml::ModelÂ»
 	import java.io.Serializable;
 	import java.util.List;
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«REM»Interface Methoden generieren.«ENDREM»
-«DEFINE GenericCRUDInterfaceMethods FOR uml::Model»
+Â«REMÂ»Interface Methoden generieren.Â«ENDREMÂ»
+Â«DEFINE GenericCRUDInterfaceMethods FOR uml::ModelÂ»
 	T findById(ID id, boolean lock);
 
     List<T> findAll();
@@ -56,23 +56,23 @@
      * Affects every managed instance in the current persistence context!
      */
     void clear();
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«REM»File für abstrakte Klasse erzeugen.«ENDREM»
-«DEFINE GenericCRUDAbstractClass FOR uml::Model»
-	«FILE getDaoPackageName() + "/GenericJpaDAO.java"»
-		package «getDaoPackageName()»;
-		«EXPAND GenericCRUDAbstractClassImports FOR this»
+Â«REMÂ»File fÃ¼r abstrakte Klasse erzeugen.Â«ENDREMÂ»
+Â«DEFINE GenericCRUDAbstractClass FOR uml::ModelÂ»
+	Â«FILE getDaoPackageName() + "/GenericJpaDAO.java"Â»
+		package Â«getDaoPackageName()Â»;
+		Â«EXPAND GenericCRUDAbstractClassImports FOR thisÂ»
 		public abstract class GenericJpaDAO<T, ID extends Serializable>
         implements GenericDAO<T, ID> {
-			«EXPAND GenericCRUDAbstractClassAttributes FOR this»
-			«EXPAND GenericCRUDAbstractClassOperations FOR this»
+			Â«EXPAND GenericCRUDAbstractClassAttributes FOR thisÂ»
+			Â«EXPAND GenericCRUDAbstractClassOperations FOR thisÂ»
 		}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«REM»Import in abstrakter Klasse erzeugen.«ENDREM»
-«DEFINE GenericCRUDAbstractClassImports FOR uml::Model»
+Â«REMÂ»Import in abstrakter Klasse erzeugen.Â«ENDREMÂ»
+Â«DEFINE GenericCRUDAbstractClassImports FOR uml::ModelÂ»
 	import java.io.Serializable;
 	import java.lang.reflect.ParameterizedType;
 	import java.util.List;
@@ -83,11 +83,11 @@
 	import org.hibernate.criterion.Criterion;
 	import org.hibernate.criterion.Example;
 	
-	import «getDaoPackageName()».GenericDAO;
-«ENDDEFINE»
+	import Â«getDaoPackageName()Â».GenericDAO;
+Â«ENDDEFINEÂ»
 
-«REM»JavaDoc in abstrakter Klasse erzeugen.«ENDREM»
-«DEFINE GenericCRUDAbstractClassJavaDoc FOR uml::Model»
+Â«REMÂ»JavaDoc in abstrakter Klasse erzeugen.Â«ENDREMÂ»
+Â«DEFINE GenericCRUDAbstractClassJavaDoc FOR uml::ModelÂ»
 	/**
 	 * Implements the generic CRUD data access operations using Hibernate APIs.
 	 * <p>
@@ -101,16 +101,16 @@
 	 * @see HibernateDAOFactory
 	 *
 	 */
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«REM»Attribute in abstrakter Klasse erzeugen.«ENDREM»
-«DEFINE GenericCRUDAbstractClassAttributes FOR uml::Model»
+Â«REMÂ»Attribute in abstrakter Klasse erzeugen.Â«ENDREMÂ»
+Â«DEFINE GenericCRUDAbstractClassAttributes FOR uml::ModelÂ»
 	    private Class<T> persistentClass;
     	private Session session;
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«REM»Methode in abstrakter Klasse generieren.«ENDREM»
-«DEFINE GenericCRUDAbstractClassOperations FOR uml::Model»
+Â«REMÂ»Methode in abstrakter Klasse generieren.Â«ENDREMÂ»
+Â«DEFINE GenericCRUDAbstractClassOperations FOR uml::ModelÂ»
 	public GenericJpaDAO() {
         this.persistentClass = (Class<T>) ((ParameterizedType) getClass()
                                 .getGenericSuperclass()).getActualTypeArguments()[0];
@@ -192,4 +192,4 @@
         }
         return crit.list();
    }
-«ENDDEFINE»
+Â«ENDDEFINEÂ»

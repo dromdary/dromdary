@@ -1,7 +1,7 @@
 Surname, Name (company)
 ----------------------------------
 Palic, Darko (Xenovation)
-Renz, Manuel (RZ-Systems)
+Renz, Manuel (RZSystems)
 Ruegner, Volker (freelancer)
 Schulze, Michael (T-Systems)
-Ziegler, Matthias (RZ-Systems)
+Ziegler, Matthias (RZSystems)

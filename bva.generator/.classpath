@@ -5,24 +5,15 @@
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/main/model"/>
 	<classpathentry kind="src" path="src/main/profile"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/jakarta-commons/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/beanvalidation/validation-api-1.0.CR2.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/junit/4.5.0/junit.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/emf/2.4.2/org.eclipse.emf.common_2.4.0.v200902171115.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/junit/4.5.0/junit.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-generator-2.1.0.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-reference-2.1.0.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/oaw/4.3/oaw-core-emftools-4.3.1.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/oaw/4.3/oaw-core-expressions-4.3.1.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/oaw/4.3/oaw-core-workflow-4.3.1.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/oaw/4.3/oaw-core-xpand2-4.3.1.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/oaw/4.3/oaw-uml2-adapter-4.3.1.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/oaw/4.3/oaw-util-stdlib-4.3.1.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/emf/2.4.2/org.eclipse.emf.ecore_2.4.2.v200902171115.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/beanvalidation/validation-api-1.0.CR2.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/emf2xml/ecore2xml-2.4.0.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/uml2/common-1.4.0.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/uml2/resources-2.1.0.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/uml2/uml-2.2.0.jar"/>
-	<classpathentry kind="lib" path="/environment/libs/build-dependencies/jakarta-commons/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-generator-2.1.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-reference-2.1.1-SNAPSHOT.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/core"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/hibernate/dependencies/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="/environment/libs/build-dependencies/fornax/fornax-utilities-formatter-xml-2.0.2-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

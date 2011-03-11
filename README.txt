@@ -10,6 +10,7 @@ Currently we support the code generation of JPA based Persistency and a codegene
 #######################
 First Steps
 #######################
+Visit http://www.dromdary.org and read our quickstart tutorial.
 See the detailed documentation in the following PDFs
 Persistence Generator: docs/Diplomarbeit_Matthias_Ziegler.pdf 
 Bean Validation Generator: docs/Diplomarbeit-Manuel_Renz.pdf 

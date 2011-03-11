@@ -1,56 +1,56 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
-«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
-«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
-«REM» which accompanies this distribution, and is available at              «ENDREM»
-«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::openarchitectureware::util::IO»
+Â«REMÂ» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            Â«ENDREMÂ»
+Â«REMÂ» All rights reserved. This program and the accompanying materials      Â«ENDREMÂ»
+Â«REMÂ» are made available under the terms of the Eclipse Public License v1.0 Â«ENDREMÂ»
+Â«REMÂ» which accompanies this distribution, and is available at              Â«ENDREMÂ»
+Â«REMÂ» http://www.eclipse.org/legal/epl-v10.html                             Â«ENDREMÂ»
+Â«EXTENSION org::eclipse::xtend::util::stdlib::ioÂ»
 
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Misc»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::DataType»
-«EXTENSION org::dromdary::bva::generator::extensions::BvaHelper»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::NamesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::PropertiesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::MiscÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::DataTypeÂ»
+Â«EXTENSION org::dromdary::bva::generator::extensions::BvaHelperÂ»
 
 /**
 * Einstiegspunkt, welcher vom Workflow aufgerufen wird
 */
-«DEFINE Root FOR uml::Model»
-	«EXPAND Class FOREACH eAllContents.typeSelect(uml::Class)»
-	«EXPAND Classifier FOREACH eAllContents.typeSelect(uml::Classifier)»
-	«EXPAND Property FOREACH eAllContents.typeSelect(uml::Property)»
-	«EXPAND Operation FOREACH eAllContents.typeSelect(uml::Operation)»
+Â«DEFINE Root FOR uml::ModelÂ»
+	Â«EXPAND Class FOREACH eAllContents.typeSelect(uml::Class)Â»
+	Â«EXPAND Classifier FOREACH eAllContents.typeSelect(uml::Classifier)Â»
+	Â«EXPAND Property FOREACH eAllContents.typeSelect(uml::Property)Â»
+	Â«EXPAND Operation FOREACH eAllContents.typeSelect(uml::Operation)Â»
 	
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
 /*
 * Generating the Class Annotations
 */
-«DEFINE Classifier FOR uml::Classifier»
-	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentation»
-«ENDDEFINE»
+Â«DEFINE Classifier FOR uml::ClassifierÂ»
+	Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationÂ»
+Â«ENDDEFINEÂ»
 
 /*
-* Generieren der Klassenrümpfe, wird für jede Klasse aufgerufen 
+* Generieren der KlassenrÃ¼mpfe, wird fÃ¼r jede Klasse aufgerufen 
 */
-«DEFINE Class FOR uml::Class»
-	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::entityInterface»
-	«EXPAND org::dromdary::bva::generator::templates::Abstract::class»
-	«REM»«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::entityAbstractClass»«ENDREM»
-	«EXPAND org::dromdary::bva::generator::templates::Abstract::implementationClass»
-	«REM»«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Class::class»«ENDREM»
-«ENDDEFINE»
+Â«DEFINE Class FOR uml::ClassÂ»
+	Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::entityInterfaceÂ»
+	Â«EXPAND org::dromdary::bva::generator::templates::Abstract::classÂ»
+	Â«REMÂ»Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::entityAbstractClassÂ»Â«ENDREMÂ»
+	Â«EXPAND org::dromdary::bva::generator::templates::Abstract::implementationClassÂ»
+	Â«REMÂ»Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Class::classÂ»Â«ENDREMÂ»
+Â«ENDDEFINEÂ»
 
 /*
 * Generieren der Attribute
 */
-«DEFINE Property FOR uml::Property»
-	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::field»
-«ENDDEFINE»
+Â«DEFINE Property FOR uml::PropertyÂ»
+	Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::fieldÂ»
+Â«ENDDEFINEÂ»
 
 /*
 * Generieren der Methoden
 */
-«DEFINE Operation FOR uml::Operation»
-	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationAnnotation»
-«ENDDEFINE»
+Â«DEFINE Operation FOR uml::OperationÂ»
+	Â«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationAnnotationÂ»
+Â«ENDDEFINEÂ»

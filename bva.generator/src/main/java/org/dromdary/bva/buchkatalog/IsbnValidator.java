@@ -30,10 +30,11 @@ public class IsbnValidator implements ConstraintValidator<Isbn, String> {
 		
 		// Calculate checksum
 		char charArray[] =isbn.toCharArray();
-		int intArray[] = new int[charArray.length];
-		// convert string to int array
+		
 		int len = charArray.length;
-		for(int i=0;i<charArray.length;i++)
+		int intArray[] = new int[len];
+		// convert string to int array
+		for(int i=0;i<len;i++)
 			intArray[i]=Integer.parseInt(""+ charArray[i]);
 		
 		int sumA = 0;

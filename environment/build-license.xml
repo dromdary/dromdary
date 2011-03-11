@@ -4,7 +4,7 @@
 	<target name="replaceHeaders" description="inserts the standard header to all source files">
 	    <loadfile property="javaheader" srcFile="standard_java_header.txt"/>
 	    <replaceregexp match="(/\*.*\*/.*)??^package " flags="sm"
-	        replace="${javaheader}${line.separator}package " encoding="ISO-8859-1">
+	        replace="${javaheader}${line.separator}package " encoding="UTF-8">
 	        <fileset dir="../jpa.generator/src">
 	            <include name="**/*.java"/>
 	        </fileset>
@@ -18,7 +18,7 @@
 
 		<loadfile property="xptheader" srcFile="standard_xpt_header.txt"/>
 	    <replaceregexp match=".*?«EXTENSION " flags="sm"
-	        replace="${xptheader}${line.separator}«EXTENSION " encoding="ISO-8859-1">
+	        replace="${xptheader}${line.separator}«EXTENSION " encoding="UTF-8">
 	        <fileset dir="../jpa.generator/src">
 	            <include name="**/*.xpt"/>
 	        </fileset>

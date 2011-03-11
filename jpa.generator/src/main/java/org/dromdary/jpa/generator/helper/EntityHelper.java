@@ -8,51 +8,16 @@
 package org.dromdary.jpa.generator.helper;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EAnnotation;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.ConnectorEnd;
-import org.eclipse.uml2.uml.DataType;
-import org.eclipse.uml2.uml.Dependency;
-import org.eclipse.uml2.uml.Deployment;
-import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Model;
-import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.Namespace;
-import org.eclipse.uml2.uml.Package;
-import org.eclipse.uml2.uml.PackageableElement;
-import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.RedefinableElement;
-import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.Stereotype;
-import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.TemplateBinding;
-import org.eclipse.uml2.uml.TemplateParameter;
-import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.Usage;
-import org.eclipse.uml2.uml.ValueSpecification;
-import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.internal.impl.ClassImpl;
-import org.eclipse.uml2.uml.internal.impl.EnumerationLiteralImpl;
 
 public class EntityHelper {
 	static String relationTypeComposite = "composite";
@@ -64,8 +29,8 @@ public class EntityHelper {
 	static String manyToMany = "ManyToMany";
 
 	/**
-	 * Prüfen, ob Attributnamen gesetzt sind und ggf. setzen. Falls Attribut zu
-	 * einer Beziehung gehört, werden diese nicht implizit gesetzt. Bsp:
+	 * Prï¿½fen, ob Attributnamen gesetzt sind und ggf. setzen. Falls Attribut zu
+	 * einer Beziehung gehï¿½rt, werden diese nicht implizit gesetzt. Bsp:
 	 * <ownedAttribute xmi:id="70d3f655-57d7-48ac-bb0c-47afc4c03206" name=""
 	 * visibility="public" type="{7C26B580-E30D-42e6-8854-15CF672CEEA7}"
 	 * aggregation="shared"
@@ -81,7 +46,7 @@ public class EntityHelper {
 	public static String checkAttributeName(Class umlClass) {
 		EList<Property> attributes = umlClass.getAllAttributes();
 		for (int i = 0; i < attributes.size(); i++) {
-			// Prüfen ob es sich um eine Klasse oder einen anderen Typ wie
+			// Prï¿½fen ob es sich um eine Klasse oder einen anderen Typ wie
 			// PrimitiveType (String...) handelt
 			if (attributes.get(i).getType().getClass().toString().contains(
 					"ClassImpl")) {
@@ -95,7 +60,7 @@ public class EntityHelper {
 	}
 
 	/**
-	 * Prüfen, um was für eine Beziehung es sich handelt.
+	 * Prï¿½fen, um was fï¿½r eine Beziehung es sich handelt.
 	 * 
 	 * @param Property
 	 *            umlProperty - Die aktuelle UML-Property.
@@ -128,7 +93,7 @@ public class EntityHelper {
 	}
 
 	/**
-	 * Prüfen, um was für eine Beziehung es sich handelt.
+	 * Prï¿½fen, um was fï¿½r eine Beziehung es sich handelt.
 	 * 
 	 * @param Property
 	 *            umlProperty - Die aktuelle UML-Property.
@@ -174,10 +139,10 @@ public class EntityHelper {
 
 
 	/**
-	 * Wert des im UML-Modell ausgewählten ENUM Werts auslesen.
+	 * Wert des im UML-Modell ausgewï¿½hlten ENUM Werts auslesen.
 	 * 
 	 * @param String enumString - Kompletter Inhalt des Enum als String
-	 * @return String tmp - Tatsächlicher Wert des ENUMS
+	 * @return String tmp - Tatsï¿½chlicher Wert des ENUMS
 	 */
 	public static String getEnumValue(String enumString) {
 		String tmp = null;
@@ -190,7 +155,7 @@ public class EntityHelper {
 
 
 	/**
-	 * Prüfen, ob es sich um eine abgeleitete Klasse handelt.
+	 * Prï¿½fen, ob es sich um eine abgeleitete Klasse handelt.
 	 * 
 	 * @param Class umlClass - Aktuelle UML-Klasse
 	 * @return boolean flag - <code>true</code> falls es sich um eine abgeleitete Klasse handelt, <code>false</code> falls nicht
@@ -209,7 +174,7 @@ public class EntityHelper {
 
 
 	/**
-	 * Prüfen, ob Klassenname <code>Abstract</code> enthält.
+	 * Prï¿½fen, ob Klassenname <code>Abstract</code> enthï¿½lt.
 	 * 
 	 * @param Class umlClass - Aktuelle UML-Klasse
 	 * @return boolean flag - <code>true</code> falls es sich um eine abstrakte Klasse handelt, <code>false</code> falls nicht
@@ -223,7 +188,7 @@ public class EntityHelper {
 
 
 	/**
-	 * Prüfen, ob in der Klassen des Attributs an irgend einem Attribut die
+	 * Prï¿½fen, ob in der Klassen des Attributs an irgend einem Attribut die
 	 * Annotation @Column angewendet wurde.
 	 * 
 	 * @param Property umlProperty - Aktuelle UML-Property
@@ -278,7 +243,7 @@ public class EntityHelper {
 	}
 
 	/**
-	 * Prüft, ob Attribut mit dem Namen id bereits existiert.
+	 * Prï¿½ft, ob Attribut mit dem Namen id bereits existiert.
 	 * 
 	 * @param Class umlClass - Aktuelle UML-Klasse
 	 * @return boolean flag - <code>true</code> falls Attribut existiert, <code>false</code> falls nicht
@@ -353,7 +318,7 @@ public class EntityHelper {
 	}
 
 	/**
-	 * Prüfen, ob in dieser Klasse für ein Attribut bereits die Annotation @Id
+	 * Prï¿½fen, ob in dieser Klasse fï¿½r ein Attribut bereits die Annotation @Id
 	 * angewendet wurde.
 	 * 
 	 * @param Property umlProperty - Aktuelle UML-Property
@@ -374,7 +339,7 @@ public class EntityHelper {
 	}
 
 	/**
-	 * Prüfen, ob in dieser Klasse für ein Attribut bereits die Annotation @Id
+	 * Prï¿½fen, ob in dieser Klasse fï¿½r ein Attribut bereits die Annotation @Id
 	 * angewendet wurde.
 	 * 
 	 * @param Class umlClass - Aktuelle UML-Property
@@ -396,13 +361,13 @@ public class EntityHelper {
 	
 
 	/**
-	 * Alle Attribute, welche mit @Id annotiert sind, als ArrayList zurückgeben.
+	 * Alle Attribute, welche mit @Id annotiert sind, als ArrayList zurï¿½ckgeben.
 	 * 
 	 * @param Class umlClass - Aktuelle UML-Klasse
 	 * @return List<Property> list - Alle mit @Id annotierten Attribute
 	 */
 	public static List<Property> getIdAttributes(Class umlClass) {
-		List<Property> list = new ArrayList();
+		List<Property> list = new ArrayList<Property>();
 		EList<Property> attributes = umlClass.getAllAttributes();
 		for (Property property : attributes) {
 			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
@@ -415,13 +380,13 @@ public class EntityHelper {
 	}
 	
 	/**
-	 * Alle Attribute, welche mit @Id annotiert sind, als ArrayList zurückgeben.
+	 * Alle Attribute, welche mit @Id annotiert sind, als ArrayList zurï¿½ckgeben.
 	 * 
 	 * @param Property umlProperty - Aktuelle UML-Property
 	 * @return List<Property> list - Alle mit @Id annotierten Attribute
 	 */
 	public static List<Property> getIdAttributes(Property umlProperty) {
-		List<Property> list = new ArrayList();
+		List<Property> list = new ArrayList<Property>();
 		EList<Property> attributes = umlProperty.getClass_().getAllAttributes();
 		for (Property property : attributes) {
 			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
@@ -434,10 +399,10 @@ public class EntityHelper {
 	}
 	
 	/**
-	 * Prüfen, ob eine Primärschlüsselklasse benötigt wird.
+	 * Prï¿½fen, ob eine Primï¿½rschlï¿½sselklasse benï¿½tigt wird.
 	 * 
 	 * @param Class umlClass - Aktuelle UML-Klasse
-	 * @return boolean flag - <code>true</code> falls Primärschlüsselklasse benötigt wird, <code>false</code> falls nicht
+	 * @return boolean flag - <code>true</code> falls Primï¿½rschlï¿½sselklasse benï¿½tigt wird, <code>false</code> falls nicht
 	 */
 	public static boolean isPrimaryKeyClassReq(Class umlClass) {
 		boolean flag = false;
@@ -458,10 +423,10 @@ public class EntityHelper {
 	}
 	
 	/**
-	 * Prüfen, ob eine Primärschlüsselklasse benötigt wird.
+	 * Prï¿½fen, ob eine Primï¿½rschlï¿½sselklasse benï¿½tigt wird.
 	 * 
 	 * @param Class umlClass - Aktuelle UML-Klasse
-	 * @return boolean flag - <code>true</code> falls Primärschlüsselklasse benötigt wird, <code>false</code> falls nicht
+	 * @return boolean flag - <code>true</code> falls Primï¿½rschlï¿½sselklasse benï¿½tigt wird, <code>false</code> falls nicht
 	 */
 	public static boolean isPrimaryKeyClassReq(Property umlProperty) {
 		boolean flag = false;
@@ -482,7 +447,7 @@ public class EntityHelper {
 	}
 
 	/**
-	 * Namen eines Attributs, welcher nicht gesetzt ist, ergänzen.
+	 * Namen eines Attributs, welcher nicht gesetzt ist, ergï¿½nzen.
 	 * 
 	 * @param Property
 	 *            p - Das aktuelles Attribut.
@@ -492,7 +457,7 @@ public class EntityHelper {
 	}
 
 	/**
-	 * Prüft, ob das Attribut zu einer Beziehung gehört.
+	 * Prï¿½ft, ob das Attribut zu einer Beziehung gehï¿½rt.
 	 * 
 	 * @param Class
 	 *            umlClass - Die aktuelle UML-Klasse.
@@ -500,7 +465,7 @@ public class EntityHelper {
 	 *            attribute - Das zu untersuchende Attribut.
 	 * @return boolean classFoundFlag - Falls aktuelle Klasse in
 	 *         <code>getRelatedElements()</code> enthalten ist, wird true
-	 *         zurückgegeben.
+	 *         zurï¿½ckgegeben.
 	 */
 	private static boolean checkAssociationRelatedElements(Class umlClass,
 			Property attribute) {

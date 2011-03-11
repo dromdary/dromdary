@@ -1,58 +1,58 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
-«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
-«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
-«REM» which accompanies this distribution, and is available at              «ENDREM»
-«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
-«EXTENSION org::openarchitectureware::util::IO»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Misc»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::DataType»
-«EXTENSION org::dromdary::bva::generator::extensions::BvaHelper»
+Â«REMÂ» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            Â«ENDREMÂ»
+Â«REMÂ» All rights reserved. This program and the accompanying materials      Â«ENDREMÂ»
+Â«REMÂ» are made available under the terms of the Eclipse Public License v1.0 Â«ENDREMÂ»
+Â«REMÂ» which accompanies this distribution, and is available at              Â«ENDREMÂ»
+Â«REMÂ» http://www.eclipse.org/legal/epl-v10.html                             Â«ENDREMÂ»
+Â«EXTENSION org::eclipse::xtend::util::stdlib::ioÂ»
+Â«EXTENSION org::dromdary::bva::generator::extensions::BvaHelperÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::NamesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::PropertiesÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::MiscÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::DataTypeÂ»
 
-«REM».select(s|s.namespace.name.contains("SimpleJSR303")«ENDREM»
-«DEFINE propertyAnnotation FOR uml::Property-»
-	«FOREACH this.getAppliedStereotypes().select(s|s.namespace.name.contains("SimpleJSR303")) AS stereotype ITERATOR iter1-»
-		@«FOREACH stereotype.getAllAttributes() AS tv ITERATOR iterPkg-»«IF tv.name == "packageName"»«TaggedValue(stereotype.name,tv.name,"")»«ENDIF-»«ENDFOREACH-».«stereotype.name-»
-		«FOREACH 
+Â«REMÂ».select(s|s.namespace.name.contains("SimpleJSR303")Â«ENDREMÂ»
+Â«DEFINE propertyAnnotation FOR uml::Property-Â»
+	Â«FOREACH this.getAppliedStereotypes().select(s|s.namespace.name.contains("SimpleJSR303")) AS stereotype ITERATOR iter1-Â»
+		@Â«FOREACH stereotype.getAllAttributes() AS tv ITERATOR iterPkg-Â»Â«IF tv.name == "packageName"Â»Â«TaggedValue(stereotype.name,tv.name,"")Â»Â«ENDIF-Â»Â«ENDFOREACH-Â».Â«stereotype.name-Â»
+		Â«FOREACH 
 			stereotype.getAllAttributes().reject(
 					e|e.name.contains("base_")
 				||  e.name.contains("packageName")
 				||	TaggedValue(stereotype.name,e.name,"")==""
 				||  TaggedValue(stereotype.name,e.name,"")==null) 
-			AS attr ITERATOR iter2 SEPARATOR ","-»
-			«IF iter2.firstIteration»(«ENDIF-»«attr.name»=«IF attr.type.name == "String"-»"«ENDIF-»«TaggedValue(stereotype.name,attr.name,"")-»«IF attr.type.name == "String"»"«ENDIF-»«IF iter2.lastIteration-»)«ENDIF-»
-		«ENDFOREACH-»
-	«ENDFOREACH-»
-«ENDDEFINE»
+			AS attr ITERATOR iter2 SEPARATOR ","-Â»
+			Â«IF iter2.firstIterationÂ»(Â«ENDIF-Â»Â«attr.nameÂ»=Â«IF attr.type.name == "String"-Â»"Â«ENDIF-Â»Â«TaggedValue(stereotype.name,attr.name,"")-Â»Â«IF attr.type.name == "String"Â»"Â«ENDIF-Â»Â«IF iter2.lastIteration-Â»)Â«ENDIF-Â»
+		Â«ENDFOREACH-Â»
+	Â«ENDFOREACH-Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE operationAnnotation FOR uml::Operation»
-	«FOREACH this.getAppliedStereotypes().select(s|s.namespace.name.contains("SimpleJSR303")) AS stereotype ITERATOR iter1-»
-		@«FOREACH stereotype.getAllAttributes() AS tv ITERATOR iterPkg-»«IF tv.name == "packageName"»«TaggedValue(stereotype.name,tv.name,"")»«ENDIF-»«ENDFOREACH-».«stereotype.name-»
-		«FOREACH 
+Â«DEFINE operationAnnotation FOR uml::OperationÂ»
+	Â«FOREACH this.getAppliedStereotypes().select(s|s.namespace.name.contains("SimpleJSR303")) AS stereotype ITERATOR iter1-Â»
+		@Â«FOREACH stereotype.getAllAttributes() AS tv ITERATOR iterPkg-Â»Â«IF tv.name == "packageName"Â»Â«TaggedValue(stereotype.name,tv.name,"")Â»Â«ENDIF-Â»Â«ENDFOREACH-Â».Â«stereotype.name-Â»
+		Â«FOREACH 
 			stereotype.getAllAttributes().reject(
 					e|e.name.contains("base_")
 				||  e.name.contains("packageName")
 				||	TaggedValue(stereotype.name,e.name,"")==""
 				||  TaggedValue(stereotype.name,e.name,"")==null) 
-			AS attr ITERATOR iter2 SEPARATOR ","-»
-			«IF iter2.firstIteration»(«ENDIF-»«attr.name»=«IF attr.type.name == "String"-»"«ENDIF-»«TaggedValue(stereotype.name,attr.name,"")-»«IF attr.type.name == "String"»"«ENDIF-»«IF iter2.lastIteration-»)«ENDIF-»
-		«ENDFOREACH-»
-	«ENDFOREACH-»
-«ENDDEFINE»
+			AS attr ITERATOR iter2 SEPARATOR ","-Â»
+			Â«IF iter2.firstIterationÂ»(Â«ENDIF-Â»Â«attr.nameÂ»=Â«IF attr.type.name == "String"-Â»"Â«ENDIF-Â»Â«TaggedValue(stereotype.name,attr.name,"")-Â»Â«IF attr.type.name == "String"Â»"Â«ENDIF-Â»Â«IF iter2.lastIteration-Â»)Â«ENDIF-Â»
+		Â«ENDFOREACH-Â»
+	Â«ENDFOREACH-Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE classAnnotation FOR uml::Classifier»
-	«FOREACH this.getAppliedStereotypes().select(s|s.namespace.name.contains("SimpleJSR303")) AS stereotype ITERATOR iter1-»
-		@«FOREACH stereotype.getAllAttributes() AS tv ITERATOR iterPkg-»«IF tv.name == "packageName"»«TaggedValue(stereotype.name,tv.name,"")»«ENDIF-»«ENDFOREACH-».«stereotype.name-»
-		«FOREACH 
+Â«DEFINE classAnnotation FOR uml::ClassifierÂ»
+	Â«FOREACH this.getAppliedStereotypes().select(s|s.namespace.name.contains("SimpleJSR303")) AS stereotype ITERATOR iter1-Â»
+		@Â«FOREACH stereotype.getAllAttributes() AS tv ITERATOR iterPkg-Â»Â«IF tv.name == "packageName"Â»Â«TaggedValue(stereotype.name,tv.name,"")Â»Â«ENDIF-Â»Â«ENDFOREACH-Â».Â«stereotype.name-Â»
+		Â«FOREACH 
 			stereotype.getAllAttributes().reject(
 					e|e.name.contains("base_")
 				||  e.name.contains("packageName")
 				||	TaggedValue(stereotype.name,e.name,"")==""
 				||  TaggedValue(stereotype.name,e.name,"")==null) 
-			AS attr ITERATOR iter2 SEPARATOR ","-»
-			«IF iter2.firstIteration»(«ENDIF-»«attr.name»=«IF attr.type.name == "String"-»"«ENDIF-»«TaggedValue(stereotype.name,attr.name,"")-»«IF attr.type.name == "String"»"«ENDIF-»«IF iter2.lastIteration-»)«ENDIF-»
-		«ENDFOREACH-»
-	«ENDFOREACH-»
-«ENDDEFINE»
+			AS attr ITERATOR iter2 SEPARATOR ","-Â»
+			Â«IF iter2.firstIterationÂ»(Â«ENDIF-Â»Â«attr.nameÂ»=Â«IF attr.type.name == "String"-Â»"Â«ENDIF-Â»Â«TaggedValue(stereotype.name,attr.name,"")-Â»Â«IF attr.type.name == "String"Â»"Â«ENDIF-Â»Â«IF iter2.lastIteration-Â»)Â«ENDIF-Â»
+		Â«ENDFOREACH-Â»
+	Â«ENDFOREACH-Â»
+Â«ENDDEFINEÂ»

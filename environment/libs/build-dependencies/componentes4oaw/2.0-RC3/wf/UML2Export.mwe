@@ -1,0 +1,22 @@
+<workflow>
+	<bean class="org.eclipse.emf.mwe.utils.StandaloneSetup" platformUri=".."/>	
+	<bean class="org.eclipse.xtend.typesystem.uml2.Setup" standardUML2Setup="true" />
+
+	<property name="UML2Exporter.Cleanup" value="true" />
+	<property name="UML2Exporter.ChangedOnly" value="flase" />
+	<property name="UML2Exporter.profilepackage" value="" />
+	<property name="UML2Exporter.convertUMLTypes" value="true" />
+		
+	<component class="net.cmp4oaw.uml2export.mwe.EA_Xmi2Exporter" >
+		<EapFile value="${UML2Exporter.file}" />
+		<ModelFile value="${model.dir}${model.file}" />
+		<PackageName value="${UML2Exporter.package}" />
+	<!--	
+		<Profile value="${profile.dir}${profile.name}.profile.uml" />
+		<PackageProfile name="${UML2Exporter.profilepackage}" value="${profile.name}" />
+	-->
+		<ChangedOnly value="${UML2Exporter.ChangedOnly}" />
+		<convertUMLTypes value="${UML2Exporter.convertUMLTypes}" />
+		<Cleanup value="${UML2Exporter.Cleanup}"/>
+	</component>
+</workflow>
