@@ -53,7 +53,6 @@ public class EntityHelper {
 				if (checkAssociationRelatedElements(umlClass, attributes.get(i))) {
 					addAttributeName(attributes.get(i));
 				}
-
 			}
 		}
 		return "";
@@ -124,7 +123,6 @@ public class EntityHelper {
 		}
 		return multiplicity;
 	}
-
 	
 	/**
 	 * Name des Subpackages auslesen.
@@ -136,7 +134,6 @@ public class EntityHelper {
 		String temp = umlClass.getName();
 		return temp.substring(7, temp.length());
 	}
-
 
 	/**
 	 * Wert des im UML-Modell ausgew�hlten ENUM Werts auslesen.
@@ -152,7 +149,6 @@ public class EntityHelper {
 			tmp = enumString.substring(index1 + 6, index2);
 		return tmp;
 	}
-
 
 	/**
 	 * Pr�fen, ob es sich um eine abgeleitete Klasse handelt.
@@ -172,7 +168,6 @@ public class EntityHelper {
 		return flag;
 	}
 
-
 	/**
 	 * Pr�fen, ob Klassenname <code>Abstract</code> enth�lt.
 	 * 
@@ -185,7 +180,6 @@ public class EntityHelper {
 			flag = true;
 		return flag;
 	}
-
 
 	/**
 	 * Pr�fen, ob in der Klassen des Attributs an irgend einem Attribut die
@@ -205,8 +199,7 @@ public class EntityHelper {
 			}
 		}
 		return flag;
-	}
-	
+	}	
 
 	/**
 	 * Stereotypnamen formatieren. Aus JPA_NameJPA wird JPA_Name.
@@ -359,7 +352,6 @@ public class EntityHelper {
 		return flag;
 	}
 	
-
 	/**
 	 * Alle Attribute, welche mit @Id annotiert sind, als ArrayList zur�ckgeben.
 	 * 
@@ -486,6 +478,5 @@ public class EntityHelper {
 			return classFoundFlag;
 		} else
 			return classFoundFlag;
-
 	}
 }
