@@ -14,7 +14,7 @@ import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.internal.impl.ModelImpl;
+import org.eclipse.uml2.uml.Model;
 
 public class ModelTransformer extends SimpleJavaModificationComponent {
 
@@ -24,7 +24,7 @@ public class ModelTransformer extends SimpleJavaModificationComponent {
 		try {
 			System.out.println("analyzing model");
 			
-			ModelImpl dm = (ModelImpl) model;
+			Model dm = (Model) model;
 			EList<NamedElement> elms = dm.getMembers();
 			for (NamedElement namedElement : elms) {
 				System.out.println("\t" + namedElement);

@@ -12,29 +12,30 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.mwe.core.WorkflowContext;
 import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
+import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
-import org.eclipse.uml2.uml.internal.impl.ClassImpl;
-import org.eclipse.uml2.uml.internal.impl.ModelImpl;
 
-public class ModelTransformerBva extends SimpleJavaModificationComponent {
+
+public class ModelTransformerBva extends SimpleJavaModificationComponent{ 
 
 	protected void doModification(WorkflowContext ctx, ProgressMonitor monitor,
 			Issues issues, Object model) {
 		
 		try {
-			ModelImpl dm = (ModelImpl) model;
+			Model dm = (Model) model;
 			EList<NamedElement> elms = dm.getMembers();
 
 			for (NamedElement namedElement : elms) {
 				// System.out.println(namedElement);
 				EList<Element> elements = namedElement.allOwnedElements();
 				for (Element element : elements) {
-					if (element instanceof ClassImpl) {
-						ClassImpl impl = (ClassImpl) element;
+					if (element instanceof Class) {
+						Class impl = (Class) element;
 
 						removePrefix(impl.getAppliedStereotypes());
 

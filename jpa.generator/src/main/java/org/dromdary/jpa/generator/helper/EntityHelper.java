@@ -17,7 +17,7 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
-import org.eclipse.uml2.uml.internal.impl.ClassImpl;
+import org.eclipse.uml2.uml.Class;
 
 public class EntityHelper {
 	static String relationTypeComposite = "composite";
@@ -232,8 +232,8 @@ public class EntityHelper {
 		for (NamedElement namedElement : elms) {
 			EList<Element> elements = namedElement.allOwnedElements();
 			for (Element element : elements) {
-				if (element instanceof ClassImpl) {
-					ClassImpl impl = (ClassImpl) element;
+				if (element instanceof Class) {
+					Class impl = (Class) element;
 					// System.out.println(impl.getName());
 					classes.add(impl);
 				}
