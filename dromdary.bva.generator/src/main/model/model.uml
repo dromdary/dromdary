@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SimpleJSR220="http:///schemas/SimpleJSR220/_JGEr4DjOEd6ugfAPTpvhLA/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http:///schemas/SimpleJSR220/_JGEr4DjOEd6ugfAPTpvhLA/0 file:/C:/Diplomarbeit/workspace-eclipse-oaw/jpa.generator/src/main/profile/SimpleJSR220.profile.uml#_JGKygTjOEd6ugfAPTpvhLA">
+  <uml:Model xmi:id="c418dcb6-6117-45c5-8afa-cbeef1d6ed54" name="Model">
+    <packagedElement xmi:type="uml:Package" xmi:id="_LfQw0DjOEd6xBaV-OktagA" name="PrimitiveTypes">
+      <elementImport xmi:id="_Lim_wDjOEd6xBaV-OktagA">
+        <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </elementImport>
+      <elementImport xmi:id="_Lim_wTjOEd6xBaV-OktagA">
+        <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </elementImport>
+      <elementImport xmi:id="_Lim_wjjOEd6xBaV-OktagA">
+        <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </elementImport>
+      <elementImport xmi:id="_Lim_wzjOEd6xBaV-OktagA">
+        <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+      </elementImport>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ab074ae3-f801-4085-9e9b-dba4dc601b2f" name="void"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="{5F9C1E9E-6377-443d-AD0D-003BDE617958}" name="Demo">
+      <packagedElement xmi:type="uml:Class" xmi:id="{494271B1-568C-4e47-ABD0-E8EC8CAB2799}" name="Author">
+        <ownedAttribute xmi:id="{98B70946-9BCC-47c2-8AB9-62EE64D2FF00}" name="name" visibility="public" isUnique="false">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LknK4jjOEd6xBaV-OktagA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LknK4TjOEd6xBaV-OktagA" value="1"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="{7C26B580-E30D-42e6-8854-15CF672CEEA7}" name="Book">
+        <ownedAttribute xmi:id="{2A59D962-9704-4af7-A7A5-865BCAE92BE2}" name="isbn" visibility="public" isUnique="false">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LknK5TjOEd6xBaV-OktagA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LknK5DjOEd6xBaV-OktagA" value="1"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="{CF5D59F9-26AE-48ef-87B4-1AFFB60A26DE}" name="" memberEnd="d9b116be-a567-4571-82e7-e189924a7a05 fb24d3b7-4c33-4d4e-9b0e-0f9b2c9b3274">
+        <ownedEnd xmi:id="d9b116be-a567-4571-82e7-e189924a7a05" name="" visibility="public" type="{494271B1-568C-4e47-ABD0-E8EC8CAB2799}" association="{CF5D59F9-26AE-48ef-87B4-1AFFB60A26DE}">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LlFsAjjOEd6xBaV-OktagA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LlFsATjOEd6xBaV-OktagA" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="fb24d3b7-4c33-4d4e-9b0e-0f9b2c9b3274" name="" visibility="public" type="{7C26B580-E30D-42e6-8854-15CF672CEEA7}" association="{CF5D59F9-26AE-48ef-87B4-1AFFB60A26DE}">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LlLyoTjOEd6xBaV-OktagA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LlLyoDjOEd6xBaV-OktagA"/>
+        </ownedEnd>
+      </packagedElement>
+      <profileApplication xmi:id="_LitGYTjOEd6xBaV-OktagA">
+        <eAnnotations xmi:id="_LizNADjOEd6xBaV-OktagA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <references xmi:type="ecore:EPackage" href="file:/C:/Diplomarbeit/workspace-eclipse-oaw/jpa.generator/src/main/profile/SimpleJSR220.profile.uml#_JGKygTjOEd6ugfAPTpvhLA"/>
+        </eAnnotations>
+        <appliedProfile href="file:/C:/Diplomarbeit/workspace-eclipse-oaw/jpa.generator/src/main/profile/SimpleJSR220.profile.uml#225f3906-130e-4e77-9b69-7ebb8b1b3d4f"/>
+      </profileApplication>
+    </packagedElement>
+  </uml:Model>
+  <SimpleJSR220:JPAEntity xmi:id="_Lt4boDjOEd6xBaV-OktagA" base_Class="{494271B1-568C-4e47-ABD0-E8EC8CAB2799}"/>
+  <SimpleJSR220:JPAEntity xmi:id="_Lt4boTjOEd6xBaV-OktagA" base_Class="{7C26B580-E30D-42e6-8854-15CF672CEEA7}"/>
+  <SimpleJSR220:Field xmi:id="_Lt4bojjOEd6xBaV-OktagA" base_Property="{98B70946-9BCC-47c2-8AB9-62EE64D2FF00}"/>
+  <SimpleJSR220:Field xmi:id="_Lt4bozjOEd6xBaV-OktagA" base_Property="{2A59D962-9704-4af7-A7A5-865BCAE92BE2}"/>
+</xmi:XMI>

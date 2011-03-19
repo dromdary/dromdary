@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/generated/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/main/model"/>
+	<classpathentry kind="src" path="src/main/profile"/>
+	<classpathentry kind="lib" path="/dromdary.environment/libs/build-dependencies/jakarta-commons/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="/dromdary.environment/libs/build-dependencies/beanvalidation/validation-api-1.0.CR2.jar"/>
+	<classpathentry kind="lib" path="/dromdary.environment/libs/build-dependencies/junit/4.5.0/junit.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="/dromdary.environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-generator-2.1.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/dromdary.environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-reference-2.1.1-SNAPSHOT.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/dromdary.core"/>
+	<classpathentry kind="lib" path="/dromdary.environment/libs/build-dependencies/hibernate/dependencies/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="/dromdary.environment/libs/build-dependencies/fornax/fornax-utilities-formatter-xml-2.0.2-SNAPSHOT.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
