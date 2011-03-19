@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.dromdary.bva.buchkatalog;
+package org.dromdary.bva.bookcatalogue;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 
-import org.dromdary.bva.buchkatalog.IsbnValidator;
+import org.dromdary.bva.bookcatalogue.IsbnValidator;
 
 @Target( {METHOD, FIELD, ANNOTATION_TYPE })
 @Retention(RUNTIME)

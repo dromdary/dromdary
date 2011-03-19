@@ -5,12 +5,12 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.dromdary.bva.buchkatalog;
+package org.dromdary.bva.bookcatalogue;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import org.dromdary.bva.buchkatalog.Isbn;
+import org.dromdary.bva.bookcatalogue.Isbn;
 
 public class IsbnValidator implements ConstraintValidator<Isbn, String> {
 

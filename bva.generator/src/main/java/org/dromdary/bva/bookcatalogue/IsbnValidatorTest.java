@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.dromdary.bva.buchkatalog;
+package org.dromdary.bva.bookcatalogue;
 
 import java.util.Set;
 
@@ -37,7 +37,7 @@ public class IsbnValidatorTest extends TestCase{
 	}
 
 	/**
-	 * Test method for {@link org.dromdary.bva.buchkatalog.IsbnValidator#isValid(java.lang.String, javax.validation.ConstraintValidatorContext)}.
+	 * Test method for {@link org.dromdary.bva.bookcatalogue.IsbnValidator#isValid(java.lang.String, javax.validation.ConstraintValidatorContext)}.
 	 */
 	public void testIsValid() {
 		// test with the oreilly GWT isbn
