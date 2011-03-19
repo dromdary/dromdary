@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="common.exporter" default="exportModelFromEnterpriseArchitect" basedir=".">
+	<description>
+            export the enterprise architect models to emf
+    </description>
+
+	<import file="${basedir}/../environment/build-paths.xml"/>
+	<import file="${basedir}/../environment/build-classpaths.xml"/>
+
+	<property name="destination.project" location="${basedir}"/>
+
+	<property name="database.destination.dir" location="${destination.project}/ddl"/>
+
+	<property name="jpa.generator.dir" location="${basedir}/../jpa.generator"/>
+	<property name="jpa.generator.classes" location="${jpa.generator.dir}/bin"/>
+	
+	<property name="bva.generator.dir" location="${basedir}/../bva.generator"/>
+	<property name="bva.generator.classes" location="${bva.generator.dir}/bin"/>
+
+	<property name="common.exporter.dir" location="${basedir}/../common.exporter"/>
+	<property name="common.exporter.workflow.dir" location="${common.exporter.dir}/wf"/>
+
+	<property name="common.generator.dir" location="${basedir}/../common.generator"/>
+	<property name="common.generator.classes" location="${common.generator.dir}/bin"/>
+	<property name="common.generator.workflow.dir" location="${basedir}/src/main/resources"/>
+
+
+	<taskdef name="workflow" classname="org.eclipse.emf.mwe.core.ant.WorkflowAntTask"/>
+
+	<property name="emfmodel.model" location="${common.exporter.dir}/Model/model.uml"/>
+	<property name="emfprofile.jpa" location="${common.exporter.dir}/Profile/SimpleJSR220.profile.uml"/>
+	<property name="emfprofile.bva" location="${common.exporter.dir}/Profile/SimpleJSR303.profile.uml"/>
+	<property name="emfprofile.bvacustom" location="${common.exporter.dir}/Profile/SimpleJSR303_Buchkatalog.profile.uml"/>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: exportProfilesFromEnterpriseArchitect              
+         - - - - - - - - - - - - - - - - - -->
+    <target name="exportProfilesFromEnterpriseArchitect" >
+    	<description>export the EMF profiles from the Enterprise Architect files</description>
+    	
+		<workflow file="${common.exporter.workflow.dir}\profileExportWorkflow.mwe" classpathref="oawlibs" fork="true">
+			<!-- override the properties in the workflow.properties with full qualified paths -->
+			<param name="profile.jpa.uml_file" value="${emfprofile.jpa}"/>
+			<param name="profile.bva.uml_file" value="${emfprofile.bva}"/>
+			<param name="profile.bva_custom.uml_file" value="${emfprofile.bvacustom}"/>
+		</workflow>
+    </target>
+
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: exportModelFromEnterpriseArchitect              
+         - - - - - - - - - - - - - - - - - -->
+	<target name="exportModelFromEnterpriseArchitect">
+		<description>export the EMF model from the Enterprise Architect files</description>
+		
+		<touch file="${emfmodel.model}"/>
+		
+		<workflow file="${common.exporter.workflow.dir}\modelExportWorkflow.mwe" classpathref="oawlibs" fork="true">
+			<!-- override the properties in the workflow.properties with full qualified paths -->
+			<param name="model.uml_file" value="${emfmodel.model}"/>
+			<param name="profile.jpa.uml_file" value="${emfprofile.jpa}"/>
+			<param name="profile.bva.uml_file" value="${emfprofile.bva}"/>
+			<param name="profile.bva_custom.uml_file" value="${emfprofile.bvacustom}"/>
+		</workflow>
+	</target>
+
+	<!-- ================================= 
+          target: exportModelAndProfilesFromEnterpriseArchitect                      
+         ================================= -->
+    <target name="exportModelAndProfilesFromEnterpriseArchitect" description="export the model and the profiles">
+    	<antcall target="exportProfilesFromEnterpriseArchitect"/>
+    	<antcall target="exportModelFromEnterpriseArchitect"/>
+    </target>
+	
+</project>
