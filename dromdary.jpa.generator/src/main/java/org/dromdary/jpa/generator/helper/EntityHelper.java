@@ -17,7 +17,6 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
-import org.eclipse.uml2.uml.Class;
 
 public class EntityHelper {
 	static String RELATION_TYPE_COMPOSITE = "composite";
