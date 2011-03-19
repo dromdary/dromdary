@@ -1,4 +1,4 @@
-Bundle-SymbolicName: core
+Bundle-SymbolicName: dromdary.core
 Bundle-Version: 1.0.0
 Bundle-Name: core
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
