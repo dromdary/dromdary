@@ -1,6 +1,6 @@
 String getJpaFlag() :
-	JAVA CommonPropertiesHelper.getJpaFlag();
+	JAVA org.dromdary.common.generator.helper.CommonPropertiesHelper.getJpaFlag();
 	
 String getBvaFlag() :
-	JAVA CommonPropertiesHelper.getBvaFlag();
+	JAVA org.dromdary.common.generator.helper.CommonPropertiesHelper.getBvaFlag();
 	
