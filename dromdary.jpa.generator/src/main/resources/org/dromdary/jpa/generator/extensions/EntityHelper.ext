@@ -55,16 +55,4 @@ String getIdAttributeName(uml::Property property) :
 List[uml::Class] getAllClasses(uml::Model model) :
 	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getAllClasses(org.eclipse.uml2.uml.Model);
 	
-//boolean isRelationSourceClass(uml::Class class) :
-//	JAVA org.dromdary.jpa.generator.helper.EntityHelper.isRelationSourceClass(org.eclipse.uml2.uml.Class);
-	
-//boolean isRelationDestinationClass(uml::Class class) :
-//	JAVA org.dromdary.jpa.generator.helper.EntityHelper.isRelationDestinationClass(org.eclipse.uml2.uml.Class);
-
-//String getRelationType(uml::Class class) :
-//	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getRelationType(org.eclipse.uml2.uml.Class);
-	
-//String getMultiplicity(uml::Class class) :
-//	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getMultiplicity(org.eclipse.uml2.uml.Class);
-	
 

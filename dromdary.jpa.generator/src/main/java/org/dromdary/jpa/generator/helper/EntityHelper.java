@@ -17,17 +17,23 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
-import org.eclipse.uml2.uml.internal.impl.ClassImpl;
 
 public class EntityHelper {
-	static String relationTypeComposite = "composite";
-	static String relationTypeAssociation = "association";
-	static String relationTypeAggregation = "aggregation";
-	static String oneToOne = "OneToOne";
-	static String oneToMany = "OneToMany";
-	static String manyToOne = "ManyToOne";
-	static String manyToMany = "ManyToMany";
-
+	static String RELATION_TYPE_COMPOSITE = "composite";
+	static String RELATION_TYPE_ASSOCIATION = "association";
+	static String RELATION_TYPE_AGGREGATION = "aggregation";
+	static String RELATION_ONE_TO_ONE = "OneToOne";
+	static String RELATION_ONE_TO_MANY = "OneToMany";
+	static String RELATION_MANY_TO_ONE = "ManyToOne";
+	static String RELATION_MANY_TO_MANY = "ManyToMany";
+	static String XMI_ATTR_CLASS_IMPL = "ClassImpl";
+	static String XMI_ATTR_ENUM_NAME = "name:";
+	static String XMI_ATTR_ENUM_VISIBILITY = ", visibility";
+	static String XMI_ATTR_ABSTRACT_CLASS = "Abstract";
+	static String XMI_ATTR_STEREOTYPE_JPA_COLUMN = "JPA_ColumnJPA";
+	static String XMI_ATTR_STEREOTYPE_JPA_ID = "JPA_IdJPA";
+	static String XMI_ATTR_ID = "Id";
+	
 	/**
 	 * Pr�fen, ob Attributnamen gesetzt sind und ggf. setzen. Falls Attribut zu
 	 * einer Beziehung geh�rt, werden diese nicht implizit gesetzt. Bsp:
@@ -49,11 +55,10 @@ public class EntityHelper {
 			// Pr�fen ob es sich um eine Klasse oder einen anderen Typ wie
 			// PrimitiveType (String...) handelt
 			if (attributes.get(i).getType().getClass().toString().contains(
-					"ClassImpl")) {
+					XMI_ATTR_CLASS_IMPL)) {
 				if (checkAssociationRelatedElements(umlClass, attributes.get(i))) {
 					addAttributeName(attributes.get(i));
 				}
-
 			}
 		}
 		return "";
@@ -75,16 +80,16 @@ public class EntityHelper {
 			for (int i = 0; i < association.size(); i++) {
 				if (umlProperty.getUpper() == 1) {
 					if (umlProperty.getOtherEnd().getUpper() == -1) {
-						multiplicity = manyToOne;
+						multiplicity = RELATION_MANY_TO_ONE;
 					}
 					if (umlProperty.getOtherEnd().getUpper() == 1) {
-						multiplicity = oneToOne;
+						multiplicity = RELATION_ONE_TO_ONE;
 					}
 				} else if (umlProperty.getUpper() == -1) {
 					if (umlProperty.getOtherEnd().getUpper() == 1) {
-						multiplicity = oneToMany;
+						multiplicity = RELATION_ONE_TO_MANY;
 					} else if (umlProperty.getOtherEnd().getUpper() == -1) {
-						multiplicity = manyToMany;
+						multiplicity = RELATION_MANY_TO_MANY;
 					}
 				}
 			}
@@ -108,23 +113,22 @@ public class EntityHelper {
 			for (int i = 0; i < association.size(); i++) {
 				if (umlProperty.getOtherEnd().getUpper() == 1) {
 					if (umlProperty.getUpper() == -1) {
-						multiplicity = manyToOne;
+						multiplicity = RELATION_MANY_TO_ONE;
 					}
 					if (umlProperty.getUpper() == 1) {
-						multiplicity = oneToOne;
+						multiplicity = RELATION_ONE_TO_ONE;
 					}
 				} else if (umlProperty.getOtherEnd().getUpper() == -1) {
 					if (umlProperty.getUpper() == 1) {
-						multiplicity = oneToMany;
+						multiplicity = RELATION_ONE_TO_MANY;
 					} else if (umlProperty.getUpper() == -1) {
-						multiplicity = manyToMany;
+						multiplicity = RELATION_MANY_TO_MANY;
 					}
 				}
 			}
 		}
 		return multiplicity;
 	}
-
 	
 	/**
 	 * Name des Subpackages auslesen.
@@ -137,7 +141,6 @@ public class EntityHelper {
 		return temp.substring(7, temp.length());
 	}
 
-
 	/**
 	 * Wert des im UML-Modell ausgew�hlten ENUM Werts auslesen.
 	 * 
@@ -146,13 +149,12 @@ public class EntityHelper {
 	 */
 	public static String getEnumValue(String enumString) {
 		String tmp = null;
-		int index1 = enumString.indexOf("name:");
-		int index2 = enumString.indexOf(", visibility");
+		int index1 = enumString.indexOf(XMI_ATTR_ENUM_NAME);
+		int index2 = enumString.indexOf(XMI_ATTR_ENUM_VISIBILITY);
 		if (index1 > 0 && index2 > 0)
 			tmp = enumString.substring(index1 + 6, index2);
 		return tmp;
 	}
-
 
 	/**
 	 * Pr�fen, ob es sich um eine abgeleitete Klasse handelt.
@@ -172,7 +174,6 @@ public class EntityHelper {
 		return flag;
 	}
 
-
 	/**
 	 * Pr�fen, ob Klassenname <code>Abstract</code> enth�lt.
 	 * 
@@ -181,11 +182,10 @@ public class EntityHelper {
 	 */
 	public static boolean isAbstractClass(Class umlClass) {
 		boolean flag = false;
-		if (umlClass.getName().contains("Abstract"))
+		if (umlClass.getName().contains(XMI_ATTR_ABSTRACT_CLASS))
 			flag = true;
 		return flag;
 	}
-
 
 	/**
 	 * Pr�fen, ob in der Klassen des Attributs an irgend einem Attribut die
@@ -200,13 +200,12 @@ public class EntityHelper {
 		for (Property property : properties) {
 			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
 			for (Stereotype stereotype : stereotypes) {
-				if (stereotype.getName().equals("JPA_ColumnJPA"))
+				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_COLUMN))
 					flag = true;
 			}
 		}
 		return flag;
-	}
-	
+	}	
 
 	/**
 	 * Stereotypnamen formatieren. Aus JPA_NameJPA wird JPA_Name.
@@ -232,9 +231,8 @@ public class EntityHelper {
 		for (NamedElement namedElement : elms) {
 			EList<Element> elements = namedElement.allOwnedElements();
 			for (Element element : elements) {
-				if (element instanceof ClassImpl) {
-					ClassImpl impl = (ClassImpl) element;
-					// System.out.println(impl.getName());
+				if (element instanceof Class) {
+					Class impl = (Class) element;
 					classes.add(impl);
 				}
 			}
@@ -252,7 +250,7 @@ public class EntityHelper {
 		boolean flag = false;
 		EList<Property> attributes = umlClass.getAllAttributes();
 		for (Property property : attributes) {
-			if (property.getName().equals("id"))
+			if (property.getName().equals(XMI_ATTR_ID))
 				flag = true;
 			else
 				flag = false;
@@ -272,7 +270,7 @@ public class EntityHelper {
 		for (Property property : attributes) {
 			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
 			for (Stereotype stereotype : stereotypes) {
-				if (stereotype.getName().equals("JPA_IdJPA"))
+				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID))
 					name = property.getName();
 			}
 		}
@@ -291,7 +289,7 @@ public class EntityHelper {
 		for (Property property : attributes) {
 			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
 			for (Stereotype stereotype : stereotypes) {
-				if (stereotype.getName().equals("JPA_IdJPA"))
+				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID))
 					name = property.getName();
 			}
 		}
@@ -310,7 +308,7 @@ public class EntityHelper {
 		for (Property property : attributes) {
 			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
 			for (Stereotype stereotype : stereotypes) {
-				if (stereotype.getName().equals("JPA_IdJPA"))
+				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID))
 					name = property.getType().getName().toUpperCase();
 			}
 		}
@@ -330,7 +328,7 @@ public class EntityHelper {
 		for (Property property : attributes) {
 			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
 			for (Stereotype stereotype : stereotypes) {
-				if (stereotype.getName().equals("JPA_IdJPA"))
+				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID))
 					flag = true;
 			}
 		}
@@ -351,7 +349,7 @@ public class EntityHelper {
 		for (Property property : attributes) {
 			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
 			for (Stereotype stereotype : stereotypes) {
-				if (stereotype.getName().equals("JPA_IdJPA"))
+				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID))
 					flag = true;
 			}
 		}
@@ -359,7 +357,6 @@ public class EntityHelper {
 		return flag;
 	}
 	
-
 	/**
 	 * Alle Attribute, welche mit @Id annotiert sind, als ArrayList zur�ckgeben.
 	 * 
@@ -372,7 +369,7 @@ public class EntityHelper {
 		for (Property property : attributes) {
 			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
 			for (Stereotype stereotype : stereotypes) {
-				if (stereotype.getName().equals("JPA_IdJPA"))
+				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID))
 					list.add(property);
 			}
 		}
@@ -391,7 +388,7 @@ public class EntityHelper {
 		for (Property property : attributes) {
 			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
 			for (Stereotype stereotype : stereotypes) {
-				if (stereotype.getName().equals("JPA_IdJPA"))
+				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID))
 					list.add(property);
 			}
 		}
@@ -411,7 +408,7 @@ public class EntityHelper {
 		for (Property property : attributes) {
 			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
 			for (Stereotype stereotype : stereotypes) {
-				if (stereotype.getName().equals("JPA_IdJPA"))
+				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID))
 					counter++;
 			}
 		}
@@ -435,7 +432,7 @@ public class EntityHelper {
 		for (Property property : attributes) {
 			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
 			for (Stereotype stereotype : stereotypes) {
-				if (stereotype.getName().equals("JPA_IdJPA"))
+				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID))
 					counter++;
 			}
 		}
@@ -486,6 +483,5 @@ public class EntityHelper {
 			return classFoundFlag;
 		} else
 			return classFoundFlag;
-
 	}
 }

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: oAW_UML2Exporter_Test
-Bundle-SymbolicName: jpa.exporter
+Bundle-SymbolicName: dromdary.jpa.exporter
 Bundle-Version: 1.0.0
 Require-Bundle: org.eclipse.xpand;bundle-version="1.0.0",
  org.eclipse.xtend;bundle-version="1.0.0",

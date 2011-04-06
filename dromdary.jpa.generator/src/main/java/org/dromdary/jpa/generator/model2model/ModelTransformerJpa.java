@@ -16,8 +16,8 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
-import org.eclipse.uml2.uml.internal.impl.ClassImpl;
-import org.eclipse.uml2.uml.internal.impl.ModelImpl;
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Model;
 
 /**
  * Die Modell-zu-Modell Transformation ist n�tig, damit die Generatoren (auch
@@ -25,21 +25,20 @@ import org.eclipse.uml2.uml.internal.impl.ModelImpl;
  * andere Stereotypen ausser den JPA-Stereotypen verwendet werden k�nnen. ->
  * evtl. ein Bug des EMF???
  */
-@SuppressWarnings("restriction")
 public class ModelTransformerJpa extends SimpleJavaModificationComponent {
 
 	protected void doModification(WorkflowContext ctx, ProgressMonitor monitor,
 			Issues issues, Object model) {
 
 		try {
-			ModelImpl dm = (ModelImpl) model;
+			Model dm = (Model) model;
 
 			EList<NamedElement> elms = dm.getMembers();
 			for (NamedElement namedElement : elms) {
 				EList<Element> elements = namedElement.allOwnedElements();
 				for (Element element : elements) {
-					if (element instanceof ClassImpl) {
-						ClassImpl impl = (ClassImpl) element;
+					if (element instanceof Class) {
+						Class impl = (Class) element;
 
 						EList<Stereotype> stetyp = impl
 								.getApplicableStereotypes();
