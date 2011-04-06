@@ -14,5 +14,5 @@
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="dromdary.common.exporter"/>
 <booleanAttribute key="org.eclipse.jdt.launching.STOP_IN_MAIN" value="false"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xms40m&#13;&#10;-Xmx256m"/>
-<stringAttribute key="startWorkflow" value="/common.exporter/wf/modelExportWorkflow.mwe"/>
+<stringAttribute key="startWorkflow" value="/dromdary.common.exporter/wf/modelExportWorkflow.mwe"/>
 </launchConfiguration>
