@@ -5,12 +5,12 @@
 <bean class="org.eclipse.xtend.typesystem.uml2.Setup"
 	standardUML2Setup="true" />
 
-<!-- Meta Meta Modell im EMF Format -->
+<!-- Meta Meta Model in EMF Format -->
 <bean id="mm_Emf" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel"> 
       <metaModelPackage value="org.eclipse.emf.ecore.EcorePackage"/> 
 </bean> 
 
-<!-- Meta Meta Modell im UML Format -->	
+<!-- Meta Meta Model in UML Format -->	
 <bean id="mm_uml2"
 	class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel" />
 
@@ -20,13 +20,13 @@
 	<profile value="${profile.persistence.file}" />
 </bean>-->
 
-<!-- Modell einlesen -->
+<!-- read model -->
 <component class="org.eclipse.xtend.typesystem.emf.XmiReader">
 	<modelFile value="${model.file}"/>
 	<outputSlot value="model"/>
 </component>
 
-<!-- Ordner leeren -->
+<!-- clean directory -->
 <component id="dirCleaner"
     class="org.eclipse.emf.mwe.utils.DirectoryCleaner" >
     <directory value="${outlet.src.dir}"/>
@@ -37,7 +37,15 @@
   <modelSlot value="model"/>
 </component>
 
-<!-- Generieren -->
+<!-- PrimitiveTypes model to model transformation -->
+<!-- uncomment following block to enable transformation of package PrimitiveTypes-->
+<!--
+<component class="org.dromdary.bva.generator.model2model.ModelTransformerPrimitiveTypes">
+  	<modelSlot value="model"/>
+</component>
+-->
+
+<!-- generate -->
 <component id="generator"
     class="org.eclipse.xpand2.Generator" skipOnErrors="true" fileEncoding="UTF-8">
     <!-- Meta Meta Modelle -->
@@ -45,7 +53,7 @@
 	<metaModel idRef="mm_uml2" />
 	<!--<metaModel idRef="mm_profile" />-->
 	
-	<!-- Einstiegspunkt fuer das Aspekt Orientierte Template -->
+	<!-- entrypoint of  aspect oriented template -->
 	<advice value="org::dromdary::bva::generator::templates::Aspects" />
 	
 	<!-- - - - - - - - - - - - - - - - -->
@@ -71,23 +79,23 @@
 	<globalVarDef name="javabasic_generateSerialVersionUID"
 				value="${javabasic.generateSerialVersionUID}" />
 	
-	<!-- Einstiegspunkt fuer das Template -->			
+	<!-- entrypoint for template -->			
     <expand value="org::dromdary::bva::generator::templates::Root::Root FOR model"/>
     
-    <!-- Ausgabe der Artefakte, welche nicht modifiziert werden duerfen -->
+    <!-- output of artifacts, not to be modified -->
     <outlet path="${outlet.src.dir}">
 				<fileEncoding value="${file.encoding.output}"/>
 				<postprocessor class="org.eclipse.xpand2.output.JavaBeautifier" />
 	</outlet>   
 	
-	<!-- Ausgabe der Artefakte, welche modifiziert werden duerfen -->
+	<!-- output of artifacts to be modified -->
     <outlet name="outletSrcOnceDir"
 				path="${outlet.src.once.dir}" overwrite="false">
 				<fileEncoding value="${file.encoding.output}"/>
 				<postprocessor class="org.eclipse.xpand2.output.JavaBeautifier" />
 	</outlet>
 
-	<!-- Ausgabe der Artefakte, welche modifiziert werden duerfen -->
+	<!-- output of artifacts which could be modified -->
     <outlet name="outletSrcProtectedDir"
 				path="${outlet.src.protected.dir}" overwrite="false">
 				<fileEncoding value="${file.encoding.output}"/>
