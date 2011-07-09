@@ -62,6 +62,13 @@
 	<globalVarDef name="use_overridden_equals_hashcode_toString" 
 				value="${use.overridden.equals.hashcode.toString}" />
 
+	<globalVarDef name="generate_bva"
+				value="${generate.bva}" />
+	<globalVarDef name="generate_jpa"
+				value="${generate.jpa}" />
+	<globalVarDef name="generate_bva_stereotype"
+				value="${generate.bva.stereotype}" />
+
 	<!-- Einstiegspunkt fuer das Aspekt Orientierte Template -->
 	<advice value="org::dromdary::common::generator::templates::AopEntry" />
 

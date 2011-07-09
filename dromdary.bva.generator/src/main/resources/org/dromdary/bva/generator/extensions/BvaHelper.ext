@@ -1,3 +1,5 @@
+extension org::fornax::cartridges::uml2::javabasic::m2t::Misc;
+
 boolean implTypeOf(Object myObj, String myType): 
 	JAVA  org.dromdary.bva.generator.helper.BvaHelper.implTypeOf(java.lang.Object, java.lang.String);
 
@@ -6,4 +8,11 @@ boolean getTags(Object type1, String type2):
 
 boolean hasTaggedValues(uml::Stereotype st, uml::Element el):
 	JAVA  org.dromdary.bva.generator.helper.BvaHelper.hasTaggedValues(org.eclipse.uml2.uml.Stereotype, org.eclipse.uml2.uml.Element );
+
+cached String getGenerateBvaStereotype():
+	isEmpty(GenerateBvaStereotype()) ? "":GenerateBvaStereotype();
+ 	
+private String GenerateBvaStereotype():
+	GLOBALVAR generate_bva_stereotype;
+	
  	

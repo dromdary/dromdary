@@ -8,7 +8,7 @@
 «REM»Klassenannotationen«ENDREM»
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Entity::classAnnotations FOR uml::Class»
 	«IF getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»
-		«IF getJpaFlag() == "true"»
+		«IF isJpaTrue()»
 			«EXPAND org::dromdary::jpa::generator::templates::Annotations::EntityAnnotations FOR this»
 		«ENDIF»
 	«ENDIF»
@@ -19,17 +19,17 @@
 «REM»Attributannotationen«ENDREM»
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::field FOR uml::Property»
 	«IF class.getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»
-		«IF getBvaFlag() == "true"»
+		«IF isBvaTrue()»
 			«EXPAND org::dromdary::bva::generator::templates::Annotations::propertyAnnotation»
-			«IF getJpaFlag() == "false"»
+			«IF isJpaTrue()»
 				«targetDef.proceed()»
 			«ENDIF»
 		«ENDIF»
-		«IF getJpaFlag() == "true"»
+		«IF isJpaTrue()»
 			«EXPAND org::dromdary::jpa::generator::templates::Annotations::AttributeAnnotations FOR this»
 		«ENDIF»
 	«ELSE»
-		«IF getBvaFlag() == "true"»
+		«IF isBvaTrue()»
 			«EXPAND org::dromdary::bva::generator::templates::Annotations::propertyAnnotation»
 		«ENDIF»
 		«targetDef.proceed()»
@@ -39,11 +39,11 @@
 «REM»Methodenannotationen«ENDREM»
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationAnnotation FOR uml::Operation»
 	«IF class.getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»
-		«IF getJpaFlag() == "true"»
+		«IF isJpaTrue()»
 			«EXPAND org::dromdary::jpa::generator::templates::Annotations::OperationAnnotations FOR this»
 		«ENDIF»
 	«ENDIF»
-	«IF getBvaFlag() == "true"»
+	«IF isBvaTrue()»
 		«EXPAND org::dromdary::bva::generator::templates::Annotations::operationAnnotation»
 	«ENDIF»
 	«targetDef.proceed()»
@@ -51,7 +51,38 @@
 
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentation FOR uml::Classifier»
 	«targetDef.proceed()»
-	«IF getBvaFlag() == "true"»
+	«IF isBvaTrue()»
 		«EXPAND org::dromdary::bva::generator::templates::Annotations::classAnnotation»
 	«ENDIF»
 «ENDAROUND»
+
+«AROUND org::dromdary::bva::generator::templates::Attribute::field FOR uml::Property»
+	«IF class.getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»
+		«IF isBvaTrue()»
+			«EXPAND org::dromdary::bva::generator::templates::Annotations::propertyAnnotation»
+			«IF isJpaTrue()»
+				«targetDef.proceed()»
+			«ENDIF»
+		«ENDIF»
+		«IF isJpaTrue()»
+			«EXPAND org::dromdary::jpa::generator::templates::Annotations::AttributeAnnotations FOR this»
+		«ENDIF»
+	«ELSE»
+		«IF isBvaTrue()»
+			«EXPAND org::dromdary::bva::generator::templates::Annotations::propertyAnnotation»
+		«ENDIF»
+		«targetDef.proceed()»
+	«ENDIF»
+«ENDAROUND»
+
+«AROUND org::dromdary::bva::generator::templates::Attribute::propertyAssignment FOR uml::Property»
+	«IF getAppliedStereotype("SimpleJSR303::ChangeSupport") != null»
+        «getPropertyType()» oldValue = this.«name»;
+        setDirty(true);
+    «ENDIF»
+		«targetDef.proceed()»
+	«IF getAppliedStereotype("SimpleJSR303::ChangeSupport") != null»
+        firePropertyChange("«name»", oldValue, «name»);
+    «ENDIF»
+«ENDAROUND»
+

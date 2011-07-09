@@ -31,7 +31,7 @@
 			«ENDIF»
 		«ENDIF»
 	«ELSE»
-		«IF getJpaFlag() == "true"»
+		«IF isJpaTrue()»
 			«EXPAND org::dromdary::jpa::generator::templates::Entity::JpaEntity FOR this»
 		«ENDIF»
 	«ENDIF»

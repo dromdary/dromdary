@@ -13,7 +13,9 @@
 
 «REM».select(s|s.namespace.name.contains("SimpleJSR303")«ENDREM»
 «DEFINE propertyAnnotation FOR uml::Property-»
-	«FOREACH this.getAppliedStereotypes().select(s|s.namespace.name.contains("SimpleJSR303")) AS stereotype ITERATOR iter1-»
+	«FOREACH this.getAppliedStereotypes().select(s|s.namespace.name.contains("SimpleJSR303")).reject(s|TaggedValue(s.name,"packageName","")==""
+				||  TaggedValue(s.name,"packageName","")==null) AS stereotype ITERATOR iter1-»
+«REM»	«FOREACH this.getAppliedStereotypes().select(s|s.namespace.name.contains("SimpleJSR303")) AS stereotype ITERATOR iter1-»«ENDREM»
 		@«FOREACH stereotype.getAllAttributes() AS tv ITERATOR iterPkg-»«IF tv.name == "packageName"»«TaggedValue(stereotype.name,tv.name,"")»«ENDIF-»«ENDFOREACH-».«stereotype.name-»
 		«FOREACH 
 			stereotype.getAllAttributes().reject(
@@ -43,7 +45,7 @@
 «ENDDEFINE»
 
 «DEFINE classAnnotation FOR uml::Classifier»
-	«FOREACH this.getAppliedStereotypes().select(s|s.namespace.name.contains("SimpleJSR303")) AS stereotype ITERATOR iter1-»
+	«FOREACH this.getAppliedStereotypes().select(s|s.namespace.name.contains("SimpleJSR303")).reject(s|s.getAllAttributes().select(a|a.name.contains("packageName")) == null ) AS stereotype ITERATOR iter1-»
 		@«FOREACH stereotype.getAllAttributes() AS tv ITERATOR iterPkg-»«IF tv.name == "packageName"»«TaggedValue(stereotype.name,tv.name,"")»«ENDIF-»«ENDFOREACH-».«stereotype.name-»
 		«FOREACH 
 			stereotype.getAllAttributes().reject(

@@ -1,0 +1,174 @@
+«REM»xtension of javabasic-cartridge to enable aspect for generation of setters«ENDREM»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::DataType»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+
+/**
+*	Creates the a field for every attribute the uml::Classifier must implement.
+*	All attributes from interfaces this uml::Classifier must implement is included.
+*/
+«DEFINE attribute FOR uml::Classifier»
+	«FOREACH AllAttributes().typeSelect(uml::Property).select(a|!a.isStatic) AS attr»
+		«EXPAND field FOR attr»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+/**
+* 	Creates a static field. The attribute must habe the static option set in the model.
+*/
+«DEFINE staticAttribute FOR uml::Class»
+	«FOREACH attribute.typeSelect(uml::Property).select(a|a.isStatic) AS attr»
+		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentation FOR attr»
+		«attr.VisibilityName()» static «attr.type.fqName()» «attr.name.toUpperCase()» = «attr.type.DefaultValue()»;
+	«ENDFOREACH»
+«ENDDEFINE»
+
+/**
+* 	Creates a static field. The attribute must habe the static option set in the model.
+*/
+«DEFINE staticAttribute FOR uml::Interface»
+	«FOREACH attribute.typeSelect(uml::Property).select(a|a.isStatic) AS attr»
+		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentation FOR attr»
+		static «attr.type.fqName()» «attr.name.toUpperCase()» = «attr.type.DefaultValue()»;
+	«ENDFOREACH»
+«ENDDEFINE»
+
+/**
+* Creates the getter/setter methods for the uml::Classiefier.
+* Here all interface that must be implemented are considered.
+*/
+«DEFINE getterSetter FOR uml::Class»
+	«FOREACH AllAttributes().typeSelect(uml::Property).select(a|!a.isStatic) AS attr»
+		«EXPAND getterSetter FOR attr»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+/**
+* Creates the getter/setter methods for the interface part of an entity.
+* Here all entities that must be implemented are considered.
+*/
+«DEFINE getterSetterInterface FOR uml::Class»
+	«FOREACH AllAttributes().typeSelect(uml::Property).select(a|!a.isStatic) AS attr»
+		«EXPAND getterSetterInterface FOR attr»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+/**
+* Creates a field for the given uml::Property
+*/
+«DEFINE field FOR uml::Property»
+	«IF isNavigable()»
+		«this.VisibilityName()» «getPropertyType()» «name» = «getPropertyTypeImpl()»;
+		«REM»comment
+	 	«IF getUpper() == -1»
+	 		«IF getJavaVersion() > 2»
+	 			private «getCollectiveType()» «name» = new «getCollectiveTypeImpl()»();
+	 		«ELSE»
+	 			private «IF isOrdered»java.util.List«ELSE»java.util.Set«ENDIF» «name» =
+	 				new «IF isOrdered»java.util.ArrayList«ELSE»java.util.HashSet«ENDIF»();
+	 		«ENDIF»
+	 		
+	 	«ELSE»
+	 		«this.VisibilityName()» «type.fqName()» «name» = «NormalizedDefaultValue()»;
+	 	«ENDIF»
+	 	«ENDREM»
+	 «ENDIF»
+«ENDDEFINE»
+
+/**
+* Creates the getter/setter for the  given uml::Property of an interface
+*/
+«DEFINE getterSetterInterface FOR uml::Property»
+	«IF isNavigable()»
+		«IF getUpper() == -1»
+			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationGetter»
+			public «getPropertyType()» «toGetter()»();
+
+			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationSetter»
+			public void «toSetter()»(«getPropertyType()» «name»);
+		«ELSEIF getUpper() == 1»
+			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationGetter»
+		public «type.fqName()» «toGetter()»();
+
+		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationSetter»
+		public void «toSetter()»(«type.fqName()» «name»);
+		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+/**
+* Creates the getter/setter for the given uml::Property
+*/
+«DEFINE getterSetter FOR uml::Property»
+	«IF isNavigable()»
+		«EXPAND getter»
+		«EXPAND setter»
+	«ENDIF»
+«ENDDEFINE»
+
+/**
+* Creates the getter for the given uml::Property
+*/
+«DEFINE getter FOR uml::Property»
+		«IF getUpper() == -1»
+			«EXPAND getterCollection»
+		«ELSEIF getUpper() == 1»
+			«EXPAND getterSimple»
+		«ENDIF»
+«ENDDEFINE»
+
+/**
+* Creates the getter for the given uml::Property
+*/
+«DEFINE getterSimple FOR uml::Property»
+		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationGetter»
+		public «type.fqName()» «toGetter()»(){
+			return «name»;
+		}
+«ENDDEFINE»
+
+/**
+* Creates the getter for the given uml::Property
+*/
+«DEFINE getterCollection FOR uml::Property»
+	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationGetter»
+	public «getPropertyType()» «toGetter()»(){
+		return «name»;
+	}
+«ENDDEFINE»
+
+/**
+* Creates the setter for the given uml::Property
+*/
+«DEFINE setter FOR uml::Property»
+		«IF getUpper() == -1»
+			«EXPAND setterCollection»
+		«ELSEIF getUpper() == 1»
+			«EXPAND setterSimple»
+		«ENDIF»
+«ENDDEFINE»
+
+/**
+* Creates the setter for the given uml::Property
+*/
+«DEFINE setterSimple FOR uml::Property»
+		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationSetter»
+		public void «toSetter()»(«type.fqName()» «name»){
+			«EXPAND propertyAssignment»
+		}
+«ENDDEFINE»
+
+/**
+* Creates the setter for the given uml::Property
+*/
+«DEFINE setterCollection FOR uml::Property»
+	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationSetter»
+	public void «toSetter()»(«getPropertyType()» «name»){
+		«EXPAND propertyAssignment»
+	}		
+«ENDDEFINE»
+
+«DEFINE propertyAssignment FOR uml::Property»
+		this.«name» = «name»;
+«ENDDEFINE»

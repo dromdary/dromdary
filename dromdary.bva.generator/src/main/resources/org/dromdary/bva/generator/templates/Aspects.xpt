@@ -5,6 +5,10 @@
 «REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
 
+«AROUND org::dromdary::bva::generator::templates::Attribute::field FOR uml::Property»
+«EXPAND org::dromdary::bva::generator::templates::Annotations::propertyAnnotation»
+«targetDef.proceed()»
+«ENDAROUND»
 
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::field FOR uml::Property-»
 «EXPAND org::dromdary::bva::generator::templates::Annotations::propertyAnnotation»
@@ -19,4 +23,15 @@
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentation FOR uml::Classifier»
 	«targetDef.proceed()»
 «EXPAND org::dromdary::bva::generator::templates::Annotations::classAnnotation»
+«ENDAROUND»
+
+«AROUND org::dromdary::bva::generator::templates::Attribute::propertyAssignment FOR uml::Property»
+	«IF getAppliedStereotype("BVA_Ext::ChangeSupport") != null»
+        «type.name» oldValue = this.«name»;
+        setDirty(true);
+    «ENDIF»
+		«targetDef.proceed()»
+	«IF getAppliedStereotype("BVA_Ext::ChangeSupport") != null»
+        firePropertyChange("«name»", oldValue, «name»);
+    «ENDIF»
 «ENDAROUND»

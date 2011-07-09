@@ -1,6 +1,24 @@
+extension org::fornax::cartridges::uml2::javabasic::m2t::Misc;
+
 String getJpaFlag() :
 	JAVA org.dromdary.common.generator.helper.CommonPropertiesHelper.getJpaFlag();
 	
 String getBvaFlag() :
 	JAVA org.dromdary.common.generator.helper.CommonPropertiesHelper.getBvaFlag();
+
+cached boolean isJpaTrue() :
+	isEmpty(GenerateJpa()) || 
+		GenerateJpa().toLowerCase() == "false"? 
+		false: true;
+	
+cached boolean isBvaTrue() :
+	isEmpty(GenerateBva()) || 
+		GenerateBva().toLowerCase() == "false"? 
+		false: true;
+	
+private String GenerateBva():
+	GLOBALVAR generate_bva;
+
+private String GenerateJpa():
+	GLOBALVAR generate_jpa;
 	

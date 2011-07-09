@@ -16,7 +16,11 @@
 * Einstiegspunkt, welcher vom Workflow aufgerufen wird
 */
 «DEFINE Root FOR uml::Model»
-	«EXPAND Class FOREACH eAllContents.typeSelect(uml::Class)»
+	«IF !isEmpty(getGenerateBvaStereotype())»
+		«EXPAND Class FOREACH eAllContents.typeSelect(uml::Class).select(e|e.getAppliedStereotypes().name.endsWith(getGenerateBvaStereotype()).contains(true))»
+	«ELSE»
+		«EXPAND Class FOREACH eAllContents.typeSelect(uml::Class)»
+	«ENDIF»	
 	«EXPAND Classifier FOREACH eAllContents.typeSelect(uml::Classifier)»
 	«EXPAND Property FOREACH eAllContents.typeSelect(uml::Property)»
 	«EXPAND Operation FOREACH eAllContents.typeSelect(uml::Operation)»
