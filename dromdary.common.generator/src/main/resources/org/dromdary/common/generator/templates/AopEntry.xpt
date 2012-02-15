@@ -21,7 +21,7 @@
 	«IF class.getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»
 		«IF isBvaTrue()»
 			«EXPAND org::dromdary::bva::generator::templates::Annotations::propertyAnnotation»
-			«IF isJpaTrue()»
+			«IF !isJpaTrue()»
 				«targetDef.proceed()»
 			«ENDIF»
 		«ENDIF»

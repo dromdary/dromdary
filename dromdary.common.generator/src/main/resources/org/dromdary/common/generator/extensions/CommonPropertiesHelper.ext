@@ -8,12 +8,12 @@ String getBvaFlag() :
 
 cached boolean isJpaTrue() :
 	isEmpty(GenerateJpa()) || 
-		GenerateJpa().toLowerCase() == "false"? 
+		GenerateJpa().toLowerCase().matches("false")? 
 		false: true;
 	
 cached boolean isBvaTrue() :
 	isEmpty(GenerateBva()) || 
-		GenerateBva().toLowerCase() == "false"? 
+		GenerateBva().toLowerCase().matches("false")? 
 		false: true;
 	
 private String GenerateBva():
