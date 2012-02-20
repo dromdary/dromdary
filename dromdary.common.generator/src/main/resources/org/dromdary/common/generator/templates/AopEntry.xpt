@@ -4,7 +4,10 @@
 «REM» which accompanies this distribution, and is available at              «ENDREM»
 «REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
 «EXTENSION org::dromdary::common::generator::extensions::CommonPropertiesHelper»
-
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::DataType»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 «REM»Klassenannotationen«ENDREM»
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Entity::classAnnotations FOR uml::Class»
 	«IF getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»
