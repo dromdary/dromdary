@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="common.generator.clean">
 
-	<import file="${basedir}/../environment/build-paths.xml"/>
-	<import file="${basedir}/../environment/build-classpaths.xml"/>
-	<import file="${basedir}/../common.exporter/build.xml"/>
+	<import file="${basedir}/../dromdary.environment/build-paths.xml"/>
+	<import file="${basedir}/../dromdary.environment/build-classpaths.xml"/>
+	<import file="${basedir}/../dromdary.common.exporter/build.xml"/>
 	
 	<property name="destination.project" location="${basedir}"/>
 

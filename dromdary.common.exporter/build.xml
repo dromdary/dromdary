@@ -4,28 +4,28 @@
             export the enterprise architect models to emf
     </description>
 
-	<import file="${basedir}/../environment/build-paths.xml"/>
-	<import file="${basedir}/../environment/build-classpaths.xml"/>
+	<import file="${basedir}/../dromdary.environment/build-paths.xml"/>
+	<import file="${basedir}/../dromdary.environment/build-classpaths.xml"/>
 
 	<property name="destination.project" location="${basedir}"/>
 
 	<property name="database.destination.dir" location="${destination.project}/ddl"/>
 
-	<property name="jpa.generator.dir" location="${basedir}/../jpa.generator"/>
+	<property name="jpa.generator.dir" location="${basedir}/../dromdary.jpa.generator"/>
 	<property name="jpa.generator.classes" location="${jpa.generator.dir}/bin"/>
 	
-	<property name="bva.generator.dir" location="${basedir}/../bva.generator"/>
+	<property name="bva.generator.dir" location="${basedir}/../dromdary.bva.generator"/>
 	<property name="bva.generator.classes" location="${bva.generator.dir}/bin"/>
 
-	<property name="common.exporter.dir" location="${basedir}/../common.exporter"/>
+	<property name="common.exporter.dir" location="${basedir}/../dromdary.common.exporter"/>
 	<property name="common.exporter.workflow.dir" location="${common.exporter.dir}/wf"/>
 
-	<property name="common.generator.dir" location="${basedir}/../common.generator"/>
+	<property name="common.generator.dir" location="${basedir}/../dromdary.common.generator"/>
 	<property name="common.generator.classes" location="${common.generator.dir}/bin"/>
 	<property name="common.generator.workflow.dir" location="${basedir}/src/main/resources"/>
 
 
-	<taskdef name="workflow" classname="org.eclipse.emf.mwe.core.ant.WorkflowAntTask"/>
+	<!--<taskdef name="workflow" classname="org.eclipse.emf.mwe.core.ant.WorkflowAntTask"/>-->
 
 	<property name="emfmodel.model" location="${common.exporter.dir}/Model/model.uml"/>
 	<property name="emfprofile.jpa" location="${common.exporter.dir}/Profile/SimpleJSR220.profile.uml"/>

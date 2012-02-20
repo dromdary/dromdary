@@ -32,5 +32,6 @@
 	<classpathentry kind="lib" path="/dromdary.environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-generator-2.1.1-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="/dromdary.environment/libs/build-dependencies/fornax/fornax-cartridges-uml2-javabasic-reference-2.1.1-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="/dromdary.environment/libs/build-dependencies/fornax/fornax-utilities-formatter-xml-2.0.2-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/dromdary.environment/libs/build-dependencies/eclipse/org.eclipse.emf.mwe.core_1.0.0.v201006150535.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

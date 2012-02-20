@@ -4,24 +4,24 @@
             description
     </description>
 
-	<import file="${basedir}/../environment/build-paths.xml"/>
-	<import file="${basedir}/../environment/build-classpaths.xml"/>
-	<import file="${basedir}/../common.exporter/build.xml"/>
+	<import file="${basedir}/../dromdary.environment/build-paths.xml"/>
+	<import file="${basedir}/../dromdary.environment/build-classpaths.xml"/>
+	<import file="${basedir}/../dromdary.common.exporter/build.xml"/>
 	
 	<property name="destination.project" location="${basedir}"/>
 
 	<property name="database.destination.dir" location="${destination.project}/ddl"/>
 	
-	<property name="jpa.generator.dir" location="${basedir}/../jpa.generator"/>
+	<property name="jpa.generator.dir" location="${basedir}/../dromdary.jpa.generator"/>
 	<property name="jpa.generator.classes" location="${jpa.generator.dir}/bin"/>
 	
-	<property name="bva.generator.dir" location="${basedir}/../bva.generator"/>
+	<property name="bva.generator.dir" location="${basedir}/../dromdary.bva.generator"/>
 	<property name="bva.generator.classes" location="${bva.generator.dir}/bin"/>
 
-	<property name="common.exporter.dir" location="${basedir}/../common.exporter"/>
-	<property name="common.exporter.workflow.dir" location="${common.exporter.dir}/oaw"/>
+	<property name="common.exporter.dir" location="${basedir}/../dromdary.common.exporter"/>
+	<property name="common.exporter.workflow.dir" location="${common.exporter.dir}/wf"/>
 
-	<property name="common.generator.dir" location="${basedir}/../common.generator"/>
+	<property name="common.generator.dir" location="${basedir}/../dromdary.common.generator"/>
 	<property name="common.generator.classes" location="${common.generator.dir}/bin"/>
 	<property name="common.generator.workflow.dir" location="${basedir}/src/main/resources/"/>
 
@@ -35,13 +35,13 @@
          - - - - - - - - - - - - - - - - - -->
     <target name="importDDLinDb">
     	<echo>Startup and if necessary create DB</echo>
-    	<java jar="${basedir}/lib/derby/10.5.1.1/derbyrun.jar" fork="true">
+    	<java jar="${basedir}/../dromdary.environment/libs/build-dependencies/derby/10.5.1.1/derbyrun.jar" fork="true">
     		<jvmarg value="-Dij.connection.miadbconn=jdbc:derby:miadb"/>
     		<jvmarg value="-Dderby.system.home=${database.destination.dir}"/>
 		</java>
     	
     	<echo>Import DDL</echo>
-    	<java classname="org.apache.derby.tools.ij" classpath="${basedir}/lib/derby/10.5.1.1/derbytools.jar" inputstring="${database.destination.dir}/sql.ddl" failonerror="true" >
+    	<java classname="org.apache.derby.tools.ij" classpath="${basedir}/../dromdary.environment/libs/build-dependencies/derby/10.5.1.1/derbytools.jar" inputstring="${database.destination.dir}/sql.ddl" failonerror="true" >
     	</java>
     </target>
 
@@ -64,9 +64,7 @@
 			<hbm2ddl export="false" outputfilename="sql.ddl" />
 		</hibernatetool>
     </target>
-
-	
-	<taskdef name="workflow" classname="org.eclipse.emf.mwe.core.ant.WorkflowAntTask"/>
+	<!--<taskdef name="workflow" classname="org.eclipse.emf.mwe.core.ant.WorkflowAntTask"/>-->
 
 	<!-- ================================= 
           target: generateFull

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="build-path">
 
-	<property name="environment.dir" location="${basedir}/../environment"/>
+	<property name="environment.dir" location="${basedir}/../dromdary.environment"/>
 	<property name="libs.dir" location="${environment.dir}/libs"/>
 
 
