@@ -1,0 +1,24 @@
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::DataType»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+
+/**
+*generate generalization from impl
+*/
+«DEFINE abstractClassEntityDefine FOR uml::Class»
+	public abstract class «abstractClassName(name)»
+		«EXPAND generalizationEntityAbstract» implements «interfaceName(name)»{
+«ENDDEFINE»
+
+«DEFINE generalizationEntityAbstract FOR uml::Class»
+	«IF !generalization.isEmpty»
+		«LET ((uml::Generalization) generalization.get(0)).general AS gen»
+		«IF gen.getAppliedStereotypes().isEmpty»
+			extends «gen.fqName()»
+		«ELSE»
+			extends «gen.getFQNPackageName()+"."+implementationClassName(gen.name)»
+		«ENDIF»
+		«ENDLET»
+	«ENDIF»
+«ENDDEFINE»

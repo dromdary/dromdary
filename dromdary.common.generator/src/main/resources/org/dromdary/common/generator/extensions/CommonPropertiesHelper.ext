@@ -15,6 +15,18 @@ cached boolean isBvaTrue() :
 	isEmpty(GenerateBva()) || 
 		GenerateBva().toLowerCase().matches("false")? 
 		false: true;
+		
+		String implHierarchy() :
+	JAVA org.dromdary.common.generator.helper.CommonPropertiesHelper.implHierarchy();
+	
+private String GetGeneralization():
+	GLOBALVAR impl_generalization;
+	
+	cached boolean isImpHierarchy() :
+	isEmpty(GetGeneralization()) || 
+		GetGeneralization().toLowerCase().matches("false")? 
+		false: true;
+		
 	
 private String GenerateBva():
 	GLOBALVAR generate_bva;

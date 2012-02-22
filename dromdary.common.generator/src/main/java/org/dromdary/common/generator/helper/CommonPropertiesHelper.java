@@ -20,4 +20,12 @@ public class CommonPropertiesHelper {
 		properties.load(new FileInputStream(COMMON_PROPERTIES_PATH));
 		return properties.getProperty(PROPERTY_GENERATE_BVA);
 	}
+	
+
+	public static String PROPERTY_IMPL_GENERALIZATION = "impl.generalization";
+	public static String implHierarchy() throws FileNotFoundException, IOException {
+		Properties properties = new Properties();
+		properties.load(new FileInputStream(COMMON_PROPERTIES_PATH));
+		return properties.getProperty(PROPERTY_IMPL_GENERALIZATION);
+	}
 }

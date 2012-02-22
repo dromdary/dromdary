@@ -12,7 +12,7 @@
 «REM»Einstiegspunkt, welcher vom Workflow aufgerufen wird und entsprechend weitere Templates aufrufen.«ENDREM» 
 «DEFINE Root FOR uml::Model»
 	«("Generating Java Files with JPA Annotations").info() -> ""»
-	«EXPAND Entity::JpaEntity FOREACH eAllContents.typeSelect(uml::Class)»
+	«EXPAND Entity::JpaEntity(true) FOREACH eAllContents.typeSelect(uml::Class)»
 	«EXPAND PersistenceXML::PersistenceXML FOR this»	
 	«EXPAND GenericCRUD::GenericCRUD FOR this»
 	«EXPAND JpaUtil::JpaUtil FOR this»

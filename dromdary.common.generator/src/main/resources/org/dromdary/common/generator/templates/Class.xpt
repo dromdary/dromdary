@@ -32,7 +32,7 @@
 		«ENDIF»
 	«ELSE»
 		«IF isJpaTrue()»
-			«EXPAND org::dromdary::jpa::generator::templates::Entity::JpaEntity FOR this»
+			«EXPAND org::dromdary::jpa::generator::templates::Entity::JpaEntity(isImpHierarchy()) FOR this»
 		«ENDIF»
 	«ENDIF»
 	

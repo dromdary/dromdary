@@ -12,21 +12,21 @@
 «EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
 «EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
 
+
 «REM»Generieren der Entities. Template wird für jede Entity aufgerufen.«ENDREM»
-«DEFINE JpaEntity FOR uml::Class»
-	
+«DEFINE JpaEntity(boolean implHierarchy) FOR uml::Class»
 	«REM»Prüfen, ob aktuelle Klasse mit dem Stereotyp Entity ausgezeichnet ist«ENDREM»
 	«IF getAppliedStereotype("SimpleJSR220::JPA_Entity")!=null»	
 		
 		«REM»Prüfen, ob Attributnamen gesetzt sind und ggf. setzen. 
 		Falls Attribut zu einer Beziehung gehört, werden diese nicht implizit gesetzt (durch UML2Exporter).«ENDREM»
 		«checkAttributeName()»
-		«EXPAND File FOR this»
+		«EXPAND File(implHierarchy) FOR this»
 	«ENDIF»
 «ENDDEFINE»
 
 «REM»Java Dateien inkl. Inhalt erzeugen.«ENDREM»
-«DEFINE File FOR uml::Class»
+«DEFINE File(boolean implHierarchy) FOR uml::Class»
 		
 		«REM»Generieren des Entity Interfaces.«ENDREM»
 		«FILE getFQNPackagePath()+"/"+interfaceName(name)+".java"»
@@ -46,7 +46,11 @@
 		«FILE getFQNPackagePath()+"/"+abstractClassName(name)+".java"»
 			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::head»
 			«EXPAND Annotation FOR this»
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityDefine»				
+			«IF implHierarchy»
+				«EXPAND AbstractGeneration::abstractClassEntityDefine»
+			«ELSE»
+				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityDefine»
+			«ENDIF»		
 				«IF !isId()»
 					«EXPAND IdAbstractAttr FOR this»
 				«ENDIF»
