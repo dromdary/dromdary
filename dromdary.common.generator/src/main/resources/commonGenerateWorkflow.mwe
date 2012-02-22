@@ -71,6 +71,8 @@
 				value="${generate.bva.stereotype}" />
 	<globalVarDef name="impl_generalization"
 				value="${impl.generalization}" />
+	<globalVarDef name="not_entity_class"
+				value="${not.entity.class}" />
 
 	<!-- Einstiegspunkt fuer das Aspekt Orientierte Template -->
 	<advice value="org::dromdary::common::generator::templates::AopEntry" />

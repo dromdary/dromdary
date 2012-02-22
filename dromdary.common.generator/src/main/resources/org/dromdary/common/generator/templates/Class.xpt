@@ -16,7 +16,7 @@
 	«REM»Prüfen, ob aktuelle Klasse mit dem Stereotyp JPA_Entity ausgezeichnet ist.
 	Falls nein, Javabasic Cartridge normal aufrufen. 
 	Falls ja, die JPA-Cartridge aufrufen«ENDREM»
-	«IF getAppliedStereotype("SimpleJSR220::JPA_Entity") == null»	
+	«IF getAppliedStereotype("SimpleJSR220::JPA_Entity") == null && isGenerateNotEntity()»	
 		«IF isException()»
 			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Exception::exception(false)»
 		«ELSE»

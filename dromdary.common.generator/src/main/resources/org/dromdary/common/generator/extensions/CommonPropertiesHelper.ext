@@ -5,7 +5,13 @@ String getJpaFlag() :
 	
 String getBvaFlag() :
 	JAVA org.dromdary.common.generator.helper.CommonPropertiesHelper.getBvaFlag();
-
+	
+String implHierarchy() :		
+	JAVA org.dromdary.common.generator.helper.CommonPropertiesHelper.implHierarchy();
+	
+String generateNotEntity() :		
+	JAVA org.dromdary.common.generator.helper.CommonPropertiesHelper.generateNotEntity();
+	
 cached boolean isJpaTrue() :
 	isEmpty(GenerateJpa()) || 
 		GenerateJpa().toLowerCase().matches("false")? 
@@ -16,21 +22,24 @@ cached boolean isBvaTrue() :
 		GenerateBva().toLowerCase().matches("false")? 
 		false: true;
 		
-		String implHierarchy() :
-	JAVA org.dromdary.common.generator.helper.CommonPropertiesHelper.implHierarchy();
-	
-private String GetGeneralization():
-	GLOBALVAR impl_generalization;
-	
-	cached boolean isImpHierarchy() :
+cached boolean isImpHierarchy() :
 	isEmpty(GetGeneralization()) || 
 		GetGeneralization().toLowerCase().matches("false")? 
 		false: true;
 		
+cached boolean isGenerateNotEntity() :
+	isEmpty(GetGenerateNotEntity()) || 
+		GetGenerateNotEntity().toLowerCase().matches("true")? 
+		true: false;
 	
 private String GenerateBva():
 	GLOBALVAR generate_bva;
 
 private String GenerateJpa():
 	GLOBALVAR generate_jpa;
+
+private String GetGeneralization():
+	GLOBALVAR impl_generalization;
 	
+private String GetGenerateNotEntity():
+	GLOBALVAR not_entity_class;
