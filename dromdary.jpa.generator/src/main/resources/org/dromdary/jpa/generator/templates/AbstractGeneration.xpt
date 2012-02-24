@@ -4,21 +4,30 @@
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
 
 /**
-*generate generalization from impl
+*generate generalization from impl, if the superclass is not abstract
 */
-«DEFINE abstractClassEntityDefine FOR uml::Class»
-	public abstract class «abstractClassName(name)»
-		«EXPAND generalizationEntityAbstract» implements «interfaceName(name)»{
-«ENDDEFINE»
-
-«DEFINE generalizationEntityAbstract FOR uml::Class»
-	«IF !generalization.isEmpty»
-		«LET ((uml::Generalization) generalization.get(0)).general AS gen»
-		«IF gen.getAppliedStereotypes().isEmpty»
-			extends «gen.fqName()»
+«DEFINE abstractClassEntityDefine(boolean isImplHierarchy) FOR uml::Class»
+	«IF isImplHierarchy»
+		«IF !generalization.isEmpty && !((uml::Generalization) generalization.get(0)).general.isAbstract»
+			«LET ((uml::Generalization) generalization.get(0)).general AS gen»
+			«EXPAND generalizationEntityAbstract(gen)» implements «interfaceName(name)»{
+			«ENDLET»
 		«ELSE»
-			extends «gen.getFQNPackageName()+"."+implementationClassName(gen.name)»
+			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityDefine»
 		«ENDIF»
-		«ENDLET»
+	«ELSE»
+		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityDefine»
 	«ENDIF»
 «ENDDEFINE»
+
+«DEFINE generalizationEntityAbstract(uml::Classifier gen) FOR uml::Class»
+	public abstract class «abstractClassName(name)»
+	«IF gen.getAppliedStereotypes().isEmpty»
+		extends «gen.fqName()»
+	«ELSE»
+		extends «gen.getFQNPackageName()+"."+implementationClassName(gen.name)»
+	«ENDIF»
+«ENDDEFINE»
+
+
+

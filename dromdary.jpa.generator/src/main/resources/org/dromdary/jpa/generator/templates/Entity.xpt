@@ -47,7 +47,7 @@
 			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::head»
 			«EXPAND Annotation FOR this»
 			«IF implHierarchy»
-				«EXPAND AbstractGeneration::abstractClassEntityDefine»
+				«EXPAND AbstractGeneration::abstractClassEntityDefine(implHierarchy)»
 			«ELSE»
 				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityDefine»
 			«ENDIF»		
@@ -76,17 +76,19 @@
 		«ENDFILE»
 		
 		«REM»Generieren der Entity-Implementierungsklasse.«ENDREM»
-		«FILE getFQNPackagePath()+"/"+implementationClassName(name)+".java" outletSrcOnceDir»		
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::head»
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::basicClassEntityDefine»
-				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::SerialVersionUID::serialVersionUIDField»
-				«IF getInterfaceOperationImplementationStrategy() == "use_abstract_method"»					
-					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBaseImpl(true)»						
-				«ELSEIF getInterfaceOperationImplementationStrategy() == "none"»					
-					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBaseImpl»					
-				«ENDIF»		
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::basicClassEntityEndDefine»		
-		«ENDFILE»		
+		«IF !isAbstract»	
+			«FILE getFQNPackagePath()+"/"+implementationClassName(name)+".java" outletSrcOnceDir»		
+				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::head»
+				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::basicClassEntityDefine»
+					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::SerialVersionUID::serialVersionUIDField»
+					«IF getInterfaceOperationImplementationStrategy() == "use_abstract_method"»					
+						«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBaseImpl(true)»						
+					«ELSEIF getInterfaceOperationImplementationStrategy() == "none"»					
+						«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBaseImpl»					
+					«ENDIF»		
+				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::basicClassEntityEndDefine»		
+			«ENDFILE»
+		«ENDIF»		
 «ENDDEFINE»
 
 
