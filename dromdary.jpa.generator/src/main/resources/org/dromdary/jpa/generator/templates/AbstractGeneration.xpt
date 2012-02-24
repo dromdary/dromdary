@@ -2,13 +2,19 @@
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::DataType»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-
+«EXTENSION org::dromdary::jpa::generator::extensions::AbstractGenerationHelper»
 /**
 *generate generalization from impl, if the superclass is not abstract
 */
 «DEFINE abstractClassEntityDefine FOR uml::Class»
 		«IF !generalization.isEmpty && !((uml::Generalization) generalization.get(0)).general.isAbstract»
 			«LET ((uml::Generalization) generalization.get(0)).general AS gen»
+			//diese IF-Abfrage soll nach der Annotation in den Vaterklassen schauen. Funktioniert nicht.
+			//der restliche Code ist ohne diese Abfrage funktionsfähig.
+				«IF isMappedSuperclass(gen)»
+					@MappedSupperclass
+				«ENDIF»
+				
 			«EXPAND generalizationEntityAbstract(gen)» implements «interfaceName(name)»{
 			«ENDLET»
 		«ELSE»
