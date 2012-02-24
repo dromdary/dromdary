@@ -47,7 +47,7 @@
 			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::head»
 			«EXPAND Annotation FOR this»
 			«IF implHierarchy»
-				«EXPAND AbstractGeneration::abstractClassEntityDefine(implHierarchy)»
+				«EXPAND AbstractGeneration::abstractClassEntityDefine»
 			«ELSE»
 				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityDefine»
 			«ENDIF»		

@@ -6,8 +6,7 @@
 /**
 *generate generalization from impl, if the superclass is not abstract
 */
-«DEFINE abstractClassEntityDefine(boolean isImplHierarchy) FOR uml::Class»
-	«IF isImplHierarchy»
+«DEFINE abstractClassEntityDefine FOR uml::Class»
 		«IF !generalization.isEmpty && !((uml::Generalization) generalization.get(0)).general.isAbstract»
 			«LET ((uml::Generalization) generalization.get(0)).general AS gen»
 			«EXPAND generalizationEntityAbstract(gen)» implements «interfaceName(name)»{
@@ -15,9 +14,6 @@
 		«ELSE»
 			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityDefine»
 		«ENDIF»
-	«ELSE»
-		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityDefine»
-	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE generalizationEntityAbstract(uml::Classifier gen) FOR uml::Class»
