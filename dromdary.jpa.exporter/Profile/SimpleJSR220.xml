@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<UMLProfile profiletype="uml2">
+	<Documentation id="44584785-B" name="SimpleJSR220" version="1.0" notes="SimpleJSR220"/>
+	<Content>
+		<Stereotypes>
+			<Stereotype name="JPA_Entity" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="isActive" type="String" description="" unit="" values="" default="true"/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_AssociationOverride" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="joinColumns" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_AssociationOverrides" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_AttributeOverride" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="column" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_AttributeOverrides" notes="">
+				<AppliesTo>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+					<Apply type="Attribute"/>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_Basic" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="fetch" type="String" description="" unit="" values="" default=""/>
+					<Tag name="optional" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_Column" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="columnDefinition" type="String" description="" unit="" values="" default=""/>
+					<Tag name="insertable" type="String" description="" unit="" values="" default=""/>
+					<Tag name="length" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="nullable" type="String" description="" unit="" values="" default=""/>
+					<Tag name="precision" type="String" description="" unit="" values="" default=""/>
+					<Tag name="scale" type="String" description="" unit="" values="" default=""/>
+					<Tag name="table" type="String" description="" unit="" values="" default=""/>
+					<Tag name="unique" type="String" description="" unit="" values="" default=""/>
+					<Tag name="updateable" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_ColumnResult" notes="">
+				<TaggedValues>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_DiscriminatorColumn" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="columnDefinition" type="String" description="" unit="" values="" default=""/>
+					<Tag name="discriminatorType" type="enumeration" description="" unit="" values="CHAR,INTEGER,STRING" default=""/>
+					<Tag name="length" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_DiscriminatorValue" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_Embeddable" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_Embedded" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_EmbeddedId" notes="">
+				<AppliesTo>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+					<Apply type="Attribute"/>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_EntityListeners" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_EntityResult" notes="">
+				<TaggedValues>
+					<Tag name="discriminatorColumn" type="String" description="" unit="" values="" default=""/>
+					<Tag name="entityClass" type="String" description="" unit="" values="" default=""/>
+					<Tag name="fields" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_Enumerated" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_ExcludeDefaultListeners" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_ExcludeSuperclassListeners" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_FieldResult" notes="">
+				<TaggedValues>
+					<Tag name="column" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_GeneratedValue" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="generator" type="enumeration" description="" unit="" values="AUTO,IDENTITY,SEQUENCE,TABLE" default=""/>
+					<Tag name="strategy" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_Id" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_IdClass" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_Inheritance" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="strategy" type="enumeration" description="" unit="" values="JOINED,SINGLE_TABLE,TABLE_PER_CLASS" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_JoinColumn" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="columnDefinition" type="String" description="" unit="" values="" default=""/>
+					<Tag name="insertable" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="nullable" type="String" description="" unit="" values="" default=""/>
+					<Tag name="referencedColumnName" type="String" description="" unit="" values="" default=""/>
+					<Tag name="table" type="String" description="" unit="" values="" default=""/>
+					<Tag name="unique" type="String" description="" unit="" values="" default=""/>
+					<Tag name="updateable" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_JoinColumns" notes="">
+				<AppliesTo>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+					<Apply type="Attribute"/>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_JoinTable" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="catalog" type="String" description="" unit="" values="" default=""/>
+					<Tag name="inverseJoinColumns" type="String" description="" unit="" values="" default=""/>
+					<Tag name="joinColumns" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="schema" type="String" description="" unit="" values="" default=""/>
+					<Tag name="uniqueConstraints" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_Lob" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_MapKey" notes="">
+				<AppliesTo>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+					<Apply type="Attribute"/>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_MappedSupperclass" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_NamedNativeQueries" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_NamedNativeQuery" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="hints" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="query" type="String" description="" unit="" values="" default=""/>
+					<Tag name="resultClass" type="String" description="" unit="" values="" default=""/>
+					<Tag name="resultSetMapping" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_NamedQueries" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_NamedQuery" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="hints" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="query" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_OrderBy" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_PersistenceContext" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="properties" type="String" description="" unit="" values="" default=""/>
+					<Tag name="type" type="String" description="" unit="" values="" default=""/>
+					<Tag name="unitName" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_PersistenceContexts" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_PersistenceProperty" notes="">
+				<TaggedValues>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_PersistenceUnit" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="unitName" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_PersistenceUnits" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_PostLoad" notes="">
+				<AppliesTo>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_PostPersist" notes="">
+				<AppliesTo>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_PostRemove" notes="">
+				<AppliesTo>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_PostUpdate" notes="">
+				<AppliesTo>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_PrePersist" notes="">
+				<AppliesTo>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_PreRemove" notes="">
+				<AppliesTo>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_PreUpdate" notes="">
+				<AppliesTo>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_PrimaryKeyJoinColumn" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+					<Apply type="Attribute"/>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="columnDefinition" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="referencedColumnName" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_PrimaryKeyJoinColumns" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_QueryHint" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_SecondaryTable" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="catalog" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="pkJoinColumns" type="String" description="" unit="" values="" default=""/>
+					<Tag name="schema" type="String" description="" unit="" values="" default=""/>
+					<Tag name="uniqueConstraints" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_SecondaryTables" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_SequenceGenerator" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="allocationSize" type="String" description="" unit="" values="" default=""/>
+					<Tag name="initialValue" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="sequenceName" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_SqlResultSetMapping" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="columns" type="String" description="" unit="" values="" default=""/>
+					<Tag name="entities" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_SqlResultSetMappings" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_Table" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="catalog" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="schema" type="String" description="" unit="" values="" default=""/>
+					<Tag name="uniqueConstraints" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_TableGenerator" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="allocationSize" type="String" description="" unit="" values="" default=""/>
+					<Tag name="catalog" type="String" description="" unit="" values="" default=""/>
+					<Tag name="initialValue" type="String" description="" unit="" values="" default=""/>
+					<Tag name="name" type="String" description="" unit="" values="" default=""/>
+					<Tag name="okColumnName" type="String" description="" unit="" values="" default=""/>
+					<Tag name="pkColumnValue" type="String" description="" unit="" values="" default=""/>
+					<Tag name="schema" type="String" description="" unit="" values="" default=""/>
+					<Tag name="table" type="String" description="" unit="" values="" default=""/>
+					<Tag name="uniqueConstraints" type="String" description="" unit="" values="" default=""/>
+					<Tag name="valueColumnName" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_Temporal" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="value" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_Transient" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_UniqueConstraint" notes="">
+				<AppliesTo>
+					<Apply type="Class">
+						<Property name="isActive" value=""/>
+					</Apply>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="columnNames" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_Version" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="JPA_ManyToMany" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="cascade" type="enumeration" description="" unit="" values="ALL,MERGE,PERSIST,REFRESH,REMOVE" default=""/>
+					<Tag name="fetch" type="enumeration" description="" unit="" values="EAGER,LAZY" default=""/>
+					<Tag name="mappedBy" type="String" description="" unit="" values="" default=""/>
+					<Tag name="targetEntity" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_ManyToOne" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="cascade" type="enumeration" description="" unit="" values="ALL,MERGE,PERSIST,REFRESH,REMOVE" default=""/>
+					<Tag name="fetch" type="enumeration" description="" unit="" values="EAGER,LAZY" default=""/>
+					<Tag name="mappedBy" type="String" description="" unit="" values="" default=""/>
+					<Tag name="targetEntity" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_OneToMany" notes="">
+				<AppliesTo>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+					<Apply type="Attribute"/>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="cascade" type="enumeration" description="" unit="" values="ALL,MERGE,PERSIST,REFRESH,REMOVE" default=""/>
+					<Tag name="fetch" type="enumeration" description="" unit="" values="EAGER,LAZY" default=""/>
+					<Tag name="mappedBy" type="String" description="" unit="" values="" default=""/>
+					<Tag name="targetEntity" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="JPA_OneToOne" notes="">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+					<Apply type="Operation">
+						<Property name="isOrdered" value=""/>
+						<Property name="isQuery" value="false"/>
+						<Property name="isUnique" value=""/>
+						<Property name="lower" value=""/>
+						<Property name="upper" value=""/>
+					</Apply>
+				</AppliesTo>
+				<TaggedValues>
+					<Tag name="cascade" type="enumeration" description="" unit="" values="ALL,MERGE,PERSIST,REFRESH,REMOVE" default=""/>
+					<Tag name="fetch" type="enumeration" description="" unit="" values="EAGER,LAZY" default=""/>
+					<Tag name="mappedBy" type="String" description="" unit="" values="" default=""/>
+					<Tag name="targetEntity" type="String" description="" unit="" values="" default=""/>
+				</TaggedValues>
+			</Stereotype>
+		</Stereotypes>
+		<TaggedValueTypes/>
+	</Content>
+</UMLProfile>
