@@ -10,6 +10,7 @@
 <stringAttribute key="org.eclipse.debug.ui.ATTR_CONSOLE_ENCODING" value="UTF-8"/>
 <listAttribute key="org.eclipse.debug.ui.favoriteGroups">
 <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
+<listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="dromdary.common.exporter"/>
 <booleanAttribute key="org.eclipse.jdt.launching.STOP_IN_MAIN" value="false"/>
