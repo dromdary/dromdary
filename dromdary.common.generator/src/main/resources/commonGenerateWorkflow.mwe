@@ -37,6 +37,12 @@
   	<modelSlot value="model"/>
 </component>
 
+<!-- PrimitiveTypes model to model transformation -->
+<!-- uncomment following block to enable transformation of package PrimitiveTypes-->
+<component class="org.dromdary.bva.generator.model2model.ModelTransformerPrimitiveTypes">
+  	<modelSlot value="model"/>
+</component>
+
 <!-- Generieren -->
 <component id="generator"
     class="org.eclipse.xpand2.Generator" skipOnErrors="true" fileEncoding="UTF-8">

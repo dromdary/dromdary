@@ -5,22 +5,43 @@
 «REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
 «EXTENSION org::dromdary::common::generator::extensions::CommonPropertiesHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::dromdary::common::generator::extensions::NameHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::DataType»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
-«REM»Klassenannotationen«ENDREM»
+«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
+
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Entity::classAnnotations FOR uml::Class»
 	«IF getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»
 		«IF isJpaTrue()»
-			«EXPAND org::dromdary::jpa::generator::templates::Annotations::EntityAnnotations FOR this»
+			«EXPAND org::dromdary::jpa::generator::templates::Annotations::entityAnnotations FOR this»
 		«ENDIF»
 	«ENDIF»
 	
 	«targetDef.proceed()»
 «ENDAROUND»
 
-«REM»Attributannotationen«ENDREM»
-«AROUND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::field FOR uml::Property»
+«AROUND org::dromdary::common::generator::templates::Class::classAnnotations FOR uml::Class»
+	«FOREACH getAppliedStereotypes() AS stereotype»
+		«IF stereotype.name.contains("JPA")»
+			«IF stereotype.name == "JPA_EntityListeners"»
+				@«formatJpaStereotypeName(stereotype.name)» ({ 
+				«FOREACH stereotype.getAllAttributes().reject(
+						e|e.name.contains("base_")
+					||  e.name.contains("packageName")
+					||	getValue(stereotype, e.name) == ""
+					||  getValue(stereotype, e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","» «getValue(stereotype, taggedValue.name)» «ENDFOREACH» })
+			«ELSE»
+				@«formatJpaStereotypeName(stereotype.name)»
+			«ENDIF»
+		«ELSE»
+			@«stereotype.name»
+		«ENDIF»
+	«ENDFOREACH»
+	
+	«targetDef.proceed()»
+«ENDAROUND»
+
+«AROUND org::dromdary::jpa::generator::templates::Attribute::attributeField FOR uml::Property»
 	«IF class.getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»
 		«IF isBvaTrue()»
 			«EXPAND org::dromdary::bva::generator::templates::Annotations::propertyAnnotation»
@@ -29,7 +50,7 @@
 			«ENDIF»
 		«ENDIF»
 		«IF isJpaTrue()»
-			«EXPAND org::dromdary::jpa::generator::templates::Annotations::AttributeAnnotations FOR this»
+			«EXPAND org::dromdary::jpa::generator::templates::Annotations::attributeAnnotations FOR this»
 		«ENDIF»
 	«ELSE»
 		«IF isBvaTrue()»
@@ -39,11 +60,10 @@
 	«ENDIF»
 «ENDAROUND»
 
-«REM»Methodenannotationen«ENDREM»
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationAnnotation FOR uml::Operation»
 	«IF class.getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»
 		«IF isJpaTrue()»
-			«EXPAND org::dromdary::jpa::generator::templates::Annotations::OperationAnnotations FOR this»
+			«EXPAND org::dromdary::jpa::generator::templates::Annotations::operationAnnotations FOR this»
 		«ENDIF»
 	«ENDIF»
 	«IF isBvaTrue()»
@@ -68,7 +88,7 @@
 			«ENDIF»
 		«ENDIF»
 		«IF isJpaTrue()»
-			«EXPAND org::dromdary::jpa::generator::templates::Annotations::AttributeAnnotations FOR this»
+			«EXPAND org::dromdary::jpa::generator::templates::Annotations::attributeAnnotations FOR this»
 		«ENDIF»
 	«ELSE»
 		«IF isBvaTrue()»

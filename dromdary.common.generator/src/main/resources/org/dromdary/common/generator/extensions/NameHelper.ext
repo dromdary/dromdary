@@ -1,0 +1,41 @@
+extension org::fornax::cartridges::uml2::javabasic::m2t::Helper;
+
+String abstractClassName(String name) :
+	JAVA org.dromdary.common.generator.helper.NameHelper.abstractClassName(java.lang.String);
+	
+String implementationClassName(String name) :
+	name;
+	
+String interfaceName(String name) :
+	"I"+name;
+	
+String toSetter(uml::Property property):
+	"set"+property.name.toFirstUpper();
+	
+String toGetter(uml::Property property):
+	"get"+property.name.toFirstUpper();
+	
+String toAdder(uml::Property property):
+	"addTo"+property.name.toFirstUpper();
+	
+String toAddAll(uml::Property property):
+	"addAllTo"+property.name.toFirstUpper();
+	
+String toRemover(uml::Property property):
+	"removeFrom"+property.name.toFirstUpper();
+	
+String toRemoveAll(uml::Property property):
+	"removeAllFrom"+property.name.toFirstUpper();
+
+String generateTableName(String tableName):
+	JAVA org.dromdary.common.generator.helper.NameHelper.generateTableName(java.lang.String);
+	
+String generateColumnName(uml::Property property):
+	JAVA org.dromdary.common.generator.helper.NameHelper.generateColumnName(org.eclipse.uml2.uml.Property);
+		
+String toVar(uml::Type type):
+	type.name.toFirstLower();
+	
+String asInstanceVar (uml::NamedElement elem) :
+	elem.name.toFirstLower();
+	

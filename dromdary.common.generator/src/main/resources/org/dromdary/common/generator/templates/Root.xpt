@@ -6,20 +6,21 @@
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
 
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::dromdary::common::generator::extensions::NameHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 
 «EXTENSION org::dromdary::common::generator::extensions::CommonPropertiesHelper»
 
 «DEFINE Root FOR uml::Model»
-	«EXPAND Class::Class FOREACH eAllContents.typeSelect(uml::Class)»
+	«EXPAND Interface::interface FOREACH eAllContents.typeSelect(uml::Interface)»
+	«EXPAND Class::class FOREACH eAllContents.typeSelect(uml::Class)»
 	«IF isJpaTrue()»
 		«debug("INFO - Generating JPA-Annotations and Files")»
-		«EXPAND org::dromdary::jpa::generator::templates::PersistenceXML::PersistenceXML FOR this»	
-		«EXPAND org::dromdary::jpa::generator::templates::GenericCRUD::GenericCRUD FOR this»
-		«EXPAND org::dromdary::jpa::generator::templates::JpaUtil::JpaUtil FOR this»
-		«EXPAND org::dromdary::jpa::generator::templates::JpaDaoFactory::JpaDaoFactory FOR this»
-		«EXPAND org::dromdary::jpa::generator::templates::DaoFactory::DaoFactory FOR this»
+		«EXPAND org::dromdary::jpa::generator::templates::PersistenceXML::persistenceXML FOR this»	
+		«EXPAND org::dromdary::jpa::generator::templates::GenericCRUD::genericCRUD FOR this»
+		«EXPAND org::dromdary::jpa::generator::templates::JpaUtil::jpaUtil FOR this»
+		«EXPAND org::dromdary::jpa::generator::templates::JpaDaoFactory::jpaDaoFactory FOR this»
+		«EXPAND org::dromdary::jpa::generator::templates::DaoFactory::daoFactory FOR this»
 	«ELSEIF !isJpaTrue() && isBvaTrue()»
 		«debug("INFO - Generating BVA-Annotations and Files")»
 		«EXPAND org::dromdary::bva::generator::templates::Root::Root FOR this»	

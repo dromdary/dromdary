@@ -11,11 +11,8 @@
 
 «EXTENSION org::dromdary::common::generator::extensions::CommonPropertiesHelper»
 
-«DEFINE Class FOR uml::Class»
+«DEFINE class FOR uml::Class»
 	
-	«REM»Prüfen, ob aktuelle Klasse mit dem Stereotyp JPA_Entity ausgezeichnet ist.
-	Falls nein, Javabasic Cartridge normal aufrufen. 
-	Falls ja, die JPA-Cartridge aufrufen«ENDREM»
 	«IF getAppliedStereotype("SimpleJSR220::JPA_Entity") == null && isGenerateNotEntity()»	
 		«IF isException()»
 			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Exception::exception(false)»
@@ -26,14 +23,94 @@
 				«ENDFILE»
 			«ELSE»
 				«FILE getFQNPackagePath()+"/"+name+".java"»
-					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Class::classContent FOR this»
+					«getTypeHeader()»
+					package «getFQNPackageName()»;				
+					«IF getClassesOperationImplementationStrategy() == "pr"»
+						«PROTECT CSTART '/*' CEND '*/' ID this.uniqueName()+"@imports: Imports"»
+						«ENDPROTECT»
+					«ENDIF»					
+					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentation»
+						«EXPAND imports»
+						«EXPAND classDefine»
+						«IF !generalization.isEmpty»
+							extends «((uml::Generalization) generalization.get(0)).general.name»
+						«ENDIF»
+						implements «IF !interfaceRealization.isEmpty»«FOREACH interfaceRealization AS ir SEPARATOR ","»«interfaceName(ir.supplier.get(0).name)»«ENDFOREACH»,«ENDIF» java.io.Serializable {
+						«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::SerialVersionUID::serialVersionUIDField»
+						«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::attribute»
+						«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Association::attribute»
+						«IF getClassesOperationImplementationStrategy() == "pr"»
+							«PROTECT CSTART '/*' CEND '*/' ID this.uniqueName()+"@attributes: Place additional attributes here"»
+							«ENDPROTECT»
+						«ENDIF»			
+						«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::staticAttribute»
+				
+						«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::getterSetter»
+						«IF getClassesOperationImplementationStrategy() == "pr"»
+							«PROTECT CSTART '/*' CEND '*/' ID this.uniqueName()+"@getterSetter: Place Getter and Setter for the additional attributes here"»
+							«ENDPROTECT»
+						«ENDIF»	
+						«IF getClassesOperationImplementationStrategy() == "pr"»
+							«FOREACH AllOperations().typeSelect(uml::Operation).select(o|!o.isAbstract).reject(e|e.isImplementedInSuperClass()) AS op»
+								«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationSimpleHead FOR op»
+								«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationSignature(false) FOR op»
+								«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBodyStart FOR op»
+								«PROTECT CSTART '/*' CEND '*/' ID op.uniqueName(this)»
+									//TODO implement
+									«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBody FOR op»
+									//END
+								«ENDPROTECT»
+								«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBodyEnd(false) FOR op»
+							«ENDFOREACH»							
+							«IF !generalization.isEmpty»
+								«FOREACH ((uml::Generalization) generalization.get(0)).general.getOperations() AS op»
+									«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::superOperationHead FOR op»
+									«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::superOperationSignature FOR op»
+									«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::superOperationBodyStart FOR op»
+									«PROTECT CSTART '/*' CEND '*/' ID op.uniqueName(this)»
+										//TODO implement
+										«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::superOperationBody FOR op»
+										//END
+									«ENDPROTECT»
+									«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::superOperationBodyEnd FOR op»
+								«ENDFOREACH»
+							«ENDIF»							
+							«IF getClassesOperationImplementationStrategy() == "pr"»
+								«PROTECT CSTART '/*' CEND '*/' ID this.uniqueName()+"@operations: Add addtional operations here"»
+								«ENDPROTECT»
+							«ENDIF»	
+						«ENDIF»			
+						«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Association::accessors»
+						«IF getClassesOperationImplementationStrategy() == "pr"»
+							«PROTECT CSTART '/*' CEND '*/' ID this.uniqueName()+"@associations: Add additional operations for associations here"»
+							«ENDPROTECT»
+						«ENDIF»
+	
+					}					
+					«getTypeFooter()»
 				«ENDFILE»
 			«ENDIF»
 		«ENDIF»
 	«ELSE»
 		«IF isJpaTrue()»
-			«EXPAND org::dromdary::jpa::generator::templates::Entity::JpaEntity(isImpHierarchy()) FOR this»
+			«EXPAND org::dromdary::jpa::generator::templates::Entity::jpaEntity(isImpHierarchy()) FOR this»
 		«ENDIF»
 	«ENDIF»
 	
+«ENDDEFINE»
+
+«DEFINE classDefine FOR uml::Class»
+	«EXPAND classAnnotations»
+	public «IF isAbstract»abstract«ENDIF» class «name»
+«ENDDEFINE»
+
+«DEFINE classAnnotations FOR uml::Class»
+«ENDDEFINE»
+
+«DEFINE imports FOR uml::Class»
+	import «getFQNPackageName()».interfaces.*;
+	import «getFQNPackageName()».*;
+	import javax.persistence.*;
+	import java.math.*;
+	import java.util.*;
 «ENDDEFINE»
