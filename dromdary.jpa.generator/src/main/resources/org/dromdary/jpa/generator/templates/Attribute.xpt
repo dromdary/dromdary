@@ -5,14 +5,27 @@
 «REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
 
+«EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
+
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::dromdary::jpa::generator::extensions::NameHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::DataType»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 
-«REM»Attribute generieren.«ENDREM»
-«DEFINE Attribute FOR uml::Property»
+«DEFINE attribute FOR uml::Property»
 	«IF isNavigable()»
-		«this.VisibilityName()» «getPropertyType()» «name» = null;
+		«this.VisibilityName()» «getPropertyTypeName()» «name» = null;
+	 «ENDIF»
+«ENDDEFINE»
+
+«DEFINE allAttribute FOR uml::Classifier»
+	«FOREACH getAllAttributes().typeSelect(uml::Property).select(a|!a.isStatic) AS attrElement»
+		«EXPAND attributeField FOR attrElement»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE attributeField FOR uml::Property»
+	«IF isNavigable()»
+		«this.VisibilityName()» «getPropertyTypeName()» «name» = «getPropertyTypeImpl()»;
 	 «ENDIF»
 «ENDDEFINE»

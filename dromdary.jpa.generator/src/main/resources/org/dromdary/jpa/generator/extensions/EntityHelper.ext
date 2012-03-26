@@ -52,6 +52,12 @@ String getIdAttributeName(uml::Class class) :
 String getIdAttributeName(uml::Property property) :
 	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getIdAttributeName(org.eclipse.uml2.uml.Property);
 	
+String getPropertyTypeName(uml::Property property) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getPropertyTypeName(org.eclipse.uml2.uml.Property);
+	
+boolean existsAttributeNameInClass(uml::Property property) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.existsAttributeNameInClass(org.eclipse.uml2.uml.Property);
+	
 List[uml::Class] getAllClasses(uml::Model model) :
 	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getAllClasses(org.eclipse.uml2.uml.Model);
 	

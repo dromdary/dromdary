@@ -4,7 +4,7 @@
 «REM» which accompanies this distribution, and is available at              «ENDREM»
 «REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::dromdary::jpa::generator::extensions::NameHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 
 «EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
@@ -12,8 +12,7 @@
 «EXTENSION org::eclipse::xtend::util::stdlib::counter»
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
 
-«REM»Generierung der Primärschlüsselklasse.«ENDREM»
-«DEFINE PkClass FOR uml::Class»
+«DEFINE pkClass FOR uml::Class»
 	«IF counterInc() == 1»
 		«("Generating Primary Key Class " + name + "Pk.java").info() -> ""»
 		«FILE getFQNPackagePath() + "/" + name + "Pk.java"»
@@ -33,15 +32,6 @@
 					@Column
 					public «e.type.name» «e.name»;
 				«ENDFOREACH»
-				«REM» 
-				@EmbeddedId
-				@AttributeOverrides({
-					«FOREACH getIdAttributes() AS e SEPARATOR ","»
-						@AttributeOverride(name   = "«e.name.toLowerCase()»",
-		                       column = @Column(name="«e.name»") )
-		            «ENDFOREACH»
-		        })
-				private «name»Pk «name.toFirstLower()»Pk;«ENDREM»
 				
 				/* (non-Javadoc) 
 				 * @see java.lang.Object#equals(java.lang.Object)

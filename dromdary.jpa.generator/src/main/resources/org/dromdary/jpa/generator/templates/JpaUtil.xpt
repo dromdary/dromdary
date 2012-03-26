@@ -6,32 +6,32 @@
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
 
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::dromdary::jpa::generator::extensions::NameHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 
 «EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
 «EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
 
 «REM»Generierung der JpaUtil.java«ENDREM»
-«DEFINE JpaUtil FOR uml::Model»
-	«EXPAND JpaUtilClass FOR this»
+«DEFINE jpaUtil FOR uml::Model»
+	«EXPAND jpaUtilClass FOR this»
 «ENDDEFINE»
 
 «REM»File generieren.«ENDREM»
-«DEFINE JpaUtilClass FOR uml::Model»
+«DEFINE jpaUtilClass FOR uml::Model»
 	«FILE getDaoPackageName() + "/JpaUtil.java"»
 		package «getDaoPackageName()»;
-		«EXPAND JpaUtilImports FOR this»
-		«EXPAND JpaUtilJavaDoc FOR this»
+		«EXPAND jpaUtilImports FOR this»
+		«EXPAND jpaUtilJavaDoc FOR this»
 		public class JpaUtil {
-			«EXPAND JpaUtilAttributes FOR this»
-			«EXPAND JpaUtilOperations FOR this»
+			«EXPAND jpaUtilAttributes FOR this»
+			«EXPAND jpaUtilOperations FOR this»
 		}
 	«ENDFILE»
 «ENDDEFINE»
 
 «REM»Generierung der benötigten Imports.«ENDREM»
-«DEFINE JpaUtilImports FOR uml::Model»
+«DEFINE jpaUtilImports FOR uml::Model»
 	import javax.naming.InitialContext;
 	import javax.naming.NamingException;
 	
@@ -43,7 +43,7 @@
 «ENDDEFINE»
 
 «REM»JavaDoc generieren.«ENDREM»
-«DEFINE JpaUtilJavaDoc FOR uml::Model»
+«DEFINE jpaUtilJavaDoc FOR uml::Model»
 	/**
 	 * Basic Hibernate helper class for Hibernate configuration and startup.
 	 * <p>
@@ -71,7 +71,7 @@
 «ENDDEFINE»
 
 «REM»Attribute generieren.«ENDREM»
-«DEFINE JpaUtilAttributes FOR uml::Model»
+«DEFINE jpaUtilAttributes FOR uml::Model»
     private static Log log = LogFactory.getLog(JpaUtil.class);
 
     private static Configuration configuration;
@@ -79,7 +79,7 @@
 «ENDDEFINE»
 
 «REM»Methoden generieren.«ENDREM»
-«DEFINE JpaUtilOperations FOR uml::Model»
+«DEFINE jpaUtilOperations FOR uml::Model»
 	static {
         // Create the initial SessionFactory from the default configuration files
         try {

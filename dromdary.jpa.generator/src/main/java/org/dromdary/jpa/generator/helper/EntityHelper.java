@@ -96,6 +96,33 @@ public class EntityHelper {
 		}
 		return multiplicity;
 	}
+	
+	public static String getPropertyTypeName(Property umlProperty) {
+		String multiplicity = getPropertyMultiplicity(umlProperty);
+		if (multiplicity == null || !multiplicity.contains("ToMany"))
+		{
+			return umlProperty.getType().getName();
+		}
+		else 
+		{
+			return "Set<" + umlProperty.getType().getName() + ">";
+		}
+	}
+	
+	public static boolean existsAttributeNameInClass(Property umlProperty) {
+		boolean existsAttributeNameInClass = false;
+		int count = 0;
+		EList<Property> attributes = umlProperty.getClass_().getAllAttributes();
+		for (Property property : attributes) {
+			if (property.getName().equals(umlProperty.getName())) {
+				count++;
+			}
+		}
+		if (count > 1) {
+			existsAttributeNameInClass = true;
+		}
+		return existsAttributeNameInClass;
+	}
 
 	/**
 	 * Pr�fen, um was f�r eine Beziehung es sich handelt.
@@ -214,8 +241,29 @@ public class EntityHelper {
 	 * @return String - Formatierter Stereotypname
 	 */
 	public static String formatJpaStereotypeName(String name) {
-		return name.substring(4, name.length() - 3);
-
+		String stereotypeName = null;
+		if(name.indexOf("JPA", name.length() - 3) > 0)
+		{
+			stereotypeName = removeJpaStereotypePrefix(name.substring(4, name.length() - 3));
+		}
+		else
+		{
+			System.out.println(name);
+			stereotypeName = removeJpaStereotypePrefix(name);
+		}
+		
+		return stereotypeName;
+	}
+	
+	private static String removeJpaStereotypePrefix(String name) {
+		if(name.contains("JPA_"))
+		{
+			return name.substring(4);
+		}
+		else
+		{
+			return name;
+		}
 	}
 
 	/**

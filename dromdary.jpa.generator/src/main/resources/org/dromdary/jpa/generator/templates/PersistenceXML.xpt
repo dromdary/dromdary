@@ -6,31 +6,31 @@
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
 
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::dromdary::jpa::generator::extensions::NameHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 
 «EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
 «EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
 
 «REM»Generierung der persistence.xml«ENDREM»
-«DEFINE PersistenceXML FOR uml::Model»
-«("Generating persistence.xml").info() -> ""»
-«FILE getPersistenceXMLPath()»<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-<persistence-unit name="jpa.test">«EXPAND Classes FOR this»
-<properties>
-«getPersistenceProperties()»
-</properties>
-</persistence-unit>
-</persistence>
-«ENDFILE»
+«DEFINE persistenceXML FOR uml::Model»
+	«("Generating persistence.xml").info() -> ""»
+	«FILE getPersistenceXMLPath()»<?xml version="1.0" encoding="UTF-8"?>
+	<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	<persistence-unit name="jpa.test">«EXPAND classes FOR this»
+	<properties>
+	«getPersistenceProperties()»
+	</properties>
+	</persistence-unit>
+	</persistence>
+	«ENDFILE»
 «ENDDEFINE»
-
+	
 «REM»Klassen, die in der persistence.xml aufgeführt werden müssen, generieren.«ENDREM»
-«DEFINE Classes FOR uml::Model»
-«FOREACH getAllClasses() AS cl»
-	«IF cl.getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»<class>«IF cl.package.nestingPackage.name != "Model"»«cl.package.nestingPackage.name».«ENDIF»«cl.package.name».Abstract«cl.name»</class>
-«ENDIF»
-«ENDFOREACH»
+«DEFINE classes FOR uml::Model»
+	«FOREACH getAllClasses() AS cl»
+		«IF cl.getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»<class>«IF cl.package.nestingPackage.name != "Model"»«cl.package.nestingPackage.name».«ENDIF»«cl.package.name».Abstract«cl.name»</class>
+	«ENDIF»
+	«ENDFOREACH»
 «ENDDEFINE»
 

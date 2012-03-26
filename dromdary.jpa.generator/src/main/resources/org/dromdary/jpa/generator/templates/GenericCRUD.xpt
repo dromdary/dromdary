@@ -6,37 +6,37 @@
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
 
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::dromdary::jpa::generator::extensions::NameHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 
 «EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
 «EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
 
 «REM»Generierung der GenericDAO.java und GenericJpaDAO.java«ENDREM»
-«DEFINE GenericCRUD FOR uml::Model»
-	«EXPAND GenericCRUDInterface FOR this»
-	«EXPAND GenericCRUDAbstractClass FOR this»
+«DEFINE genericCRUD FOR uml::Model»
+	«EXPAND genericCRUDInterface FOR this»
+	«EXPAND genericCRUDAbstractClass FOR this»
 «ENDDEFINE»
 
 «REM»File für das Interface generieren.«ENDREM»
-«DEFINE GenericCRUDInterface FOR uml::Model»
+«DEFINE genericCRUDInterface FOR uml::Model»
 	«FILE getDaoPackageName() + "/GenericDAO.java"»
 		package «getDaoPackageName()»;
-		«EXPAND GenericCRUDInterfaceImports FOR this»
+		«EXPAND genericCRUDInterfaceImports FOR this»
 		public interface GenericDAO<T, ID extends Serializable> {
-			«EXPAND GenericCRUDInterfaceMethods FOR this»
+			«EXPAND genericCRUDInterfaceMethods FOR this»
 		}
 	«ENDFILE»
 «ENDDEFINE»
 
 «REM»Benötigte Imports im Interface generieren.«ENDREM»
-«DEFINE GenericCRUDInterfaceImports FOR uml::Model»
+«DEFINE genericCRUDInterfaceImports FOR uml::Model»
 	import java.io.Serializable;
 	import java.util.List;
 «ENDDEFINE»
 
 «REM»Interface Methoden generieren.«ENDREM»
-«DEFINE GenericCRUDInterfaceMethods FOR uml::Model»
+«DEFINE genericCRUDInterfaceMethods FOR uml::Model»
 	T findById(ID id, boolean lock);
 
     List<T> findAll();
@@ -59,20 +59,20 @@
 «ENDDEFINE»
 
 «REM»File für abstrakte Klasse erzeugen.«ENDREM»
-«DEFINE GenericCRUDAbstractClass FOR uml::Model»
+«DEFINE genericCRUDAbstractClass FOR uml::Model»
 	«FILE getDaoPackageName() + "/GenericJpaDAO.java"»
 		package «getDaoPackageName()»;
-		«EXPAND GenericCRUDAbstractClassImports FOR this»
+		«EXPAND genericCRUDAbstractClassImports FOR this»
 		public abstract class GenericJpaDAO<T, ID extends Serializable>
         implements GenericDAO<T, ID> {
-			«EXPAND GenericCRUDAbstractClassAttributes FOR this»
-			«EXPAND GenericCRUDAbstractClassOperations FOR this»
+			«EXPAND genericCRUDAbstractClassAttributes FOR this»
+			«EXPAND genericCRUDAbstractClassOperations FOR this»
 		}
 	«ENDFILE»
 «ENDDEFINE»
 
 «REM»Import in abstrakter Klasse erzeugen.«ENDREM»
-«DEFINE GenericCRUDAbstractClassImports FOR uml::Model»
+«DEFINE genericCRUDAbstractClassImports FOR uml::Model»
 	import java.io.Serializable;
 	import java.lang.reflect.ParameterizedType;
 	import java.util.List;
@@ -87,7 +87,7 @@
 «ENDDEFINE»
 
 «REM»JavaDoc in abstrakter Klasse erzeugen.«ENDREM»
-«DEFINE GenericCRUDAbstractClassJavaDoc FOR uml::Model»
+«DEFINE genericCRUDAbstractClassJavaDoc FOR uml::Model»
 	/**
 	 * Implements the generic CRUD data access operations using Hibernate APIs.
 	 * <p>
@@ -104,13 +104,13 @@
 «ENDDEFINE»
 
 «REM»Attribute in abstrakter Klasse erzeugen.«ENDREM»
-«DEFINE GenericCRUDAbstractClassAttributes FOR uml::Model»
+«DEFINE genericCRUDAbstractClassAttributes FOR uml::Model»
 	    private Class<T> persistentClass;
     	private Session session;
 «ENDDEFINE»
 
 «REM»Methode in abstrakter Klasse generieren.«ENDREM»
-«DEFINE GenericCRUDAbstractClassOperations FOR uml::Model»
+«DEFINE genericCRUDAbstractClassOperations FOR uml::Model»
 	public GenericJpaDAO() {
         this.persistentClass = (Class<T>) ((ParameterizedType) getClass()
                                 .getGenericSuperclass()).getActualTypeArguments()[0];

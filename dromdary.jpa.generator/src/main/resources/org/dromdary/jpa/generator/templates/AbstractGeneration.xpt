@@ -1,33 +1,41 @@
+«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
+«REM» All rights reserved. This program and the accompanying materials      «ENDREM»
+«REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
+«REM» which accompanies this distribution, and is available at              «ENDREM»
+«REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::DataType»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::dromdary::jpa::generator::extensions::AbstractGenerationHelper»
+«EXTENSION org::dromdary::jpa::generator::extensions::NameHelper»
 /**
-*generate generalization from impl, if the superclass is not abstract
+* Generate generalization from impl, if the superclass is not abstract
 */
 «DEFINE abstractClassEntityDefine FOR uml::Class»
 		«IF !generalization.isEmpty && !((uml::Generalization) generalization.get(0)).general.isAbstract»
 			«LET ((uml::Generalization) generalization.get(0)).general AS gen»
-			//diese IF-Abfrage soll nach der Annotation in den Vaterklassen schauen. Funktioniert nicht.
-			//der restliche Code ist ohne diese Abfrage funktionsfähig.
-				«IF isMappedSuperclass(gen)»
-					@MappedSupperclass
-				«ENDIF»
-				
-			«EXPAND generalizationEntityAbstract(gen)» implements «interfaceName(name)»{
+				«EXPAND generalizationEntityAbstract(gen)» implements «interfaceName(name)»{
 			«ENDLET»
 		«ELSE»
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityDefine»
+			public abstract class «abstractClassName(name)»
+			«IF !generalization.isEmpty»
+				«LET ((uml::Generalization) generalization.get(0)).general AS gen»
+				«IF gen.getAppliedStereotypes().isEmpty»
+					extends «gen.name»
+				«ELSE»
+					extends «abstractClassName(gen.name)»
+				«ENDIF»
+				«ENDLET»
+			«ENDIF»
+			implements «interfaceName(name)»{
 		«ENDIF»
 «ENDDEFINE»
 
 «DEFINE generalizationEntityAbstract(uml::Classifier gen) FOR uml::Class»
 	public abstract class «abstractClassName(name)»
 	«IF gen.getAppliedStereotypes().isEmpty»
-		extends «gen.fqName()»
+		extends «gen.name»
 	«ELSE»
-		extends «gen.getFQNPackageName()+"."+implementationClassName(gen.name)»
+		extends «implementationClassName(gen.name)»
 	«ENDIF»
 «ENDDEFINE»
 

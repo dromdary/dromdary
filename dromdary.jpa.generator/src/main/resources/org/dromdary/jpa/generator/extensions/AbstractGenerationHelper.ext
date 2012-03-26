@@ -1,2 +1,0 @@
-boolean isMappedSuperclass(uml::Classifier classifier) :
-	JAVA org.dromdary.jpa.generator.helper.AbstractGenerationHelper.isMappedSuperclass(org.eclipse.uml2.uml.Classifier);

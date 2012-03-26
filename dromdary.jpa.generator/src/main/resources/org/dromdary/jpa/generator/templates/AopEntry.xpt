@@ -5,32 +5,24 @@
 «REM» http://www.eclipse.org/legal/epl-v10.html                             «ENDREM»
 «EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
 
-«REM»Aspekt orientiertes Template«ENDREM»
-«REM»Methoden wurden in ein normales Template ausgelagert, da diese von der Common-Cartridge aus 
-aufgerufen werden müssen und diese bereits ein AOP-Template besitzt. Falls der jpa.generator 
-ausgeführt wird, ist dieses Template der AOP-Einstiegspunkt.«ENDREM»
-
-«REM»Klassenannotationen«ENDREM»
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Entity::classAnnotations FOR uml::Class»
 	«IF getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»
-		«EXPAND Annotations::EntityAnnotations FOR this»
+		«EXPAND Annotations::entityAnnotations FOR this»
 	«ENDIF»
 	«targetDef.proceed()»
 «ENDAROUND»
 
-«REM»Attributannotationen«ENDREM»
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::field FOR uml::Property»
 	«IF class.getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»
-		«EXPAND Annotations::AttributeAnnotations FOR this»
+		«EXPAND Annotations::attributeAnnotations FOR this»
 	«ELSE»
 		«targetDef.proceed()»
 	«ENDIF»
 «ENDAROUND»
 
-«REM»Methodenannotationen«ENDREM»
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationAnnotation FOR uml::Operation»
 	«IF class.getAppliedStereotype("SimpleJSR220::JPA_Entity") != null»
-		«EXPAND Annotations::OperationAnnotations FOR this»
+		«EXPAND Annotations::operationAnnotations FOR this»
 	«ENDIF»
 	«targetDef.proceed()»
 «ENDAROUND»

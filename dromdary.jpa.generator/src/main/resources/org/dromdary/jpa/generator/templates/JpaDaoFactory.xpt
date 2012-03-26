@@ -6,23 +6,23 @@
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
 
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::dromdary::jpa::generator::extensions::NameHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 
 «EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
 «EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
 
 «REM»Generierung der JpaDAOFactory.java«ENDREM»
-«DEFINE JpaDaoFactory FOR uml::Model»
-	«EXPAND JpaDaoFactoryClass FOR this»
+«DEFINE jpaDaoFactory FOR uml::Model»
+	«EXPAND jpaDaoFactoryClass FOR this»
 «ENDDEFINE»
 
 «REM»File generieren.«ENDREM»
-«DEFINE JpaDaoFactoryClass FOR uml::Model»
+«DEFINE jpaDaoFactoryClass FOR uml::Model»
 	«FILE getDaoPackageName() + "/JpaDAOFactory.java"»
 		package «getDaoPackageName()»;
-		«EXPAND JpaDaoFactoryImports FOR this»
-		«EXPAND JpaDaoFactoryJavaDoc FOR this»
+		«EXPAND jpaDaoFactoryImports FOR this»
+		«EXPAND jpaDaoFactoryJavaDoc FOR this»
 		public class JpaDAOFactory extends DAOFactory {
 			// empty
 		}
@@ -30,7 +30,7 @@
 «ENDDEFINE»
 
 «REM»Benötigte Imports generieren.«ENDREM»
-«DEFINE JpaDaoFactoryImports FOR uml::Model»
+«DEFINE jpaDaoFactoryImports FOR uml::Model»
 «REM»	 
 	import «getDaoPackageName()».DAOFactory;
 	import «getDaoPackageName()».DataBuildingDAO;
@@ -41,7 +41,7 @@
 «ENDDEFINE»
 
 «REM»JavaDoc generieren.«ENDREM»
-«DEFINE JpaDaoFactoryJavaDoc FOR uml::Model»
+«DEFINE jpaDaoFactoryJavaDoc FOR uml::Model»
 	/**
 	 * Returns Hibernate-specific instances of DAOs.
 	 * <p/>
@@ -54,9 +54,9 @@
 	 */
 «ENDDEFINE»
 
-«DEFINE JpaDaoFactoryAttributes FOR uml::Model»
+«DEFINE jpaDaoFactoryAttributes FOR uml::Model»
 
 «ENDDEFINE»
 
-«DEFINE JpaDaoFactoryOperations FOR uml::Model»
+«DEFINE jpaDaoFactoryOperations FOR uml::Model»
 «ENDDEFINE»

@@ -18,6 +18,9 @@ public class PropertiesHelper {
 	public static String PROPERTY_PERSISTENCE_XML_PROPERTIES = "persistence.xml.properties";
 	public static String PROPERTY_TABLE_SCHEMA = "table.schema";
 	public static String PROPERTY_DAO_PACKAGE_NAME = "dao.package.name";
+	public static String GEN_DEF_INHERITANCE_AND_DISCRIMINATOR_COLUMN_ANNOTAION = "gen.def.inheritance.and.discriminator.column.annotation";
+	public static String GEN_DEF_ORPHAN_REMOVAL_TAGGED_VALUE_FOR_RELATIONS = "gen.def.orphan.removal.taggedValue.for.relations";
+	public static String GEN_DEF_TABLE_SCHEMA_TAGGED_VALUE = "gen.def.table.schema.taggedValue";
 	
 	public static String getPersistenceXmlPath() throws FileNotFoundException, IOException {
 		Properties properties = new Properties();
@@ -38,5 +41,20 @@ public class PropertiesHelper {
 		Properties properties = new Properties();
 		properties.load(new FileInputStream(JPA_PROPERTIES_PATH));
 		return properties.getProperty(PROPERTY_DAO_PACKAGE_NAME);
+	}
+	public static String genDefInheritanceAndDiscriminatorColumnAnnotation() throws FileNotFoundException, IOException {
+		Properties properties = new Properties();
+		properties.load(new FileInputStream(JPA_PROPERTIES_PATH));
+		return properties.getProperty(GEN_DEF_INHERITANCE_AND_DISCRIMINATOR_COLUMN_ANNOTAION);
+	}
+	public static String genDefOrphanRemovalTaggedValueForRelations() throws FileNotFoundException, IOException {
+		Properties properties = new Properties();
+		properties.load(new FileInputStream(JPA_PROPERTIES_PATH));
+		return properties.getProperty(GEN_DEF_ORPHAN_REMOVAL_TAGGED_VALUE_FOR_RELATIONS);
+	}
+	public static String genDefTableSchemaTaggedValue() throws FileNotFoundException, IOException {
+		Properties properties = new Properties();
+		properties.load(new FileInputStream(JPA_PROPERTIES_PATH));
+		return properties.getProperty(GEN_DEF_TABLE_SCHEMA_TAGGED_VALUE);
 	}
 }

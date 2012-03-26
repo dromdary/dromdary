@@ -6,38 +6,34 @@
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
 
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::dromdary::jpa::generator::extensions::NameHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 
 «EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
 «EXTENSION org::dromdary::jpa::generator::extensions::PropertiesHelper»
 
-«REM»Generierung der DAOFactory.java«ENDREM»
-«DEFINE DaoFactory FOR uml::Model»
-	«EXPAND DaoFactoryClass FOR this»
+«DEFINE daoFactory FOR uml::Model»
+	«EXPAND daoFactoryClass FOR this»
 «ENDDEFINE»
 
-«REM»File erzeugen.«ENDREM»
-«DEFINE DaoFactoryClass FOR uml::Model»
+«DEFINE daoFactoryClass FOR uml::Model»
 	«FILE getDaoPackageName() + "/DAOFactory.java"»
 		package «getDaoPackageName()»;
-		«EXPAND DaoFactoryImports FOR this»
-		«EXPAND DaoFactoryJavaDoc FOR this»
+		«EXPAND daoFactoryImports FOR this»
+		«EXPAND daoFactoryJavaDoc FOR this»
 		public abstract class DAOFactory {
-			«EXPAND DaoFactoryAttributes FOR this»
-			«EXPAND DaoFactoryOperations FOR this»
+			«EXPAND daoFactoryAttributes FOR this»
+			«EXPAND daoFactoryOperations FOR this»
 		}
 	«ENDFILE»
 «ENDDEFINE»
 
-«REM»Benötigte Imports generieren.«ENDREM»
-«DEFINE DaoFactoryImports FOR uml::Model»
+«DEFINE daoFactoryImports FOR uml::Model»
 	import org.apache.commons.logging.Log;
 	import org.apache.commons.logging.LogFactory;
 «ENDDEFINE»
 
-«REM»JavaDoc generieren.«ENDREM»
-«DEFINE DaoFactoryJavaDoc FOR uml::Model»
+«DEFINE daoFactoryJavaDoc FOR uml::Model»
 	/**
 	 * Defines all DAOs and the concrete factories to get the conrecte DAOs.
 	 * <p>
@@ -51,13 +47,11 @@
 	 */
 «ENDDEFINE»
 
-«REM»Attribute generieren.«ENDREM»
-«DEFINE DaoFactoryAttributes FOR uml::Model»
+«DEFINE daoFactoryAttributes FOR uml::Model»
 	 private static Log log = LogFactory.getLog(DAOFactory.class);
 «ENDDEFINE»
 
-«REM»Methoden generieren.«ENDREM»
-«DEFINE DaoFactoryOperations FOR uml::Model»
+«DEFINE daoFactoryOperations FOR uml::Model»
 	 /**
      * Creates a standalone DAOFactory that returns unmanaged DAO
      * beans for use in any environment Hibernate has been configured

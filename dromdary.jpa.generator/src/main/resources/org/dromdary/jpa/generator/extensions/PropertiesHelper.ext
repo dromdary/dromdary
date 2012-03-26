@@ -9,3 +9,12 @@ String getTableSchema() :
 	
 String getDaoPackageName() :
 	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.getDaoPackageName();	
+	
+String genDefInheritanceAndDiscriminatorColumnAnnotation() :
+	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.genDefInheritanceAndDiscriminatorColumnAnnotation();
+
+String genDefOrphanRemovalTaggedValueForRelations() :
+	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.genDefOrphanRemovalTaggedValueForRelations();
+	
+String genDefTableSchemaTaggedValue() :
+	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.genDefTableSchemaTaggedValue();

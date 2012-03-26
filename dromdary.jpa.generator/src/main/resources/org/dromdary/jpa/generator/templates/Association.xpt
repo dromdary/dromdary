@@ -6,23 +6,17 @@
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
 «EXTENSION org::eclipse::xtend::util::stdlib::counter»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::dromdary::jpa::generator::extensions::NameHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 
 «EXTENSION org::dromdary::jpa::generator::extensions::EntityHelper»
 
-«REM»Für eine Association wird nicht die Javabasic-Cartridge benutzt, da der 
-Enterprise Architect diese in XMI nicht so abbildet, wie es die Javabasic Cartridge
-erwartet. Somit wird nur für die Assocation ein weiteres Template benötigt, um eine
-Assocationen korrekt in Java abzubilden.
-Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«ENDREM»
-
-«REM»Generieren der getter/setter für eine Association im Interface«ENDREM»
-«DEFINE EntityInterfaceGetter FOR uml::Class»
+«REM»Template for associations. Note: This is a workaround, the javabasic cartridge don't understand the XMI from Enterprise Architect.«ENDREM»
+«DEFINE entityInterfaceGetter FOR uml::Class»
 	«LET this.getAssociations() AS a»		
 		«FOREACH a AS ae»
 			«IF ae.ownedEnd.size > 1»		
-				«REM»OneToOne-Beziehung«ENDREM»
+				«REM»OneToOne-association«ENDREM»
 				«IF ae.ownedEnd.get(0).getUpper()==1»
 					«IF ae.ownedEnd.get(1).getUpper()==1»
 						«IF ae.ownedEnd.get(0).type.name==name»
@@ -40,7 +34,7 @@ Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«
 						«ENDIF»
 					«ENDIF»
 				«ENDIF»
-				«REM»OneToMany-Beziehung«ENDREM»
+				«REM»OneToMany-association«ENDREM»
 				«IF ae.ownedEnd.get(0).getUpper()==1»
 					«IF ae.ownedEnd.get(1).getUpper()==-1»
 						«IF ae.ownedEnd.get(0).type.name==name»
@@ -58,7 +52,7 @@ Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«
 						«ENDIF»
 					«ENDIF»
 				«ENDIF»	
-				«REM»ManyToOne-Beziehung«ENDREM»
+				«REM»ManyToOne-association«ENDREM»
 				«IF ae.ownedEnd.get(0).getUpper()==-1»
 					«IF ae.ownedEnd.get(1).getUpper()==1»
 						«IF ae.ownedEnd.get(0).type.name==name»
@@ -76,7 +70,7 @@ Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«
 						«ENDIF»
 					«ENDIF»
 				«ENDIF»	
-				«REM»ManyToMany-Beziehung«ENDREM»
+				«REM»ManyToMany-association«ENDREM»
 				«IF ae.ownedEnd.get(0).getUpper()==-1»
 					«IF ae.ownedEnd.get(1).getUpper()==-1»
 						«IF ae.ownedEnd.get(0).type.name==name»
@@ -99,12 +93,10 @@ Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«
 	«ENDLET»
 «ENDDEFINE»
 
-«REM»Generieren der Attribute für eine Association in der abstrakten Klasse.«ENDREM»
-«DEFINE EntityAbstractAttribute FOR uml::Class»
+«DEFINE entityAbstractAttribute FOR uml::Class»
 	«LET this.getAssociations() AS a»		
 		«FOREACH a AS ae»
 			«IF ae.ownedEnd.size > 1»		
-				«REM»OneToOne-Beziehung«ENDREM»
 				«IF ae.ownedEnd.get(0).getUpper()==1»
 					«IF ae.ownedEnd.get(1).getUpper()==1»
 						«IF ae.ownedEnd.get(0).type.name==name»
@@ -113,7 +105,6 @@ Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«
 						«ENDIF»
 					«ENDIF»
 				«ENDIF»
-				«REM»OneToMany-Beziehung«ENDREM»
 				«IF ae.ownedEnd.get(0).getUpper()==1»
 					«IF ae.ownedEnd.get(1).getUpper()==-1»
 						«IF ae.ownedEnd.get(0).type.name==name»
@@ -128,13 +119,12 @@ Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«
 										@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
 								})
 						    «ELSE»
-								@JoinColumn(name = "«this.name»_«getIdAttributeName()»", nullable = false)
+								@JoinColumn(name = "«getColumnNamePrefix(generateColumnName("id", generateTableName(ae.ownedEnd.get(1).type.name)))»_«generateColumnName("id", generateTableName(ae.ownedEnd.get(1).class.name))»", referencedColumnName = "«generateColumnName("id", generateTableName(ae.ownedEnd.get(1).class.name))»", nullable = false)
 							«ENDIF»
-							public java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»> «ae.ownedEnd.get(1).type.name.toFirstLower()» = null;
+							public java.util.Set<«ae.ownedEnd.get(1).type.package.name».I«ae.ownedEnd.get(1).type.name»> «ae.ownedEnd.get(1).type.name.toFirstLower()» = null;
 						«ENDIF»
 					«ENDIF»
 				«ENDIF»	
-				«REM»ManyToOne-Beziehung«ENDREM»
 				«IF ae.ownedEnd.get(0).getUpper()==-1»
 					«IF ae.ownedEnd.get(1).getUpper()==1»
 						«IF ae.ownedEnd.get(0).type.name==name»
@@ -149,13 +139,12 @@ Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«
 										@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
 								})
 						    «ELSE»
-								@JoinColumn(name = "«this.name»_«getIdAttributeName()»", nullable = false)
+								@JoinColumn(name = "«getColumnNamePrefix(generateColumnName("id", generateTableName(ae.ownedEnd.get(1).type.name)))»_«generateColumnName("id", generateTableName(ae.ownedEnd.get(1).class.name))»", referencedColumnName = "«generateColumnName("id", generateTableName(ae.ownedEnd.get(1).class.name))»", nullable = false)
 							«ENDIF»
-							public «ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name» «ae.ownedEnd.get(1).type.name.toFirstLower()» = null;
+							public «ae.ownedEnd.get(1).type.package.name».I«ae.ownedEnd.get(1).type.name» «ae.ownedEnd.get(1).type.name.toFirstLower()» = nusdall;
 						«ENDIF»
 					«ENDIF»
 				«ENDIF»	
-				«REM»ManyToMany-Beziehung«ENDREM»
 				«IF ae.ownedEnd.get(0).getUpper()==-1»
 					«IF ae.ownedEnd.get(1).getUpper()==-1»
 						«IF ae.ownedEnd.get(0).type.name==name»
@@ -170,9 +159,9 @@ Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«
 										@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
 								})
 						    «ELSE»
-								@JoinColumn(name = "«this.name»_«getIdAttributeName()»", nullable = false)
+								@JoinColumn(name = "«getColumnNamePrefix(generateColumnName("id", generateTableName(ae.ownedEnd.get(1).type.name)))»_«generateColumnName("id", generateTableName(ae.ownedEnd.get(1).class.name))»", referencedColumnName = "«generateColumnName("id", generateTableName(ae.ownedEnd.get(1).class.name))»", nullable = false)
 							«ENDIF»
-							public java.util.Set<«ae.ownedEnd.get(1).type.package.name».«ae.ownedEnd.get(1).type.name»> «ae.ownedEnd.get(1).type.name.toFirstLower()» = null;
+							public java.util.Set<«ae.ownedEnd.get(1).type.package.name».I«ae.ownedEnd.get(1).type.name»> «ae.ownedEnd.get(1).type.name.toFirstLower()» = null;
 						«ENDIF»
 					«ENDIF»
 				«ENDIF»
@@ -181,12 +170,11 @@ Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«
 	«ENDLET»
 «ENDDEFINE»
 
-«REM»Generieren der getter/setter für eine Association in der abstrakten Klasse.«ENDREM»
-«DEFINE EntityAbstractGetterSetter FOR uml::Class»
+«DEFINE entityAbstractGetterSetter FOR uml::Class»
 	«LET this.getAssociations() AS a»		
 		«FOREACH a AS ae»
 			«IF ae.ownedEnd.size > 1»		
-				«REM»OneToOne-Beziehung«ENDREM»
+				«REM»OneToOne-association«ENDREM»
 				«IF ae.ownedEnd.get(0).getUpper()==1»
 					«IF ae.ownedEnd.get(1).getUpper()==1»
 						«IF ae.ownedEnd.get(0).type.name==name» 
@@ -204,7 +192,7 @@ Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«
 						«ENDIF»
 					«ENDIF»
 				«ENDIF»
-				«REM»OneToMany-Beziehung«ENDREM»
+				«REM»OneToMany-association«ENDREM»
 				«IF ae.ownedEnd.get(0).getUpper()==1»
 					«IF ae.ownedEnd.get(1).getUpper()==-1»
 						«IF ae.ownedEnd.get(0).type.name==name» 
@@ -222,7 +210,7 @@ Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«
 						«ENDIF»
 					«ENDIF»
 				«ENDIF»	
-				«REM»ManyToOne-Beziehung«ENDREM»
+				«REM»ManyToOne-association«ENDREM»
 				«IF ae.ownedEnd.get(0).getUpper()==-1»
 					«IF ae.ownedEnd.get(1).getUpper()==1»
 						«IF ae.ownedEnd.get(0).type.name==name»
@@ -240,7 +228,7 @@ Die Aggregation und Composition wird anhand der Javabasic-Cartridge generiert.«
 						«ENDIF»
 					«ENDIF»
 				«ENDIF»	
-				«REM»ManyToMany-Beziehung«ENDREM»
+				«REM»ManyToMany-association«ENDREM»
 				«IF ae.ownedEnd.get(0).getUpper()==-1»
 					«IF ae.ownedEnd.get(1).getUpper()==-1»
 						«IF ae.ownedEnd.get(0).type.name==name»

@@ -6,16 +6,16 @@
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
 
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::dromdary::jpa::generator::extensions::NameHelper»
 «EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
 
 «REM»Einstiegspunkt, welcher vom Workflow aufgerufen wird und entsprechend weitere Templates aufrufen.«ENDREM» 
 «DEFINE Root FOR uml::Model»
 	«("Generating Java Files with JPA Annotations").info() -> ""»
-	«EXPAND Entity::JpaEntity(true) FOREACH eAllContents.typeSelect(uml::Class)»
-	«EXPAND PersistenceXML::PersistenceXML FOR this»	
-	«EXPAND GenericCRUD::GenericCRUD FOR this»
-	«EXPAND JpaUtil::JpaUtil FOR this»
-	«EXPAND JpaDaoFactory::JpaDaoFactory FOR this»
-	«EXPAND DaoFactory::DaoFactory FOR this»
+	«EXPAND Entity::jpaEntity(true) FOREACH eAllContents.typeSelect(uml::Class)»
+	«EXPAND PersistenceXML::persistenceXML FOR this»	
+	«EXPAND GenericCRUD::genericCRUD FOR this»
+	«EXPAND JpaUtil::jpaUtil FOR this»
+	«EXPAND JpaDaoFactory::jpaDaoFactory FOR this»
+	«EXPAND DaoFactory::daoFactory FOR this»
 «ENDDEFINE»
