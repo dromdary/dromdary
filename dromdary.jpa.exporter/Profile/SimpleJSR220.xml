@@ -1,864 +1,1120 @@
 <?xml version="1.0" encoding="windows-1252"?>
-<UMLProfile profiletype="uml2">
-	<Documentation id="44584785-B" name="SimpleJSR220" version="1.0" notes="SimpleJSR220"/>
-	<Content>
-		<Stereotypes>
-			<Stereotype name="JPA_Entity" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="isActive" type="String" description="" unit="" values="" default="true"/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_AssociationOverride" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="joinColumns" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_AssociationOverrides" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_AttributeOverride" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="column" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_AttributeOverrides" notes="">
-				<AppliesTo>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-					<Apply type="Attribute"/>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_Basic" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="fetch" type="String" description="" unit="" values="" default=""/>
-					<Tag name="optional" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_Column" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="columnDefinition" type="String" description="" unit="" values="" default=""/>
-					<Tag name="insertable" type="String" description="" unit="" values="" default=""/>
-					<Tag name="length" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="nullable" type="String" description="" unit="" values="" default=""/>
-					<Tag name="precision" type="String" description="" unit="" values="" default=""/>
-					<Tag name="scale" type="String" description="" unit="" values="" default=""/>
-					<Tag name="table" type="String" description="" unit="" values="" default=""/>
-					<Tag name="unique" type="String" description="" unit="" values="" default=""/>
-					<Tag name="updateable" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_ColumnResult" notes="">
-				<TaggedValues>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_DiscriminatorColumn" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="columnDefinition" type="String" description="" unit="" values="" default=""/>
-					<Tag name="discriminatorType" type="enumeration" description="" unit="" values="CHAR,INTEGER,STRING" default=""/>
-					<Tag name="length" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_DiscriminatorValue" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_Embeddable" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_Embedded" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_EmbeddedId" notes="">
-				<AppliesTo>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-					<Apply type="Attribute"/>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_EntityListeners" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_EntityResult" notes="">
-				<TaggedValues>
-					<Tag name="discriminatorColumn" type="String" description="" unit="" values="" default=""/>
-					<Tag name="entityClass" type="String" description="" unit="" values="" default=""/>
-					<Tag name="fields" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_Enumerated" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_ExcludeDefaultListeners" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_ExcludeSuperclassListeners" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_FieldResult" notes="">
-				<TaggedValues>
-					<Tag name="column" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_GeneratedValue" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="generator" type="enumeration" description="" unit="" values="AUTO,IDENTITY,SEQUENCE,TABLE" default=""/>
-					<Tag name="strategy" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_Id" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_IdClass" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_Inheritance" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="strategy" type="enumeration" description="" unit="" values="JOINED,SINGLE_TABLE,TABLE_PER_CLASS" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_JoinColumn" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="columnDefinition" type="String" description="" unit="" values="" default=""/>
-					<Tag name="insertable" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="nullable" type="String" description="" unit="" values="" default=""/>
-					<Tag name="referencedColumnName" type="String" description="" unit="" values="" default=""/>
-					<Tag name="table" type="String" description="" unit="" values="" default=""/>
-					<Tag name="unique" type="String" description="" unit="" values="" default=""/>
-					<Tag name="updateable" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_JoinColumns" notes="">
-				<AppliesTo>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-					<Apply type="Attribute"/>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_JoinTable" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="catalog" type="String" description="" unit="" values="" default=""/>
-					<Tag name="inverseJoinColumns" type="String" description="" unit="" values="" default=""/>
-					<Tag name="joinColumns" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="schema" type="String" description="" unit="" values="" default=""/>
-					<Tag name="uniqueConstraints" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_Lob" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_MapKey" notes="">
-				<AppliesTo>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-					<Apply type="Attribute"/>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_MappedSupperclass" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_NamedNativeQueries" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_NamedNativeQuery" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="hints" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="query" type="String" description="" unit="" values="" default=""/>
-					<Tag name="resultClass" type="String" description="" unit="" values="" default=""/>
-					<Tag name="resultSetMapping" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_NamedQueries" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_NamedQuery" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="hints" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="query" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_OrderBy" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_PersistenceContext" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="properties" type="String" description="" unit="" values="" default=""/>
-					<Tag name="type" type="String" description="" unit="" values="" default=""/>
-					<Tag name="unitName" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_PersistenceContexts" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_PersistenceProperty" notes="">
-				<TaggedValues>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_PersistenceUnit" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="unitName" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_PersistenceUnits" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_PostLoad" notes="">
-				<AppliesTo>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_PostPersist" notes="">
-				<AppliesTo>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_PostRemove" notes="">
-				<AppliesTo>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_PostUpdate" notes="">
-				<AppliesTo>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_PrePersist" notes="">
-				<AppliesTo>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_PreRemove" notes="">
-				<AppliesTo>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_PreUpdate" notes="">
-				<AppliesTo>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_PrimaryKeyJoinColumn" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-					<Apply type="Attribute"/>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="columnDefinition" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="referencedColumnName" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_PrimaryKeyJoinColumns" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_QueryHint" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_SecondaryTable" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="catalog" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="pkJoinColumns" type="String" description="" unit="" values="" default=""/>
-					<Tag name="schema" type="String" description="" unit="" values="" default=""/>
-					<Tag name="uniqueConstraints" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_SecondaryTables" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_SequenceGenerator" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="allocationSize" type="String" description="" unit="" values="" default=""/>
-					<Tag name="initialValue" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="sequenceName" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_SqlResultSetMapping" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="columns" type="String" description="" unit="" values="" default=""/>
-					<Tag name="entities" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_SqlResultSetMappings" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_Table" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="catalog" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="schema" type="String" description="" unit="" values="" default=""/>
-					<Tag name="uniqueConstraints" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_TableGenerator" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="allocationSize" type="String" description="" unit="" values="" default=""/>
-					<Tag name="catalog" type="String" description="" unit="" values="" default=""/>
-					<Tag name="initialValue" type="String" description="" unit="" values="" default=""/>
-					<Tag name="name" type="String" description="" unit="" values="" default=""/>
-					<Tag name="okColumnName" type="String" description="" unit="" values="" default=""/>
-					<Tag name="pkColumnValue" type="String" description="" unit="" values="" default=""/>
-					<Tag name="schema" type="String" description="" unit="" values="" default=""/>
-					<Tag name="table" type="String" description="" unit="" values="" default=""/>
-					<Tag name="uniqueConstraints" type="String" description="" unit="" values="" default=""/>
-					<Tag name="valueColumnName" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_Temporal" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="value" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_Transient" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_UniqueConstraint" notes="">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="columnNames" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_Version" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-			</Stereotype>
-			<Stereotype name="JPA_ManyToMany" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="cascade" type="enumeration" description="" unit="" values="ALL,MERGE,PERSIST,REFRESH,REMOVE" default=""/>
-					<Tag name="fetch" type="enumeration" description="" unit="" values="EAGER,LAZY" default=""/>
-					<Tag name="mappedBy" type="String" description="" unit="" values="" default=""/>
-					<Tag name="targetEntity" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_ManyToOne" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="cascade" type="enumeration" description="" unit="" values="ALL,MERGE,PERSIST,REFRESH,REMOVE" default=""/>
-					<Tag name="fetch" type="enumeration" description="" unit="" values="EAGER,LAZY" default=""/>
-					<Tag name="mappedBy" type="String" description="" unit="" values="" default=""/>
-					<Tag name="targetEntity" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_OneToMany" notes="">
-				<AppliesTo>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-					<Apply type="Attribute"/>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="cascade" type="enumeration" description="" unit="" values="ALL,MERGE,PERSIST,REFRESH,REMOVE" default=""/>
-					<Tag name="fetch" type="enumeration" description="" unit="" values="EAGER,LAZY" default=""/>
-					<Tag name="mappedBy" type="String" description="" unit="" values="" default=""/>
-					<Tag name="targetEntity" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-			<Stereotype name="JPA_OneToOne" notes="">
-				<AppliesTo>
-					<Apply type="Attribute"/>
-					<Apply type="Operation">
-						<Property name="isOrdered" value=""/>
-						<Property name="isQuery" value="false"/>
-						<Property name="isUnique" value=""/>
-						<Property name="lower" value=""/>
-						<Property name="upper" value=""/>
-					</Apply>
-				</AppliesTo>
-				<TaggedValues>
-					<Tag name="cascade" type="enumeration" description="" unit="" values="ALL,MERGE,PERSIST,REFRESH,REMOVE" default=""/>
-					<Tag name="fetch" type="enumeration" description="" unit="" values="EAGER,LAZY" default=""/>
-					<Tag name="mappedBy" type="String" description="" unit="" values="" default=""/>
-					<Tag name="targetEntity" type="String" description="" unit="" values="" default=""/>
-				</TaggedValues>
-			</Stereotype>
-		</Stereotypes>
-		<TaggedValueTypes/>
-	</Content>
-</UMLProfile>
+<uml:Profile xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1/" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:id="8A4B5FBA-A" nsPrefix="SimpleJSR220" name="SimpleJSR220" metamodelReference="mmref01">
+	<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="8A4B5FBA-A">
+		<body> Version:1.1</body>
+	</ownedComment>
+	<packageImport xmi:id="mmref01">
+		<importedPackage href="http://schema.omg.org/spec/UML/2.1/"/>
+	</packageImport>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Inheritance" name="JPA_Inheritance">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Inheritance-base_Class" name="base_Class" association="Class_JPA_Inheritance">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Inheritance-strategy" name="strategy">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_Inheritance" name="A_Class_JPA_Inheritance" memberEnd="extension_JPA_Inheritance JPA_Inheritance-base_Class">
+		<ownedEnd xmi:id="extension_JPA_Inheritance" name="extension_JPA_Inheritance" type="JPA_Inheritance" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Inheritance JPA_Inheritance-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PostPersist" name="JPA_PostPersist">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PostPersist-base_Operation" name="base_Operation" association="Operation_JPA_PostPersist">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_PostPersist" name="A_Operation_JPA_PostPersist" memberEnd="extension_JPA_PostPersist JPA_PostPersist-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_PostPersist" name="extension_JPA_PostPersist" type="JPA_PostPersist" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PostPersist JPA_PostPersist-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_IdClass" name="JPA_IdClass">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_IdClass-base_Class" name="base_Class" association="Class_JPA_IdClass">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_IdClass-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_IdClass" name="A_Class_JPA_IdClass" memberEnd="extension_JPA_IdClass JPA_IdClass-base_Class">
+		<ownedEnd xmi:id="extension_JPA_IdClass" name="extension_JPA_IdClass" type="JPA_IdClass" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_IdClass JPA_IdClass-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PrePersist" name="JPA_PrePersist">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PrePersist-base_Operation" name="base_Operation" association="Operation_JPA_PrePersist">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_PrePersist" name="A_Operation_JPA_PrePersist" memberEnd="extension_JPA_PrePersist JPA_PrePersist-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_PrePersist" name="extension_JPA_PrePersist" type="JPA_PrePersist" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PrePersist JPA_PrePersist-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Lob" name="JPA_Lob">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Lob-base_Operation" name="base_Operation" association="Operation_JPA_Lob">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Lob-base_Attribute" name="base_Attribute" association="Attribute_JPA_Lob">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_Lob" name="A_Operation_JPA_Lob" memberEnd="extension_JPA_Lob JPA_Lob-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_Lob" name="extension_JPA_Lob" type="JPA_Lob" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Lob JPA_Lob-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_Lob" name="A_Attribute_JPA_Lob" memberEnd="extension_JPA_Lob JPA_Lob-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_Lob" name="extension_JPA_Lob" type="JPA_Lob" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Lob JPA_Lob-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PersistenceUnit" name="JPA_PersistenceUnit">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceUnit-base_Operation" name="base_Operation" association="Operation_JPA_PersistenceUnit">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceUnit-base_Class" name="base_Class" association="Class_JPA_PersistenceUnit">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceUnit-base_Attribute" name="base_Attribute" association="Attribute_JPA_PersistenceUnit">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceUnit-unitName" name="unitName">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceUnit-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_PersistenceUnit" name="A_Operation_JPA_PersistenceUnit" memberEnd="extension_JPA_PersistenceUnit JPA_PersistenceUnit-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_PersistenceUnit" name="extension_JPA_PersistenceUnit" type="JPA_PersistenceUnit" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PersistenceUnit JPA_PersistenceUnit-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_PersistenceUnit" name="A_Class_JPA_PersistenceUnit" memberEnd="extension_JPA_PersistenceUnit JPA_PersistenceUnit-base_Class">
+		<ownedEnd xmi:id="extension_JPA_PersistenceUnit" name="extension_JPA_PersistenceUnit" type="JPA_PersistenceUnit" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PersistenceUnit JPA_PersistenceUnit-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_PersistenceUnit" name="A_Attribute_JPA_PersistenceUnit" memberEnd="extension_JPA_PersistenceUnit JPA_PersistenceUnit-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_PersistenceUnit" name="extension_JPA_PersistenceUnit" type="JPA_PersistenceUnit" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PersistenceUnit JPA_PersistenceUnit-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_EntityResult" name="JPA_EntityResult">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_EntityResult-fields" name="fields">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_EntityResult-discriminatorColumn" name="discriminatorColumn">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_EntityResult-entityClass" name="entityClass">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_SecondaryTable" name="JPA_SecondaryTable">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SecondaryTable-base_Class" name="base_Class" association="Class_JPA_SecondaryTable">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SecondaryTable-pkJoinColumns" name="pkJoinColumns">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SecondaryTable-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SecondaryTable-schema" name="schema">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SecondaryTable-catalog" name="catalog">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SecondaryTable-uniqueConstraints" name="uniqueConstraints">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_SecondaryTable" name="A_Class_JPA_SecondaryTable" memberEnd="extension_JPA_SecondaryTable JPA_SecondaryTable-base_Class">
+		<ownedEnd xmi:id="extension_JPA_SecondaryTable" name="extension_JPA_SecondaryTable" type="JPA_SecondaryTable" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_SecondaryTable JPA_SecondaryTable-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_QueryHint" name="JPA_QueryHint">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_QueryHint-base_Operation" name="base_Operation" association="Operation_JPA_QueryHint">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_QueryHint-base_Class" name="base_Class" association="Class_JPA_QueryHint">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_QueryHint-base_Attribute" name="base_Attribute" association="Attribute_JPA_QueryHint">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_QueryHint-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_QueryHint-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_QueryHint" name="A_Operation_JPA_QueryHint" memberEnd="extension_JPA_QueryHint JPA_QueryHint-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_QueryHint" name="extension_JPA_QueryHint" type="JPA_QueryHint" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_QueryHint JPA_QueryHint-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_QueryHint" name="A_Class_JPA_QueryHint" memberEnd="extension_JPA_QueryHint JPA_QueryHint-base_Class">
+		<ownedEnd xmi:id="extension_JPA_QueryHint" name="extension_JPA_QueryHint" type="JPA_QueryHint" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_QueryHint JPA_QueryHint-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_QueryHint" name="A_Attribute_JPA_QueryHint" memberEnd="extension_JPA_QueryHint JPA_QueryHint-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_QueryHint" name="extension_JPA_QueryHint" type="JPA_QueryHint" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_QueryHint JPA_QueryHint-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_DiscriminatorValue" name="JPA_DiscriminatorValue">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_DiscriminatorValue-base_Class" name="base_Class" association="Class_JPA_DiscriminatorValue">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_DiscriminatorValue-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_DiscriminatorValue" name="A_Class_JPA_DiscriminatorValue" memberEnd="extension_JPA_DiscriminatorValue JPA_DiscriminatorValue-base_Class">
+		<ownedEnd xmi:id="extension_JPA_DiscriminatorValue" name="extension_JPA_DiscriminatorValue" type="JPA_DiscriminatorValue" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_DiscriminatorValue JPA_DiscriminatorValue-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_EntityListeners" name="JPA_EntityListeners">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_EntityListeners-base_Class" name="base_Class" association="Class_JPA_EntityListeners">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_EntityListeners-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_EntityListeners" name="A_Class_JPA_EntityListeners" memberEnd="extension_JPA_EntityListeners JPA_EntityListeners-base_Class">
+		<ownedEnd xmi:id="extension_JPA_EntityListeners" name="extension_JPA_EntityListeners" type="JPA_EntityListeners" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_EntityListeners JPA_EntityListeners-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_MappedSuperclass" name="JPA_MappedSuperclass">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_MappedSuperclass-base_Class" name="base_Class" association="Class_JPA_MappedSuperclass">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_MappedSuperclass" name="A_Class_JPA_MappedSuperclass" memberEnd="extension_JPA_MappedSuperclass JPA_MappedSuperclass-base_Class">
+		<ownedEnd xmi:id="extension_JPA_MappedSuperclass" name="extension_JPA_MappedSuperclass" type="JPA_MappedSuperclass" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_MappedSuperclass JPA_MappedSuperclass-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PostRemove" name="JPA_PostRemove">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PostRemove-base_Operation" name="base_Operation" association="Operation_JPA_PostRemove">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_PostRemove" name="A_Operation_JPA_PostRemove" memberEnd="extension_JPA_PostRemove JPA_PostRemove-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_PostRemove" name="extension_JPA_PostRemove" type="JPA_PostRemove" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PostRemove JPA_PostRemove-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PrimaryKeyJoinColumn" name="JPA_PrimaryKeyJoinColumn">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PrimaryKeyJoinColumn-base_Operation" name="base_Operation" association="Operation_JPA_PrimaryKeyJoinColumn">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PrimaryKeyJoinColumn-base_Class" name="base_Class" association="Class_JPA_PrimaryKeyJoinColumn">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PrimaryKeyJoinColumn-base_Attribute" name="base_Attribute" association="Attribute_JPA_PrimaryKeyJoinColumn">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PrimaryKeyJoinColumn-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PrimaryKeyJoinColumn-columnDefinition" name="columnDefinition">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PrimaryKeyJoinColumn-referencedColumnName" name="referencedColumnName">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_PrimaryKeyJoinColumn" name="A_Operation_JPA_PrimaryKeyJoinColumn" memberEnd="extension_JPA_PrimaryKeyJoinColumn JPA_PrimaryKeyJoinColumn-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_PrimaryKeyJoinColumn" name="extension_JPA_PrimaryKeyJoinColumn" type="JPA_PrimaryKeyJoinColumn" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PrimaryKeyJoinColumn JPA_PrimaryKeyJoinColumn-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_PrimaryKeyJoinColumn" name="A_Class_JPA_PrimaryKeyJoinColumn" memberEnd="extension_JPA_PrimaryKeyJoinColumn JPA_PrimaryKeyJoinColumn-base_Class">
+		<ownedEnd xmi:id="extension_JPA_PrimaryKeyJoinColumn" name="extension_JPA_PrimaryKeyJoinColumn" type="JPA_PrimaryKeyJoinColumn" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PrimaryKeyJoinColumn JPA_PrimaryKeyJoinColumn-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_PrimaryKeyJoinColumn" name="A_Attribute_JPA_PrimaryKeyJoinColumn" memberEnd="extension_JPA_PrimaryKeyJoinColumn JPA_PrimaryKeyJoinColumn-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_PrimaryKeyJoinColumn" name="extension_JPA_PrimaryKeyJoinColumn" type="JPA_PrimaryKeyJoinColumn" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PrimaryKeyJoinColumn JPA_PrimaryKeyJoinColumn-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PostLoad" name="JPA_PostLoad">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PostLoad-base_Operation" name="base_Operation" association="Operation_JPA_PostLoad">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_PostLoad" name="A_Operation_JPA_PostLoad" memberEnd="extension_JPA_PostLoad JPA_PostLoad-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_PostLoad" name="extension_JPA_PostLoad" type="JPA_PostLoad" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PostLoad JPA_PostLoad-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Embedded" name="JPA_Embedded">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Embedded-base_Operation" name="base_Operation" association="Operation_JPA_Embedded">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Embedded-base_Attribute" name="base_Attribute" association="Attribute_JPA_Embedded">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_Embedded" name="A_Operation_JPA_Embedded" memberEnd="extension_JPA_Embedded JPA_Embedded-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_Embedded" name="extension_JPA_Embedded" type="JPA_Embedded" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Embedded JPA_Embedded-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_Embedded" name="A_Attribute_JPA_Embedded" memberEnd="extension_JPA_Embedded JPA_Embedded-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_Embedded" name="extension_JPA_Embedded" type="JPA_Embedded" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Embedded JPA_Embedded-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_JoinColumns" name="JPA_JoinColumns">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumns-base_Operation" name="base_Operation" association="Operation_JPA_JoinColumns">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumns-base_Attribute" name="base_Attribute" association="Attribute_JPA_JoinColumns">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumns-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_JoinColumns" name="A_Operation_JPA_JoinColumns" memberEnd="extension_JPA_JoinColumns JPA_JoinColumns-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_JoinColumns" name="extension_JPA_JoinColumns" type="JPA_JoinColumns" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_JoinColumns JPA_JoinColumns-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_JoinColumns" name="A_Attribute_JPA_JoinColumns" memberEnd="extension_JPA_JoinColumns JPA_JoinColumns-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_JoinColumns" name="extension_JPA_JoinColumns" type="JPA_JoinColumns" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_JoinColumns JPA_JoinColumns-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_OneToMany" name="JPA_OneToMany">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OneToMany-base_Operation" name="base_Operation" association="Operation_JPA_OneToMany">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OneToMany-base_Attribute" name="base_Attribute" association="Attribute_JPA_OneToMany">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OneToMany-fetch" name="fetch">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OneToMany-cascade" name="cascade">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OneToMany-targetEntity" name="targetEntity">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OneToMany-mappedBy" name="mappedBy">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_OneToMany" name="A_Operation_JPA_OneToMany" memberEnd="extension_JPA_OneToMany JPA_OneToMany-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_OneToMany" name="extension_JPA_OneToMany" type="JPA_OneToMany" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_OneToMany JPA_OneToMany-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_OneToMany" name="A_Attribute_JPA_OneToMany" memberEnd="extension_JPA_OneToMany JPA_OneToMany-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_OneToMany" name="extension_JPA_OneToMany" type="JPA_OneToMany" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_OneToMany JPA_OneToMany-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PersistenceProperty" name="JPA_PersistenceProperty">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceProperty-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceProperty-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_OneToOne" name="JPA_OneToOne">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OneToOne-base_Operation" name="base_Operation" association="Operation_JPA_OneToOne">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OneToOne-base_Attribute" name="base_Attribute" association="Attribute_JPA_OneToOne">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OneToOne-fetch" name="fetch">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OneToOne-cascade" name="cascade">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OneToOne-targetEntity" name="targetEntity">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OneToOne-mappedBy" name="mappedBy">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_OneToOne" name="A_Operation_JPA_OneToOne" memberEnd="extension_JPA_OneToOne JPA_OneToOne-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_OneToOne" name="extension_JPA_OneToOne" type="JPA_OneToOne" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_OneToOne JPA_OneToOne-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_OneToOne" name="A_Attribute_JPA_OneToOne" memberEnd="extension_JPA_OneToOne JPA_OneToOne-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_OneToOne" name="extension_JPA_OneToOne" type="JPA_OneToOne" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_OneToOne JPA_OneToOne-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_JoinColumn" name="JPA_JoinColumn">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumn-base_Operation" name="base_Operation" association="Operation_JPA_JoinColumn">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumn-base_Attribute" name="base_Attribute" association="Attribute_JPA_JoinColumn">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumn-unique" name="unique">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumn-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumn-columnDefinition" name="columnDefinition">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumn-referencedColumnName" name="referencedColumnName">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumn-table" name="table">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumn-nullable" name="nullable">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumn-insertable" name="insertable">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinColumn-updateable" name="updateable">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_JoinColumn" name="A_Operation_JPA_JoinColumn" memberEnd="extension_JPA_JoinColumn JPA_JoinColumn-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_JoinColumn" name="extension_JPA_JoinColumn" type="JPA_JoinColumn" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_JoinColumn JPA_JoinColumn-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_JoinColumn" name="A_Attribute_JPA_JoinColumn" memberEnd="extension_JPA_JoinColumn JPA_JoinColumn-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_JoinColumn" name="extension_JPA_JoinColumn" type="JPA_JoinColumn" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_JoinColumn JPA_JoinColumn-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_SqlResultSetMappings" name="JPA_SqlResultSetMappings">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SqlResultSetMappings-base_Class" name="base_Class" association="Class_JPA_SqlResultSetMappings">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SqlResultSetMappings-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_SqlResultSetMappings" name="A_Class_JPA_SqlResultSetMappings" memberEnd="extension_JPA_SqlResultSetMappings JPA_SqlResultSetMappings-base_Class">
+		<ownedEnd xmi:id="extension_JPA_SqlResultSetMappings" name="extension_JPA_SqlResultSetMappings" type="JPA_SqlResultSetMappings" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_SqlResultSetMappings JPA_SqlResultSetMappings-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_NamedNativeQuery" name="JPA_NamedNativeQuery">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedNativeQuery-base_Class" name="base_Class" association="Class_JPA_NamedNativeQuery">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedNativeQuery-resultClass" name="resultClass">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedNativeQuery-resultSetMapping" name="resultSetMapping">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedNativeQuery-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedNativeQuery-query" name="query">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedNativeQuery-hints" name="hints">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_NamedNativeQuery" name="A_Class_JPA_NamedNativeQuery" memberEnd="extension_JPA_NamedNativeQuery JPA_NamedNativeQuery-base_Class">
+		<ownedEnd xmi:id="extension_JPA_NamedNativeQuery" name="extension_JPA_NamedNativeQuery" type="JPA_NamedNativeQuery" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_NamedNativeQuery JPA_NamedNativeQuery-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_ManyToOne" name="JPA_ManyToOne">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ManyToOne-base_Operation" name="base_Operation" association="Operation_JPA_ManyToOne">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ManyToOne-base_Attribute" name="base_Attribute" association="Attribute_JPA_ManyToOne">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ManyToOne-fetch" name="fetch">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ManyToOne-cascade" name="cascade">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ManyToOne-targetEntity" name="targetEntity">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ManyToOne-mappedBy" name="mappedBy">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_ManyToOne" name="A_Operation_JPA_ManyToOne" memberEnd="extension_JPA_ManyToOne JPA_ManyToOne-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_ManyToOne" name="extension_JPA_ManyToOne" type="JPA_ManyToOne" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_ManyToOne JPA_ManyToOne-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_ManyToOne" name="A_Attribute_JPA_ManyToOne" memberEnd="extension_JPA_ManyToOne JPA_ManyToOne-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_ManyToOne" name="extension_JPA_ManyToOne" type="JPA_ManyToOne" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_ManyToOne JPA_ManyToOne-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PersistenceContexts" name="JPA_PersistenceContexts">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceContexts-base_Class" name="base_Class" association="Class_JPA_PersistenceContexts">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceContexts-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_PersistenceContexts" name="A_Class_JPA_PersistenceContexts" memberEnd="extension_JPA_PersistenceContexts JPA_PersistenceContexts-base_Class">
+		<ownedEnd xmi:id="extension_JPA_PersistenceContexts" name="extension_JPA_PersistenceContexts" type="JPA_PersistenceContexts" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PersistenceContexts JPA_PersistenceContexts-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PrimaryKeyJoinColumns" name="JPA_PrimaryKeyJoinColumns">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PrimaryKeyJoinColumns-base_Operation" name="base_Operation" association="Operation_JPA_PrimaryKeyJoinColumns">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PrimaryKeyJoinColumns-base_Class" name="base_Class" association="Class_JPA_PrimaryKeyJoinColumns">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PrimaryKeyJoinColumns-base_Attribute" name="base_Attribute" association="Attribute_JPA_PrimaryKeyJoinColumns">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PrimaryKeyJoinColumns-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_PrimaryKeyJoinColumns" name="A_Operation_JPA_PrimaryKeyJoinColumns" memberEnd="extension_JPA_PrimaryKeyJoinColumns JPA_PrimaryKeyJoinColumns-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_PrimaryKeyJoinColumns" name="extension_JPA_PrimaryKeyJoinColumns" type="JPA_PrimaryKeyJoinColumns" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PrimaryKeyJoinColumns JPA_PrimaryKeyJoinColumns-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_PrimaryKeyJoinColumns" name="A_Class_JPA_PrimaryKeyJoinColumns" memberEnd="extension_JPA_PrimaryKeyJoinColumns JPA_PrimaryKeyJoinColumns-base_Class">
+		<ownedEnd xmi:id="extension_JPA_PrimaryKeyJoinColumns" name="extension_JPA_PrimaryKeyJoinColumns" type="JPA_PrimaryKeyJoinColumns" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PrimaryKeyJoinColumns JPA_PrimaryKeyJoinColumns-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_PrimaryKeyJoinColumns" name="A_Attribute_JPA_PrimaryKeyJoinColumns" memberEnd="extension_JPA_PrimaryKeyJoinColumns JPA_PrimaryKeyJoinColumns-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_PrimaryKeyJoinColumns" name="extension_JPA_PrimaryKeyJoinColumns" type="JPA_PrimaryKeyJoinColumns" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PrimaryKeyJoinColumns JPA_PrimaryKeyJoinColumns-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_ColumnResult" name="JPA_ColumnResult">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ColumnResult-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_SequenceGenerator" name="JPA_SequenceGenerator">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SequenceGenerator-base_Operation" name="base_Operation" association="Operation_JPA_SequenceGenerator">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SequenceGenerator-base_Class" name="base_Class" association="Class_JPA_SequenceGenerator">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SequenceGenerator-base_Attribute" name="base_Attribute" association="Attribute_JPA_SequenceGenerator">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SequenceGenerator-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SequenceGenerator-initialValue" name="initialValue">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SequenceGenerator-allocationSize" name="allocationSize">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SequenceGenerator-sequenceName" name="sequenceName">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_SequenceGenerator" name="A_Operation_JPA_SequenceGenerator" memberEnd="extension_JPA_SequenceGenerator JPA_SequenceGenerator-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_SequenceGenerator" name="extension_JPA_SequenceGenerator" type="JPA_SequenceGenerator" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_SequenceGenerator JPA_SequenceGenerator-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_SequenceGenerator" name="A_Class_JPA_SequenceGenerator" memberEnd="extension_JPA_SequenceGenerator JPA_SequenceGenerator-base_Class">
+		<ownedEnd xmi:id="extension_JPA_SequenceGenerator" name="extension_JPA_SequenceGenerator" type="JPA_SequenceGenerator" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_SequenceGenerator JPA_SequenceGenerator-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_SequenceGenerator" name="A_Attribute_JPA_SequenceGenerator" memberEnd="extension_JPA_SequenceGenerator JPA_SequenceGenerator-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_SequenceGenerator" name="extension_JPA_SequenceGenerator" type="JPA_SequenceGenerator" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_SequenceGenerator JPA_SequenceGenerator-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_OrderBy" name="JPA_OrderBy">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OrderBy-base_Operation" name="base_Operation" association="Operation_JPA_OrderBy">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OrderBy-base_Attribute" name="base_Attribute" association="Attribute_JPA_OrderBy">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_OrderBy-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_OrderBy" name="A_Operation_JPA_OrderBy" memberEnd="extension_JPA_OrderBy JPA_OrderBy-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_OrderBy" name="extension_JPA_OrderBy" type="JPA_OrderBy" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_OrderBy JPA_OrderBy-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_OrderBy" name="A_Attribute_JPA_OrderBy" memberEnd="extension_JPA_OrderBy JPA_OrderBy-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_OrderBy" name="extension_JPA_OrderBy" type="JPA_OrderBy" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_OrderBy JPA_OrderBy-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Enumerated" name="JPA_Enumerated">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Enumerated-base_Operation" name="base_Operation" association="Operation_JPA_Enumerated">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Enumerated-base_Attribute" name="base_Attribute" association="Attribute_JPA_Enumerated">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Enumerated-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_Enumerated" name="A_Operation_JPA_Enumerated" memberEnd="extension_JPA_Enumerated JPA_Enumerated-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_Enumerated" name="extension_JPA_Enumerated" type="JPA_Enumerated" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Enumerated JPA_Enumerated-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_Enumerated" name="A_Attribute_JPA_Enumerated" memberEnd="extension_JPA_Enumerated JPA_Enumerated-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_Enumerated" name="extension_JPA_Enumerated" type="JPA_Enumerated" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Enumerated JPA_Enumerated-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Root" name="JPA_Root">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Root-base_Class" name="base_Class" association="Class_JPA_Root">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_Root" name="A_Class_JPA_Root" memberEnd="extension_JPA_Root JPA_Root-base_Class">
+		<ownedEnd xmi:id="extension_JPA_Root" name="extension_JPA_Root" type="JPA_Root" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Root JPA_Root-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Entity" name="JPA_Entity">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Entity-base_Class" name="base_Class" association="Class_JPA_Entity">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Entity-isActive" name="isActive">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_Entity" name="A_Class_JPA_Entity" memberEnd="extension_JPA_Entity JPA_Entity-base_Class">
+		<ownedEnd xmi:id="extension_JPA_Entity" name="extension_JPA_Entity" type="JPA_Entity" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Entity JPA_Entity-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PersistenceContext" name="JPA_PersistenceContext">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceContext-base_Operation" name="base_Operation" association="Operation_JPA_PersistenceContext">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceContext-base_Class" name="base_Class" association="Class_JPA_PersistenceContext">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceContext-base_Attribute" name="base_Attribute" association="Attribute_JPA_PersistenceContext">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceContext-unitName" name="unitName">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceContext-properties" name="properties">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceContext-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceContext-type" name="type">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_PersistenceContext" name="A_Operation_JPA_PersistenceContext" memberEnd="extension_JPA_PersistenceContext JPA_PersistenceContext-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_PersistenceContext" name="extension_JPA_PersistenceContext" type="JPA_PersistenceContext" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PersistenceContext JPA_PersistenceContext-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_PersistenceContext" name="A_Class_JPA_PersistenceContext" memberEnd="extension_JPA_PersistenceContext JPA_PersistenceContext-base_Class">
+		<ownedEnd xmi:id="extension_JPA_PersistenceContext" name="extension_JPA_PersistenceContext" type="JPA_PersistenceContext" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PersistenceContext JPA_PersistenceContext-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_PersistenceContext" name="A_Attribute_JPA_PersistenceContext" memberEnd="extension_JPA_PersistenceContext JPA_PersistenceContext-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_PersistenceContext" name="extension_JPA_PersistenceContext" type="JPA_PersistenceContext" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PersistenceContext JPA_PersistenceContext-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_ExcludeSuperclassListeners" name="JPA_ExcludeSuperclassListeners">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ExcludeSuperclassListeners-base_Class" name="base_Class" association="Class_JPA_ExcludeSuperclassListeners">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_ExcludeSuperclassListeners" name="A_Class_JPA_ExcludeSuperclassListeners" memberEnd="extension_JPA_ExcludeSuperclassListeners JPA_ExcludeSuperclassListeners-base_Class">
+		<ownedEnd xmi:id="extension_JPA_ExcludeSuperclassListeners" name="extension_JPA_ExcludeSuperclassListeners" type="JPA_ExcludeSuperclassListeners" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_ExcludeSuperclassListeners JPA_ExcludeSuperclassListeners-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_NamedQueries" name="JPA_NamedQueries">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedQueries-base_Class" name="base_Class" association="Class_JPA_NamedQueries">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedQueries-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_NamedQueries" name="A_Class_JPA_NamedQueries" memberEnd="extension_JPA_NamedQueries JPA_NamedQueries-base_Class">
+		<ownedEnd xmi:id="extension_JPA_NamedQueries" name="extension_JPA_NamedQueries" type="JPA_NamedQueries" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_NamedQueries JPA_NamedQueries-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_FieldResult" name="JPA_FieldResult">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_FieldResult-column" name="column">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_FieldResult-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_ManyToMany" name="JPA_ManyToMany">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ManyToMany-base_Operation" name="base_Operation" association="Operation_JPA_ManyToMany">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ManyToMany-base_Attribute" name="base_Attribute" association="Attribute_JPA_ManyToMany">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ManyToMany-fetch" name="fetch">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ManyToMany-cascade" name="cascade">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ManyToMany-targetEntity" name="targetEntity">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ManyToMany-mappedBy" name="mappedBy">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_ManyToMany" name="A_Operation_JPA_ManyToMany" memberEnd="extension_JPA_ManyToMany JPA_ManyToMany-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_ManyToMany" name="extension_JPA_ManyToMany" type="JPA_ManyToMany" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_ManyToMany JPA_ManyToMany-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_ManyToMany" name="A_Attribute_JPA_ManyToMany" memberEnd="extension_JPA_ManyToMany JPA_ManyToMany-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_ManyToMany" name="extension_JPA_ManyToMany" type="JPA_ManyToMany" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_ManyToMany JPA_ManyToMany-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Column" name="JPA_Column">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Column-base_Operation" name="base_Operation" association="Operation_JPA_Column">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Column-base_Attribute" name="base_Attribute" association="Attribute_JPA_Column">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Column-length" name="length">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Column-unique" name="unique">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Column-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Column-columnDefinition" name="columnDefinition">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Column-precision" name="precision">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Column-table" name="table">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Column-nullable" name="nullable">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Column-insertable" name="insertable">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Column-updateable" name="updateable">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Column-scale" name="scale">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_Column" name="A_Operation_JPA_Column" memberEnd="extension_JPA_Column JPA_Column-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_Column" name="extension_JPA_Column" type="JPA_Column" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Column JPA_Column-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_Column" name="A_Attribute_JPA_Column" memberEnd="extension_JPA_Column JPA_Column-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_Column" name="extension_JPA_Column" type="JPA_Column" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Column JPA_Column-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_GeneratedValue" name="JPA_GeneratedValue">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_GeneratedValue-base_Operation" name="base_Operation" association="Operation_JPA_GeneratedValue">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_GeneratedValue-base_Attribute" name="base_Attribute" association="Attribute_JPA_GeneratedValue">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_GeneratedValue-strategy" name="strategy">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_GeneratedValue-generator" name="generator">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_GeneratedValue" name="A_Operation_JPA_GeneratedValue" memberEnd="extension_JPA_GeneratedValue JPA_GeneratedValue-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_GeneratedValue" name="extension_JPA_GeneratedValue" type="JPA_GeneratedValue" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_GeneratedValue JPA_GeneratedValue-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_GeneratedValue" name="A_Attribute_JPA_GeneratedValue" memberEnd="extension_JPA_GeneratedValue JPA_GeneratedValue-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_GeneratedValue" name="extension_JPA_GeneratedValue" type="JPA_GeneratedValue" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_GeneratedValue JPA_GeneratedValue-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_MapKey" name="JPA_MapKey">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_MapKey-base_Operation" name="base_Operation" association="Operation_JPA_MapKey">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_MapKey-base_Attribute" name="base_Attribute" association="Attribute_JPA_MapKey">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_MapKey-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_MapKey" name="A_Operation_JPA_MapKey" memberEnd="extension_JPA_MapKey JPA_MapKey-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_MapKey" name="extension_JPA_MapKey" type="JPA_MapKey" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_MapKey JPA_MapKey-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_MapKey" name="A_Attribute_JPA_MapKey" memberEnd="extension_JPA_MapKey JPA_MapKey-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_MapKey" name="extension_JPA_MapKey" type="JPA_MapKey" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_MapKey JPA_MapKey-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Temporal" name="JPA_Temporal">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Temporal-base_Operation" name="base_Operation" association="Operation_JPA_Temporal">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Temporal-base_Attribute" name="base_Attribute" association="Attribute_JPA_Temporal">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Temporal-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_Temporal" name="A_Operation_JPA_Temporal" memberEnd="extension_JPA_Temporal JPA_Temporal-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_Temporal" name="extension_JPA_Temporal" type="JPA_Temporal" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Temporal JPA_Temporal-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_Temporal" name="A_Attribute_JPA_Temporal" memberEnd="extension_JPA_Temporal JPA_Temporal-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_Temporal" name="extension_JPA_Temporal" type="JPA_Temporal" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Temporal JPA_Temporal-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PersistenceUnits" name="JPA_PersistenceUnits">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceUnits-base_Class" name="base_Class" association="Class_JPA_PersistenceUnits">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PersistenceUnits-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_PersistenceUnits" name="A_Class_JPA_PersistenceUnits" memberEnd="extension_JPA_PersistenceUnits JPA_PersistenceUnits-base_Class">
+		<ownedEnd xmi:id="extension_JPA_PersistenceUnits" name="extension_JPA_PersistenceUnits" type="JPA_PersistenceUnits" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PersistenceUnits JPA_PersistenceUnits-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_ExcludeDefaultListeners" name="JPA_ExcludeDefaultListeners">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_ExcludeDefaultListeners-base_Class" name="base_Class" association="Class_JPA_ExcludeDefaultListeners">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_ExcludeDefaultListeners" name="A_Class_JPA_ExcludeDefaultListeners" memberEnd="extension_JPA_ExcludeDefaultListeners JPA_ExcludeDefaultListeners-base_Class">
+		<ownedEnd xmi:id="extension_JPA_ExcludeDefaultListeners" name="extension_JPA_ExcludeDefaultListeners" type="JPA_ExcludeDefaultListeners" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_ExcludeDefaultListeners JPA_ExcludeDefaultListeners-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_AssociationOverrides" name="JPA_AssociationOverrides">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AssociationOverrides-base_Class" name="base_Class" association="Class_JPA_AssociationOverrides">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AssociationOverrides-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_AssociationOverrides" name="A_Class_JPA_AssociationOverrides" memberEnd="extension_JPA_AssociationOverrides JPA_AssociationOverrides-base_Class">
+		<ownedEnd xmi:id="extension_JPA_AssociationOverrides" name="extension_JPA_AssociationOverrides" type="JPA_AssociationOverrides" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_AssociationOverrides JPA_AssociationOverrides-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_SqlResultSetMapping" name="JPA_SqlResultSetMapping">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SqlResultSetMapping-base_Class" name="base_Class" association="Class_JPA_SqlResultSetMapping">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SqlResultSetMapping-entities" name="entities">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SqlResultSetMapping-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SqlResultSetMapping-columns" name="columns">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_SqlResultSetMapping" name="A_Class_JPA_SqlResultSetMapping" memberEnd="extension_JPA_SqlResultSetMapping JPA_SqlResultSetMapping-base_Class">
+		<ownedEnd xmi:id="extension_JPA_SqlResultSetMapping" name="extension_JPA_SqlResultSetMapping" type="JPA_SqlResultSetMapping" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_SqlResultSetMapping JPA_SqlResultSetMapping-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PreUpdate" name="JPA_PreUpdate">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PreUpdate-base_Operation" name="base_Operation" association="Operation_JPA_PreUpdate">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_PreUpdate" name="A_Operation_JPA_PreUpdate" memberEnd="extension_JPA_PreUpdate JPA_PreUpdate-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_PreUpdate" name="extension_JPA_PreUpdate" type="JPA_PreUpdate" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PreUpdate JPA_PreUpdate-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Embeddable" name="JPA_Embeddable">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Embeddable-base_Class" name="base_Class" association="Class_JPA_Embeddable">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_Embeddable" name="A_Class_JPA_Embeddable" memberEnd="extension_JPA_Embeddable JPA_Embeddable-base_Class">
+		<ownedEnd xmi:id="extension_JPA_Embeddable" name="extension_JPA_Embeddable" type="JPA_Embeddable" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Embeddable JPA_Embeddable-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Version" name="JPA_Version">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Version-base_Operation" name="base_Operation" association="Operation_JPA_Version">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Version-base_Attribute" name="base_Attribute" association="Attribute_JPA_Version">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_Version" name="A_Operation_JPA_Version" memberEnd="extension_JPA_Version JPA_Version-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_Version" name="extension_JPA_Version" type="JPA_Version" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Version JPA_Version-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_Version" name="A_Attribute_JPA_Version" memberEnd="extension_JPA_Version JPA_Version-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_Version" name="extension_JPA_Version" type="JPA_Version" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Version JPA_Version-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_SecondaryTables" name="JPA_SecondaryTables">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SecondaryTables-base_Class" name="base_Class" association="Class_JPA_SecondaryTables">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_SecondaryTables-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_SecondaryTables" name="A_Class_JPA_SecondaryTables" memberEnd="extension_JPA_SecondaryTables JPA_SecondaryTables-base_Class">
+		<ownedEnd xmi:id="extension_JPA_SecondaryTables" name="extension_JPA_SecondaryTables" type="JPA_SecondaryTables" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_SecondaryTables JPA_SecondaryTables-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_UniqueConstraint" name="JPA_UniqueConstraint">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_UniqueConstraint-base_Operation" name="base_Operation" association="Operation_JPA_UniqueConstraint">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_UniqueConstraint-base_Class" name="base_Class" association="Class_JPA_UniqueConstraint">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_UniqueConstraint-base_Attribute" name="base_Attribute" association="Attribute_JPA_UniqueConstraint">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_UniqueConstraint-columnNames" name="columnNames">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_UniqueConstraint" name="A_Operation_JPA_UniqueConstraint" memberEnd="extension_JPA_UniqueConstraint JPA_UniqueConstraint-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_UniqueConstraint" name="extension_JPA_UniqueConstraint" type="JPA_UniqueConstraint" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_UniqueConstraint JPA_UniqueConstraint-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_UniqueConstraint" name="A_Class_JPA_UniqueConstraint" memberEnd="extension_JPA_UniqueConstraint JPA_UniqueConstraint-base_Class">
+		<ownedEnd xmi:id="extension_JPA_UniqueConstraint" name="extension_JPA_UniqueConstraint" type="JPA_UniqueConstraint" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_UniqueConstraint JPA_UniqueConstraint-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_UniqueConstraint" name="A_Attribute_JPA_UniqueConstraint" memberEnd="extension_JPA_UniqueConstraint JPA_UniqueConstraint-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_UniqueConstraint" name="extension_JPA_UniqueConstraint" type="JPA_UniqueConstraint" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_UniqueConstraint JPA_UniqueConstraint-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Id" name="JPA_Id">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Id-base_Operation" name="base_Operation" association="Operation_JPA_Id">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Id-base_Attribute" name="base_Attribute" association="Attribute_JPA_Id">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_Id" name="A_Operation_JPA_Id" memberEnd="extension_JPA_Id JPA_Id-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_Id" name="extension_JPA_Id" type="JPA_Id" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Id JPA_Id-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_Id" name="A_Attribute_JPA_Id" memberEnd="extension_JPA_Id JPA_Id-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_Id" name="extension_JPA_Id" type="JPA_Id" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Id JPA_Id-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_EmbeddedId" name="JPA_EmbeddedId">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_EmbeddedId-base_Operation" name="base_Operation" association="Operation_JPA_EmbeddedId">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_EmbeddedId-base_Attribute" name="base_Attribute" association="Attribute_JPA_EmbeddedId">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_EmbeddedId" name="A_Operation_JPA_EmbeddedId" memberEnd="extension_JPA_EmbeddedId JPA_EmbeddedId-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_EmbeddedId" name="extension_JPA_EmbeddedId" type="JPA_EmbeddedId" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_EmbeddedId JPA_EmbeddedId-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_EmbeddedId" name="A_Attribute_JPA_EmbeddedId" memberEnd="extension_JPA_EmbeddedId JPA_EmbeddedId-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_EmbeddedId" name="extension_JPA_EmbeddedId" type="JPA_EmbeddedId" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_EmbeddedId JPA_EmbeddedId-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_NamedQuery" name="JPA_NamedQuery">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedQuery-base_Class" name="base_Class" association="Class_JPA_NamedQuery">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedQuery-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedQuery-query" name="query">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedQuery-hints" name="hints">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_NamedQuery" name="A_Class_JPA_NamedQuery" memberEnd="extension_JPA_NamedQuery JPA_NamedQuery-base_Class">
+		<ownedEnd xmi:id="extension_JPA_NamedQuery" name="extension_JPA_NamedQuery" type="JPA_NamedQuery" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_NamedQuery JPA_NamedQuery-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PreRemove" name="JPA_PreRemove">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PreRemove-base_Operation" name="base_Operation" association="Operation_JPA_PreRemove">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_PreRemove" name="A_Operation_JPA_PreRemove" memberEnd="extension_JPA_PreRemove JPA_PreRemove-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_PreRemove" name="extension_JPA_PreRemove" type="JPA_PreRemove" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PreRemove JPA_PreRemove-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Basic" name="JPA_Basic">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Basic-base_Operation" name="base_Operation" association="Operation_JPA_Basic">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Basic-base_Attribute" name="base_Attribute" association="Attribute_JPA_Basic">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Basic-fetch" name="fetch">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Basic-optional" name="optional">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_Basic" name="A_Operation_JPA_Basic" memberEnd="extension_JPA_Basic JPA_Basic-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_Basic" name="extension_JPA_Basic" type="JPA_Basic" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Basic JPA_Basic-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_Basic" name="A_Attribute_JPA_Basic" memberEnd="extension_JPA_Basic JPA_Basic-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_Basic" name="extension_JPA_Basic" type="JPA_Basic" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Basic JPA_Basic-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Transient" name="JPA_Transient">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Transient-base_Operation" name="base_Operation" association="Operation_JPA_Transient">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Transient-base_Attribute" name="base_Attribute" association="Attribute_JPA_Transient">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_Transient" name="A_Operation_JPA_Transient" memberEnd="extension_JPA_Transient JPA_Transient-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_Transient" name="extension_JPA_Transient" type="JPA_Transient" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Transient JPA_Transient-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_Transient" name="A_Attribute_JPA_Transient" memberEnd="extension_JPA_Transient JPA_Transient-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_Transient" name="extension_JPA_Transient" type="JPA_Transient" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Transient JPA_Transient-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_AttributeOverride" name="JPA_AttributeOverride">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AttributeOverride-base_Operation" name="base_Operation" association="Operation_JPA_AttributeOverride">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AttributeOverride-base_Class" name="base_Class" association="Class_JPA_AttributeOverride">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AttributeOverride-base_Attribute" name="base_Attribute" association="Attribute_JPA_AttributeOverride">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AttributeOverride-column" name="column">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AttributeOverride-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_AttributeOverride" name="A_Operation_JPA_AttributeOverride" memberEnd="extension_JPA_AttributeOverride JPA_AttributeOverride-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_AttributeOverride" name="extension_JPA_AttributeOverride" type="JPA_AttributeOverride" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_AttributeOverride JPA_AttributeOverride-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_AttributeOverride" name="A_Class_JPA_AttributeOverride" memberEnd="extension_JPA_AttributeOverride JPA_AttributeOverride-base_Class">
+		<ownedEnd xmi:id="extension_JPA_AttributeOverride" name="extension_JPA_AttributeOverride" type="JPA_AttributeOverride" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_AttributeOverride JPA_AttributeOverride-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_AttributeOverride" name="A_Attribute_JPA_AttributeOverride" memberEnd="extension_JPA_AttributeOverride JPA_AttributeOverride-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_AttributeOverride" name="extension_JPA_AttributeOverride" type="JPA_AttributeOverride" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_AttributeOverride JPA_AttributeOverride-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_Table" name="JPA_Table">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Table-base_Class" name="base_Class" association="Class_JPA_Table">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Table-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Table-schema" name="schema">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Table-catalog" name="catalog">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_Table-uniqueConstraints" name="uniqueConstraints">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_Table" name="A_Class_JPA_Table" memberEnd="extension_JPA_Table JPA_Table-base_Class">
+		<ownedEnd xmi:id="extension_JPA_Table" name="extension_JPA_Table" type="JPA_Table" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_Table JPA_Table-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_TableGenerator" name="JPA_TableGenerator">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-base_Operation" name="base_Operation" association="Operation_JPA_TableGenerator">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-base_Class" name="base_Class" association="Class_JPA_TableGenerator">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-base_Attribute" name="base_Attribute" association="Attribute_JPA_TableGenerator">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-valueColumnName" name="valueColumnName">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-schema" name="schema">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-initialValue" name="initialValue">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-table" name="table">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-okColumnName" name="okColumnName">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-allocationSize" name="allocationSize">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-catalog" name="catalog">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-pkColumnValue" name="pkColumnValue">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_TableGenerator-uniqueConstraints" name="uniqueConstraints">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_TableGenerator" name="A_Operation_JPA_TableGenerator" memberEnd="extension_JPA_TableGenerator JPA_TableGenerator-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_TableGenerator" name="extension_JPA_TableGenerator" type="JPA_TableGenerator" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_TableGenerator JPA_TableGenerator-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_TableGenerator" name="A_Class_JPA_TableGenerator" memberEnd="extension_JPA_TableGenerator JPA_TableGenerator-base_Class">
+		<ownedEnd xmi:id="extension_JPA_TableGenerator" name="extension_JPA_TableGenerator" type="JPA_TableGenerator" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_TableGenerator JPA_TableGenerator-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_TableGenerator" name="A_Attribute_JPA_TableGenerator" memberEnd="extension_JPA_TableGenerator JPA_TableGenerator-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_TableGenerator" name="extension_JPA_TableGenerator" type="JPA_TableGenerator" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_TableGenerator JPA_TableGenerator-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_PostUpdate" name="JPA_PostUpdate">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_PostUpdate-base_Operation" name="base_Operation" association="Operation_JPA_PostUpdate">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_PostUpdate" name="A_Operation_JPA_PostUpdate" memberEnd="extension_JPA_PostUpdate JPA_PostUpdate-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_PostUpdate" name="extension_JPA_PostUpdate" type="JPA_PostUpdate" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_PostUpdate JPA_PostUpdate-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_JoinTable" name="JPA_JoinTable">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinTable-base_Operation" name="base_Operation" association="Operation_JPA_JoinTable">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinTable-base_Attribute" name="base_Attribute" association="Attribute_JPA_JoinTable">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinTable-joinColumns" name="joinColumns">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinTable-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinTable-schema" name="schema">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinTable-catalog" name="catalog">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinTable-uniqueConstraints" name="uniqueConstraints">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_JoinTable-inverseJoinColumns" name="inverseJoinColumns">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_JoinTable" name="A_Operation_JPA_JoinTable" memberEnd="extension_JPA_JoinTable JPA_JoinTable-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_JoinTable" name="extension_JPA_JoinTable" type="JPA_JoinTable" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_JoinTable JPA_JoinTable-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_JoinTable" name="A_Attribute_JPA_JoinTable" memberEnd="extension_JPA_JoinTable JPA_JoinTable-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_JoinTable" name="extension_JPA_JoinTable" type="JPA_JoinTable" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_JoinTable JPA_JoinTable-base_Attribute"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_AssociationOverride" name="JPA_AssociationOverride">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AssociationOverride-base_Class" name="base_Class" association="Class_JPA_AssociationOverride">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AssociationOverride-joinColumns" name="joinColumns">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AssociationOverride-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_AssociationOverride" name="A_Class_JPA_AssociationOverride" memberEnd="extension_JPA_AssociationOverride JPA_AssociationOverride-base_Class">
+		<ownedEnd xmi:id="extension_JPA_AssociationOverride" name="extension_JPA_AssociationOverride" type="JPA_AssociationOverride" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_AssociationOverride JPA_AssociationOverride-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_DiscriminatorColumn" name="JPA_DiscriminatorColumn">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_DiscriminatorColumn-base_Class" name="base_Class" association="Class_JPA_DiscriminatorColumn">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_DiscriminatorColumn-length" name="length">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_DiscriminatorColumn-name" name="name">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_DiscriminatorColumn-columnDefinition" name="columnDefinition">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_DiscriminatorColumn-discriminatorType" name="discriminatorType">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_DiscriminatorColumn" name="A_Class_JPA_DiscriminatorColumn" memberEnd="extension_JPA_DiscriminatorColumn JPA_DiscriminatorColumn-base_Class">
+		<ownedEnd xmi:id="extension_JPA_DiscriminatorColumn" name="extension_JPA_DiscriminatorColumn" type="JPA_DiscriminatorColumn" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_DiscriminatorColumn JPA_DiscriminatorColumn-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_NamedNativeQueries" name="JPA_NamedNativeQueries">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedNativeQueries-base_Class" name="base_Class" association="Class_JPA_NamedNativeQueries">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_NamedNativeQueries-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_NamedNativeQueries" name="A_Class_JPA_NamedNativeQueries" memberEnd="extension_JPA_NamedNativeQueries JPA_NamedNativeQueries-base_Class">
+		<ownedEnd xmi:id="extension_JPA_NamedNativeQueries" name="extension_JPA_NamedNativeQueries" type="JPA_NamedNativeQueries" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_NamedNativeQueries JPA_NamedNativeQueries-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Stereotype" xmi:id="JPA_AttributeOverrides" name="JPA_AttributeOverrides">
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AttributeOverrides-base_Operation" name="base_Operation" association="Operation_JPA_AttributeOverrides">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Operation"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AttributeOverrides-base_Class" name="base_Class" association="Class_JPA_AttributeOverrides">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AttributeOverrides-base_Attribute" name="base_Attribute" association="Attribute_JPA_AttributeOverrides">
+			<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+		</ownedAttribute>
+		<ownedAttribute xmi:type="uml:Property" xmi:id="JPA_AttributeOverrides-value" name="value">
+			<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+		</ownedAttribute>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Operation_JPA_AttributeOverrides" name="A_Operation_JPA_AttributeOverrides" memberEnd="extension_JPA_AttributeOverrides JPA_AttributeOverrides-base_Operation">
+		<ownedEnd xmi:id="extension_JPA_AttributeOverrides" name="extension_JPA_AttributeOverrides" type="JPA_AttributeOverrides" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_AttributeOverrides JPA_AttributeOverrides-base_Operation"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Class_JPA_AttributeOverrides" name="A_Class_JPA_AttributeOverrides" memberEnd="extension_JPA_AttributeOverrides JPA_AttributeOverrides-base_Class">
+		<ownedEnd xmi:id="extension_JPA_AttributeOverrides" name="extension_JPA_AttributeOverrides" type="JPA_AttributeOverrides" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_AttributeOverrides JPA_AttributeOverrides-base_Class"/>
+	</packagedElement>
+	<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_JPA_AttributeOverrides" name="A_Attribute_JPA_AttributeOverrides" memberEnd="extension_JPA_AttributeOverrides JPA_AttributeOverrides-base_Attribute">
+		<ownedEnd xmi:id="extension_JPA_AttributeOverrides" name="extension_JPA_AttributeOverrides" type="JPA_AttributeOverrides" isComposite="true" lower="0" upper="1" memberEnd="extension_JPA_AttributeOverrides JPA_AttributeOverrides-base_Attribute"/>
+	</packagedElement>
+</uml:Profile>
