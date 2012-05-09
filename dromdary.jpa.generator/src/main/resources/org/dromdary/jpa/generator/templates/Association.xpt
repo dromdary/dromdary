@@ -141,7 +141,7 @@
 						    «ELSE»
 								@JoinColumn(name = "«getColumnNamePrefix(generateColumnName("id", generateTableName(ae.ownedEnd.get(1).type.name)))»_«generateColumnName("id", generateTableName(ae.ownedEnd.get(1).class.name))»", referencedColumnName = "«generateColumnName("id", generateTableName(ae.ownedEnd.get(1).class.name))»", nullable = false)
 							«ENDIF»
-							public «ae.ownedEnd.get(1).type.package.name».I«ae.ownedEnd.get(1).type.name» «ae.ownedEnd.get(1).type.name.toFirstLower()» = nusdall;
+							public «ae.ownedEnd.get(1).type.package.name».I«ae.ownedEnd.get(1).type.name» «ae.ownedEnd.get(1).type.name.toFirstLower()» = null;
 						«ENDIF»
 					«ENDIF»
 				«ENDIF»	
