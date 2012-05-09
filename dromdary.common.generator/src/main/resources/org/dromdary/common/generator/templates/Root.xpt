@@ -1,4 +1,4 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
+«REM» Copyright (c) 2009-2012 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
 «REM» All rights reserved. This program and the accompanying materials      «ENDREM»
 «REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
 «REM» which accompanies this distribution, and is available at              «ENDREM»
@@ -14,16 +14,17 @@
 «DEFINE Root FOR uml::Model»
 	«EXPAND Interface::interface FOREACH eAllContents.typeSelect(uml::Interface)»
 	«EXPAND Class::class FOREACH eAllContents.typeSelect(uml::Class)»
+	«EXPAND Enum::enum FOREACH eAllContents.typeSelect(uml::Enumeration)»
 	«IF isJpaTrue()»
 		«debug("INFO - Generating JPA-Annotations and Files")»
-		«EXPAND org::dromdary::jpa::generator::templates::PersistenceXML::persistenceXML FOR this»	
+		«EXPAND org::dromdary::jpa::generator::templates::PersistenceXML::persistenceXML FOR this»
 		«EXPAND org::dromdary::jpa::generator::templates::GenericCRUD::genericCRUD FOR this»
 		«EXPAND org::dromdary::jpa::generator::templates::JpaUtil::jpaUtil FOR this»
 		«EXPAND org::dromdary::jpa::generator::templates::JpaDaoFactory::jpaDaoFactory FOR this»
 		«EXPAND org::dromdary::jpa::generator::templates::DaoFactory::daoFactory FOR this»
 	«ELSEIF !isJpaTrue() && isBvaTrue()»
 		«debug("INFO - Generating BVA-Annotations and Files")»
-		«EXPAND org::dromdary::bva::generator::templates::Root::Root FOR this»	
-	«ENDIF»	
+		«EXPAND org::dromdary::bva::generator::templates::Root::Root FOR this»
+	«ENDIF»
 «ENDDEFINE»
 
