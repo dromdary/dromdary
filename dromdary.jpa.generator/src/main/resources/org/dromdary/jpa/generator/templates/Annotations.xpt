@@ -284,7 +284,7 @@
 	«ENDIF»
 	«IF getPropertyMultiplicity() == "OneToOne" &&
 		getAppliedStereotype("SimpleJSR220::JPA_OneToOneJPA") == null»
-			@OneToOne(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»))
+			@OneToOne(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
 	«ENDIF»
 	«IF getPropertyMultiplicity() == "ManyToOne" &&
 		getAppliedStereotype("SimpleJSR220::JPA_ManyToOneJPA") == null»
