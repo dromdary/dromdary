@@ -269,7 +269,7 @@
 	«IF getPropertyMultiplicity() == "OneToMany" &&
 		getAppliedStereotype("SimpleJSR220::JPA_OneToManyJPA") == null»
 			«IF isEntity()»
-				@OneToMany(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+				@OneToMany(targetEntity=«abstractClassName(this.type.name)».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
 			«ELSEIF isEnum()»
 				@Column(name = "«generateColumnName(this)»")
 				@Enumerated(EnumType.STRING)
@@ -290,7 +290,7 @@
 	«IF getPropertyMultiplicity() == "OneToOne" &&
 		getAppliedStereotype("SimpleJSR220::JPA_OneToOneJPA") == null»
 		«IF isEntity()»
-			@OneToOne(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+			@OneToOne(targetEntity=«abstractClassName(this.type.name)».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
 		«ELSEIF isEnum()»
 			@Column(name = "«generateColumnName(this)»")
 			@Enumerated(EnumType.STRING)
@@ -299,7 +299,7 @@
 	«IF getPropertyMultiplicity() == "ManyToOne" &&
 		getAppliedStereotype("SimpleJSR220::JPA_ManyToOneJPA") == null»
 			«IF isEntity()»
-				@ManyToOne(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+				@ManyToOne(targetEntity=«abstractClassName(this.type.name)».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
 			«ELSEIF isEnum()»
 			 	@Column(name = "«generateColumnName(this)»")
 				@Enumerated(EnumType.STRING)
@@ -320,7 +320,7 @@
 	«IF getPropertyMultiplicity() == "ManyToMany" &&
 		getAppliedStereotype("SimpleJSR220::JPA_ManyToManyJPA") == null»
 			«IF isEntity()»
-				@ManyToMany(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+				@ManyToMany(targetEntity=«abstractClassName(this.type.name)».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
 			«ELSEIF isEnum()»
 			 	@Column(name = "«generateColumnName(this)»")
 				@Enumerated(EnumType.STRING)
