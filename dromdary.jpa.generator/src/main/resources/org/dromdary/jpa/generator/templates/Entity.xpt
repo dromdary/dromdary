@@ -22,6 +22,7 @@
 «ENDDEFINE»
 
 «DEFINE file(boolean implHierarchy) FOR uml::Class»
+		«REM»Generate entity interface«ENDREM»
 		«FILE getFQNPackagePath()+"/interfaces/"+interfaceName(name)+".java"»
 			«getTypeHeader()»
 			package «getFQNPackageName()».interfaces;
@@ -74,22 +75,22 @@
 		«ENDFILE»
 		
 		«REM»Generate implementation class of entity«ENDREM»
-		«IF !isAbstract»	
-			«FILE getFQNPackagePath()+"/"+implementationClassName(name)+".java" outletSrcOnceDir»		
+		«IF !isAbstract»
+			«FILE getFQNPackagePath()+"/"+implementationClassName(name)+".java" outletSrcOnceDir»
 				«getTypeHeader()»
 				package «getFQNPackageName()»;
 				«EXPAND imports»
 				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentation»
 				public class «implementationClassName(name)» extends «abstractClassName(name)» implements java.io.Serializable {
 				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::SerialVersionUID::serialVersionUIDField»
-				«IF getInterfaceOperationImplementationStrategy() == "use_abstract_method"»					
+				«IF getInterfaceOperationImplementationStrategy() == "use_abstract_method"»
 					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBaseImpl(true)»						
-				«ELSEIF getInterfaceOperationImplementationStrategy() == "none"»					
-					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBaseImpl»					
-				«ENDIF»		
-				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::basicClassEntityEndDefine»		
+				«ELSEIF getInterfaceOperationImplementationStrategy() == "none"»
+					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationBaseImpl»
+				«ENDIF»
+				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::basicClassEntityEndDefine»
 			«ENDFILE»
-		«ENDIF»		
+		«ENDIF»
 «ENDDEFINE»
 
 «DEFINE idAbstractAttr FOR uml::Class»
