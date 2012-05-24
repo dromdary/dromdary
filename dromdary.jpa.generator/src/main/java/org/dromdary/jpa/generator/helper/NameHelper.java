@@ -6,6 +6,7 @@ public class NameHelper {
 	private static final String ABSTRACT_CLASS_NAME_PREFIX = "Abstract";
 	private static final String INTERFACE_NAME_PREFIX = "I";
 	private static final String TABLE_NAME_PREFIX = "TEST_";
+	private static final int TABLE_NAME_MAX_LENGTH = 30;
 	
 	public static String abstractClassName(String name) {
 		name = convertToJavaPackageName(name);
@@ -46,64 +47,34 @@ public class NameHelper {
 	}
 	
 	public static String generateTableName(String tableName) {
-		StringBuffer bf = new StringBuffer(tableName);
-		int underScores = 0;
-		for (int i = 1; i < tableName.length(); i++) 
+		StringBuffer bf = new StringBuffer(tableName.length());
+		for (int i = 0; i < tableName.length(); i++)
 		{
-			if (tableName.substring(i, i + 1).equals(tableName.substring(i, i + 1).toUpperCase()) && underScores == 0)
+			String nextChar = String.valueOf(tableName.charAt(i));
+			if (nextChar.equals(nextChar.toUpperCase()) && i > 0)
 			{
-				bf = bf.insert(i, "_");
-				underScores++;
+				bf.append("_");
 			}
-			else if (tableName.substring(i, i + 1).equals(tableName.substring(i, i + 1).toUpperCase()) && underScores > 0)
-			{
-				bf = bf.insert(i + underScores, "_");
+			bf.append(nextChar);
+		}
+		String name = TABLE_NAME_PREFIX + bf.toString().toUpperCase();
+		return shortenNameIfNecessary(name, TABLE_NAME_MAX_LENGTH);
+	}
+	
+	private static String shortenNameIfNecessary(String name, int maxLength) {
+		if (name.length() > maxLength) {
+			name = name.substring(0, maxLength);
+			if (name.endsWith("_")) {
+				name = name.substring(0, maxLength - 1);
 			}
-		} 
-		return TABLE_NAME_PREFIX + bf.toString().toUpperCase();
+		}
+		return name;
 	}
 	
 	public static String generateColumnName(Property property) {
 		String tableName = generateTableName(property.getClass_().getName());
-		String[] splitString = tableName.split("_");
-		
-		StringBuffer bf = new StringBuffer();
-		if (splitString.length == 2)
-		{
-			bf.append(splitString[1].substring(0, 3));
-		}
-		else if (splitString.length == 3)
-		{
-			bf.append(splitString[1].substring(0, 3));
-			bf.append(splitString[2].substring(0, 1));
-		}
-		else if (splitString.length == 4)
-		{
-			bf.append(splitString[1].substring(0, 3));
-			bf.append(splitString[2].substring(0, 1));
-			bf.append(splitString[3].substring(0, 1));
-		}
-		
-		bf.append("_");
-		
 		String propertyName = property.getName();
-		int underScores = 0;
-		StringBuffer bf2 = new StringBuffer(propertyName);
-		for (int i = 1; i < propertyName.length(); i++) 
-		{
-			if (propertyName.substring(i, i + 1).equals(propertyName.substring(i, i + 1).toUpperCase()) && underScores == 0)
-			{
-				bf2 = bf2.insert(i, "_");
-				underScores++;
-			}
-			else if (propertyName.substring(i, i + 1).equals(propertyName.substring(i, i + 1).toUpperCase()) && underScores > 0)
-			{
-				bf2 = bf2.insert(i + underScores, "_");
-			}
-		}
-		bf.append(bf2);
-		
-		return bf.toString().toUpperCase();
+		return generateColumnName(propertyName, tableName);
 	}
 	
 	public static String generateColumnName(String property, String tableName) {
