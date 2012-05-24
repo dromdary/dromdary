@@ -37,7 +37,10 @@
 						«ENDIF»
 						implements «IF !interfaceRealization.isEmpty»«FOREACH interfaceRealization AS ir SEPARATOR ","»«interfaceName(ir.supplier.get(0).name)»«ENDFOREACH»,«ENDIF» java.io.Serializable {
 						«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::SerialVersionUID::serialVersionUIDField»
-						«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::attribute»
+						«FOREACH AllAttributes().typeSelect(uml::Property).select(a|!a.isStatic) AS attr»
+							«EXPAND Attribute::attributeAnnotation FOR attr»
+							«EXPAND Attribute::attribute FOR attr»
+						«ENDFOREACH»
 						«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Association::attribute»
 						«IF getClassesOperationImplementationStrategy() == "pr"»
 							«PROTECT CSTART '/*' CEND '*/' ID this.uniqueName()+"@attributes: Place additional attributes here"»

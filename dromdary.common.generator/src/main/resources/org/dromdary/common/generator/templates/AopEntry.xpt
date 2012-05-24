@@ -1,4 +1,4 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
+«REM» Copyright (c) 2009-2012 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
 «REM» All rights reserved. This program and the accompanying materials      «ENDREM»
 «REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
 «REM» which accompanies this distribution, and is available at              «ENDREM»
@@ -58,6 +58,17 @@
 		«ENDIF»
 		«targetDef.proceed()»
 	«ENDIF»
+«ENDAROUND»
+
+«AROUND org::dromdary::common::generator::templates::Attribute::attributeAnnotation FOR uml::Property»
+	«FOREACH getAppliedStereotypes() AS stereotype»
+		«IF stereotype.name.contains("JPA")»
+			@«formatJpaStereotypeName(stereotype.name)»
+		«ELSE»
+			@«stereotype.name»
+		«ENDIF»
+	«ENDFOREACH»
+	«targetDef.proceed()»
 «ENDAROUND»
 
 «AROUND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operationAnnotation FOR uml::Operation»
