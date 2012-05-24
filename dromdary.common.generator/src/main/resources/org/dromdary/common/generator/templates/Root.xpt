@@ -12,6 +12,10 @@
 «EXTENSION org::dromdary::common::generator::extensions::CommonPropertiesHelper»
 
 «DEFINE Root FOR uml::Model»
+	«EXPAND packageInfo FOREACH eAllContents.typeSelect(uml::Interface)»
+	«EXPAND packageInfo FOREACH eAllContents.typeSelect(uml::Class)»
+	«EXPAND packageInfo FOREACH eAllContents.typeSelect(uml::Enumeration)»
+	
 	«EXPAND Interface::interface FOREACH eAllContents.typeSelect(uml::Interface)»
 	«EXPAND Class::class FOREACH eAllContents.typeSelect(uml::Class)»
 	«EXPAND Enum::enum FOREACH eAllContents.typeSelect(uml::Enumeration)»
@@ -28,3 +32,11 @@
 	«ENDIF»
 «ENDDEFINE»
 
+«DEFINE packageInfo FOR uml::Classifier»
+	«FILE getFQNPackagePath()+"/interfaces/package-info.java"»
+		/**
+		 * Provides the interfaces for the classes of the package «getFQNPackageName()».
+ 		 */
+		package «getFQNPackageName()».interfaces;
+	«ENDFILE»
+«ENDDEFINE»

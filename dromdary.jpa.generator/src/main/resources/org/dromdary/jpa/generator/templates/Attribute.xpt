@@ -1,4 +1,4 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
+«REM» Copyright (c) 2009-2012 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
 «REM» All rights reserved. This program and the accompanying materials      «ENDREM»
 «REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
 «REM» which accompanies this distribution, and is available at              «ENDREM»
@@ -14,8 +14,15 @@
 
 «DEFINE attribute FOR uml::Property»
 	«IF isNavigable()»
-		«this.VisibilityName()» «getPropertyTypeName()» «name» = null;
+		«IF isEntity()»
+			«this.VisibilityName()» «getPropertyTypeInterfaceName()» «name.toFirstLower()» = null;
+		«ELSE»
+			«this.VisibilityName()» «getPropertyTypeName()» «name.toFirstLower()» = null;
+		«ENDIF»
 	 «ENDIF»
+«ENDDEFINE»
+
+«DEFINE attributeAnnotation FOR uml::Property»
 «ENDDEFINE»
 
 «DEFINE allAttribute FOR uml::Classifier»
@@ -28,4 +35,54 @@
 	«IF isNavigable()»
 		«this.VisibilityName()» «getPropertyTypeName()» «name» = «getPropertyTypeImpl()»;
 	 «ENDIF»
+«ENDDEFINE»
+
+«DEFINE getterSetter FOR uml::Class»
+	«FOREACH AllAttributes().typeSelect(uml::Property).select(a|!a.isStatic) AS attr»
+		«EXPAND getterSetter FOR attr»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE getterSetterInterface FOR uml::Class»
+	«FOREACH AllAttributes().typeSelect(uml::Property).select(a|!a.isStatic) AS attr»
+		«EXPAND getterSetterInterface FOR attr»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE getterSetterInterface FOR uml::Property»
+	«IF isNavigable()»
+		«EXPAND getterDocAndSignature»;
+
+		«EXPAND setterDocAndSignature»;
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE getterSetter FOR uml::Property»
+	«IF isNavigable()»
+		«EXPAND getterDocAndSignature» {
+			return «name.toFirstLower()»;
+		}
+
+		«EXPAND setterDocAndSignature» {
+			this.«name.toFirstLower()» = «name.toFirstLower()»;
+		}
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE getterDocAndSignature FOR uml::Property»
+	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationGetter»
+	«IF isEntity()»
+		public «getPropertyTypeInterfaceName()» «toGetter()»()
+	«ELSE»
+		public «getPropertyTypeName()» «toGetter()»()
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE setterDocAndSignature FOR uml::Property»
+	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationSetter»
+	«IF isEntity()»
+		public void «toSetter()»(«getPropertyTypeInterfaceName()» «name.toFirstLower()»)
+	«ELSE»
+		public void «toSetter()»(«getPropertyTypeName()» «name.toFirstLower()»)
+	«ENDIF»
 «ENDDEFINE»
