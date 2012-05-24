@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)
+ * Copyright (c) 2009-2012 by droMDAry.org (see CONTRIBUTORS)
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 
@@ -99,13 +102,24 @@ public class EntityHelper {
 	
 	public static String getPropertyTypeName(Property umlProperty) {
 		String multiplicity = getPropertyMultiplicity(umlProperty);
+		String name = umlProperty.getType().getName();
+		return getPropertyTypeNameByMultiplicity(name, multiplicity);
+	}
+	
+	public static String getPropertyTypeInterfaceName(Property umlProperty) {
+		String multiplicity = getPropertyMultiplicity(umlProperty);
+		String name = NameHelper.interfaceName(umlProperty.getType().getName());
+		return getPropertyTypeNameByMultiplicity(name, multiplicity);
+	}
+	
+	private static String getPropertyTypeNameByMultiplicity(String name, String multiplicity) {
 		if (multiplicity == null || !multiplicity.contains("ToMany"))
 		{
-			return umlProperty.getType().getName();
+			return name;
 		}
 		else 
 		{
-			return "Set<" + umlProperty.getType().getName() + ">";
+			return "Set<" + name + ">";
 		}
 	}
 	
@@ -232,7 +246,27 @@ public class EntityHelper {
 			}
 		}
 		return flag;
-	}	
+	}
+	
+	/**
+	 * Checks, if the given property is an entity, i.e. if the JPA_Entity stereotype is applied.
+	 * 
+	 * @param umlProperty The property to check.
+	 * @return boolean flag - <code>true</code>, if the given property is an entity, <code>false</code> otherwise.
+	 */
+	public static boolean isEntity(Property umlProperty) {
+		return umlProperty.getType().getAppliedStereotype("SimpleJSR220::JPA_Entity") != null;
+	}
+	
+	/**
+	 * Checks, if the given property is an enumeration.
+	 * 
+	 * @param umlProperty The property to check.
+	 * @return boolean flag - <code>true</code>, if the given property is an enumeration, <code>false</code> otherwise.
+	 */
+	public static boolean isEnum(Property umlProperty) {
+		return umlProperty.getType() instanceof Enumeration;
+	}
 
 	/**
 	 * Stereotypnamen formatieren. Aus JPA_NameJPA wird JPA_Name.
@@ -332,13 +366,14 @@ public class EntityHelper {
 	 * @return String name - Name des Attributs
 	 */
 	public static String getIdAttributeName(Property umlProperty) {
-		String name = null;
-		EList<Property> attributes = umlProperty.getClass_().getAllAttributes();
-		for (Property property : attributes) {
-			EList<Stereotype> stereotypes = property.getAppliedStereotypes();
-			for (Stereotype stereotype : stereotypes) {
-				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID))
-					name = property.getName();
+		String name = "";
+		for (Element e : umlProperty.getType().getOwnedElements()) {
+			for (Stereotype stereotype : e.getAppliedStereotypes()) {
+				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID)) {
+					if (e instanceof Property) {
+						name = ((Property)e).getName(); 
+					}
+				}
 			}
 		}
 		return name;
@@ -502,17 +537,16 @@ public class EntityHelper {
 	}
 
 	/**
-	 * Pr�ft, ob das Attribut zu einer Beziehung geh�rt.
+	 * Checks, if the attribute is part of a association.
 	 * 
 	 * @param Class
-	 *            umlClass - Die aktuelle UML-Klasse.
+	 *            umlClass - The current UML class.
 	 * @param Property
-	 *            attribute - Das zu untersuchende Attribut.
-	 * @return boolean classFoundFlag - Falls aktuelle Klasse in
-	 *         <code>getRelatedElements()</code> enthalten ist, wird true
-	 *         zur�ckgegeben.
+	 *            attribute - The attribute to check.
+	 * @return boolean classFoundFlag - Returns true, if the current class 
+	 *         is included in <code>getRelatedElements()</code>.
 	 */
-	private static boolean checkAssociationRelatedElements(Class umlClass,
+	public static boolean checkAssociationRelatedElements(Class umlClass,
 			Property attribute) {
 		boolean classFoundFlag = false;
 		if (attribute.getAssociation() != null) {
@@ -531,5 +565,37 @@ public class EntityHelper {
 			return classFoundFlag;
 		} else
 			return classFoundFlag;
+	}
+	
+	/**
+	 * Get a complete list of the packages of the current UML diagram.
+	 * 
+	 * @param pkg
+	 * 			Any package of the current UML diagram.
+	 * @return List<Package> packageList - A complete list of the packages of the current UML diagram.
+	 */
+	public static List<Package> getAllPackages(Package pkg) {
+		Package rootPkg = findRootPackage(pkg);
+		List<Package> pkgList = new ArrayList<Package>();
+		pkgList.add(rootPkg);
+		pkgList.addAll(getAllSubPackages(rootPkg));
+		return pkgList;
+	}
+	
+	private static List<Package> getAllSubPackages(Package pkg) {
+		List<Package> subPkgs = new ArrayList<Package>();
+		for (Package subPkg : pkg.getNestedPackages()) {
+			subPkgs.add(subPkg);
+			subPkgs.addAll(getAllSubPackages(subPkg));
+		}
+		return subPkgs;
+	}
+	
+	private static Package findRootPackage(Package pkg) {
+		Package rootPkg = pkg;
+		while (rootPkg.allOwningPackages().size() > 1) {
+			rootPkg = rootPkg.getNestingPackage();
+		}
+		return rootPkg;
 	}
 }
