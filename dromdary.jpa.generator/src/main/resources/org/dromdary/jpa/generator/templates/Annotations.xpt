@@ -1,4 +1,4 @@
-«REM» Copyright (c) 2009-2010 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
+«REM» Copyright (c) 2009-2012 by droMDAry.org (see CONTRIBUTORS)            «ENDREM»
 «REM» All rights reserved. This program and the accompanying materials      «ENDREM»
 «REM» are made available under the terms of the Eclipse Public License v1.0 «ENDREM»
 «REM» which accompanies this distribution, and is available at              «ENDREM»
@@ -268,7 +268,12 @@
 
 	«IF getPropertyMultiplicity() == "OneToMany" &&
 		getAppliedStereotype("SimpleJSR220::JPA_OneToManyJPA") == null»
-			@OneToMany(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+			«IF isEntity()»
+				@OneToMany(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+			«ELSEIF isEnum()»
+				@Column(name = "«generateColumnName(this)»")
+				@Enumerated(EnumType.STRING)
+			«ENDIF»
 			«IF !isId()»
 				@JoinColumn(name = "«getColumnNamePrefix(generateColumnName("id", generateTableName(this.type.name)))»_«generateColumnName("id", generateTableName(this.class.name))»", referencedColumnName = "«generateColumnName("id", generateTableName(this.class.name))»", nullable = false)
 			«ELSEIF isPrimaryKeyClassReq()»
@@ -284,13 +289,23 @@
 	«ENDIF»
 	«IF getPropertyMultiplicity() == "OneToOne" &&
 		getAppliedStereotype("SimpleJSR220::JPA_OneToOneJPA") == null»
+		«IF isEntity()»
 			@OneToOne(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+		«ELSEIF isEnum()»
+			@Column(name = "«generateColumnName(this)»")
+			@Enumerated(EnumType.STRING)
+		«ENDIF»
 	«ENDIF»
 	«IF getPropertyMultiplicity() == "ManyToOne" &&
 		getAppliedStereotype("SimpleJSR220::JPA_ManyToOneJPA") == null»
-			@ManyToOne(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+			«IF isEntity()»
+				@ManyToOne(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+			«ELSEIF isEnum()»
+			 	@Column(name = "«generateColumnName(this)»")
+				@Enumerated(EnumType.STRING)
+			«ENDIF»
 			«IF !isId()»
-				@JoinColumn(name = "«getColumnNamePrefix(generateColumnName("id", generateTableName(this.type.name)))»_«generateColumnName("id", generateTableName(this.class.name))»", referencedColumnName = "«generateColumnName("id", generateTableName(this.class.name))»", nullable = false)
+				@JoinColumn(name = "«generateColumnName(this)»", referencedColumnName = "«generateColumnName(getIdAttributeName(), generateTableName(this.type.name))»", nullable = false)
 			«ELSEIF isPrimaryKeyClassReq()»
 			    	@JoinColumns({
 						«FOREACH getIdAttributes() AS e ITERATOR iter»									
@@ -304,7 +319,12 @@
 	«ENDIF»
 	«IF getPropertyMultiplicity() == "ManyToMany" &&
 		getAppliedStereotype("SimpleJSR220::JPA_ManyToManyJPA") == null»
-			@ManyToMany(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+			«IF isEntity()»
+				@ManyToMany(targetEntity=«this.type.name».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+			«ELSEIF isEnum()»
+			 	@Column(name = "«generateColumnName(this)»")
+				@Enumerated(EnumType.STRING)
+			«ENDIF»
 			«IF !isId()»
 				@JoinColumn@JoinColumn(name = "«getColumnNamePrefix(generateColumnName("id", generateTableName(this.type.name)))»_«generateColumnName("id", generateTableName(this.class.name))»", referencedColumnName = "«generateColumnName("id", generateTableName(this.class.name))»", nullable = false)
 			«ELSEIF isPrimaryKeyClassReq()»
