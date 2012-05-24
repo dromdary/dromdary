@@ -4,7 +4,7 @@ String implementationClassName(String name) :
 	name;
 	
 String interfaceName(String name) :
-	"I"+name;
+	JAVA org.dromdary.jpa.generator.helper.NameHelper.interfaceName(java.lang.String);
 	
 String toSetter(uml::Property property):
 	"set"+property.name.toFirstUpper();
@@ -45,3 +45,5 @@ String toVar(uml::Type type):
 String asInstanceVar (uml::NamedElement elem) :
 	elem.name.toFirstLower();
 	
+String convertToJavaPackageName(String name):
+	JAVA org.dromdary.jpa.generator.helper.NameHelper.convertToJavaPackageName(java.lang.String);

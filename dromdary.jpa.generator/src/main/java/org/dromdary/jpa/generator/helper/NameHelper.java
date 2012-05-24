@@ -1,23 +1,48 @@
 package org.dromdary.jpa.generator.helper;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
 import org.eclipse.uml2.uml.Property;
 
-import javax.swing.text.TabExpander;
-
 public class NameHelper {
+	private static final String ABSTRACT_CLASS_NAME_PREFIX = "Abstract";
+	private static final String INTERFACE_NAME_PREFIX = "I";
+	private static final String TABLE_NAME_PREFIX = "TEST_";
+	
 	public static String abstractClassName(String name) {
-		if (!name.contains("Abstract"))
+		name = convertToJavaPackageName(name);
+		if (!name.contains(ABSTRACT_CLASS_NAME_PREFIX))
 		{
-			return "Abstract"+name;
+			return addPrefixToName(name, ABSTRACT_CLASS_NAME_PREFIX);
 		}
 		else
 		{
 			return name;
 		}
+	}
+	
+	private static String addPrefixToName(String name, String prefix) {
+		String className = name;
+		String packageName = "";
+		int classNamePosition = name.lastIndexOf(".");
+		if (classNamePosition != -1) {
+			classNamePosition++;
+			className = name.substring(classNamePosition);
+			packageName = name.substring(0, classNamePosition);
+		}
+		return packageName + prefix + className;
+	}
+	
+	public static String interfaceName(String name) {
+		return addPrefixToName(name, INTERFACE_NAME_PREFIX);
+	}
+	
+	public static String convertToJavaPackageName(String name) {
+		if (name != null && name.contains("::")) {
+			if (name.startsWith("Model::")) {
+				name = name.replaceFirst("Model::", "");
+			}
+			name = name.replaceAll("::", ".");
+		}
+		return name;
 	}
 	
 	public static String generateTableName(String tableName) {
@@ -35,7 +60,7 @@ public class NameHelper {
 				bf = bf.insert(i + underScores, "_");
 			}
 		} 
-		return "TEST_" + bf.toString().toUpperCase();
+		return TABLE_NAME_PREFIX + bf.toString().toUpperCase();
 	}
 	
 	public static String generateColumnName(Property property) {
@@ -81,7 +106,7 @@ public class NameHelper {
 		return bf.toString().toUpperCase();
 	}
 	
-public static String generateColumnName(String property, String tableName) {
+	public static String generateColumnName(String property, String tableName) {
 		String[] splitString = tableName.split("_");
 		
 		StringBuffer bf = new StringBuffer();
@@ -123,8 +148,8 @@ public static String generateColumnName(String property, String tableName) {
 		return bf.toString().toUpperCase();
 	}
 
-public static String getColumnNamePrefix(String columnName) {
-	String[] splitString = columnName.split("_");
-	return splitString[0].toUpperCase();
-}
+	public static String getColumnNamePrefix(String columnName) {
+		String[] splitString = columnName.split("_");
+		return splitString[0].toUpperCase();
+	}
 }
