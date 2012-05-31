@@ -64,6 +64,8 @@
 	«FOREACH getAppliedStereotypes() AS stereotype»
 		«IF stereotype.name.contains("JPA")»
 			@«formatJpaStereotypeName(stereotype.name)»
+		«ELSEIF stereotype.namespace.name.contains("SimpleJSR303")»
+			«EXPAND org::dromdary::bva::generator::templates::Annotations::propertyAnnotation FOR this»
 		«ELSE»
 			@«stereotype.name»
 		«ENDIF»
