@@ -65,10 +65,14 @@
 			«ENDIF»
 			«EXPAND Attribute::getterSetter»
 			«EXPAND Association::entityAbstractGetterSetter FOR this»		
-			«IF getInterfaceOperationImplementationStrategy() == "use_abstract_method"»				
+			«IF getInterfaceOperationImplementationStrategy() == "use_abstract_method"»
 				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operation(true)»				
-			«ELSEIF getInterfaceOperationImplementationStrategy() == "none"»				
-				«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operation»					
+			«ELSEIF getInterfaceOperationImplementationStrategy() == "none"»
+				«FOREACH AllOperations().typeSelect(uml::Operation) AS op»
+					«IF !isGetterOrSetterForExistingProperty(op, AllAttributes()) && !isGetterOrSetterForExistingProperty(op, allParents().getAllAttributes())»
+						«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Operation::operation(false) FOR op»
+					«ENDIF»
+				«ENDFOREACH»
 			«ENDIF»							
 			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Class::overwriteHashcodeEqualsToString»			
 			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Entity::abstractClassEntityEndDefine»		

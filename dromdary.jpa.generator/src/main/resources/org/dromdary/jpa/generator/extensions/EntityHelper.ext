@@ -75,3 +75,9 @@ boolean isEntity(uml::Property property) :
 
 boolean isEnum(uml::Property property) :
 	JAVA org.dromdary.jpa.generator.helper.EntityHelper.isEnum(org.eclipse.uml2.uml.Property);
+	
+boolean isGetterOrSetterForExistingProperty(uml::Operation op, List properties) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.isGetterOrSetterForExistingProperty(org.eclipse.uml2.uml.Operation, java.util.List);
+
+String getCustomColumnDefinitionString(uml::Property property) :
+	JAVA org.dromdary.jpa.generator.helper.EntityHelper.getCustomColumnDefinitionString(org.eclipse.uml2.uml.Property);

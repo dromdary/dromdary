@@ -6,6 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  */
 package org.dromdary.jpa.generator.helper;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +16,15 @@ import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.Stereotype;
+import org.hibernate.type.PrimitiveType;
 
 public class EntityHelper {
 	static String RELATION_TYPE_COMPOSITE = "composite";
@@ -36,6 +41,9 @@ public class EntityHelper {
 	static String XMI_ATTR_STEREOTYPE_JPA_COLUMN = "JPA_ColumnJPA";
 	static String XMI_ATTR_STEREOTYPE_JPA_ID = "JPA_IdJPA";
 	static String XMI_ATTR_ID = "Id";
+	
+	private static final int DEFAULT_STRING_DB_SIZE = 20;
+	private static final int MAX_CHAR_SIZE = 50;
 	
 	/**
 	 * Pr�fen, ob Attributnamen gesetzt sind und ggf. setzen. Falls Attribut zu
@@ -360,10 +368,10 @@ public class EntityHelper {
 	}
 
 	/**
-	 * Attributname des mit @Id annotierten Attributs holen.
+	 * Get the name of the @Id annotated attribute.
 	 * 
-	 * @param Property umlProperty - Aktuelle UML-Klasse
-	 * @return String name - Name des Attributs
+	 * @param Property umlProperty - Current UML class
+	 * @return String name - name of the Id-attribute
 	 */
 	public static String getIdAttributeName(Property umlProperty) {
 		String name = "";
@@ -372,6 +380,19 @@ public class EntityHelper {
 				if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID)) {
 					if (e instanceof Property) {
 						name = ((Property)e).getName(); 
+					}
+				}
+			}
+		}
+		for (Relationship rel : umlProperty.getType().getRelationships()) {
+			if (rel instanceof Generalization) {
+				for (Element e : ((Generalization) rel).getGeneral().getOwnedElements()) {
+					for (Stereotype stereotype : e.getAppliedStereotypes()) {
+						if (stereotype.getName().equals(XMI_ATTR_STEREOTYPE_JPA_ID)) {
+							if (e instanceof Property) {
+								name = ((Property)e).getName(); 
+							}
+						}
 					}
 				}
 			}
@@ -597,5 +618,45 @@ public class EntityHelper {
 			rootPkg = rootPkg.getNestingPackage();
 		}
 		return rootPkg;
+	}
+	
+	public static boolean isGetterOrSetterForExistingProperty(Operation op, List<Property> properties) {
+		if (!op.getName().startsWith("get") && !op.getName().startsWith("set")) {
+			return false;
+		}
+		
+		String attributeName = op.getName().substring(3, 4).toLowerCase() + op.getName().substring(4);
+		
+		boolean attributeFound = false;
+		for (Property p : properties) {
+			if (p.getName().equals(attributeName)) {
+				attributeFound = true;
+				break;
+			}
+		}
+		
+		return attributeFound;
+	}
+	
+	public static String getCustomColumnDefinitionString(Property property) {
+		String columnDefinitionString = "";
+		if (property.getType().getName().equals("String")) {
+			int minSize = 0;
+			int maxSize = DEFAULT_STRING_DB_SIZE;
+			if (property.getAppliedStereotype("SimpleJSR303::Size") != null) {
+				if (property.getValue(property.getApplicableStereotype("SimpleJSR303::Size"), "min") != null) {
+					minSize = Integer.parseInt(property.getValue(property.getApplicableStereotype("SimpleJSR303::Size"), "min").toString());
+				}
+				if (property.getValue(property.getApplicableStereotype("SimpleJSR303::Size"), "max") != null) {
+					maxSize = Integer.parseInt(property.getValue(property.getApplicableStereotype("SimpleJSR303::Size"), "max").toString());
+				}
+			}
+			String typeString = "CHAR";
+			if (minSize != maxSize && maxSize > MAX_CHAR_SIZE) {
+				typeString = "VARCHAR";
+			}
+			columnDefinitionString = ", columnDefinition=\"" + typeString + "("+ maxSize + ")\"";
+		}
+		return columnDefinitionString;
 	}
 }

@@ -21,7 +21,7 @@
 		«ENDIF»
 		«IF getAppliedStereotype("SimpleJSR220::JPA_AttributeOverridesJPA") == null»
 			@AttributeOverrides({ «FOREACH allParents().getAllAttributes() AS parentAttr ITERATOR iter SEPARATOR ","»
-				@AttributeOverride(name = "«parentAttr.name»", column = @Column(name = "«generateColumnName(parentAttr.name, generateTableName(this.name))»"))
+				@AttributeOverride(name = "«parentAttr.name»", column = @Column(name = "«generateColumnName(parentAttr.name, generateTableName(this.name))»"«getCustomColumnDefinitionString(parentAttr)»))
 			«ENDFOREACH» })
 			
 		«ENDIF»
@@ -270,29 +270,19 @@
 		getAppliedStereotype("SimpleJSR220::JPA_OneToManyJPA") == null»
 			«IF isEntity()»
 				@OneToMany(targetEntity=«abstractClassName(this.type.name)».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+				«EXPAND propertyJoinColumn»
 			«ELSEIF isEnum()»
-				@Column(name = "«generateColumnName(this)»")
+				@Column(name = "«generateColumnName(this)»"«getCustomColumnDefinitionString(this)»)
 				@Enumerated(EnumType.STRING)
-			«ENDIF»
-			«IF !isId()»
-				@JoinColumn(name = "«getColumnNamePrefix(generateColumnName("id", generateTableName(this.type.name)))»_«generateColumnName("id", generateTableName(this.class.name))»", referencedColumnName = "«generateColumnName("id", generateTableName(this.class.name))»", nullable = false)
-			«ELSEIF isPrimaryKeyClassReq()»
-			    	@JoinColumns({
-						«FOREACH getIdAttributes() AS e ITERATOR iter»									
-							@JoinColumn(name = "«this.name»_«e.name»", nullable = false),
-						«ENDFOREACH»
-							@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
-					})
-			«ELSE»
-				@JoinColumn(name = "«this.class.name»_«getIdAttributeName()»", nullable = false)
 			«ENDIF»
 	«ENDIF»
 	«IF getPropertyMultiplicity() == "OneToOne" &&
 		getAppliedStereotype("SimpleJSR220::JPA_OneToOneJPA") == null»
 		«IF isEntity()»
 			@OneToOne(targetEntity=«abstractClassName(this.type.name)».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+			«EXPAND propertyJoinColumn»
 		«ELSEIF isEnum()»
-			@Column(name = "«generateColumnName(this)»")
+			@Column(name = "«generateColumnName(this)»"«getCustomColumnDefinitionString(this)»)
 			@Enumerated(EnumType.STRING)
 		«ENDIF»
 	«ENDIF»
@@ -300,42 +290,20 @@
 		getAppliedStereotype("SimpleJSR220::JPA_ManyToOneJPA") == null»
 			«IF isEntity()»
 				@ManyToOne(targetEntity=«abstractClassName(this.type.name)».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+				«EXPAND propertyJoinColumn»
 			«ELSEIF isEnum()»
-			 	@Column(name = "«generateColumnName(this)»")
+			 	@Column(name = "«generateColumnName(this)»"«getCustomColumnDefinitionString(this)»)
 				@Enumerated(EnumType.STRING)
-			«ENDIF»
-			«IF !isId()»
-				@JoinColumn(name = "«generateColumnName(this)»", referencedColumnName = "«generateColumnName(getIdAttributeName(), generateTableName(this.type.name))»", nullable = false)
-			«ELSEIF isPrimaryKeyClassReq()»
-			    	@JoinColumns({
-						«FOREACH getIdAttributes() AS e ITERATOR iter»									
-							@JoinColumn(name = "«this.name»_«e.name»", nullable = false),
-						«ENDFOREACH»
-							@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
-					})
-			«ELSE»
-				@JoinColumn(name = "«this.class.name»_«getIdAttributeName()»", nullable = false)
 			«ENDIF»
 	«ENDIF»
 	«IF getPropertyMultiplicity() == "ManyToMany" &&
 		getAppliedStereotype("SimpleJSR220::JPA_ManyToManyJPA") == null»
 			«IF isEntity()»
 				@ManyToMany(targetEntity=«abstractClassName(this.type.name)».class, cascade = ALL, fetch = FetchType.LAZY«IF genDefOrphanRemovalTaggedValueForRelations() == "true"», orphanRemoval = true«ENDIF»)
+				«EXPAND propertyJoinColumn»
 			«ELSEIF isEnum()»
-			 	@Column(name = "«generateColumnName(this)»")
+			 	@Column(name = "«generateColumnName(this)»"«getCustomColumnDefinitionString(this)»)
 				@Enumerated(EnumType.STRING)
-			«ENDIF»
-			«IF !isId()»
-				@JoinColumn@JoinColumn(name = "«getColumnNamePrefix(generateColumnName("id", generateTableName(this.type.name)))»_«generateColumnName("id", generateTableName(this.class.name))»", referencedColumnName = "«generateColumnName("id", generateTableName(this.class.name))»", nullable = false)
-			«ELSEIF isPrimaryKeyClassReq()»
-			    	@JoinColumns({
-						«FOREACH getIdAttributes() AS e ITERATOR iter»									
-							@JoinColumn(name = "«this.name»_«e.name»", nullable = false),
-						«ENDFOREACH»
-							@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false),
-					})
-			«ELSE»
-				@JoinColumn(name = "«this.class.name»_«getIdAttributeName()»", nullable = false)
 			«ENDIF»
 	«ENDIF»
 	
@@ -346,19 +314,34 @@
 						e|e.name.contains("base_")
 					||  e.name.contains("packageName")
 					||	getValue(getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA"), e.name) == ""
-					||  getValue(getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA"), e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "insertable" || taggedValue.name == "length" || taggedValue.name == "nullable" || taggedValue.name == "precision" || taggedValue.name == "scale" || taggedValue.name == "unique" || taggedValue.name == "updateable"»«taggedValue.name» = «getValue(getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA"), taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA"), taggedValue.name)»"«ENDIF»«ENDFOREACH»)
+					||  getValue(getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA"), e.name) == null) AS taggedValue ITERATOR iter SEPARATOR ","»«IF taggedValue.name == "insertable" || taggedValue.name == "length" || taggedValue.name == "nullable" || taggedValue.name == "precision" || taggedValue.name == "scale" || taggedValue.name == "unique" || taggedValue.name == "updateable"»«taggedValue.name» = «getValue(getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA"), taggedValue.name)»«ELSE»«taggedValue.name» = "«getValue(getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA"), taggedValue.name)»"«ENDIF»«ENDFOREACH»«getCustomColumnDefinitionString(this)»)
 		«ELSE»
 
 		«ENDIF»
 	«ELSE»
 		«IF getPropertyMultiplicity() == null»
 			«IF getAppliedStereotype("SimpleJSR220::JPA_ColumnJPA") == null && getAppliedStereotype("SimpleJSR220::JPA_JoinColumnJPA") == null && getAppliedStereotype("SimpleJSR220::JPA_JoinColumnsJPA") == null»
-				@Column(name = "«generateColumnName(this)»")
+				@Column(name = "«generateColumnName(this)»"«getCustomColumnDefinitionString(this)»)
 			«ENDIF»
 		«ENDIF»	
 	«ENDIF»
 	
 	«EXPAND Attribute::attribute»
+«ENDDEFINE»
+
+«DEFINE propertyJoinColumn FOR uml::Property»
+	«IF !isId()»
+		@JoinColumn(name = "«generateColumnName(this)»", referencedColumnName = "«generateColumnName(getIdAttributeName(), generateTableName(this.type.name))»", nullable = false«getCustomColumnDefinitionString(this)»)
+	«ELSEIF isPrimaryKeyClassReq()»
+	    	@JoinColumns({
+				«FOREACH getIdAttributes() AS e ITERATOR iter»									
+					@JoinColumn(name = "«this.name»_«e.name»", nullable = false  «getCustomColumnDefinitionString(this)»),
+				«ENDFOREACH»
+					@JoinColumn(name = "«this.name»_«name.toFirstLower()»Pk", nullable = false «getCustomColumnDefinitionString(this)»),
+			})
+	«ELSEIF !isEnum()»
+		@JoinColumn(name = "«this.class.name»_«getIdAttributeName()»", nullable = false «getCustomColumnDefinitionString(this)»)
+	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE operationAnnotations FOR uml::Operation»
