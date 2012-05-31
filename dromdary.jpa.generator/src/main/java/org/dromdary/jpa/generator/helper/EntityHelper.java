@@ -43,6 +43,7 @@ public class EntityHelper {
 	static String XMI_ATTR_ID = "Id";
 	
 	private static final int DEFAULT_STRING_DB_SIZE = 20;
+	private static final int ENUM_DB_SIZE = 30;
 	private static final int MAX_CHAR_SIZE = 50;
 	
 	/**
@@ -640,9 +641,11 @@ public class EntityHelper {
 	
 	public static String getCustomColumnDefinitionString(Property property) {
 		String columnDefinitionString = "";
-		if (property.getType().getName().equals("String")) {
+		boolean isEnum = isEnum(property);
+		
+		if (property.getType().getName().equals("String") || isEnum) {
 			int minSize = 0;
-			int maxSize = DEFAULT_STRING_DB_SIZE;
+			int maxSize = isEnum ? ENUM_DB_SIZE : DEFAULT_STRING_DB_SIZE;
 			if (property.getAppliedStereotype("SimpleJSR303::Size") != null) {
 				if (property.getValue(property.getApplicableStereotype("SimpleJSR303::Size"), "min") != null) {
 					minSize = Integer.parseInt(property.getValue(property.getApplicableStereotype("SimpleJSR303::Size"), "min").toString());
