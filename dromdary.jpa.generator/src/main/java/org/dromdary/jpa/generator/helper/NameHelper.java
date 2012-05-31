@@ -1,11 +1,13 @@
 package org.dromdary.jpa.generator.helper;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.eclipse.uml2.uml.Property;
 
 public class NameHelper {
 	private static final String ABSTRACT_CLASS_NAME_PREFIX = "Abstract";
 	private static final String INTERFACE_NAME_PREFIX = "I";
-	private static final String TABLE_NAME_PREFIX = "TEST_";
 	private static final int TABLE_NAME_MAX_LENGTH = 30;
 	
 	public static String abstractClassName(String name) {
@@ -57,7 +59,23 @@ public class NameHelper {
 			}
 			bf.append(nextChar);
 		}
-		String name = TABLE_NAME_PREFIX + bf.toString().toUpperCase();
+		
+		String name = bf.toString().toUpperCase();
+
+		try {
+			String prefix = PropertiesHelper.getTableNamePrefix();
+			if (prefix != null) {
+				if (!prefix.endsWith("_")) {
+					prefix += "_";
+				}
+				name = prefix.toUpperCase() + name;
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		return shortenNameIfNecessary(name, TABLE_NAME_MAX_LENGTH);
 	}
 	

@@ -5,8 +5,11 @@ String getPersistenceProperties() :
 	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.getPersistenceProperties();
 	
 String getTableSchema() :
-	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.getTableSchema();	
-	
+	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.getTableSchema();
+
+String getTableNamePrefix():
+	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.getTableNamePrefix();
+
 String getDaoPackageName() :
 	JAVA org.dromdary.jpa.generator.helper.PropertiesHelper.getDaoPackageName();	
 	
