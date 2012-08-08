@@ -20,6 +20,8 @@
 			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Class::package FOR this»
 			import javax.persistence.*;
 			import java.io.Serializable;
+			import java.math.*;
+			import java.util.*;
 			
 			/**
 			 *
@@ -51,7 +53,7 @@
 							result = PRIME * ( result + Float.floatToIntBits(«((uml::Property)e).name»));
 						«ELSEIF ((uml::Property)e).type.name=="boolean"»
 							if («((uml::Property)e).name») result *= PRIME;
-						«ELSEIF (uml::PrimitiveType.isInstance(((uml::Property)e).type)) && ((uml::Property)e).type.name!="String" && ((uml::Property)e).type.name!="Boolean"» 
+						«ELSEIF ((uml::Property)e).type.name=="short" || ((uml::Property)e).type.name =="byte"» 
 							result = PRIME * ( result + «((uml::Property)e).name»);
 						«ELSE»
 							result = PRIME * ( result + ((«((uml::Property)e).name» == null) ? 0 : «((uml::Property)e).name».hashCode()));
