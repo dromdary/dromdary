@@ -62,7 +62,7 @@ slf4j-log4j12.jar                                       MIT
 uml-2.2.0.jar                                           EPL 1.0
 validation-api-1.0.CR2.jar                              APL 2.0
 
-Concerning the listet OSS-Components the terms and conditions of the respective licenses shall apply. The liability and the warranty of the PROVIDER for the endowment of the OSS-Components is governed by the applicable laws. 
+Concerning the listed OSS-Components the terms and conditions of the respective licenses shall apply. The liability and the warranty of the PROVIDER for the endowment of the OSS-Components is governed by the applicable laws. 
 
 
 
